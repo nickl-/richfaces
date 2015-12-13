@@ -93,7 +93,7 @@
 
         <!-- Resource Optimizer -->
         <version.reflections>0.9.8</version.reflections>
-        <version.yuicompressor>2.3.6</version.yuicompressor>
+        <version.yuicompressor>2.4.8</version.yuicompressor>
         <version.jcommander>1.20</version.jcommander>
         <version.jboss-el>1.0_02.CR5</version.jboss-el>
 
