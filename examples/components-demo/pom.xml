@@ -52,7 +52,7 @@
 
     <properties>
         <version.richfaces>4.5.18-SNAPSHOT</version.richfaces>
-        <version.hibernate-validator>4.3.2.Final</version.hibernate-validator>
+        <version.hibernate-validator>5.3.4.Final</version.hibernate-validator>
         <version.jboss-spec>3.0.2.Final</version.jboss-spec>
         <version.junit>4.12</version.junit>
 
