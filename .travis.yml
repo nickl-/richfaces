@@ -13,7 +13,7 @@ before_install:
   # override default MAVEN_OPTS
   - echo "MAVEN_OPTS='-Xms1g -Xmx2g -XX:MaxPermSize=512m'" > ~/.mavenrc
 
-install: mvn clean install -B -DskipTests=true -s /home/travis/build/richfaces/richfaces/buildhive-settings.xml
+install: mvn clean install -B -DskipTests=true -s buildhive-settings.xml
 
 before_script:
 # prepare environment for using of Firefox browser
@@ -29,7 +29,7 @@ before_script:
   - echo "Using firefox version `firefox --version`"
 
 # use WildFly 9 so it can run with Java 7 (WildFly 10 requires Java 8)
-script: mvn verify -Dintegration=wildfly90 -Dsmoke -s /home/travis/build/richfaces/richfaces/buildhive-settings.xml -Darquillian.maven.settings=/home/travis/build/richfaces/richfaces/buildhive-settings.xml -Dbrowser=firefox
+script: mvn verify -Dintegration=wildfly90 -Dsmoke -s buildhive-settings.xml -Darquillian.maven.settings=buildhive-settings.xml -Dbrowser=firefox
 
 cache:
   directories:
