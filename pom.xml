@@ -28,6 +28,7 @@
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
         <version>11</version>
+        <relativePath />
     </parent>
 
     <groupId>org.richfaces</groupId>
