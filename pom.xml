@@ -140,7 +140,7 @@
         <version.replacer.plugin>1.5.3</version.replacer.plugin>
         <version.resources.plugin>3.0.0</version.resources.plugin>
         <version.scm.plugin>1.9.5</version.scm.plugin>
-        <version.source.plugin>3.0.0</version.source.plugin>
+        <version.source.plugin>3.0.1</version.source.plugin>
         <version.surefire.plugin>2.19.1</version.surefire.plugin>
         <version.vdldoc>1.2</version.vdldoc>
 
