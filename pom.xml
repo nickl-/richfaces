@@ -129,7 +129,7 @@
         <version.tomcat8>8.0.35</version.tomcat8>
 
         <!-- Plugin Management: versions -->
-        <version.assembly.plugin>2.6</version.assembly.plugin>
+        <version.assembly.plugin>3.0.0</version.assembly.plugin>
         <version.clean.plugin>3.0.0</version.clean.plugin>
         <version.compiler.plugin>3.6.0</version.compiler.plugin>
         <version.install.plugin>2.5.2</version.install.plugin>
