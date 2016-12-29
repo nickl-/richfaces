@@ -413,7 +413,7 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
