@@ -56,9 +56,9 @@
     </issueManagement>
 
     <properties>
-        <version.oscache>2.3</version.oscache>
+        <version.oscache>2.4.1</version.oscache>
         <version.jbosscache>3.2.5.GA</version.jbosscache>
-        <version.ehcache>2.8.3</version.ehcache>
+        <version.ehcache>2.10.3</version.ehcache>
 
         <!-- Release repositories -->
         <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>

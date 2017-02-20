@@ -57,12 +57,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Container Versions -->
-        <version.wildfly100>10.0.0.Final</version.wildfly100>
-        <version.wildfly90>9.0.1.Final</version.wildfly90>
+        <version.wildfly100>10.1.0.Final</version.wildfly100>
+        <version.wildfly90>9.0.2.Final</version.wildfly90>
         <version.wildfly81>8.1.0.Final</version.wildfly81>
         <version.wildfly82>8.2.1.Final</version.wildfly82>
-        <version.tomcat7>7.0.69</version.tomcat7>
-        <version.tomcat8>8.0.35</version.tomcat8>
+        <version.tomcat7>7.0.73</version.tomcat7>
+        <version.tomcat8>8.0.39</version.tomcat8>
 
         <dependency.scope>compile</dependency.scope>
         <container.resources>${project.basedir}/src/main/resources-tomcat</container.resources>
@@ -207,7 +207,7 @@
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb-j5</artifactId>
+            <artifactId>hsqldb</artifactId>
             <scope>${dependency.scope}</scope>
         </dependency>
         <dependency>
@@ -361,7 +361,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -369,7 +369,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
@@ -377,7 +377,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -389,24 +389,24 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.9</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.13</version>
+                    <version>2.17</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.9.1</version>
+                    <version>1.12</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -55,16 +55,16 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
     <properties>
         <version.richfaces>4.5.18-SNAPSHOT</version.richfaces>
         <version.metadata-extractor>2.6.2</version.metadata-extractor>
-        <version.jackson>1.9.12</version.jackson>
+        <version.jackson>1.9.13</version.jackson>
         <javax.faces.PROJECT_STAGE>Development</javax.faces.PROJECT_STAGE>
 
-        <version.wildfly100>10.0.0.Final</version.wildfly100>
-        <version.wildfly90>9.0.1.Final</version.wildfly90>
+        <version.wildfly100>10.1.0.Final</version.wildfly100>
+        <version.wildfly90>9.0.2.Final</version.wildfly90>
         <version.wildfly81>8.1.0.Final</version.wildfly81>
         <version.wildfly82>8.2.1.Final</version.wildfly82>
-        <version.jboss-as7>7.1.1.Final</version.jboss-as7>
+        <version.jboss-as7>7.2.0.Final</version.jboss-as7>
 
-        <maven.min.version>3.0</maven.min.version>
+        <maven.min.version>3.0.3</maven.min.version>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -413,7 +413,7 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
@@ -421,7 +421,7 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.0.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -433,21 +433,21 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.9</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.9.1</version>
+                    <version>1.12</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.1</version>
+                    <version>2.10.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.richfaces</groupId>

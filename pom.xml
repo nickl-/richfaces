@@ -28,6 +28,7 @@
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
         <version>11</version>
+        <relativePath />
     </parent>
 
     <groupId>org.richfaces</groupId>
@@ -121,25 +122,25 @@
         <version.jboss-javaee>3.0.2.Final</version.jboss-javaee>
 
         <!-- Container Versions -->
-        <version.wildfly100>10.0.0.Final</version.wildfly100>
-        <version.wildfly90>9.0.1.Final</version.wildfly90>
+        <version.wildfly100>10.1.0.Final</version.wildfly100>
+        <version.wildfly90>9.0.2.Final</version.wildfly90>
         <version.wildfly81>8.1.0.Final</version.wildfly81>
         <version.wildfly82>8.2.1.Final</version.wildfly82>
-        <version.tomcat7>7.0.69</version.tomcat7>
-        <version.tomcat8>8.0.35</version.tomcat8>
+        <version.tomcat7>7.0.73</version.tomcat7>
+        <version.tomcat8>8.0.39</version.tomcat8>
 
         <!-- Plugin Management: versions -->
-        <version.assembly.plugin>2.6</version.assembly.plugin>
+        <version.assembly.plugin>3.0.0</version.assembly.plugin>
         <version.clean.plugin>3.0.0</version.clean.plugin>
-        <version.compiler.plugin>3.5.1</version.compiler.plugin>
+        <version.compiler.plugin>3.6.0</version.compiler.plugin>
         <version.install.plugin>2.5.2</version.install.plugin>
-        <version.jacoco.plugin>0.5.5.201112152213</version.jacoco.plugin>
+        <version.jacoco.plugin>0.7.8</version.jacoco.plugin>
         <version.jrebel.plugin>1.1.3</version.jrebel.plugin>
         <version.release.plugin>2.5.3</version.release.plugin>
         <version.replacer.plugin>1.5.3</version.replacer.plugin>
-        <version.resources.plugin>3.0.0</version.resources.plugin>
-        <version.scm.plugin>1.9.2</version.scm.plugin>
-        <version.source.plugin>3.0.0</version.source.plugin>
+        <version.resources.plugin>3.0.2</version.resources.plugin>
+        <version.scm.plugin>1.9.5</version.scm.plugin>
+        <version.source.plugin>3.0.1</version.source.plugin>
         <version.surefire.plugin>2.19.1</version.surefire.plugin>
         <version.vdldoc>1.2</version.vdldoc>
 
