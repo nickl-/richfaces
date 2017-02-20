@@ -1,12 +1,13 @@
 image::https://raw.github.com/richfaces/docs/4.3.1.20130305-Final/Component_Reference/src/main/docbook/en-US/images/rf_logo.png[[RichFaces Project Logo]
 
-RichFaces 4.5 image:https://travis-ci.org/richfaces/richfaces.png?branch=master[alt="Build Status", link="https://travis-ci.org/richfaces/richfaces"]
+RichFaces 4.5 image:https://travis-ci.org/albfernandez/richfaces.png?branch=master[alt="Build Status", link="https://travis-ci.org/albfernandez/richfaces"]
 
 '''
 
 = The next-generation JSF component framework by JBoss, Red Hat
 
 > The RichFaces project is an advanced UI component framework for easily integrating Ajax capabilities into business applications using JSF.
+> This is a fork of the unmaintained Richfaces 4.5,  https://developer.jboss.org/wiki/RichFacesEnd-Of-LifeQuestionsAnswers[more info about Richfaces End of Life]
 
 
 == Project Info
@@ -17,16 +18,12 @@ License:: LGPL v2.1
 Build System::  Maven
 --
 
-* http://richfaces.org[Project Site]
+* http://richfaces.org[Original Project Site]
 * http://docs.jboss.org/richfaces/[Documentation]
-* https://issues.jboss.org/browse/RF[Issue Tracker]
-* http://planet.jboss.org/feed/richfacesall[News / RSS] (includes release announcements)
-* https://community.jboss.org/thread/213160[Roadmap]
+* https://github.com/albfernandez/richfaces/issues [Issue Tracker]
 * https://developer.jboss.org/en/richfaces/content[User Forums]
 * https://developer.jboss.org/en/richfaces/dev/content[Developer Forums]
-* IRC: `#richfaces` at `irc.freenode.net`
-* https://developer.jboss.org/en/richfaces/dev/teammtgs[Team Meetings]
-* https://travis-ci.org/richfaces/richfaces/builds[Continuous Integration] image:https://travis-ci.org/richfaces/richfaces.png?branch=master[alt="Build Status", link="https://travis-ci.org/richfaces/richfaces"]
+* https://travis-ci.org/albfernandez/richfaces/builds[Continuous Integration] image:https://travis-ci.org/albfernandez/richfaces.png?branch=master[alt="Build Status", link="https://travis-ci.org/albfernandez/richfaces"]
 
 == Getting Started
 
@@ -43,7 +40,7 @@ To use the RichFaces framework in your JSF maven application, simply add the fol
 
 NOTE: Prior releases of RichFaces required using a BOM to manage the project dependencies.  With RichFaces 4.5 all required dependencies are managed transitively, simplifying your project setup.
 
-Alternatively, if you are not using maven, you can download the project ZIP distribution from the http://www.jboss.org/richfaces/download.html[Download Page] and manually include the dependencies in your classpath.
+Alternatively, if you are not using maven, you can download the project ZIP distribution from the https://github.com/albfernandez/richfaces/releases[Download Page] and manually include the dependencies in your classpath.
 
 Once you have included the RichFaces dependency in your application, you can start developing by adding a JSF page which includes the RichFaces taglib references:
 
@@ -65,7 +62,7 @@ For more information on how to get started with the project, see the http://docs
 
 === Clone the Project
 
-    $ git clone git@github.com:richfaces/richfaces.git
+    $ git clone git@github.albfernandez/richfaces.git
 
 === Prerequsities:
 
