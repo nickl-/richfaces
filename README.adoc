@@ -20,7 +20,7 @@ Build System::  Maven
 
 * http://richfaces.org[Original Project Site]
 * http://docs.jboss.org/richfaces/[Documentation]
-* https://github.com/albfernandez/richfaces/issues [Issue Tracker]
+* https://github.com/albfernandez/richfaces/issues[Issue Tracker]
 * https://developer.jboss.org/en/richfaces/content[User Forums]
 * https://developer.jboss.org/en/richfaces/dev/content[Developer Forums]
 * https://travis-ci.org/albfernandez/richfaces/builds[Continuous Integration] image:https://travis-ci.org/albfernandez/richfaces.png?branch=master[alt="Build Status", link="https://travis-ci.org/albfernandez/richfaces"]
