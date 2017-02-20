@@ -1,3 +1,8 @@
+4.5.18.ayg
+----------
+	[  ] Upgrade jQuery to 1.12.4
+	[#1] Create new default log implementation for log4j
+
 4.5.17.Final
 ------------
 
