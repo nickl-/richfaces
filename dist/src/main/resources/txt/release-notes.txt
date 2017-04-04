@@ -1,6 +1,8 @@
 4.5.18.ayg
 ----------
+    [  ] Upgrade cssparser to 0.9.22
 	[  ] Upgrade jQuery to 1.12.4
+	[#2] Custom paste plugin to convert images to embebed base64 img tags
 	[#1] Create new default log implementation for log4j
 
 4.5.17.Final
