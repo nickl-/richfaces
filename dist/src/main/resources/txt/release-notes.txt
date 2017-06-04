@@ -1,5 +1,7 @@
-4.5.19-SNAPSHOT
+4.5.19.ayg
 ----------
+
+	[ ] fix tableSubfooterBackgroundColor color on wine theme
 
 
 4.5.18.ayg
