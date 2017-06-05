@@ -1,7 +1,8 @@
 4.5.19.ayg
 ----------
 
-	[ ] fix tableSubfooterBackgroundColor color on wine theme
+    [  ] Upgrade cssparser to 0.9.23
+	[  ] fix tableSubfooterBackgroundColor color on wine theme
 
 
 4.5.18.ayg
