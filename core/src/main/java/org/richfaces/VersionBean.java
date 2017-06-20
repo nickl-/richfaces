@@ -126,14 +126,14 @@ public final class VersionBean {
                             return new Manifest(manifestStream);
                         } catch (MalformedURLException e1) {
                             // that's ok - just log in debug
-                            if (LOGGER.isDebugEnabled()) {
-                                LOGGER.debug(e1.getMessage(), e1);
-                            }
+                            //if (LOGGER.isDebugEnabled()) {
+                            //    LOGGER.debug(e1.getMessage(), e1);
+                            //}
                         } catch (IOException e) {
                             // that's ok - just log in debug
-                            if (LOGGER.isDebugEnabled()) {
-                                LOGGER.debug(e.getMessage(), e);
-                            }
+                            //if (LOGGER.isDebugEnabled()) {
+                            //    LOGGER.debug(e.getMessage(), e);
+                            //}
                         } finally {
                             if (manifestStream != null) {
                                 try {
