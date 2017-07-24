@@ -65,12 +65,14 @@ public class EhCacheCache implements Cache {
 
     public void put(Object key, Object value, Date expired) {
         int ttl = 0;
+        Boolean eternal = null;
 
         if (expired != null) {
+            eternal = Boolean.FALSE;
             ttl = (int) (expired.getTime() - System.currentTimeMillis()) / 1000;
         }
 
-        Element element = new Element(key, value, 0, ttl);
+        Element element = new Element(key, value, eternal, 0, ttl);
 
         cache.putQuiet(element);
     }

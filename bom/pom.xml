@@ -58,7 +58,7 @@
     <properties>
         <version.oscache>2.3</version.oscache>
         <version.jbosscache>3.2.5.GA</version.jbosscache>
-        <version.ehcache>2.8.3</version.ehcache>
+        <version.ehcache>2.4.3</version.ehcache>
 
         <!-- Release repositories -->
         <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
@@ -87,7 +87,7 @@
             </dependency>
             <dependency>
                 <groupId>net.sf.ehcache</groupId>
-                <artifactId>ehcache</artifactId>
+                <artifactId>ehcache-core</artifactId>
                 <version>${version.ehcache}</version>
             </dependency>
         </dependencies>

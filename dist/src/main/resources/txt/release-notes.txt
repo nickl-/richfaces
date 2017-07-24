@@ -1,5 +1,6 @@
 4.5.20-SNAPSHOT
 ----------
+	[  ] downgrade ehcache to 2.4.3 to match hiberante-ehcache 5.0.10
 
 4.5.19.ayg
 ----------
