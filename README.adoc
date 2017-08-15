@@ -7,6 +7,7 @@ RichFaces 4.5 image:https://travis-ci.org/albfernandez/richfaces.png?branch=mast
 = The next-generation JSF component framework by JBoss, Red Hat
 
 > The RichFaces project is an advanced UI component framework for easily integrating Ajax capabilities into business applications using JSF.
+
 > This is a fork of the unmaintained Richfaces 4.5,  https://developer.jboss.org/wiki/RichFacesEnd-Of-LifeQuestionsAnswers[more info about Richfaces End of Life]
 
 
@@ -117,7 +118,7 @@ If you are using Eclipse, you should use `Import Existing Maven Project` option.
 
 RichFaces has extensive framework test suite which validates compatibility with various browsers and application servers.
 
-For more information on how to run and develop this test suite, see https://github.com/richfaces/richfaces5/blob/master/TESTS.md[Framework Tests] document.
+For more information on how to run and develop this test suite, see https://github.com/albfernandez/richfaces/blob/master/TESTS.md[Framework Tests] document.
 
 === Running Smoke Tests
 
@@ -128,5 +129,5 @@ In order to effectively test the project with each code modification, you need t
 This will download WildFly and run the project tests against a managed instance of WildFly 8.1 using a headless PhantomJS browser.
 For a detailed explanation of additional testing configurations and options, refer to the link:TESTS.md[Testing guide].
 
-These smoke tests are also executed in the https://travis-ci.org/richfaces/richfaces/builds[continuous integration job].
+These smoke tests are also executed in the https://travis-ci.org/albfernandez/richfaces/builds[continuous integration job].
 
