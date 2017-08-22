@@ -1,12 +1,13 @@
-4.5.20-SNAPSHOT
+4.5.20.ayg
 ----------
-	[  ] downgrade ehcache to 2.4.3 to match hiberante-ehcache 5.0.10
+	[  ] Remove old prefixed css attributtes
+	[  ] Downgrade ehcache to 2.4.3 to match hiberante-ehcache 5.0.10
 
 4.5.19.ayg
 ----------
 
     [  ] Upgrade cssparser to 0.9.23
-	[  ] fix tableSubfooterBackgroundColor color on wine theme
+	[  ] Fix tableSubfooterBackgroundColor color on wine theme
 
 
 4.5.18.ayg
