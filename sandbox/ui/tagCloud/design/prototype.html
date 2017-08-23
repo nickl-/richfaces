@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Rotating 3D Tag Cloud</title>
+<style type="text/css">
+
+address{font-family:Georgia;font-style:normal;text-align:right;}
+#tagcloud, #tagcloud_test{
+	background:#FFF;
+	border:1px solid #000;
+	font:14px Verdana,sans-serif;
+	height:400px;
+	overflow:hidden;
+	position:relative;
+	width:400px;
+}
+#tagcloud ul,#tagcloud li{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#tagcloud a, #tagcloud_test a{
+
+	background:#FFF;
+	border:1px solid #FFF;
+
+	color:#000;
+	left:50%;
+	line-height:1.2em;
+	margin:-0.6em 0 0 0;
+	padding:0 0.2em;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:50%;
+}
+#tagcloud a:hover{
+	background:#FFF;
+	border:1px solid #00F;
+	z-index:1000 !important;
+}
+#tagSphere{
+	font-family:Arial,Helvetica,sans-serif;
+	/*background-color: #333333;*/
+	border: 1px solid #BED6F8;
+}
+#tagSphere li a{
+	font-weight:600;
+	text-decoration:none;
+	color:9ac8f6;
+}
+#tagSphere li a:hover{
+	color: #FF7800;
+}
+</style>
+<script type="text/javascript" src="jquery-1.3.2.js"></script>
+<script type="text/javascript" src="ui.core.js"></script>
+<script type="text/javascript" src="jquerytag.js"></script>
+</head>
+<body>
+
+<h1>Rotating 3D Tag Cloud in JavaScript</h1>
+
+<div id="tagSphere">
+<ul>
+<li><a href="#">ajax</a></li>
+<li><a href="#">b
