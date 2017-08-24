@@ -123,7 +123,7 @@ public class ServerResourceTest {
 		assertNotNull(inputStream);
 		try {
 			byte[] buff = new byte[20];
-			assertEquals(3, inputStream.read(buff));
+			assertEquals(4, inputStream.read(buff));
 
 		} finally {
 			inputStream.close();			
