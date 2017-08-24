@@ -27,6 +27,7 @@ import javax.el.ValueExpression;
 
 /**
  * @author Maksim Kaszynski
+ * @param <E>
  *
  */
 public class EnumSupportExpressionFactoryWrapper extends ExpressionFactory {
@@ -43,9 +44,9 @@ public class EnumSupportExpressionFactoryWrapper extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#coerceToType(java.lang.Object, java.lang.Class)
 	 */
 	@Override
-	public Object coerceToType(Object obj, Class<?> targetType) {
+	public Object coerceToType(Object obj, Class targetType) {
 		if (targetType != null && targetType.isEnum()) {
-			return coerceToEnum(obj, (Class<?>) targetType);
+			return coerceToEnum(obj, (Class) targetType);
 		}
 		return factory.coerceToType(obj, targetType);
 	}
@@ -72,8 +73,8 @@ public class EnumSupportExpressionFactoryWrapper extends ExpressionFactory {
 	 */
 	@Override
 	public MethodExpression createMethodExpression(ELContext context,
-			String expression, Class<?> expectedReturnType,
-			Class<?>[] expectedParamTypes) {
+			String expression, Class expectedReturnType,
+			Class[] expectedParamTypes) {
 		return factory.createMethodExpression(context, expression, expectedReturnType, expectedParamTypes);
 	}
 
@@ -81,8 +82,9 @@ public class EnumSupportExpressionFactoryWrapper extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#createValueExpression(java.lang.Object, java.lang.Class)
 	 */
 	@Override
-	public ValueExpression createValueExpression(Object instance,
-			Class<?> expectedType) {
+	public ValueExpression createValueExpression(
+            Object instance,
+            Class expectedType) {
 		return factory.createValueExpression(instance, expectedType);
 	}
 
@@ -90,8 +92,10 @@ public class EnumSupportExpressionFactoryWrapper extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#createValueExpression(javax.el.ELContext, java.lang.String, java.lang.Class)
 	 */
 	@Override
-	public ValueExpression createValueExpression(ELContext context,
-			String expression, Class<?> expectedType) {
+	public ValueExpression createValueExpression(
+            ELContext context,
+            String expression,
+            Class expectedType) {
 		return factory.createValueExpression(context, expression, expectedType);
 	}
 
