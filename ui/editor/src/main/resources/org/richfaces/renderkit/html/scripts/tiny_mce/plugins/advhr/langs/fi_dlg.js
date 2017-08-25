@@ -1,5 +1,7 @@
 tinyMCE.addI18n('fi.advhr_dlg',{
-width:"Leveys",
 size:"Korkeus",
-noshade:"Ei varjoa"
+noshade:"Ei varjoa",
+width:"Leveys",
+normal:"Normaali",
+widthunits:"Yksik\u00f6t"
 });

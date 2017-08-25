@@ -12,8 +12,8 @@ meta_robots:"Robotau",
 doctypes:"Math dogfen",
 langcode:"Cod iaith",
 langdir:"Cyfeiriad iaith",
-ltr:"Chwith i'r dde",
-rtl:"De i'r chwith",
+ltr:"Chwith i\'r dde",
+rtl:"De i\'r chwith",
 xml_pi:"Datganiad XML",
 encoding:"Amgodiad nodau",
 appearance_bgprops:"Priodweddau cefndir",
@@ -81,5 +81,5 @@ rel:"Perthynas",
 rev:"Diwygiad",
 hreflang:"Iaith href",
 general_props:"Cyfferdinol",
-advanced_props:"Uwch"
+advanced_props:"Uwch" 
 });

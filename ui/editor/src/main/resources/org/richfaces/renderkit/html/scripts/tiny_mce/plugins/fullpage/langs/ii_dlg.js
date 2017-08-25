@@ -81,5 +81,5 @@ rel:"Rel",
 rev:"Rev",
 hreflang:"Href lang",
 general_props:"\u4E00\u822C",
-advanced_props:"\u9AD8\u7EA7"
+advanced_props:"\u9AD8\u7EA7" 
 });

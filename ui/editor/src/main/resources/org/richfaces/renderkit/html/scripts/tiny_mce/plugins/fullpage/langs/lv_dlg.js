@@ -37,9 +37,9 @@ textcolor:"Color",
 fontsize:"Font size",
 fontface:"Font family",
 meta_index_follow:"Index and follow the links",
-meta_index_nofollow:"Index and don't follow the links",
+meta_index_nofollow:"Index and don\'t follow the links",
 meta_noindex_follow:"Do not index but follow the links",
-meta_noindex_nofollow:"Do not index and don\'t follow the links",
+meta_noindex_nofollow:"Do not index and don\\\'t follow the links",
 appearance_style:"Stylesheet and style properties",
 stylesheet:"Stylesheet",
 style:"Style",
@@ -81,5 +81,5 @@ rel:"Rel",
 rev:"Rev",
 hreflang:"Href lang",
 general_props:"General",
-advanced_props:"Advanced"
+advanced_props:"Advanced" 
 });

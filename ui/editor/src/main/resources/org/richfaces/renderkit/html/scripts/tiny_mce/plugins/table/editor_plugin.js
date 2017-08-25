@@ -1,1 +1,1517 @@
-(function(){var a=tinymce.each;tinymce.create("tinymce.plugins.TablePlugin",{init:function(b,c){var d=this;d.editor=b;d.url=c;a([["table","table.desc","mceInsertTable",true],["delete_table","table.del","mceTableDelete"],["delete_col","table.delete_col_desc","mceTableDeleteCol"],["delete_row","table.delete_row_desc","mceTableDeleteRow"],["col_after","table.col_after_desc","mceTableInsertColAfter"],["col_before","table.col_before_desc","mceTableInsertColBefore"],["row_after","table.row_after_desc","mceTableInsertRowAfter"],["row_before","table.row_before_desc","mceTableInsertRowBefore"],["row_props","table.row_desc","mceTableRowProps",true],["cell_props","table.cell_desc","mceTableCellProps",true],["split_cells","table.split_cells_desc","mceTableSplitCells",true],["merge_cells","table.merge_cells_desc","mceTableMergeCells",true]],function(e){b.addButton(e[0],{title:e[1],cmd:e[2],ui:e[3]})});if(b.getParam("inline_styles")){b.onPreProcess.add(function(e,g){var f=e.dom;a(f.select("table",g.node),function(i){var h;if(h=f.getAttrib(i,"width")){f.setStyle(i,"width",h);f.setAttrib(i,"width")}if(h=f.getAttrib(i,"height")){f.setStyle(i,"height",h);f.setAttrib(i,"height")}})})}b.onInit.add(function(){if(b&&b.plugins.contextmenu){b.plugins.contextmenu.onContextMenu.add(function(h,f,j){var k,i=b.selection,g=i.getNode()||b.getBody();if(b.dom.getParent(j,"td")||b.dom.getParent(j,"th")){f.removeAll();if(g.nodeName=="A"&&!b.dom.getAttrib(g,"name")){f.add({title:"advanced.link_desc",icon:"link",cmd:b.plugins.advlink?"mceAdvLink":"mceLink",ui:true});f.add({title:"advanced.unlink_desc",icon:"unlink",cmd:"UnLink"});f.addSeparator()}if(g.nodeName=="IMG"&&g.className.indexOf("mceItem")==-1){f.add({title:"advanced.image_desc",icon:"image",cmd:b.plugins.advimage?"mceAdvImage":"mceImage",ui:true});f.addSeparator()}f.add({title:"table.desc",icon:"table",cmd:"mceInsertTable",ui:true,value:{action:"insert"}});f.add({title:"table.props_desc",icon:"table_props",cmd:"mceInsertTable",ui:true});f.add({title:"table.del",icon:"delete_table",cmd:"mceTableDelete",ui:true});f.addSeparator();k=f.addMenu({title:"table.cell"});k.add({title:"table.cell_desc",icon:"cell_props",cmd:"mceTableCellProps",ui:true});k.add({title:"table.split_cells_desc",icon:"split_cells",cmd:"mceTableSplitCells",ui:true});k.add({title:"table.merge_cells_desc",icon:"merge_cells",cmd:"mceTableMergeCells",ui:true});k=f.addMenu({title:"table.row"});k.add({title:"table.row_desc",icon:"row_props",cmd:"mceTableRowProps",ui:true});k.add({title:"table.row_before_desc",icon:"row_before",cmd:"mceTableInsertRowBefore"});k.add({title:"table.row_after_desc",icon:"row_after",cmd:"mceTableInsertRowAfter"});k.add({title:"table.delete_row_desc",icon:"delete_row",cmd:"mceTableDeleteRow"});k.addSeparator();k.add({title:"table.cut_row_desc",icon:"cut",cmd:"mceTableCutRow"});k.add({title:"table.copy_row_desc",icon:"copy",cmd:"mceTableCopyRow"});k.add({title:"table.paste_row_before_desc",icon:"paste",cmd:"mceTablePasteRowBefore"});k.add({title:"table.paste_row_after_desc",icon:"paste",cmd:"mceTablePasteRowAfter"});k=f.addMenu({title:"table.col"});k.add({title:"table.col_before_desc",icon:"col_before",cmd:"mceTableInsertColBefore"});k.add({title:"table.col_after_desc",icon:"col_after",cmd:"mceTableInsertColAfter"});k.add({title:"table.delete_col_desc",icon:"delete_col",cmd:"mceTableDeleteCol"})}else{f.add({title:"table.desc",icon:"table",cmd:"mceInsertTable",ui:true})}})}});b.onKeyDown.add(function(f,g){if(g.keyCode==9&&f.dom.getParent(f.selection.getNode(),"TABLE")){if(!tinymce.isGecko&&!tinymce.isOpera){tinyMCE.execInstanceCommand(f.editorId,"mceTableMoveToNextRow",true);return tinymce.dom.Event.cancel(g)}f.undoManager.add()}});if(!tinymce.isIE){if(b.getParam("table_selection",true)){b.onClick.add(function(f,g){g=g.target;if(g.nodeName==="TABLE"){f.selection.select(g)}})}}b.onNodeChange.add(function(f,e,h){var g=f.dom.getParent(h,"td,th,caption");e.setActive("table",h.nodeName==="TABLE"||!!g);if(g&&g.nodeName==="CAPTION"){g=null}e.setDisabled("delete_table",!g);e.setDisabled("delete_col",!g);e.setDisabled("delete_table",!g);e.setDisabled("delete_row",!g);e.setDisabled("col_after",!g);e.setDisabled("col_before",!g);e.setDisabled("row_after",!g);e.setDisabled("row_before",!g);e.setDisabled("row_props",!g);e.setDisabled("cell_props",!g);e.setDisabled("split_cells",!g||(parseInt(f.dom.getAttrib(g,"colspan","1"))<2&&parseInt(f.dom.getAttrib(g,"rowspan","1"))<2));e.setDisabled("merge_cells",!g)});if(!tinymce.isIE){b.onBeforeSetContent.add(function(e,f){if(f.initial){f.content=f.content.replace(/<(td|th)([^>]+|)>\s*<\/(td|th)>/g,tinymce.isOpera?"<$1$2>&nbsp;</$1>":'<$1$2><br mce_bogus="1" /></$1>')}})}},execCommand:function(f,e,g){var d=this.editor,c;switch(f){case"mceTableMoveToNextRow":case"mceInsertTable":case"mceTableRowProps":case"mceTableCellProps":case"mceTableSplitCells":case"mceTableMergeCells":case"mceTableInsertRowBefore":case"mceTableInsertRowAfter":case"mceTableDeleteRow":case"mceTableInsertColBefore":case"mceTableInsertColAfter":case"mceTableDeleteCol":case"mceTableCutRow":case"mceTableCopyRow":case"mceTablePasteRowBefore":case"mceTablePasteRowAfter":case"mceTableDelete":d.execCommand("mceBeginUndoLevel");this._doExecCommand(f,e,g);d.execCommand("mceEndUndoLevel");return true}return false},getInfo:function(){return{longname:"Tables",author:"Moxiecode Systems AB",authorurl:"http://tinymce.moxiecode.com",infourl:"http://wiki.moxiecode.com/index.php/TinyMCE:Plugins/table",version:tinymce.majorVersion+"."+tinymce.minorVersion}},_doExecCommand:function(r,Z,ae){var V=this.editor,au=V,g=this.url;var n=V.selection.getNode();var W=V.dom.getParent(n,"tr");var aq=V.dom.getParent(n,"td,th");var F=V.dom.getParent(n,"table");var k=V.contentWindow.document;var av=F?F.getAttribute("border"):"";if(W&&aq==null){aq=W.cells[0]}function ap(y,x){for(var ax=0;ax<y.length;ax++){if(y[ax].length>0&&ap(y[ax],x)){return true}if(y[ax]==x){return true}}return false}function aj(x,i){var y;ad=e(F);x=x||0;i=i||0;x=Math.max(o.cellindex+x,0);i=Math.max(o.rowindex+i,0);V.execCommand("mceRepaint");y=d(ad,i,x);if(y){V.selection.select(y.firstChild||y);V.selection.collapse(1)}}function ah(){var i=k.createElement("td");if(!tinymce.isIE){i.innerHTML='<br mce_bogus="1"/>'}}function j(y){var x=V.dom.getAttrib(y,"colspan");var i=V.dom.getAttrib(y,"rowspan");x=x==""?1:parseInt(x);i=i==""?1:parseInt(i);return{colspan:x,rowspan:i}}function al(ax,az){var i,ay;for(ay=0;ay<ax.length;ay++){for(i=0;i<ax[ay].length;i++){if(ax[ay][i]==az){return{cellindex:i,rowindex:ay}}}}return null}function d(x,y,i){if(x[y]&&x[y][i]){return x[y][i]}return null}function A(aC,ax){var az=[],y=0,aA,ay,ax,aB;for(aA=0;aA<aC.rows.length;aA++){for(ay=0;ay<aC.rows[aA].cells.length;ay++,y++){az[y]=aC.rows[aA].cells[ay]}}for(aA=0;aA<az.length;aA++){if(az[aA]==ax){if(aB=az[aA+1]){return aB}}}}function e(aE){var i=[],aF=aE.rows,aC,aB,ay,az,aD,ax,aA;for(aB=0;aB<aF.length;aB++){for(aC=0;aC<aF[aB].cells.length;aC++){ay=aF[aB].cells[aC];az=j(ay);for(aD=aC;i[aB]&&i[aB][aD];aD++){}for(aA=aB;aA<aB+az.rowspan;aA++){if(!i[aA]){i[aA]=[]}for(ax=aD;ax<aD+az.colspan;ax++){i[aA][ax]=ay}}}}return i}function m(aG,aD,ay,ax){var y=e(aG),aF=al(y,ay);var aH,aC;if(ax.cells.length!=aD.childNodes.length){aH=aD.childNodes;aC=null;for(var aE=0;ay=d(y,aF.rowindex,aE);aE++){var aA=true;var aB=j(ay);if(ap(aH,ay)){ax.childNodes[aE]._delete=true}else{if((aC==null||ay!=aC)&&aB.colspan>1){for(var az=aE;az<aE+ay.colSpan;az++){ax.childNodes[az]._delete=true}}}if((aC==null||ay!=aC)&&aB.rowspan>1){ay.rowSpan=aB.rowspan+1}aC=ay}B(F)}}function O(x,i){while((x=x.previousSibling)!=null){if(x.nodeName==i){return x}}return null}function af(ax,ay){var x=ay.split(",");while((ax=ax.nextSibling)!=null){for(var y=0;y<x.length;y++){if(ax.nodeName.toLowerCase()==x[y].toLowerCase()){return ax}}}return null}function B(ax){if(ax.rows==0){return}var y=ax.rows[0];do{var x=af(y,"TR");if(y._delete){y.parentNode.removeChild(y);continue}var ay=y.cells[0];if(ay.cells>1){do{var i=af(ay,"TD,TH");if(ay._delete){ay.parentNode.removeChild(ay)}}while((ay=i)!=null)}}while((y=x)!=null)}function p(ax,aA,az){ax.rowSpan=1;var x=af(aA,"TR");for(var ay=1;ay<az&&x;ay++){var y=k.createElement("td");if(!tinymce.isIE){y.innerHTML='<br mce_bogus="1"/>'}if(tinymce.isIE){x.insertBefore(y,x.cells(ax.cellIndex))}else{x.insertBefore(y,x.cells[ax.cellIndex])}x=af(x,"TR")}}function S(aF,aH,aB){var y=e(aH);var ax=aB.cloneNode(false);var aG=al(y,aB.cells[0]);var aC=null;var aA=V.dom.getAttrib(aH,"border");var az=null;for(var aE=0;az=d(y,aG.rowindex,aE);aE++){var aD=null;if(aC!=az){for(var ay=0;ay<aB.cells.length;ay++){if(az==aB.cells[ay]){aD=az.cloneNode(true);break}}}if(aD==null){aD=aF.createElement("td");if(!tinymce.isIE){aD.innerHTML='<br mce_bogus="1"/>'}}aD.colSpan=1;aD.rowSpan=1;ax.appendChild(aD);aC=az}return ax}switch(r){case"mceTableMoveToNextRow":var L=A(F,aq);if(!L){V.execCommand("mceTableInsertRowAfter",aq);L=A(F,aq)}V.selection.select(L);V.selection.collapse(true);return true;case"mceTableRowProps":if(W==null){return true}if(Z){V.windowManager.open({url:g+"/row.htm",width:400+parseInt(V.getLang("table.rowprops_delta_width",0)),height:295+parseInt(V.getLang("table.rowprops_delta_height",0)),inline:1},{plugin_url:g})}return true;case"mceTableCellProps":if(aq==null){return true}if(Z){V.windowManager.open({url:g+"/cell.htm",width:400+parseInt(V.getLang("table.cellprops_delta_width",0)),height:295+parseInt(V.getLang("table.cellprops_delta_height",0)),inline:1},{plugin_url:g})}return true;case"mceInsertTable":if(Z){V.windowManager.open({url:g+"/table.htm",width:400+parseInt(V.getLang("table.table_delta_width",0)),height:320+parseInt(V.getLang("table.table_delta_height",0)),inline:1},{plugin_url:g,action:ae?ae.action:0})}return true;case"mceTableDelete":var G=V.dom.getParent(V.selection.getNode(),"table");if(G){G.parentNode.removeChild(G);V.execCommand("mceRepaint")}return true;case"mceTableSplitCells":case"mceTableMergeCells":case"mceTableInsertRowBefore":case"mceTableInsertRowAfter":case"mceTableDeleteRow":case"mceTableInsertColBefore":case"mceTableInsertColAfter":case"mceTableDeleteCol":case"mceTableCutRow":case"mceTableCopyRow":case"mceTablePasteRowBefore":case"mceTablePasteRowAfter":if(!F){return true}if(W&&F!=W.parentNode){F=W.parentNode}if(F&&W){switch(r){case"mceTableCutRow":if(!W||!aq){return true}V.tableRowClipboard=S(k,F,W);V.execCommand("mceTableDeleteRow");break;case"mceTableCopyRow":if(!W||!aq){return true}V.tableRowClipboard=S(k,F,W);break;case"mceTablePasteRowBefore":if(!W||!aq){return true}var v=V.tableRowClipboard.cloneNode(true);var h=O(W,"TR");if(h!=null){m(F,h,h.cells[0],v)}W.parentNode.insertBefore(v,W);break;case"mceTablePasteRowAfter":if(!W||!aq){return true}var X=af(W,"TR");var v=V.tableRowClipboard.cloneNode(true);m(F,W,aq,v);if(X==null){W.parentNode.appendChild(v)}else{X.parentNode.insertBefore(v,X)}break;case"mceTableInsertRowBefore":if(!W||!aq){return true}var ad=e(F);var o=al(ad,aq);var v=k.createElement("tr");var u=null;o.rowindex--;if(o.rowindex<0){o.rowindex=0}for(var ac=0;aq=d(ad,o.rowindex,ac);ac++){if(aq!=u){var E=j(aq);if(E.rowspan==1){var J=k.createElement("td");if(!tinymce.isIE){J.innerHTML='<br mce_bogus="1"/>'}J.colSpan=aq.colSpan;v.appendChild(J)}else{aq.rowSpan=E.rowspan+1}u=aq}}W.parentNode.insertBefore(v,W);aj(0,1);break;case"mceTableInsertRowAfter":if(!W||!aq){return true}var ad=e(F);var o=al(ad,aq);var v=k.createElement("tr");var u=null;for(var ac=0;aq=d(ad,o.rowindex,ac);ac++){if(aq!=u){var E=j(aq);if(E.rowspan==1){var J=k.createElement("td");if(!tinymce.isIE){J.innerHTML='<br mce_bogus="1"/>'}J.colSpan=aq.colSpan;v.appendChild(J)}else{aq.rowSpan=E.rowspan+1}u=aq}}if(v.hasChildNodes()){var X=af(W,"TR");if(X){X.parentNode.insertBefore(v,X)}else{F.appendChild(v)}}aj(0,1);break;case"mceTableDeleteRow":if(!W||!aq){return true}var ad=e(F);var o=al(ad,aq);if(ad.length==1&&F.nodeName=="TBODY"){V.dom.remove(V.dom.getParent(F,"table"));return true}var D=W.cells;var X=af(W,"TR");for(var ac=0;ac<D.length;ac++){if(D[ac].rowSpan>1){var J=D[ac].cloneNode(true);var E=j(D[ac]);J.rowSpan=E.rowspan-1;var ak=X.cells[ac];if(ak==null){X.appendChild(J)}else{X.insertBefore(J,ak)}}}var u=null;for(var ac=0;aq=d(ad,o.rowindex,ac);ac++){if(aq!=u){var E=j(aq);if(E.rowspan>1){aq.rowSpan=E.rowspan-1}else{W=aq.parentNode;if(W.parentNode){W._delete=true}}u=aq}}B(F);aj(0,-1);break;case"mceTableInsertColBefore":if(!W||!aq){return true}var ad=e(V.dom.getParent(F,"table"));var o=al(ad,aq);var u=null;for(var aa=0;aq=d(ad,aa,o.cellindex);aa++){if(aq!=u){var E=j(aq);if(E.colspan==1){var J=k.createElement(aq.nodeName);if(!tinymce.isIE){J.innerHTML='<br mce_bogus="1"/>'}J.rowSpan=aq.rowSpan;aq.parentNode.insertBefore(J,aq)}else{aq.colSpan++}u=aq}}aj();break;case"mceTableInsertColAfter":if(!W||!aq){return true}var ad=e(V.dom.getParent(F,"table"));var o=al(ad,aq);var u=null;for(var aa=0;aq=d(ad,aa,o.cellindex);aa++){if(aq!=u){var E=j(aq);if(E.colspan==1){var J=k.createElement(aq.nodeName);if(!tinymce.isIE){J.innerHTML='<br mce_bogus="1"/>'}J.rowSpan=aq.rowSpan;var ak=af(aq,"TD,TH");if(ak==null){aq.parentNode.appendChild(J)}else{ak.parentNode.insertBefore(J,ak)}}else{aq.colSpan++}u=aq}}aj(1);break;case"mceTableDeleteCol":if(!W||!aq){return true}var ad=e(F);var o=al(ad,aq);var u=null;if((ad.length>1&&ad[0].length<=1)&&F.nodeName=="TBODY"){V.dom.remove(V.dom.getParent(F,"table"));return true}for(var aa=0;aq=d(ad,aa,o.cellindex);aa++){if(aq!=u){var E=j(aq);if(E.colspan>1){aq.colSpan=E.colspan-1}else{if(aq.parentNode){aq.parentNode.removeChild(aq)}}u=aq}}aj(-1);break;case"mceTableSplitCells":if(!W||!aq){return true}var l=j(aq);var C=l.colspan;var H=l.rowspan;if(C>1||H>1){aq.colSpan=1;for(var am=1;am<C;am++){var J=k.createElement("td");if(!tinymce.isIE){J.innerHTML='<br mce_bogus="1"/>'}W.insertBefore(J,af(aq,"TD,TH"));if(H>1){p(J,W,H)}}p(aq,W,H)}F=V.dom.getParent(V.selection.getNode(),"table");break;case"mceTableMergeCells":var ao=[];var R=V.selection.getSel();var ad=e(F);if(tinymce.isIE||R.rangeCount==1){if(Z){var t=j(aq);V.windowManager.open({url:g+"/merge_cells.htm",width:240+parseInt(V.getLang("table.merge_cells_delta_width",0)),height:110+parseInt(V.getLang("table.merge_cells_delta_height",0)),inline:1},{action:"update",numcols:t.colspan,numrows:t.rowspan,plugin_url:g});return true}else{var U=parseInt(ae.numrows);var c=parseInt(ae.numcols);var o=al(ad,aq);if((""+U)=="NaN"){U=1}if((""+c)=="NaN"){c=1}var b=F.rows;for(var aa=o.rowindex;aa<ad.length;aa++){var ag=[];for(var ac=o.cellindex;ac<ad[aa].length;ac++){var f=d(ad,aa,ac);if(f&&!ap(ao,f)&&!ap(ag,f)){var N=al(ad,f);if(N.cellindex<o.cellindex+c&&N.rowindex<o.rowindex+U){ag[ag.length]=f}}}if(ag.length>0){ao[ao.length]=ag}var f=d(ad,o.rowindex,o.cellindex);a(au.dom.select("br",f),function(y,x){if(x>0&&au.dom.getAttrib("mce_bogus")){au.dom.remove(y)}})}}}else{var D=[];var R=V.selection.getSel();var Y=null;var an=null;var z=-1,aw=-1,w,at;if(R.rangeCount<2){return true}for(var am=0;am<R.rangeCount;am++){var ai=R.getRangeAt(am);var aq=ai.startContainer.childNodes[ai.startOffset];if(!aq){break}if(aq.nodeName=="TD"||aq.nodeName=="TH"){D[D.length]=aq}}var b=F.rows;for(var aa=0;aa<b.length;aa++){var ag=[];for(var ac=0;ac<b[aa].cells.length;ac++){var f=b[aa].cells[ac];for(var am=0;am<D.length;am++){if(f==D[am]){ag[ag.length]=f}}}if(ag.length>0){ao[ao.length]=ag}}var an=[];var Y=null;for(var aa=0;aa<ad.length;aa++){for(var ac=0;ac<ad[aa].length;ac++){ad[aa][ac]._selected=false;for(var am=0;am<D.length;am++){if(ad[aa][ac]==D[am]){if(z==-1){z=ac;aw=aa}w=ac;at=aa;ad[aa][ac]._selected=true}}}}for(var aa=aw;aa<=at;aa++){for(var ac=z;ac<=w;ac++){if(!ad[aa][ac]._selected){alert("Invalid selection for merge.");return true}}}}var s=1,q=1;var T=-1;for(var aa=0;aa<ao.length;aa++){var I=0;for(var ac=0;ac<ao[aa].length;ac++){var E=j(ao[aa][ac]);I+=E.colspan;if(T!=-1&&E.rowspan!=T){alert("Invalid selection for merge.");return true}T=E.rowspan}if(I>q){q=I}T=-1}var Q=-1;for(var ac=0;ac<ao[0].length;ac++){var M=0;for(var aa=0;aa<ao.length;aa++){var E=j(ao[aa][ac]);M+=E.rowspan;if(Q!=-1&&E.colspan!=Q){alert("Invalid selection for merge.");return true}Q=E.colspan}if(M>s){s=M}Q=-1}aq=ao[0][0];aq.rowSpan=s;aq.colSpan=q;for(var aa=0;aa<ao.length;aa++){for(var ac=0;ac<ao[aa].length;ac++){var P=ao[aa][ac].innerHTML;var K=P.replace(/[ \t\r\n]/g,"");if(K!="<br/>"&&K!="<br>"&&K!='<br mce_bogus="1"/>'&&(ac+aa>0)){aq.innerHTML+=P}if(ao[aa][ac]!=aq&&!ao[aa][ac]._deleted){var o=al(ad,ao[aa][ac]);var ar=ao[aa][ac].parentNode;ar.removeChild(ao[aa][ac]);ao[aa][ac]._deleted=true;if(!ar.hasChildNodes()){ar.parentNode.removeChild(ar);var ab=null;for(var ac=0;cellElm=d(ad,o.rowindex,ac);ac++){if(cellElm!=ab&&cellElm.rowSpan>1){cellElm.rowSpan--}ab=cellElm}if(aq.rowSpan>1){aq.rowSpan--}}}}}a(au.dom.select("br",aq),function(y,x){if(x>0&&au.dom.getAttrib(y,"mce_bogus")){au.dom.remove(y)}});break}F=V.dom.getParent(V.selection.getNode(),"table");V.addVisual(F);V.nodeChanged()}return true}return false}});tinymce.PluginManager.add("table",tinymce.plugins.TablePlugin)})();
+/**
+ * editor_plugin_src.js
+ *
+ * Copyright 2009, Moxiecode Systems AB
+ * Released under LGPL License.
+ *
+ * License: http://tinymce.moxiecode.com/license
+ * Contributing: http://tinymce.moxiecode.com/contributing
+ */
+/* jshint loopfunc: true */
+(function(tinymce) {
+	var each = tinymce.each;
+
+	// Checks if the selection/caret is at the start of the specified block element
+	function isAtStart(rng, par) {
+		var doc = par.ownerDocument, rng2 = doc.createRange(), elm;
+
+		rng2.setStartBefore(par);
+		rng2.setEnd(rng.endContainer, rng.endOffset);
+
+		elm = doc.createElement('body');
+		elm.appendChild(rng2.cloneContents());
+
+		// Check for text characters of other elements that should be treated as content
+		return elm.innerHTML.replace(/<(br|img|object|embed|input|textarea)[^>]*>/gi, '-').replace(/<[^>]+>/g, '').length === 0;
+	}
+
+	function getSpanVal(td, name) {
+		return parseInt(td.getAttribute(name) || 1, 10);
+	}
+
+	/**
+	 * Table Grid class.
+	 */
+	function TableGrid(table, dom, selection) {
+		var grid, startPos, endPos, selectedCell;
+
+		function cloneNode(node, children) {
+			node = node.cloneNode(children);
+			node.removeAttribute('id');
+
+			return node;
+		}
+
+		function buildGrid() {
+			var startY = 0;
+
+			grid = [];
+
+			each(['thead', 'tbody', 'tfoot'], function(part) {
+				var rows = dom.select('> ' + part + ' tr', table);
+
+				each(rows, function(tr, y) {
+					y += startY;
+
+					each(dom.select('> td, > th', tr), function(td, x) {
+						var x2, y2, rowspan, colspan;
+
+						// Skip over existing cells produced by rowspan
+						if (grid[y]) {
+							while (grid[y][x]) {
+								x++;
+							}
+						}
+
+						// Get col/rowspan from cell
+						rowspan = getSpanVal(td, 'rowspan');
+						colspan = getSpanVal(td, 'colspan');
+
+						// Fill out rowspan/colspan right and down
+						for (y2 = y; y2 < y + rowspan; y2++) {
+							if (!grid[y2]) {
+								grid[y2] = [];
+							}
+
+							for (x2 = x; x2 < x + colspan; x2++) {
+								grid[y2][x2] = {
+									part : part,
+									real : y2 == y && x2 == x,
+									elm : td,
+									rowspan : rowspan,
+									colspan : colspan
+								};
+							}
+						}
+					});
+				});
+
+				startY += rows.length;
+			});
+		}
+
+		function getCell(x, y) {
+			var row;
+
+			row = grid[y];
+			if (row) {
+				return row[x];
+			}
+		}
+
+		function setSpanVal(td, name, val) {
+			if (td) {
+				val = parseInt(val, 10);
+
+				if (val === 1) {
+					td.removeAttribute(name, 1);
+				} else {
+					td.setAttribute(name, val, 1);
+				}
+			}
+		}
+
+		function isCellSelected(cell) {
+			return cell && (dom.hasClass(cell.elm, 'mceSelected') || cell == selectedCell);
+		}
+
+		function getSelectedRows() {
+			var rows = [];
+
+			each(table.rows, function(row) {
+				each(row.cells, function(cell) {
+					if (dom.hasClass(cell, 'mceSelected') || cell == selectedCell.elm) {
+						rows.push(row);
+						return false;
+					}
+				});
+			});
+
+			return rows;
+		}
+
+		function deleteTable() {
+			var rng = dom.createRng();
+
+			rng.setStartAfter(table);
+			rng.setEndAfter(table);
+
+			selection.setRng(rng);
+
+			dom.remove(table);
+		}
+
+		function cloneCell(cell) {
+			var formatNode;
+
+			// Clone formats
+			tinymce.walk(cell, function(node) {
+				var curNode;
+
+				if (node.nodeType == 3) {
+					each(dom.getParents(node.parentNode, null, cell).reverse(), function(node) {
+						node = cloneNode(node, false);
+
+						if (!formatNode) {
+							formatNode = curNode = node;
+						} else if (curNode) {
+							curNode.appendChild(node);
+						}
+
+						curNode = node;
+					});
+
+					// Add something to the inner node
+					if (curNode) {
+						curNode.innerHTML = tinymce.isIE && !tinymce.isIE11 ? '&nbsp;' : '<br data-mce-bogus="1" />';
+					}
+
+					return false;
+				}
+			}, 'childNodes');
+
+			cell = cloneNode(cell, false);
+			setSpanVal(cell, 'rowSpan', 1);
+			setSpanVal(cell, 'colSpan', 1);
+
+			if (formatNode) {
+				cell.appendChild(formatNode);
+			} else {
+				if (!tinymce.isIE || tinymce.isIE11) {
+					cell.innerHTML = '<br data-mce-bogus="1" />';
+				}
+			}
+
+			return cell;
+		}
+
+		function cleanup() {
+			var rng = dom.createRng(), row;
+
+			// Empty rows
+			each(dom.select('tr', table), function(tr) {
+				if (tr.cells.length === 0) {
+					dom.remove(tr);
+				}
+			});
+
+			// Empty table
+			if (dom.select('tr', table).length === 0) {
+				rng.setStartAfter(table);
+				rng.setEndAfter(table);
+				selection.setRng(rng);
+				dom.remove(table);
+				return;
+			}
+
+			// Empty header/body/footer
+			each(dom.select('thead,tbody,tfoot', table), function(part) {
+				if (part.rows.length === 0) {
+					dom.remove(part);
+				}
+			});
+
+			// Restore selection to start position if it still exists
+			buildGrid();
+
+			// Restore the selection to the closest table position
+			row = grid[Math.min(grid.length - 1, startPos.y)];
+			if (row) {
+				selection.select(row[Math.min(row.length - 1, startPos.x)].elm, true);
+				selection.collapse(true);
+			}
+		}
+
+		function fillLeftDown(x, y, rows, cols) {
+			var tr, x2, r, c, cell;
+
+			tr = grid[y][x].elm.parentNode;
+			for (r = 1; r <= rows; r++) {
+				tr = dom.getNext(tr, 'tr');
+
+				if (tr) {
+					// Loop left to find real cell
+					for (x2 = x; x2 >= 0; x2--) {
+						cell = grid[y + r][x2].elm;
+
+						if (cell.parentNode == tr) {
+							// Append clones after
+							for (c = 1; c <= cols; c++) {
+								dom.insertAfter(cloneCell(cell), cell);
+							}
+
+							break;
+						}
+					}
+
+					if (x2 == -1) {
+						// Insert nodes before first cell
+						for (c = 1; c <= cols; c++) {
+							tr.insertBefore(cloneCell(tr.cells[0]), tr.cells[0]);
+						}
+					}
+				}
+			}
+		}
+
+		function split() {
+			each(grid, function(row, y) {
+				each(row, function(cell, x) {
+					var colSpan, rowSpan, i;
+
+					if (isCellSelected(cell)) {
+						cell = cell.elm;
+						colSpan = getSpanVal(cell, 'colspan');
+						rowSpan = getSpanVal(cell, 'rowspan');
+
+						if (colSpan > 1 || rowSpan > 1) {
+							setSpanVal(cell, 'rowSpan', 1);
+							setSpanVal(cell, 'colSpan', 1);
+
+							// Insert cells right
+							for (i = 0; i < colSpan - 1; i++) {
+								dom.insertAfter(cloneCell(cell), cell);
+							}
+
+							fillLeftDown(x, y, rowSpan - 1, colSpan);
+						}
+					}
+				});
+			});
+		}
+
+		function merge(cell, cols, rows) {
+			var startX, startY, endX, endY, x, y, startCell, endCell, children, count, pos;
+
+			// Use specified cell and cols/rows
+			if (cell) {
+				pos = getPos(cell);
+				startX = pos.x;
+				startY = pos.y;
+				endX = startX + (cols - 1);
+				endY = startY + (rows - 1);
+			} else {
+				startPos = endPos = null;
+
+				// Calculate start/end pos by checking for selected cells in grid works better with context menu
+				each(grid, function(row, y) {
+					each(row, function(cell, x) {
+						if (isCellSelected(cell)) {
+							if (!startPos) {
+								startPos = {x: x, y: y};
+							}
+
+							endPos = {x: x, y: y};
+						}
+					});
+				});
+
+				// Use selection
+				startX = startPos.x;
+				startY = startPos.y;
+				endX = endPos.x;
+				endY = endPos.y;
+			}
+
+			// Find start/end cells
+			startCell = getCell(startX, startY);
+			endCell = getCell(endX, endY);
+
+			// Check if the cells exists and if they are of the same part for example tbody = tbody
+			if (startCell && endCell && startCell.part == endCell.part) {
+				// Split and rebuild grid
+				split();
+				buildGrid();
+
+				// Set row/col span to start cell
+				startCell = getCell(startX, startY).elm;
+				setSpanVal(startCell, 'colSpan', (endX - startX) + 1);
+				setSpanVal(startCell, 'rowSpan', (endY - startY) + 1);
+
+				// Remove other cells and add it's contents to the start cell
+				for (y = startY; y <= endY; y++) {
+					for (x = startX; x <= endX; x++) {
+						if (!grid[y] || !grid[y][x]) {
+							continue;
+						}
+
+						cell = grid[y][x].elm;
+
+						if (cell != startCell) {
+							// Move children to startCell
+							children = tinymce.grep(cell.childNodes);
+							each(children, function(node) {
+								startCell.appendChild(node);
+							});
+
+							// Remove bogus nodes if there is children in the target cell
+							if (children.length) {
+								children = tinymce.grep(startCell.childNodes);
+								count = 0;
+								each(children, function(node) {
+									if (node.nodeName == 'BR' && dom.getAttrib(node, 'data-mce-bogus') && count++ < children.length - 1) {
+										startCell.removeChild(node);
+									}
+								});
+							}
+
+							// Remove cell
+							dom.remove(cell);
+						}
+					}
+				}
+
+				// Remove empty rows etc and restore caret location
+				cleanup();
+			}
+		}
+
+		function insertRow(before) {
+			var posY, cell, lastCell, x, rowElm, newRow, newCell, otherCell, rowSpan;
+
+			// Find first/last row
+			each(grid, function(row, y) {
+				each(row, function(cell) {
+					if (isCellSelected(cell)) {
+						cell = cell.elm;
+						rowElm = cell.parentNode;
+						newRow = cloneNode(rowElm, false);
+						posY = y;
+
+						if (before) {
+							return false;
+						}
+					}
+				});
+
+				if (before) {
+					return !posY;
+				}
+			});
+
+			for (x = 0; x < grid[0].length; x++) {
+				// Cell not found could be because of an invalid table structure
+				if (!grid[posY][x]) {
+					continue;
+				}
+
+				cell = grid[posY][x].elm;
+
+				if (cell != lastCell) {
+					if (!before) {
+						rowSpan = getSpanVal(cell, 'rowspan');
+						if (rowSpan > 1) {
+							setSpanVal(cell, 'rowSpan', rowSpan + 1);
+							continue;
+						}
+					} else {
+						// Check if cell above can be expanded
+						if (posY > 0 && grid[posY - 1][x]) {
+							otherCell = grid[posY - 1][x].elm;
+							rowSpan = getSpanVal(otherCell, 'rowSpan');
+							if (rowSpan > 1) {
+								setSpanVal(otherCell, 'rowSpan', rowSpan + 1);
+								continue;
+							}
+						}
+					}
+
+					// Insert new cell into new row
+					newCell = cloneCell(cell);
+					setSpanVal(newCell, 'colSpan', cell.colSpan);
+
+					newRow.appendChild(newCell);
+
+					lastCell = cell;
+				}
+			}
+
+			if (newRow.hasChildNodes()) {
+				if (!before) {
+					dom.insertAfter(newRow, rowElm);
+				} else {
+					rowElm.parentNode.insertBefore(newRow, rowElm);
+				}
+			}
+		}
+
+		function insertCol(before) {
+			var posX, lastCell;
+
+			// Find first/last column
+			each(grid, function(row) {
+				each(row, function(cell, x) {
+					if (isCellSelected(cell)) {
+						posX = x;
+
+						if (before) {
+							return false;
+						}
+					}
+				});
+
+				if (before) {
+					return !posX;
+				}
+			});
+
+			each(grid, function(row, y) {
+				var cell, rowSpan, colSpan;
+
+				if (!row[posX]) {
+					return;
+				}
+
+				cell = row[posX].elm;
+				if (cell != lastCell) {
+					colSpan = getSpanVal(cell, 'colspan');
+					rowSpan = getSpanVal(cell, 'rowspan');
+
+					if (colSpan == 1) {
+						if (!before) {
+							dom.insertAfter(cloneCell(cell), cell);
+							fillLeftDown(posX, y, rowSpan - 1, colSpan);
+						} else {
+							cell.parentNode.insertBefore(cloneCell(cell), cell);
+							fillLeftDown(posX, y, rowSpan - 1, colSpan);
+						}
+					} else {
+						setSpanVal(cell, 'colSpan', cell.colSpan + 1);
+					}
+
+					lastCell = cell;
+				}
+			});
+		}
+
+		function deleteCols() {
+			var cols = [];
+
+			// Get selected column indexes
+			each(grid, function(row) {
+				each(row, function(cell, x) {
+					if (isCellSelected(cell) && tinymce.inArray(cols, x) === -1) {
+						each(grid, function(row) {
+							var cell = row[x].elm, colSpan;
+
+							colSpan = getSpanVal(cell, 'colSpan');
+
+							if (colSpan > 1) {
+								setSpanVal(cell, 'colSpan', colSpan - 1);
+							} else {
+								dom.remove(cell);
+							}
+						});
+
+						cols.push(x);
+					}
+				});
+			});
+
+			cleanup();
+		}
+
+		function deleteRows() {
+			var rows;
+
+			function deleteRow(tr) {
+				var pos, lastCell;
+
+				// nextTr = dom.getNext(tr, 'tr');
+
+				// Move down row spanned cells
+				each(tr.cells, function(cell) {
+					var rowSpan = getSpanVal(cell, 'rowSpan');
+
+					if (rowSpan > 1) {
+						setSpanVal(cell, 'rowSpan', rowSpan - 1);
+						pos = getPos(cell);
+						fillLeftDown(pos.x, pos.y, 1, 1);
+					}
+				});
+
+				// Delete cells
+				pos = getPos(tr.cells[0]);
+				each(grid[pos.y], function(cell) {
+					var rowSpan;
+
+					cell = cell.elm;
+
+					if (cell != lastCell) {
+						rowSpan = getSpanVal(cell, 'rowSpan');
+
+						if (rowSpan <= 1) {
+							dom.remove(cell);
+						} else {
+							setSpanVal(cell, 'rowSpan', rowSpan - 1);
+						}
+
+						lastCell = cell;
+					}
+				});
+			}
+
+			// Get selected rows and move selection out of scope
+			rows = getSelectedRows();
+
+			// Delete all selected rows
+			each(rows.reverse(), function(tr) {
+				deleteRow(tr);
+			});
+
+			cleanup();
+		}
+
+		function cutRows() {
+			var rows = getSelectedRows();
+
+			dom.remove(rows);
+			cleanup();
+
+			return rows;
+		}
+
+		function copyRows() {
+			var rows = getSelectedRows();
+
+			each(rows, function(row, i) {
+				rows[i] = cloneNode(row, true);
+			});
+
+			return rows;
+		}
+
+		function pasteRows(rows, before) {
+			// If we don't have any rows in the clipboard, return immediately
+			if (!rows) {
+				return;
+			}
+
+			var selectedRows = getSelectedRows(),
+				targetRow = selectedRows[before ? 0 : selectedRows.length - 1],
+				targetCellCount = targetRow.cells.length;
+
+			// Calc target cell count
+			each(grid, function(row) {
+				var match;
+
+				targetCellCount = 0;
+				each(row, function(cell) {
+					if (cell.real) {
+						targetCellCount += cell.colspan;
+					}
+
+					if (cell.elm.parentNode == targetRow) {
+						match = 1;
+					}
+				});
+
+				if (match) {
+					return false;
+				}
+			});
+
+			if (!before) {
+				rows.reverse();
+			}
+
+			each(rows, function(row) {
+				var cellCount = row.cells.length, cell, i;
+
+				// Remove col/rowspans
+				for (i = 0; i < cellCount; i++) {
+					cell = row.cells[i];
+					setSpanVal(cell, 'colSpan', 1);
+					setSpanVal(cell, 'rowSpan', 1);
+				}
+
+				// Needs more cells
+				for (i = cellCount; i < targetCellCount; i++) {
+					row.appendChild(cloneCell(row.cells[cellCount - 1]));
+				}
+
+				// Needs less cells
+				for (i = targetCellCount; i < cellCount; i++) {
+					dom.remove(row.cells[i]);
+				}
+
+				// Add before/after
+				if (before) {
+					targetRow.parentNode.insertBefore(row, targetRow);
+				} else {
+					dom.insertAfter(row, targetRow);
+				}
+			});
+
+			// Remove current selection
+			dom.removeClass(dom.select('td.mceSelected,th.mceSelected'), 'mceSelected');
+		}
+
+		function getPos(target) {
+			var pos;
+
+			each(grid, function(row, y) {
+				each(row, function(cell, x) {
+					if (cell.elm == target) {
+						pos = {x : x, y : y};
+						return false;
+					}
+				});
+
+				return !pos;
+			});
+
+			return pos;
+		}
+
+		function setStartCell(cell) {
+			startPos = getPos(cell);
+		}
+
+		function findEndPos() {
+			var maxX, maxY;
+
+			maxX = maxY = 0;
+
+			each(grid, function(row, y) {
+				each(row, function(cell, x) {
+					var colSpan, rowSpan;
+
+					if (isCellSelected(cell)) {
+						cell = grid[y][x];
+
+						if (x > maxX) {
+							maxX = x;
+						}
+
+						if (y > maxY) {
+							maxY = y;
+						}
+
+						if (cell.real) {
+							colSpan = cell.colspan - 1;
+							rowSpan = cell.rowspan - 1;
+
+							if (colSpan) {
+								if (x + colSpan > maxX) {
+									maxX = x + colSpan;
+								}
+							}
+
+							if (rowSpan) {
+								if (y + rowSpan > maxY) {
+									maxY = y + rowSpan;
+								}
+							}
+						}
+					}
+				});
+			});
+
+			return {x : maxX, y : maxY};
+		}
+
+		function setEndCell(cell) {
+			var startX, startY, endX, endY, maxX, maxY, colSpan, rowSpan, y, x;
+
+			endPos = getPos(cell);
+
+			if (startPos && endPos) {
+				// Get start/end positions
+				startX = Math.min(startPos.x, endPos.x);
+				startY = Math.min(startPos.y, endPos.y);
+				endX = Math.max(startPos.x, endPos.x);
+				endY = Math.max(startPos.y, endPos.y);
+
+				// Expand end positon to include spans
+				maxX = endX;
+				maxY = endY;
+
+				// Expand startX
+				for (y = startY; y <= maxY; y++) {
+					cell = grid[y][startX];
+
+					if (!cell.real) {
+						if (startX - (cell.colspan - 1) < startX) {
+							startX -= cell.colspan - 1;
+						}
+					}
+				}
+
+				// Expand startY
+				for (x = startX; x <= maxX; x++) {
+					cell = grid[startY][x];
+
+					if (!cell.real) {
+						if (startY - (cell.rowspan - 1) < startY) {
+							startY -= cell.rowspan - 1;
+						}
+					}
+				}
+
+				// Find max X, Y
+				for (y = startY; y <= endY; y++) {
+					for (x = startX; x <= endX; x++) {
+						cell = grid[y][x];
+
+						if (cell.real) {
+							colSpan = cell.colspan - 1;
+							rowSpan = cell.rowspan - 1;
+
+							if (colSpan) {
+								if (x + colSpan > maxX) {
+									maxX = x + colSpan;
+								}
+							}
+
+							if (rowSpan) {
+								if (y + rowSpan > maxY) {
+									maxY = y + rowSpan;
+								}
+							}
+						}
+					}
+				}
+
+				// Remove current selection
+				dom.removeClass(dom.select('td.mceSelected,th.mceSelected'), 'mceSelected');
+
+				// Add new selection
+				for (y = startY; y <= maxY; y++) {
+					for (x = startX; x <= maxX; x++) {
+						if (grid[y][x]) {
+							dom.addClass(grid[y][x].elm, 'mceSelected');
+						}
+					}
+				}
+			}
+		}
+
+		buildGrid();
+		selectedCell = dom.getParent(selection.getStart(), 'th,td');
+		if (selectedCell) {
+			startPos = getPos(selectedCell);
+			endPos = findEndPos();
+			selectedCell = getCell(startPos.x, startPos.y);
+		}
+
+		// Expose to public
+		tinymce.extend(this, {
+			deleteTable : deleteTable,
+			split : split,
+			merge : merge,
+			insertRow : insertRow,
+			insertCol : insertCol,
+			deleteCols : deleteCols,
+			deleteRows : deleteRows,
+			cutRows : cutRows,
+			copyRows : copyRows,
+			pasteRows : pasteRows,
+			getPos : getPos,
+			setStartCell : setStartCell,
+			setEndCell : setEndCell
+		});
+	}
+
+	tinymce.create('tinymce.plugins.TablePlugin', {
+		init : function(ed, url) {
+			var winMan, clipboardRows, hasCellSelection = true; // Might be selected cells on reload
+
+			function createTableGrid(node) {
+				var selection = ed.selection, tblElm = ed.dom.getParent(node || selection.getNode(), 'table');
+
+				if (tblElm) {
+					return new TableGrid(tblElm, ed.dom, selection);
+				}
+			}
+
+			function cleanup() {
+				// Restore selection possibilities
+				ed.getBody().style.webkitUserSelect = '';
+
+				if (hasCellSelection) {
+					ed.dom.removeClass(ed.dom.select('td.mceSelected,th.mceSelected'), 'mceSelected');
+					hasCellSelection = false;
+				}
+			}
+
+			// Register buttons
+			each([
+				['table', 'table.desc', 'mceInsertTable', true],
+				['delete_table', 'table.del', 'mceTableDelete'],
+				['delete_col', 'table.delete_col_desc', 'mceTableDeleteCol'],
+				['delete_row', 'table.delete_row_desc', 'mceTableDeleteRow'],
+				['col_after', 'table.col_after_desc', 'mceTableInsertColAfter'],
+				['col_before', 'table.col_before_desc', 'mceTableInsertColBefore'],
+				['row_after', 'table.row_after_desc', 'mceTableInsertRowAfter'],
+				['row_before', 'table.row_before_desc', 'mceTableInsertRowBefore'],
+				['row_props', 'table.row_desc', 'mceTableRowProps', true],
+				['cell_props', 'table.cell_desc', 'mceTableCellProps', true],
+				['split_cells', 'table.split_cells_desc', 'mceTableSplitCells', true],
+				['merge_cells', 'table.merge_cells_desc', 'mceTableMergeCells', true]
+			], function(c) {
+				ed.addButton(c[0], {title : c[1], cmd : c[2], ui : c[3]});
+			});
+
+			// Select whole table is a table border is clicked
+			if (!tinymce.isIE) {
+				ed.onClick.add(function(ed, e) {
+					e = e.target;
+
+					if (e.nodeName === 'TABLE') {
+						ed.selection.select(e);
+						ed.nodeChanged();
+					}
+				});
+			}
+
+			ed.onPreProcess.add(function(ed, args) {
+				var nodes, i, node, dom = ed.dom, value;
+
+				nodes = dom.select('table', args.node);
+				i = nodes.length;
+				while (i--) {
+					node = nodes[i];
+					dom.setAttrib(node, 'data-mce-style', '');
+
+					if ((value = dom.getAttrib(node, 'width'))) {
+						dom.setStyle(node, 'width', value);
+						dom.setAttrib(node, 'width', '');
+					}
+
+					if ((value = dom.getAttrib(node, 'height'))) {
+						dom.setStyle(node, 'height', value);
+						dom.setAttrib(node, 'height', '');
+					}
+				}
+			});
+
+			// Handle node change updates
+			ed.onNodeChange.add(function(ed, cm, n) {
+				var p;
+
+				n = ed.selection.getStart();
+				p = ed.dom.getParent(n, 'td,th,caption');
+				cm.setActive('table', n.nodeName === 'TABLE' || !!p);
+
+				// Disable table tools if we are in caption
+				if (p && p.nodeName === 'CAPTION') {
+					p = 0;
+				}
+
+				cm.setDisabled('delete_table', !p);
+				cm.setDisabled('delete_col', !p);
+				cm.setDisabled('delete_table', !p);
+				cm.setDisabled('delete_row', !p);
+				cm.setDisabled('col_after', !p);
+				cm.setDisabled('col_before', !p);
+				cm.setDisabled('row_after', !p);
+				cm.setDisabled('row_before', !p);
+				cm.setDisabled('row_props', !p);
+				cm.setDisabled('cell_props', !p);
+				cm.setDisabled('split_cells', !p);
+				cm.setDisabled('merge_cells', !p);
+			});
+
+			ed.onInit.add(function(ed) {
+				var startTable, startCell, dom = ed.dom, tableGrid;
+
+				winMan = ed.windowManager;
+
+				// Add cell selection logic
+				ed.onMouseDown.add(function(ed, e) {
+					if (e.button != 2) {
+						cleanup();
+
+						startCell = dom.getParent(e.target, 'td,th');
+						startTable = dom.getParent(startCell, 'table');
+					}
+				});
+
+				dom.bind(ed.getDoc(), 'mouseover', function(e) {
+					var sel, table, target = e.target;
+
+					if (startCell && (tableGrid || target != startCell) && (target.nodeName == 'TD' || target.nodeName == 'TH')) {
+						table = dom.getParent(target, 'table');
+						if (table == startTable) {
+							if (!tableGrid) {
+								tableGrid = createTableGrid(table);
+								tableGrid.setStartCell(startCell);
+
+								ed.getBody().style.webkitUserSelect = 'none';
+							}
+
+							tableGrid.setEndCell(target);
+							hasCellSelection = true;
+						}
+
+						// Remove current selection
+						sel = ed.selection.getSel();
+
+						try {
+							if (sel.removeAllRanges) {
+								sel.removeAllRanges();
+							} else {
+								sel.empty();
+							}
+						} catch (ex) {
+							// IE9 might throw errors here
+						}
+
+						e.preventDefault();
+					}
+				});
+
+				ed.onMouseUp.add(function(ed) {
+					var rng, sel = ed.selection, selectedCells, walker, node, lastNode;
+
+					function setPoint(node, start) {
+						var walker = new tinymce.dom.TreeWalker(node, node);
+
+						do {
+							// Text node
+							if (node.nodeType == 3 && tinymce.trim(node.nodeValue).length !== 0) {
+								if (start) {
+									rng.setStart(node, 0);
+								} else {
+									rng.setEnd(node, node.nodeValue.length);
+								}
+
+								return;
+							}
+
+							// BR element
+							if (node.nodeName == 'BR') {
+								if (start) {
+									rng.setStartBefore(node);
+								} else {
+									rng.setEndBefore(node);
+								}
+
+								return;
+							}
+							node = (start ? walker.next() : walker.prev());
+						} while (node);
+					}
+					// Move selection to startCell
+					if (startCell) {
+						if (tableGrid) {
+							ed.getBody().style.webkitUserSelect = '';
+						}
+
+						// Try to expand text selection as much as we can only Gecko supports cell selection
+						selectedCells = dom.select('td.mceSelected,th.mceSelected');
+						if (selectedCells.length > 0) {
+							rng = dom.createRng();
+							node = selectedCells[0];
+							// endNode = selectedCells[selectedCells.length - 1];
+							rng.setStartBefore(node);
+							rng.setEndAfter(node);
+
+							setPoint(node, 1);
+							walker = new tinymce.dom.TreeWalker(node, dom.getParent(selectedCells[0], 'table'));
+
+							do {
+								if (node.nodeName == 'TD' || node.nodeName == 'TH') {
+									if (!dom.hasClass(node, 'mceSelected')) {
+										break;
+									}
+
+									lastNode = node;
+								}
+								node = walker.next();
+							} while (node);
+
+							setPoint(lastNode);
+
+							sel.setRng(rng);
+						}
+
+						ed.nodeChanged();
+						startCell = tableGrid = startTable = null;
+					}
+				});
+
+				ed.onKeyUp.add(function() {
+					cleanup();
+				});
+
+				ed.onKeyDown.add(function(ed) {
+					fixTableCellSelection(ed);
+				});
+
+				ed.onMouseDown.add(function(ed, e) {
+					if (e.button != 2) {
+						fixTableCellSelection(ed);
+					}
+				});
+				function tableCellSelected(ed, rng, n, currentCell) {
+					// The decision of when a table cell is selected is somewhat involved.  The fact that this code is
+					// required is actually a pointer to the root cause of this bug. A cell is selected when the start
+					// and end offsets are 0, the start container is a text, and the selection node is either a TR (most cases)
+					// or the parent of the table (in the case of the selection containing the last cell of a table).
+					var TEXT_NODE = 3, table = ed.dom.getParent(rng.startContainer, 'TABLE'),
+						tableParent, allOfCellSelected, tableCellSelection;
+					if (table) {
+						tableParent = table.parentNode;
+					}
+					allOfCellSelected = rng.startContainer.nodeType == TEXT_NODE &&
+						rng.startOffset === 0 &&
+						rng.endOffset === 0 &&
+						currentCell &&
+						(n.nodeName === "TR" || n === tableParent);
+					tableCellSelection = (n.nodeName === "TD" || n.nodeName === "TH") && !currentCell;
+					return allOfCellSelected || tableCellSelection;
+					// return false;
+				}
+
+				// this nasty hack is here to work around some WebKit selection bugs.
+				function fixTableCellSelection(ed) {
+					if (!tinymce.isWebKit) {
+						return;
+					}
+
+					var rng = ed.selection.getRng();
+					var n = ed.selection.getNode();
+					var currentCell = ed.dom.getParent(rng.startContainer, 'TD,TH');
+
+					if (!tableCellSelected(ed, rng, n, currentCell)) {
+						return;
+					}
+
+					if (!currentCell) {
+						currentCell = n;
+					}
+
+					// Get the very last node inside the table cell
+					var end = currentCell.lastChild;
+					while (end.lastChild) {
+						end = end.lastChild;
+					}
+
+					// Select the entire table cell. Nothing outside of the table cell should be selected.
+					rng.setEnd(end, end.nodeValue.length);
+					ed.selection.setRng(rng);
+				}
+				ed.plugins.table.fixTableCellSelection = fixTableCellSelection;
+
+				// Add context menu
+				if (ed && ed.plugins.contextmenu) {
+					ed.plugins.contextmenu.onContextMenu.add(function(th, m, e) {
+						var sm, se = ed.selection, el = se.getNode() || ed.getBody();
+
+						if (ed.dom.getParent(e, 'td') || ed.dom.getParent(e, 'th') || ed.dom.select('td.mceSelected,th.mceSelected').length) {
+							m.removeAll();
+
+							if (el.nodeName == 'A' && !ed.dom.getAttrib(el, 'name')) {
+								m.add({title : 'advanced.link_desc', icon : 'link', cmd : ed.plugins.advlink ? 'mceAdvLink' : 'mceLink', ui : true});
+								m.add({title : 'advanced.unlink_desc', icon : 'unlink', cmd : 'UnLink'});
+								m.addSeparator();
+							}
+
+							if (el.nodeName == 'IMG' && el.className.indexOf('mceItem') == -1) {
+								m.add({title : 'advanced.image_desc', icon : 'image', cmd : ed.plugins.advimage ? 'mceAdvImage' : 'mceImage', ui : true});
+								m.addSeparator();
+							}
+
+							m.add({title : 'table.desc', icon : 'table', cmd : 'mceInsertTable', value : {action : 'insert'}});
+							m.add({title : 'table.props_desc', icon : 'table_props', cmd : 'mceInsertTable'});
+							m.add({title : 'table.del', icon : 'delete_table', cmd : 'mceTableDelete'});
+							m.addSeparator();
+
+							// Cell menu
+							sm = m.addMenu({title : 'table.cell'});
+							sm.add({title : 'table.cell_desc', icon : 'cell_props', cmd : 'mceTableCellProps'});
+							sm.add({title : 'table.split_cells_desc', icon : 'split_cells', cmd : 'mceTableSplitCells'});
+							sm.add({title : 'table.merge_cells_desc', icon : 'merge_cells', cmd : 'mceTableMergeCells'});
+
+							// Row menu
+							sm = m.addMenu({title : 'table.row'});
+							sm.add({title : 'table.row_desc', icon : 'row_props', cmd : 'mceTableRowProps'});
+							sm.add({title : 'table.row_before_desc', icon : 'row_before', cmd : 'mceTableInsertRowBefore'});
+							sm.add({title : 'table.row_after_desc', icon : 'row_after', cmd : 'mceTableInsertRowAfter'});
+							sm.add({title : 'table.delete_row_desc', icon : 'delete_row', cmd : 'mceTableDeleteRow'});
+							sm.addSeparator();
+							sm.add({title : 'table.cut_row_desc', icon : 'cut', cmd : 'mceTableCutRow'});
+							sm.add({title : 'table.copy_row_desc', icon : 'copy', cmd : 'mceTableCopyRow'});
+							sm.add({title : 'table.paste_row_before_desc', icon : 'paste', cmd : 'mceTablePasteRowBefore'}).setDisabled(!clipboardRows);
+							sm.add({title : 'table.paste_row_after_desc', icon : 'paste', cmd : 'mceTablePasteRowAfter'}).setDisabled(!clipboardRows);
+
+							// Column menu
+							sm = m.addMenu({title : 'table.col'});
+							sm.add({title : 'table.col_before_desc', icon : 'col_before', cmd : 'mceTableInsertColBefore'});
+							sm.add({title : 'table.col_after_desc', icon : 'col_after', cmd : 'mceTableInsertColAfter'});
+							sm.add({title : 'table.delete_col_desc', icon : 'delete_col', cmd : 'mceTableDeleteCol'});
+						} else {
+							m.add({title : 'table.desc', icon : 'table', cmd : 'mceInsertTable'});
+						}
+					});
+				}
+
+				// Fix to allow navigating up and down in a table in WebKit browsers.
+				function moveSelection(ed, e) {
+					var VK = tinymce.VK;
+					var key = e.keyCode;
+
+					function handle(upBool, sourceNode, event) {
+						var siblingDirection = upBool ? 'previousSibling' : 'nextSibling';
+						var currentRow = ed.dom.getParent(sourceNode, 'tr');
+						var siblingRow = currentRow[siblingDirection];
+
+						if (siblingRow) {
+							moveCursorToRow(ed, sourceNode, siblingRow, upBool);
+							tinymce.dom.Event.cancel(event);
+							return true;
+						} else {
+							var tableNode = ed.dom.getParent(currentRow, 'table');
+							var middleNode = currentRow.parentNode;
+							var parentNodeName = middleNode.nodeName.toLowerCase();
+							if (parentNodeName === 'tbody' || parentNodeName === (upBool ? 'tfoot' : 'thead')) {
+								var targetParent = getTargetParent(upBool, tableNode, middleNode, 'tbody');
+								if (targetParent !== null) {
+									return moveToRowInTarget(upBool, targetParent, sourceNode, event);
+								}
+							}
+							return escapeTable(upBool, currentRow, siblingDirection, tableNode, event);
+						}
+					}
+
+					function getTargetParent(upBool, topNode, secondNode, nodeName) {
+						var tbodies = ed.dom.select('>' + nodeName, topNode);
+						var position = tbodies.indexOf(secondNode);
+						if (upBool && position === 0 || !upBool && position === tbodies.length - 1) {
+							return getFirstHeadOrFoot(upBool, topNode);
+						} else if (position === -1) {
+							var topOrBottom = secondNode.tagName.toLowerCase() === 'thead' ? 0 : tbodies.length - 1;
+							return tbodies[topOrBottom];
+						} else {
+							return tbodies[position + (upBool ? -1 : 1)];
+						}
+					}
+
+					function getFirstHeadOrFoot(upBool, parent) {
+						var tagName = upBool ? 'thead' : 'tfoot';
+						var headOrFoot = ed.dom.select('>' + tagName, parent);
+						return headOrFoot.length !== 0 ? headOrFoot[0] : null;
+					}
+
+					function moveToRowInTarget(upBool, targetParent, sourceNode, event) {
+						var targetRow = getChildForDirection(targetParent, upBool);
+						if (targetRow) {
+							moveCursorToRow(ed, sourceNode, targetRow, upBool);
+						}
+						tinymce.dom.Event.cancel(event);
+						return true;
+					}
+
+					function escapeTable(upBool, currentRow, siblingDirection, table, event) {
+						var tableSibling = table[siblingDirection];
+						if (tableSibling) {
+							moveCursorToStartOfElement(tableSibling);
+							return true;
+						} else {
+							var parentCell = ed.dom.getParent(table, 'td,th');
+							if (parentCell) {
+								return handle(upBool, parentCell, event);
+							} else {
+								var backUpSibling = getChildForDirection(currentRow, !upBool);
+								moveCursorToStartOfElement(backUpSibling);
+								return tinymce.dom.Event.cancel(event);
+							}
+						}
+					}
+
+					function getChildForDirection(parent, up) {
+						var child =  parent && parent[up ? 'lastChild' : 'firstChild'];
+						// BR is not a valid table child to return in this case we return the table cell
+						return child && child.nodeName === 'BR' ? ed.dom.getParent(child, 'td,th') : child;
+					}
+
+					function moveCursorToStartOfElement(n) {
+						ed.selection.setCursorLocation(n, 0);
+					}
+
+					function isVerticalMovement() {
+						return key == VK.UP || key == VK.DOWN;
+					}
+
+					function isInTable(ed) {
+						var node = ed.selection.getNode();
+						var currentRow = ed.dom.getParent(node, 'tr');
+						return currentRow !== null;
+					}
+
+					function columnIndex(column) {
+						var colIndex = 0;
+						var c = column;
+						while (c.previousSibling) {
+							c = c.previousSibling;
+							colIndex = colIndex + getSpanVal(c, "colspan");
+						}
+						return colIndex;
+					}
+
+					function findColumn(rowElement, columnIndex) {
+						var c = 0;
+						var r = 0;
+						each(rowElement.children, function(cell, i) {
+							c = c + getSpanVal(cell, "colspan");
+							r = i;
+							if (c > columnIndex) {
+								return false;
+							}
+						});
+						return r;
+					}
+
+					function moveCursorToRow(ed, node, row, upBool) {
+						var srcColumnIndex = columnIndex(ed.dom.getParent(node, 'td,th'));
+						var tgtColumnIndex = findColumn(row, srcColumnIndex);
+						var tgtNode = row.childNodes[tgtColumnIndex];
+						var rowCellTarget = getChildForDirection(tgtNode, upBool);
+						moveCursorToStartOfElement(rowCellTarget || tgtNode);
+					}
+
+					function shouldFixCaret(preBrowserNode) {
+						var newNode = ed.selection.getNode();
+						var newParent = ed.dom.getParent(newNode, 'td,th');
+						var oldParent = ed.dom.getParent(preBrowserNode, 'td,th');
+						return newParent && newParent !== oldParent && checkSameParentTable(newParent, oldParent);
+					}
+
+					function checkSameParentTable(nodeOne, NodeTwo) {
+						return ed.dom.getParent(nodeOne, 'TABLE') === ed.dom.getParent(NodeTwo, 'TABLE');
+					}
+
+					if (isVerticalMovement() && isInTable(ed)) {
+						var preBrowserNode = ed.selection.getNode();
+						setTimeout(function() {
+							if (shouldFixCaret(preBrowserNode)) {
+								handle(!e.shiftKey && key === VK.UP, preBrowserNode, e);
+							}
+						}, 0);
+					}
+				}
+				if (tinymce.isWebKit) {
+					ed.onKeyDown.add(moveSelection);
+				}
+
+				// Fixes an issue on Gecko where it's impossible to place the caret behind a table
+				// This fix will force a paragraph element after the table but only when the forced_root_block setting is enabled
+				function fixTableCaretPos() {
+					var last;
+
+					// Skip empty text nodes form the end
+					last = ed.getBody().lastChild;
+					while (last && last.nodeType == 3 && !last.nodeValue.length) {
+						last = last.previousSibling;
+					}
+
+					if (last && last.nodeName === 'TABLE') {
+						if (ed.settings.forced_root_block) {
+							ed.dom.add(ed.getBody(), ed.settings.forced_root_block, null, tinymce.isIE && !tinymce.isIE11 ? '&nbsp;' : '<br data-mce-bogus="1" />');
+						} else {
+							ed.dom.add(ed.getBody(), 'br', {'data-mce-bogus': '1'});
+						}
+					}
+				}
+
+				// Fixes an bug where it's impossible to place the caret before a table in Gecko
+				// this fix solves it by detecting when the caret is at the beginning of such a table
+				// and then manually moves the caret infront of the table
+				if (tinymce.isGecko) {
+					ed.onKeyDown.add(function(ed, e) {
+						var rng, table, dom = ed.dom;
+
+						// On gecko it's not possible to place the caret before a table
+						if (e.keyCode == 37 || e.keyCode == 38) {
+							rng = ed.selection.getRng();
+							table = dom.getParent(rng.startContainer, 'table');
+
+							if (table && ed.getBody().firstChild == table) {
+								if (isAtStart(rng, table)) {
+									rng = dom.createRng();
+
+									rng.setStartBefore(table);
+									rng.setEndBefore(table);
+
+									ed.selection.setRng(rng);
+
+									e.preventDefault();
+								}
+							}
+						}
+					});
+				}
+
+				ed.onKeyUp.add(fixTableCaretPos);
+				ed.onSetContent.add(fixTableCaretPos);
+				ed.onVisualAid.add(fixTableCaretPos);
+
+				ed.onPreProcess.add(function(ed, o) {
+					var last = o.node.lastChild;
+
+					if (last && (last.nodeName == "BR" || (last.childNodes.length == 1 && (last.firstChild.nodeName == 'BR' || last.firstChild.nodeValue == '\u00a0'))) && last.previousSibling && last.previousSibling.nodeName == "TABLE") {
+						ed.dom.remove(last);
+					}
+				});
+
+				/**
+				 * Fixes bug in Gecko where shift-enter in table cell does not place caret on new line
+				 *
+				 * Removed: Since the new enter logic seems to fix this one.
+				 */
+				/*
+				if (tinymce.isGecko) {
+					ed.onKeyDown.add(function(ed, e) {
+						if (e.keyCode === tinymce.VK.ENTER && e.shiftKey) {
+							var node = ed.selection.getRng().startContainer;
+							var tableCell = dom.getParent(node, 'td,th');
+							if (tableCell) {
+								var zeroSizedNbsp = ed.getDoc().createTextNode("\uFEFF");
+								dom.insertAfter(zeroSizedNbsp, node);
+							}
+						}
+					});
+				}
+				*/
+
+				fixTableCaretPos();
+				ed.startContent = ed.getContent({format : 'raw'});
+			});
+
+			// Register action commands
+			each({
+				mceTableSplitCells : function(grid) {
+					grid.split();
+				},
+
+				mceTableMergeCells : function(grid) {
+					var rowSpan, colSpan, cell;
+
+					cell = ed.dom.getParent(ed.selection.getNode(), 'th,td');
+					if (cell) {
+						rowSpan = cell.rowSpan;
+						colSpan = cell.colSpan;
+					}
+
+					if (!ed.dom.select('td.mceSelected,th.mceSelected').length) {
+						winMan.open({
+							url : url + '/merge_cells.htm',
+							width : 240 + parseInt(ed.getLang('table.merge_cells_delta_width', 0), 10),
+							height : 110 + parseInt(ed.getLang('table.merge_cells_delta_height', 0), 10),
+							inline : 1
+						}, {
+							rows : rowSpan,
+							cols : colSpan,
+							onaction : function(data) {
+								grid.merge(cell, data.cols, data.rows);
+							},
+							plugin_url : url
+						});
+					} else {
+						grid.merge();
+					}
+				},
+
+				mceTableInsertRowBefore : function(grid) {
+					grid.insertRow(true);
+				},
+
+				mceTableInsertRowAfter : function(grid) {
+					grid.insertRow();
+				},
+
+				mceTableInsertColBefore : function(grid) {
+					grid.insertCol(true);
+				},
+
+				mceTableInsertColAfter : function(grid) {
+					grid.insertCol();
+				},
+
+				mceTableDeleteCol : function(grid) {
+					grid.deleteCols();
+				},
+
+				mceTableDeleteRow : function(grid) {
+					grid.deleteRows();
+				},
+
+				mceTableCutRow : function(grid) {
+					clipboardRows = grid.cutRows();
+				},
+
+				mceTableCopyRow : function(grid) {
+					clipboardRows = grid.copyRows();
+				},
+
+				mceTablePasteRowBefore : function(grid) {
+					grid.pasteRows(clipboardRows, true);
+				},
+
+				mceTablePasteRowAfter : function(grid) {
+					grid.pasteRows(clipboardRows);
+				},
+
+				mceTableDelete : function(grid) {
+					grid.deleteTable();
+				}
+			}, function(func, name) {
+				ed.addCommand(name, function() {
+					var grid = createTableGrid();
+
+					if (grid) {
+						func(grid);
+						ed.execCommand('mceRepaint');
+						cleanup();
+					}
+				});
+			});
+
+			// Register dialog commands
+			each({
+				mceInsertTable : function(val) {
+					winMan.open({
+						url : url + '/table.htm',
+						width : 400 + parseInt(ed.getLang('table.table_delta_width', 0), 10),
+						height : 320 + parseInt(ed.getLang('table.table_delta_height', 0), 10),
+						inline : 1
+					}, {
+						plugin_url : url,
+						action : val ? val.action : 0
+					});
+				},
+
+				mceTableRowProps : function() {
+					winMan.open({
+						url : url + '/row.htm',
+						width : 400 + parseInt(ed.getLang('table.rowprops_delta_width', 0), 10),
+						height : 295 + parseInt(ed.getLang('table.rowprops_delta_height', 0), 10),
+						inline : 1
+					}, {
+						plugin_url : url
+					});
+				},
+
+				mceTableCellProps : function() {
+					winMan.open({
+						url : url + '/cell.htm',
+						width : 400 + parseInt(ed.getLang('table.cellprops_delta_width', 0), 10),
+						height : 295 + parseInt(ed.getLang('table.cellprops_delta_height', 0), 10),
+						inline : 1
+					}, {
+						plugin_url : url
+					});
+				}
+			}, function(func, name) {
+				ed.addCommand(name, function(ui, val) {
+					func(val);
+				});
+			});
+		}
+	});
+
+	// Register plugin
+	tinymce.PluginManager.add('table', tinymce.plugins.TablePlugin);
+})(tinymce);

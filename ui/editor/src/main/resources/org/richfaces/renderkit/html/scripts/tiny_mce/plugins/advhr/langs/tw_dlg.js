@@ -1,5 +1,7 @@
 tinyMCE.addI18n('tw.advhr_dlg',{
-width:"\u5BEC",
-size:"\u9577",
-noshade:"\u7121\u9670\u5F71"
+size:"\u9ad8\u5ea6",
+noshade:"\u7121\u9670\u5f71",
+width:"\u5bec\u5ea6",
+normal:"Normal",
+widthunits:"Units"
 });

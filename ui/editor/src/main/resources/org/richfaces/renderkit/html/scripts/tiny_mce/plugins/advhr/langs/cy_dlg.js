@@ -1,5 +1,7 @@
 tinyMCE.addI18n('cy.advhr_dlg',{
-width:"Lled",
 size:"Uchder",
-noshade:"Dim cysgod"
+noshade:"Dim cysgod",
+width:"Lled",
+normal:"Normal",
+widthunits:"Unedau"
 });

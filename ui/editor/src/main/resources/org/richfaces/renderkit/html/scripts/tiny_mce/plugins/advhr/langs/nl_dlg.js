@@ -1,5 +1,7 @@
 tinyMCE.addI18n('nl.advhr_dlg',{
-width:"Breedte",
 size:"Hoogte",
-noshade:"Geen schaduw"
+noshade:"Geen schaduw",
+width:"Breedte",
+normal:"Normaal",
+widthunits:"Eenheden"
 });

@@ -1,5 +1,7 @@
 tinyMCE.addI18n('id.advhr_dlg',{
-width:"Width",
-size:"Height",
-noshade:"No shadow"
+size:"Tinggi",
+noshade:"Tanpa bayangan",
+width:"Lebar",
+normal:"Normal",
+widthunits:"Unit-unit"
 });

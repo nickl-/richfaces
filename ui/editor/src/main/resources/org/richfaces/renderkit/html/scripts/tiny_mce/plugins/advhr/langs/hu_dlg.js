@@ -1,5 +1,7 @@
 tinyMCE.addI18n('hu.advhr_dlg',{
-width:"Sz\u00E9less\u00E9g",
-size:"Magass\u00E1g",
-noshade:"\u00C1rny\u00E9k n\u00E9lk\u00FCl"
+size:"Magass\u00e1g",
+noshade:"Nincs \u00e1rny\u00e9k",
+width:"Sz\u00e9less\u00e9g",
+normal:"Norm\u00e1l",
+widthunits:"M\u00e9rt\u00e9kegys\u00e9gek"
 });

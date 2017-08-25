@@ -1,5 +1,7 @@
 tinyMCE.addI18n('nb.advhr_dlg',{
+size:"St\u00f8rrelse",
+noshade:"Ingen skygge",
 width:"Bredde",
-size:"St\u00F8rrelse",
-noshade:"Ingen skygge"
+normal:"Normal",
+widthunits:"Enheter"
 });

@@ -1,5 +1,7 @@
 tinyMCE.addI18n('es.advhr_dlg',{
-width:"Ancho",
 size:"Alto",
-noshade:"Sin sombra"
+noshade:"Sin sombra",
+width:"Ancho",
+normal:"Normal",
+widthunits:"Unidades"
 });

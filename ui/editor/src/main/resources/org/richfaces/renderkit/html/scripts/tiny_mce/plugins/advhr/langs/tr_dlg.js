@@ -1,5 +1,7 @@
 tinyMCE.addI18n('tr.advhr_dlg',{
-width:"Geni\u015Flik",
-size:"Y\u00FCkseklik",
-noshade:"G\u00F6lge yok"
+size:"Y\u00fckseklik",
+noshade:"G\u00f6lge yok",
+width:"Geni\u015flik",
+normal:"Normal",
+widthunits:"Birimler"
 });

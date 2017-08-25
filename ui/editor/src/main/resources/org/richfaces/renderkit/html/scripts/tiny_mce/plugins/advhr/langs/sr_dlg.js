@@ -1,5 +1,7 @@
 tinyMCE.addI18n('sr.advhr_dlg',{
-width:"\u0160irina",
 size:"Visina",
-noshade:"Bez sjene"
+noshade:"Bez senke",
+width:"\u0160irina",
+normal:"Normal",
+widthunits:"Units"
 });

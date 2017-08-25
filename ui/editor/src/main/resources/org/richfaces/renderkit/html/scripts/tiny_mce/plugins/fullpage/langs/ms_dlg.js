@@ -81,5 +81,5 @@ rel:"Rel",
 rev:"Rev",
 hreflang:"Href lang",
 general_props:"Am",
-advanced_props:"Lanjutan"
+advanced_props:"Lanjutan" 
 });

@@ -67,7 +67,7 @@ meta_element:"Meta-element",
 comment_element:"Opmerking",
 src:"Bron",
 language:"Taal",
-href:"Href",
+href:"HREF",
 target:"Doel",
 type:"Type",
 charset:"Karakterset",
@@ -79,7 +79,7 @@ value:"Waarde",
 content:"Inhoud",
 rel:"Rel",
 rev:"Rev",
-hreflang:"Href taal",
+hreflang:"HREF taal",
 general_props:"Algemeen",
-advanced_props:"Geavanceerd"
+advanced_props:"Geavanceerd" 
 });

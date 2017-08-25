@@ -1,154 +1,260 @@
 tinyMCE.addI18n({id:{
 common:{
-edit_confirm:"Do you want to use the WYSIWYG mode for this textarea?",
-apply:"Apply",
-insert:"Insert",
-update:"Update",
-cancel:"Cancel",
-close:"Close",
-browse:"Browse",
-class_name:"Class",
+more_colors:"Warna Lainnya...",
+invalid_data:"Error: nilai invalid, ditandai dengan dengan warna merah",
+popup_blocked:"Maaf, popup-blocker anda telah menonaktifkan jendela aplikasi yang menyediakan fungsionalitas. Nonaktifkan popup-blocker untuk sepenuhnya memanfaatkan alat ini.",
+clipboard_no_support:"Tidak didukung Browser, gunakan shortcut dari keyboard.",
+clipboard_msg:"Copy/Cut/Paste tidak tersedia pada Mozilla dan Firefox.\nButuh info selengkapnya?",
 not_set:"-- Not set --",
-clipboard_msg:"Copy/Cut/Paste is not available in Mozilla and Firefox.\nDo you want more information about this issue?",
-clipboard_no_support:"Currently not supported by your browser, use keyboard shortcuts instead.",
-popup_blocked:"Sorry, but we have noticed that your popup-blocker has disabled a window that provides application functionality. You will need to disable popup blocking on this site in order to fully utilize this tool.",
-invalid_data:"Error: Invalid values entered, these are marked in red.",
-more_colors:"More colors"
+class_name:"Class",
+browse:"Browse",
+close:"Tutup",
+cancel:"Batalkan",
+update:"Perbarui",
+insert:"Sisipkan",
+apply:"Pakai",
+edit_confirm:"Gunakan mode WYSIWYG untuk textarea ini?",
+invalid_data_number:"{#field} harus diisi angka",
+invalid_data_min:"{#field} harus diisi angka lebih besar dari {#min}",
+invalid_data_size:"{#field} harus diisi angka atau persen",
+value:"(nilai)"
 },
 contextmenu:{
-align:"Alignment",
-left:"Left",
-center:"Center",
-right:"Right",
-full:"Full"
+full:"Penuh",
+right:"Kanan",
+center:"Tengah",
+left:"Kiri",
+align:"Alignment"
 },
 insertdatetime:{
-date_fmt:"%Y-%m-%d",
+day_short:"Min,Sen,Sel,Rab,Kam,Jum,Sab,Min",
+day_long:"Minggu,Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu",
+months_short:"Jan,Feb,Mar,Apr,Mei,Jun,Jul,Ags,Sep,Okt,Nov,Des",
+months_long:"Januari,Februari,Maren,April,Mei,Juni,Juli,Agustus,September,Oktober,November,Desember",
+inserttime_desc:"Sisipkan Waktu",
+insertdate_desc:"Sisipkan Tanggal",
 time_fmt:"%H:%M:%S",
-insertdate_desc:"Insert date",
-inserttime_desc:"Insert time",
-months_long:"January,February,March,April,May,June,July,August,September,October,November,December",
-months_short:"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
-day_long:"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
-day_short:"Sun,Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+date_fmt:"%Y-%m-%d"
 },
 print:{
-print_desc:"Print"
+print_desc:"Cetak"
 },
 preview:{
-preview_desc:"Preview"
+preview_desc:"Pratinjau"
 },
 directionality:{
-ltr_desc:"Direction left to right",
-rtl_desc:"Direction right to left"
+rtl_desc:"Arah kanan ke kiri",
+ltr_desc:"Arah kiri ke kanan"
 },
 layer:{
-insertlayer_desc:"Insert new layer",
-forward_desc:"Move forward",
-backward_desc:"Move backward",
-absolute_desc:"Toggle absolute positioning",
-content:"New layer..."
+content:"Layer baru...",
+absolute_desc:"Beralih posisi absolut",
+backward_desc:"Pindah ke belakang",
+forward_desc:"Pindah ke depan",
+insertlayer_desc:"sisipkan layer Baru"
 },
 save:{
-save_desc:"Save",
-cancel_desc:"Cancel all changes"
+save_desc:"Simpan",
+cancel_desc:"Batalkan semua perubahan"
 },
 nonbreaking:{
-nonbreaking_desc:"Insert non-breaking space character"
+nonbreaking_desc:"Sisipkan karakter non-breaking space"
 },
 iespell:{
-iespell_desc:"Run spell checking",
-download:"ieSpell not detected. Do you want to install it now?"
+download:"ieSpell tidak terdeteksi. Instal sekarang?",
+iespell_desc:"Jalankan spell checking"
 },
 advhr:{
-advhr_desc:"Horizontal rule"
+advhr_desc:"Sisipkan Garis Horizontal",
+delta_height:"",
+delta_width:""
 },
 emotions:{
-emotions_desc:"Emotions"
+delta_height:"",
+emotions_desc:"Emosi",
+delta_width:""
 },
 searchreplace:{
-search_desc:"Find",
-replace_desc:"Find/Replace"
+replace_desc:"Cari/Ganti",
+search_desc:"Cari",
+delta_width:"",
+delta_height:""
 },
 advimage:{
-image_desc:"Insert/edit image"
+image_desc:"sisipkan/Ubah Gambar",
+delta_width:"",
+delta_height:""
 },
 advlink:{
-link_desc:"Insert/edit link"
+link_desc:"Sisipkan/Ubah tautan",
+delta_height:"",
+delta_width:""
 },
 xhtmlxtras:{
-cite_desc:"Citation",
-abbr_desc:"Abbreviation",
-acronym_desc:"Acronym",
-del_desc:"Deletion",
-ins_desc:"Insertion",
-attribs_desc:"Insert/Edit Attributes"
+attribs_desc:"Sisip/Ubah Atribut",
+ins_desc:"Penyisipan",
+del_desc:"Penghapusan",
+acronym_desc:"Akronim",
+abbr_desc:"Singkatan/Kependekan Kata",
+cite_desc:"Kutipan",
+attribs_delta_height:"",
+attribs_delta_width:"",
+ins_delta_height:"",
+ins_delta_width:"",
+del_delta_height:"",
+del_delta_width:"",
+acronym_delta_height:"",
+acronym_delta_width:"",
+abbr_delta_height:"",
+abbr_delta_width:"",
+cite_delta_height:"",
+cite_delta_width:""
 },
 style:{
-desc:"Edit CSS Style"
+desc:"Ubah Gaya CSS",
+delta_height:"",
+delta_width:""
 },
 paste:{
-paste_text_desc:"Paste as Plain Text",
-paste_word_desc:"Paste from Word",
-selectall_desc:"Select All"
+plaintext_mode:"Rekatkan sekarang di mode teks sederhana. Klik lagi untuk beralih kembali ke mode rekat reguler.",
+plaintext_mode_sticky:"Rekatkan sekarang di mode teks sederhana. Klik lagi untuk beralih kembali ke mode rekat reguler. Setelah Anda merekatkan sesuatu Anda akan dikembalikan ke mode rekat reguler.",
+selectall_desc:"Pilih Semua",
+paste_word_desc:"Rekatkan dari Word",
+paste_text_desc:"Rekatkan dari Teks Sederhana"
 },
 paste_dlg:{
-text_title:"Use CTRL+V on your keyboard to paste the text into the window.",
+word_title:"Gunakan CTRL+V pada keyboard untuk paste.",
 text_linebreaks:"Keep linebreaks",
-word_title:"Use CTRL+V on your keyboard to paste the text into the window."
+text_title:"Gunakan CTRL+V pada keyboard untuk paste."
 },
 table:{
-desc:"Inserts a new table",
-row_before_desc:"Insert row before",
-row_after_desc:"Insert row after",
-delete_row_desc:"Delete row",
-col_before_desc:"Insert column before",
-col_after_desc:"Insert column after",
-delete_col_desc:"Remove column",
-split_cells_desc:"Split merged table cells",
-merge_cells_desc:"Merge table cells",
-row_desc:"Table row properties",
-cell_desc:"Table cell properties",
-props_desc:"Table properties",
-paste_row_before_desc:"Paste table row before",
-paste_row_after_desc:"Paste table row after",
-cut_row_desc:"Cut table row",
-copy_row_desc:"Copy table row",
-del:"Delete table",
-row:"Row",
-col:"Column",
-cell:"Cell"
+cell:"Sel",
+col:"Kolom",
+row:"Baris",
+del:"Hapus Tabel",
+copy_row_desc:"Gandakan Baris Tabel",
+cut_row_desc:"Potong Baris Tabel",
+paste_row_after_desc:"Rekatkan Baris Tabel Setelah",
+paste_row_before_desc:"Rekatkan Baris Tabel Sebelum",
+props_desc:"Properti tabel",
+cell_desc:"Properti Sel Tabel",
+row_desc:"Properti Baris Tabel",
+merge_cells_desc:"Gabungkan Sel Tabel",
+split_cells_desc:"Pisahkan Sel Tabel yang Digabungkan",
+delete_col_desc:"Hapus Kolom",
+col_after_desc:"Sisipkan Kolom Setelah",
+col_before_desc:"Sisipkan Kolom Sebelum",
+delete_row_desc:"Hapus Baris",
+row_after_desc:"Sisipkan Baris Sesudah",
+row_before_desc:"Sisipkan Baris Sebelum",
+desc:"Sisipkan/Ubah Tabel",
+merge_cells_delta_height:"",
+merge_cells_delta_width:"",
+table_delta_height:"",
+table_delta_width:"",
+cellprops_delta_height:"",
+cellprops_delta_width:"",
+rowprops_delta_height:"",
+rowprops_delta_width:""
 },
 autosave:{
-unload_msg:"The changes you made will be lost if you navigate away from this page."
+warning_message:"Jika Anda memulihkan konten yang tersimpan, Anda akan kehilangan seluruh konten yang sedang berada di \'editor\'.\n\nApakah Anda yakin ingin memulihkan konten yang tersimpan?",
+restore_content:"Pulihkan konten yang tersimpan-otomatis.",
+unload_msg:"Perubahan yang dilakukan akan hilang jika Anda pindah dari halaman ini."
 },
 fullscreen:{
-desc:"Toggle fullscreen mode"
+desc:"Beralih ke Mode Layar Penuh"
 },
 media:{
-desc:"Insert / edit embedded media",
-edit:"Edit embedded media"
+edit:"Ubah Embedded Media",
+desc:"Sisipkan/Ubah Embedded Media",
+delta_height:"",
+delta_width:""
 },
 fullpage:{
-desc:"Document properties"
+desc:"Properti Dokumen",
+delta_width:"",
+delta_height:""
 },
 template:{
-desc:"Insert predefined template content"
+desc:"Menyisipkan template standar isi"
 },
 visualchars:{
-desc:"Visual control characters on/off."
+desc:"Pengendalian visual karakter on/off"
 },
 spellchecker:{
 desc:"Toggle spellchecker",
-menu:"Spellchecker settings",
-ignore_word:"Ignore word",
-ignore_words:"Ignore all",
-langs:"Languages",
-wait:"Please wait...",
-sug:"Suggestions",
-no_sug:"No suggestions",
-no_mpell:"No misspellings found."
+menu:"Pengaturan Spellchecker ",
+ignore_word:"Abaikan kata",
+ignore_words:"Abaikan semua",
+langs:"Bahasa",
+wait:"Harap tunggu...",
+sug:"Saran",
+no_sug:"Tidak ada saran",
+no_mpell:"Tidak ada misspellings ditemukan.",
+learn_word:"Learn word"
 },
 pagebreak:{
-desc:"Insert page break."
-}}});
+desc:"Sisipkan page break."
+},
+advlist:{
+types:"Jenis",
+def:"Default",
+lower_alpha:"Alfabet Kecil",
+lower_greek:"Yunani Kecil",
+lower_roman:"Romawi Kecil",
+upper_alpha:"Alfabet Besar",
+upper_roman:"Romawi Besar",
+circle:"Lingkaran",
+disc:"Cakram",
+square:"Persegi"
+},
+colors:{
+"333300":"Zaitun Gelap",
+"993300":"Jingga Terbakar",
+"000000":"Hitam",
+"003300":"Hijau Gelap",
+"003366":"Biru Gelap",
+"000080":"Biru Laut",
+"333399":"Biru Tua",
+"333333":"Abu-abu Gelap",
+"800000":"Merah Tua",
+"FF6600":"Jingga",
+"808000":"Zaitun",
+"008000":"Hijau",
+"008080":"Teal",
+"0000FF":"Biru",
+"666699":"Biru Keabu-abuan",
+"808080":"Abu-abu",
+"FF0000":"Merah",
+"FF9900":"Kuning Sawo",
+"99CC00":"Kuning Ke-hijauan",
+"339966":"Hijau Laut",
+"33CCCC":"Biru Ke-hijauan",
+"3366FF":"Biru Indah",
+"800080":"Ungu",
+"999999":"Abu-abu sedang",
+"FF00FF":"Merah Ke-unguan",
+"FFCC00":"Emas",
+"FFFF00":"Kuning",
+"00FF00":"Limau",
+"00FFFF":"Air",
+"00CCFF":"Biru Langit",
+"993366":"Coklat",
+"C0C0C0":"Perak",
+"FF99CC":"Merah Muda",
+"FFCC99":"Persik",
+"FFFF99":"Kuning Terang",
+"CCFFCC":"Hijau Pucat",
+"CCFFFF":"Biru Pucat",
+"99CCFF":"Biru Laut Terang",
+"CC99FF":"Plum",
+"FFFFFF":"Putih"
+},
+aria:{
+rich_text_area:"Rich Text Area"
+},
+wordcount:{
+words:"Jumlah Kata:"
+}
+}});

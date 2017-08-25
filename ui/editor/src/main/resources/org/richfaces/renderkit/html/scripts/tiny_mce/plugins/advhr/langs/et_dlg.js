@@ -1,5 +1,7 @@
 tinyMCE.addI18n('et.advhr_dlg',{
+size:"K\u00f5rgus",
+noshade:"Ilma varjuta",
 width:"Laius",
-size:"K\u00F5rgus",
-noshade:"Ilma varjuta"
+normal:"Normaalne",
+widthunits:"\u00dchikud"
 });

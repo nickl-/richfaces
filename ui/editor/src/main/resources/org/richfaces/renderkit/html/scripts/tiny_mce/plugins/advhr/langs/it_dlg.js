@@ -1,5 +1,7 @@
 tinyMCE.addI18n('it.advhr_dlg',{
-width:"Width",
-size:"Height",
-noshade:"Senza ombreggiatura"
+size:"Altezza",
+noshade:"Senza ombreggiatura",
+width:"Larghezza",
+normal:"Normale",
+widthunits:"Unit\u00e0"
 });
