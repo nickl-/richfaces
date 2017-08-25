@@ -38,7 +38,7 @@ public abstract class StateExpressionFactory extends ExpressionFactory {
 	 * @return
 	 * @see javax.el.ExpressionFactory#coerceToType(java.lang.Object, java.lang.Class)
 	 */
-	public Object coerceToType(Object obj, Class<?> targetType) {
+	public Object coerceToType(Object obj, Class targetType) {
 		return getDefaultFactory().coerceToType(obj, targetType);
 	}
 
@@ -51,8 +51,8 @@ public abstract class StateExpressionFactory extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#createMethodExpression(javax.el.ELContext, java.lang.String, java.lang.Class, java.lang.Class<?>[])
 	 */
 	public MethodExpression createMethodExpression(ELContext context,
-			String expression, Class<?> expectedReturnType,
-			Class<?>[] expectedParamTypes) {
+			String expression, Class expectedReturnType,
+			Class[] expectedParamTypes) {
 		MethodExpression methodExpression = getDefaultFactory().createMethodExpression(context, expression,
 						expectedReturnType, expectedParamTypes);
 		ValueExpression valueExpression = getDefaultFactory().createValueExpression(context, expression, MethodExpression.class);
@@ -67,7 +67,7 @@ public abstract class StateExpressionFactory extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#createValueExpression(javax.el.ELContext, java.lang.String, java.lang.Class)
 	 */
 	public ValueExpression createValueExpression(ELContext context,
-			String expression, Class<?> expectedType) {
+			String expression, Class expectedType) {
 		return getDefaultFactory().createValueExpression(context, expression,
 				expectedType);
 	}
@@ -79,7 +79,7 @@ public abstract class StateExpressionFactory extends ExpressionFactory {
 	 * @see javax.el.ExpressionFactory#createValueExpression(java.lang.Object, java.lang.Class)
 	 */
 	public ValueExpression createValueExpression(Object instance,
-			Class<?> expectedType) {
+			Class expectedType) {
 		return getDefaultFactory().createValueExpression(instance, expectedType);
 	}
 
