@@ -83,9 +83,9 @@ import org.w3c.dom.Node;
  */
 public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 
-	private static final String TEMPLATES_PREFIX = "/templates/";
+	private static final String TEMPLATES_PREFIX = "templates/";
 
-	private static final String TEMPLATES12_PREFIX = "/templates12/";
+	private static final String TEMPLATES12_PREFIX = "templates12/";
 
 	private static final String FACES_CONFIG_TEMPLATE = "faces-config.vm";
 
