@@ -50,49 +50,49 @@ public class YuiCompressorMojo extends MojoSupport {
     /**
      * Read the input file using "encoding".
      *
-     * @parameter expression="${file.encoding}" default-value="UTF-8"
+     * @parameter default-value="${file.encoding}" default-value="UTF-8"
      */
     private String encoding;
 
     /**
      * The output filename suffix.
      *
-     * @parameter expression="${maven.yuicompressor.suffix}" default-value="-min"
+     * @parameter default-value="${maven.yuicompressor.suffix}" default-value="-min"
      */
     private String suffix;
 
     /**
      * If no "suffix" must be add to output filename (maven's configuration manage empty suffix like default).
      *
-     * @parameter expression="${maven.yuicompressor.nosuffix}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.nosuffix}" default-value="false"
      */
     private boolean nosuffix;
 
     /**
      * Insert line breaks in output after the specified column number.
      *
-     * @parameter expression="${maven.yuicompressor.linebreakpos}" default-value="0"
+     * @parameter default-value="${maven.yuicompressor.linebreakpos}" default-value="0"
      */
     private int linebreakpos;
 
     /**
      * [js only] Minify only, do not obfuscate.
      *
-     * @parameter expression="${maven.yuicompressor.nomunge}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.nomunge}" default-value="false"
      */
     private boolean nomunge;
 
     /**
      * [js only] Preserve unnecessary semicolons.
      *
-     * @parameter expression="${maven.yuicompressor.preserveAllSemiColons}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.preserveAllSemiColons}" default-value="false"
      */
     private boolean preserveAllSemiColons;
 
     /**
      * [js only] Preserve string (no optimization).
      *
-     * @parameter expression="${maven.yuicompressor.preserveStringLiterals}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.preserveStringLiterals}" default-value="false"
      */
     private boolean preserveStringLiterals;
 
@@ -100,7 +100,7 @@ public class YuiCompressorMojo extends MojoSupport {
      * force the compression of every files,
      * else if compressed file already exists and is younger than source file, nothing is done.
      *
-     * @parameter expression="${maven.yuicompressor.force}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.force}" default-value="false"
      */
     private boolean force;
 
@@ -116,14 +116,14 @@ public class YuiCompressorMojo extends MojoSupport {
     /**
      * request to create a gzipped version of the yuicompressed/aggregation files.
      *
-     * @parameter expression="${maven.yuicompressor.gzip}" default-value="false"
+     * @parameter default-value="${maven.yuicompressor.gzip}" default-value="false"
      */
     private boolean gzip;
 
     /**
      * show statistics (compression ratio).
      *
-     * @parameter expression="${maven.yuicompressor.statistics}" default-value="true"
+     * @parameter default-value="${maven.yuicompressor.statistics}" default-value="true"
      */
     private boolean statistics;
 

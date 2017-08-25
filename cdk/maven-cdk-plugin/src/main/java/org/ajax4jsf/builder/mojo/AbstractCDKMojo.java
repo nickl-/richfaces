@@ -54,7 +54,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	/**
 	 * Top maven project.
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter default-value="${project}"
 	 * @readonly
 	 */
 	protected MavenProject project;
@@ -68,7 +68,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	 * parsed as components config. All '*.ent' files will be processed as
 	 * include configurations.
 	 * 
-	 * @parameter expression="src/main/config/component"
+	 * @parameter default-value="src/main/config/component"
 	 */
 	protected File componentConfigDirectory;
 	/**
@@ -76,7 +76,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	 * parsed as component config. All '*.ent' files will be processed as
 	 * include configurations.
 	 * 
-	 * @parameter expression="src/main/config/validator"
+	 * @parameter default-value="src/main/config/validator"
 	 */
 	protected File validatorConfigDirectory;
 
@@ -85,49 +85,49 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	 * parsed as components config. All '*.ent' files will be processed as
 	 * include configurations.
 	 * 
-	 * @parameter expression="src/main/config/converter"
+	 * @parameter default-value="src/main/config/converter"
 	 */
 	protected File converterConfigDirectory;
 
 	/**
 	 * Place for faces configuration XML files
 	 * 
-	 * @parameter expression="src/main/config/faces"
+	 * @parameter default-value="src/main/config/faces"
 	 */
 	protected File facesConfigInclude;
 	/**
 	 * Place for component configuration XML files
 	 * 
-	 * @parameter expression="src/main/config/taglib"
+	 * @parameter default-value="src/main/config/taglib"
 	 */
 	protected File taglibInclude;
 	/**
 	 * Place for component configuration XML files
 	 * 
-	 * @parameter expression="src/main/config/resources"
+	 * @parameter default-value="src/main/config/resources"
 	 */
 	protected File resourcesInclude;
 	/**
 	 * 
-	 * @parameter expression="src/main/templates"
+	 * @parameter default-value="src/main/templates"
 	 */
 	protected File templatesDirectory;
 	/**
 	 * Directory where the output Java Files will be located.
 	 * 
-	 * @parameter expression="${project.build.directory}/generated-component/java"
+	 * @parameter default-value="${project.build.directory}/generated-component/java"
 	 */
 	protected File outputJavaDirectory;
 
 	/**
-	 * @parameter expression="${project.build.directory}/generated-component/test"
+	 * @parameter default-value="${project.build.directory}/generated-component/test"
 	 */
 	protected File outputTestsDirectory;
 
 	/**
 	 * Directory where the output Java Files will be located.
 	 * 
-	 * @parameter expression="${project.build.directory}/generated-component/resources"
+	 * @parameter default-value="${project.build.directory}/generated-component/resources"
 	 */
 	protected File outputResourcesDirectory;
 	/**
@@ -137,7 +137,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	/**
 	 * The source directories containing the sources to be compiled.
 	 * 
-	 * @parameter expression="${project.compileSourceRoots}"
+	 * @parameter default-value="${project.compileSourceRoots}"
 	 * @required
 	 * @readonly
 	 */
@@ -145,7 +145,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	/**
 	 * Project classpath.
 	 * 
-	 * @parameter expression="${project.compileClasspathElements}"
+	 * @parameter default-value="${project.compileClasspathElements}"
 	 * @required
 	 * @readonly
 	 */
@@ -153,7 +153,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	/**
 	 * The directory for compiled classes.
 	 * 
-	 * @parameter expression="${project.build.outputDirectory}"
+	 * @parameter default-value="${project.build.outputDirectory}"
 	 * @required
 	 * @readonly
 	 */

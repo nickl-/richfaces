@@ -61,7 +61,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 	/**
 	 * Project executed by first compile lifecycle.
 	 * 
-	 * @parameter expression="${executedProject}"
+	 * @parameter default-value="${executedProject}"
 	 * @readonly
 	 */
 	private MavenProject executedProject;
@@ -69,7 +69,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 	/**
 	 * The reactor projects.
 	 * 
-	 * @parameter expression="${project.parent}"
+	 * @parameter default-value="${project.parent}"
 	 * @readonly
 	 */
 	private MavenProject parentProject;
@@ -96,7 +96,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 	/**
 	 * The local repository.
 	 * 
-	 * @parameter expression="${localRepository}"
+	 * @parameter default-value="${localRepository}"
 	 */
 	private ArtifactRepository localRepository;
 

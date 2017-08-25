@@ -77,7 +77,7 @@ public  class ResourceDependencyMojo extends AbstractMojo {
 	/**
 	 * Top maven project.
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter default-value="${project}"
 	 * @readonly
 	 */
 	MavenProject project;
@@ -110,33 +110,33 @@ public  class ResourceDependencyMojo extends AbstractMojo {
 	/**
 	 * The local repository.
 	 * 
-	 * @parameter expression="${localRepository}"
+	 * @parameter default-value="${localRepository}"
 	 */
 	private ArtifactRepository localRepository;
 		
 	/**
 	 * webSourceDirectory
 	 * 
-	 * @parameter expression="${basedir}/src/main/webapp" 
+	 * @parameter default-value="${basedir}/src/main/webapp"
 	 */
 	private File webSourceDirectory;
 	
 	/**
 	 * scriptFilePath
-	 * @parameter expression="custom-dependencies"
+	 * @parameter default-value="custom-dependencies"
 	 */
 	private String scriptFilePath;
 	
 	
 	/**
 	 * outputResourceDirectory
-	 * @parameter expression="${project.build.directory}/generated-resources
+	 * @parameter default-value="${project.build.directory}/generated-resources
 	 * 
 	 */
 	private File outputResourceDirectory;
 	/**
 	 * styleFilePath
-	 * @parameter  expression="custom-dependencies"
+	 * @parameter default-value="custom-dependencies"
 	 */
 	private String styleFilePath;
 			

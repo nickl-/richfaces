@@ -59,14 +59,14 @@ public class CreateThemeMojo extends AbstractCreateMojo {
 	/**
 	 * Name of base package of theme.
 	 * If it is not set, GroupId is used.
-	 * @parameter expression="${package}" default-value="${project.groupId}"
+	 * @parameter default-value="${package}" default-value="${project.groupId}"
 	 */
 	private String packageName;
 	
 	
 	/**
 	 * Name of theme. Required parameter.
-	 * @parameter expression="${name}"
+	 * @parameter default-value="${name}"
 	 * @required
 	 */
 	private String themeName;

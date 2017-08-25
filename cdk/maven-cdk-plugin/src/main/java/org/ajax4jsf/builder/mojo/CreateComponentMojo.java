@@ -46,25 +46,25 @@ public class CreateComponentMojo extends AbstractCDKMojo {
 	private static final String RENDERER_TEMPLATE = TEMPLATES_PREFIX+"template.jspx";
 
 	/**
-	 * @parameter expression="${name}"
+	 * @parameter default-value="${name}"
 	 * @required
 	 */
 	private String name ;
 	
 	/**
-	 * @parameter expression="${markup}"
+	 * @parameter default-value="${markup}"
 	 */
 	private String markup ;
 	
 	/**
-	 * @parameter expression="${baseClass}" default-value="javax.faces.component.UIComponentBase"
+	 * @parameter default-value="${baseClass}" default-value="javax.faces.component.UIComponentBase"
 	 */
 	private String baseClass ;
 
 	/**
 	 * Directory where the output Java Files will be located.
 	 * 
-	 * @parameter expression="${project.build.plugins}"
+	 * @parameter default-value="${project.build.plugins}"
 	 * @required
 	 * @readonly
 	 */

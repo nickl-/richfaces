@@ -82,14 +82,14 @@ public class CreateSkinMojo extends AbstractCreateMojo {
 	/**
 	 * Name of base package of skin.
 	 * If it is not set, GroupId is used.
-	 * @parameter expression="${package}" default-value="${project.groupId}"
+	 * @parameter default-value="${package}" default-value="${project.groupId}"
 	 */
 	private String packageName;
 	
 	
 	/**
 	 * Name of skin. Required parameter.
-	 * @parameter expression="${name}"
+	 * @parameter default-value="${name}"
 	 * @required
 	 */
 	private String skinName;
@@ -97,31 +97,31 @@ public class CreateSkinMojo extends AbstractCreateMojo {
 
 	/**
 	 * Name of base skin.
-	 * @parameter expression="${baseSkin}"
+	 * @parameter default-value="${baseSkin}"
 	 */
 	private String baseSkin;
 
 	/**
 	 * If set to true, a set of extended classes is generated
-	 * @parameter expression="${createExt}"
+	 * @parameter default-value="${createExt}"
 	 */
 	private boolean createExt;
 	
 	
 	/**
-	 * @parameter expression="${plugin.artifactId}"
+	 * @parameter default-value="${plugin.artifactId}"
 	 * 	@readonly
 	 */
 	private String pluginArtifactId;
 
 	/**
-	 * @parameter expression="${plugin.groupId}"
+	 * @parameter default-value="${plugin.groupId}"
 	 * @readonly
 	 */
 	private String pluginGroupId;
 
 	/**
-	 * @parameter expression="${plugin.version}"
+	 * @parameter default-value="${plugin.version}"
 	 * @readonly
 	 */
 	private String pluginVersion;
@@ -133,7 +133,7 @@ public class CreateSkinMojo extends AbstractCreateMojo {
 	private org.apache.maven.artifact.resolver.ArtifactResolver resolver;
 
 	/**
-	 * @parameter expression="${localRepository}" 
+	 * @parameter default-value="${localRepository}"
 	 * @readonly
 	 * */
 	private org.apache.maven.artifact.repository.ArtifactRepository localRepository;

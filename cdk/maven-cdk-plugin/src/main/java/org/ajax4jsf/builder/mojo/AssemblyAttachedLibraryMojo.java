@@ -122,7 +122,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The local repository.
 	 * 
-	 * @parameter expression="${localRepository}"
+	 * @parameter default-value="${localRepository}"
 	 */
 	private ArtifactRepository localRepository;
 
@@ -150,7 +150,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The reactor projects.
 	 * 
-	 * @parameter expression="${reactorProjects}"
+	 * @parameter default-value="${reactorProjects}"
 	 * @required
 	 * @readonly
 	 */
@@ -159,7 +159,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The reactor projects.
 	 * 
-	 * @parameter expression="${project.parent}"
+	 * @parameter default-value="${project.parent}"
 	 * @readonly
 	 */
 	private MavenProject parentProject;
@@ -167,7 +167,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The directory for compiled classes.
 	 * 
-	 * @parameter expression="${project.build.directory}"
+	 * @parameter default-value="${project.build.directory}"
 	 * @required
 	 * @readonly
 	 */
@@ -176,7 +176,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The directory for compiled classes.
 	 * 
-	 * @parameter expression="${project.build.directory}/pom.xml"
+	 * @parameter default-value="${project.build.directory}/pom.xml"
 	 * @required
 	 * @readonly
 	 */
@@ -185,7 +185,7 @@ public class AssemblyAttachedLibraryMojo extends AbstractCDKMojo {
 	/**
 	 * The directory for compiled classes.
 	 * 
-	 * @parameter expression="${project.build.directory}/src"
+	 * @parameter default-value="${project.build.directory}/src"
 	 * @required
 	 * @readonly
 	 */

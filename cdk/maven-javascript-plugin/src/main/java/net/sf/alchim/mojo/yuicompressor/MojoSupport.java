@@ -92,7 +92,7 @@ public abstract class MojoSupport extends AbstractMojo {
 	private List<String> includes;
 
 	/**
-	 * @parameter expression="${project}"
+	 * @parameter default-value="${project}"
 	 * @readonly
 	 * @required
 	 */
@@ -101,7 +101,7 @@ public abstract class MojoSupport extends AbstractMojo {
 	/**
 	 * [js only] Display possible errors in the code
 	 * 
-	 * @parameter expression="${maven.yuicompressor.jswarm}"
+	 * @parameter default-value="${maven.yuicompressor.jswarm}"
 	 *            default-value="true"
 	 */
 	protected boolean jswarn;
@@ -109,7 +109,7 @@ public abstract class MojoSupport extends AbstractMojo {
 	/**
 	 * define if plugin must stop/fail on warnings.
 	 * 
-	 * @parameter expression="${maven.yuicompressor.failOnWarning}"
+	 * @parameter default-value="${maven.yuicompressor.failOnWarning}"
 	 *            default-value="false"
 	 */
 	protected boolean failOnWarning;

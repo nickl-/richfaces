@@ -71,7 +71,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 	/**
 	 * Project executed by first compile lifecycle.
 	 * 
-	 * @parameter expression="${executedProject}"
+	 * @parameter default-value="${executedProject}"
 	 * @readonly
 	 */
 	protected MavenProject executedProject;
