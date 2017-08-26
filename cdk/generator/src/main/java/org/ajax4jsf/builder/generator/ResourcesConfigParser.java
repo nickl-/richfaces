@@ -65,11 +65,11 @@ public class ResourcesConfigParser {
 	private Logger log;
 
 	private File templates;
-	
+
 	private ResourcesConfigGeneratorBean resourcesConfigGeneratorBean;
-	
+
 	private Map<String, ResourcesConfigGeneratorBean> componentResourcesMap;
-	
+
 	public ResourcesConfigParser(JSFGeneratorConfiguration config, Logger log) {
 		super();
 
@@ -82,11 +82,11 @@ public class ResourcesConfigParser {
 	public File getTemplates() {
 		return templates;
 	}
-	
+
 	public void setTemplates(File templates) {
 		this.templates = templates;
 	}
-	
+
 	private void addResources(ResourcesConfigGeneratorBean configBean,
 			TemplateElement templateElement, String packageName,
 			RendererBean renderer, BuilderConfig builderConfig)
@@ -132,20 +132,24 @@ public class ResourcesConfigParser {
 	}
 
 	private String getResourceKey(String packageName, Object resource) {
+		log.debug("Get resource key from:"+ resource);
+
 		try {
 			Class<? extends Object> resourceClass = resource.getClass();
 			Method method = resourceClass.getMethod("getKey");
+			log.debug("getKey method for class"+ resourceClass+ " returns:"+method );
 			String resourceKey = (String) method.invoke(resource);
-			
+			log.debug(method + "() returns resourceKey:"+resourceKey );
+
 			if (resourceKey != null && !resourceKey.equals(resourceClass.getName())) {
 				ClassLoader loader = config.getClassLoader();
 
 				if (loader.getResource(resourceKey) == null) {
 					String packagePath = packageName.replace('.', '/');
 					if (packagePath.length() != 0) {
-						packagePath += "/"; 
+						packagePath += "/";
 					}
-					
+
 					if (loader.getResource(packagePath + resourceKey) == null) {
 						resourceKey = null;
 					}
@@ -155,15 +159,15 @@ public class ResourcesConfigParser {
 					}
 				}
 			}
-			
+
 			return resourceKey;
 		} catch (Exception e) {
-			log.error(e.getMessage(), e);
+			log.error(e.getMessage() + "  for package " + packageName, e);
 		}
 
 		return null;
 	}
-	
+
 	private String addResource(ResourcesConfigGeneratorBean configBean,
 			RendererBean renderer, BuilderConfig builderConfig,
 			CompilationContext compilationContext)
@@ -201,7 +205,7 @@ public class ResourcesConfigParser {
 				Object[] result = null;
 				Method method = null;
 				Set<String> locatedResources = new HashSet<String>();
-				
+
 				Class<?> cl1 = instance.getClass();
 				while (cl1 != null && method == null) {
 					try {
@@ -221,7 +225,7 @@ public class ResourcesConfigParser {
 							if (resourceName == null) {
 								resourceName = getResourceKey(packageName, object);
 							}
-							
+
 							if (resourceName != null) {
 								locatedResources.add(resourceName);
 								configBean.addResource(resourceName, packageName, ResourceType.STYLE,
@@ -242,21 +246,25 @@ public class ResourcesConfigParser {
 				}
 
 				if (method != null) {
+					log.debug("Trying to find resource for " + instance + " with method:" + method);
 					method.setAccessible(true);
 					result = (Object[]) method.invoke(instance);
 					if (result instanceof Object[]) {
 						for (Object object : result) {
 							String resourceName = interceptor.getResourceName(object);
 
-							if (resourceName == null) {
+							if (resourceName == null && object != null) {
 								resourceName = getResourceKey(packageName, object);
 							}
-							
+
 							if (resourceName != null) {
 								locatedResources.add(resourceName);
 								configBean.addResource(resourceName, packageName, ResourceType.SCRIPT,
 										false);
 							}
+							log.debug("Resourre name: " + resourceName +
+									" in package:" + packageName +
+									" for instance of: " + object);
 						}
 					}
 
@@ -335,19 +343,19 @@ public class ResourcesConfigParser {
 			addResources(localBeanInstance, rendererBean, config);
 
 			String componentName = null;
-			
+
 			TagBean tag = componentBean.getTag();
 			if (tag != null) {
 				componentName = tag.getName();
 			}
-			
+
 			if (componentName == null) {
 				TagHandlerBean taghandler = componentBean.getTaghandler();
 				if (taghandler != null) {
 					componentName = taghandler.getName();
 				}
 			}
-			
+
 			if (componentName != null) {
 				this.componentResourcesMap.put(componentName, localBeanInstance);
 			}
@@ -360,11 +368,11 @@ public class ResourcesConfigParser {
 			addResources(this.resourcesConfigGeneratorBean, rendererBean, config);
 		}
 	}
-	
+
 	public ResourcesConfigGeneratorBean getResourcesConfigGeneratorBean() {
 		return resourcesConfigGeneratorBean;
 	}
-	
+
 	public Map<String, ResourcesConfigGeneratorBean> getComponentResourcesMap() {
 		return componentResourcesMap;
 	}
@@ -375,11 +383,11 @@ class GetResourceInterceptor implements MethodInterceptor {
 	private static final Class<?>[] SIGNATURE = new Class<?>[] { String.class };
 
 	private ClassLoader classLoader;
-	
+
 	private List<String> list = new ArrayList<String>();
 
 	private Map<String, Object> resources = new HashMap<String, Object>();
-	
+
 	private Map<Object, String> resourcesInverse = new IdentityHashMap<Object, String>();
 
 	public GetResourceInterceptor(ClassLoader loader) {
@@ -389,7 +397,7 @@ class GetResourceInterceptor implements MethodInterceptor {
 	public List<String> getList() {
 		return list;
 	}
-	
+
 	public String getResourceName(Object resource) {
 		return resourcesInverse.get(resource);
 	}
@@ -414,11 +422,11 @@ class GetResourceInterceptor implements MethodInterceptor {
 					Object interfaceStub = AbstractClassStubBuilder.buildInterfaceStub(returnType, classLoader);
 					resources.put(resourceName, interfaceStub);
 					resourcesInverse.put(interfaceStub, resourceName);
-				
+
 					return interfaceStub;
 				}
 			}
-			
+
 			return null;
 		} else {
 			return methodProxy.invokeSuper(instance, args);

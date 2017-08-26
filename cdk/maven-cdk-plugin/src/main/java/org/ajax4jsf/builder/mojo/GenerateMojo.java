@@ -58,7 +58,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 /**
  * This plugin geterate JSF components and renderers source code, as well as
  * configuration files.
- * 
+ *
  * @author shura
  * @goal generate
  * @requiresDependencyResolution compile
@@ -70,7 +70,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 
 	/**
 	 * Project executed by first compile lifecycle.
-	 * 
+	 *
 	 * @parameter default-value="${executedProject}"
 	 * @readonly
 	 */
@@ -78,79 +78,88 @@ public class GenerateMojo extends AbstractCDKMojo implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		getLog().debug("GenerateMojo components");
-		
+
 		//FIXME: configure plexus component instead of programmatic property set.
-		
+
 		//		velocity.getEngine().setProperty("velocimacro.library", getTemplatesPath() + "/VM_global_library.vm");
-		
+
 		if (null != executedProject) {
 			Taglib taglib = checkLibraryConfig();
-			ClassLoader contextCL = Thread.currentThread().getContextClassLoader();			
+			getLog().debug("Checked library config");
+			ClassLoader contextCL = Thread.currentThread().getContextClassLoader();
 			// compile goal executed
 			try {
+				getLog().debug("Parse config files");
 				// Parse config files.
 				ClassLoader generatiorLoader = createProjectClassLoader(executedProject);
 				Thread.currentThread().setContextClassLoader(generatiorLoader);
 				BuilderConfig config = createConfig(generatiorLoader);
 				MavenLogger mavenLogger = new MavenLogger(getLog());
 				// TODO - parse sources by qdox for JavaDoc comments ?
+				getLog().debug("Generate components");
 				// GenerateMojo components.
 				ComponentGenerator2 compGenerator = new ComponentGenerator2(this,
 						mavenLogger);
 				compGenerator.createFiles(config);
+				getLog().debug("Generate validators");
 				// GenerateMojo validators
 				ValidatorGenerator validatorGenerator = new ValidatorGenerator(this, mavenLogger);
 				validatorGenerator.createFiles(config);
+				getLog().debug("Generate converters");
 				// GenerateMojo converters
 				ConverterGenerator converterGenerator = new ConverterGenerator(this, mavenLogger);
 				converterGenerator.createFiles(config);
+				getLog().debug("Generate renderers");
 				// GenerateMojo renderers
 				RendererGenerator rendererGenerator = new RendererGenerator(
 						this, mavenLogger);
 				rendererGenerator.setSrcDir(templatesDirectory);
 				rendererGenerator.createFiles(config);
 				// GenerateMojo component test
-/*				
-				ComponentTestGenerator componentTestGenerator = new ComponentTestGenerator(this, mavenLogger);
-				componentTestGenerator.setDestDir(outputTestsDirectory);
-				componentTestGenerator.createFiles(config);
-*/				
+
+//				ComponentTestGenerator componentTestGenerator = new
+//				ComponentTestGenerator(this, mavenLogger);
+//				componentTestGenerator.setDestDir(outputTestsDirectory);
+//				componentTestGenerator.createFiles(config);
+
+				getLog().debug("Generate tags");
 				// GenerateMojo tags
 				ComponentTagGenerator componentTagGenerator = new ComponentTagGenerator(this, mavenLogger);
 				componentTagGenerator.createFiles(config);
-            
+
 //        GenerateMojo tags for validators
             ValidatorTagGenerator validatorTagGenerator = new ValidatorTagGenerator(this, mavenLogger);
             validatorTagGenerator.createFiles(config);
-            
+
 //          GenerateMojo tags for converters
             ConverterTagGenerator converterTagGenerator = new ConverterTagGenerator(this, mavenLogger);
             converterTagGenerator.createFiles(config);
-				
+
 
             ListenerTagGenerator listenerTagGenerator = new ListenerTagGenerator(this, mavenLogger);
             listenerTagGenerator.createFiles(config);
 
-            
+
             // GenerateMojo tag test
-/*				
+/*
 				TagTestGenerator tagTestGenerator = new TagTestGenerator(this, mavenLogger);
 				tagTestGenerator.setDestDir(outputTestsDirectory);
 				tagTestGenerator.createFiles(config);
-*/				
+*/
 				// GenerateMojo tag handlers
 				TagHandlerGenerator tagHandlerGenerator = new TagHandlerGenerator(
 						this, mavenLogger);
 				tagHandlerGenerator.createFiles(config);
-				//Generate listeners
+				getLog().debug("Generate listeners");
+				// Generate listeners
 				ListenerGenerator listenerGenerator = new ListenerGenerator(this, mavenLogger);
 				listenerGenerator.createFiles(config);
-				
+
 				JSFGeneratorConfiguration resourcesConfiguration = new JSFGeneratorConfiguration() {
 
 					public ClassLoader getClassLoader() {
@@ -174,6 +183,8 @@ public class GenerateMojo extends AbstractCDKMojo implements
 					}
 
 				};
+
+				getLog().debug("Generate faces-config");
 				// GenerateMojo faces-config
 				FacesConfigGenerator configGenerator = new FacesConfigGenerator(
 						resourcesConfiguration, mavenLogger);
@@ -183,6 +194,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 				RenderKitBean renderKitBean = configGenerator.createRenderKit();
 				renderKitBean.setRenderkitid("HTML_BASIC");
 				configGenerator.createFiles(config);
+				getLog().debug("JSP taglib");
 				// GenerateMojo JSP taglib
 				if (null != taglib) {
 					TaglibGenerator taglibGenerator = new TaglibGenerator(
@@ -211,20 +223,21 @@ public class GenerateMojo extends AbstractCDKMojo implements
 									+ ".taglib.xml"));
 					faceletsTaglibGenerator.createFiles(config);
 				}
-				
+
 				ResourcesConfigParser resourcesConfigParser = new ResourcesConfigParser(resourcesConfiguration, mavenLogger);
 				resourcesConfigParser.setTemplates(templatesDirectory);
 				resourcesConfigParser.parse(config);
-				
+
 				if (taglib != null) {
 					ResourcesDependenciesGenerator resourcesDependenciesGenerator = new ResourcesDependenciesGenerator(resourcesConfiguration, mavenLogger);
 					resourcesDependenciesGenerator.setUri(taglib.getUri());
-					resourcesDependenciesGenerator.setDependencyFile(new File(outputResourcesDirectory, 
+					resourcesDependenciesGenerator.setDependencyFile(new File(outputResourcesDirectory,
 							"META-INF/" + taglib.getShortName() + ".component-dependencies.xml"));
 					resourcesDependenciesGenerator.setComponentDependencies(resourcesConfigParser.getComponentResourcesMap());
 					resourcesDependenciesGenerator.createFiles(config);
 				}
-				
+
+				getLog().debug("Generate resource configuration");
 				// Generate resources configuration file resources-config.xml
 				// for all images/scripts/css...
 				ResourcesConfigGenerator resourcesConfigGenerator = new ResourcesConfigGenerator(resourcesConfiguration, mavenLogger);
@@ -234,11 +247,11 @@ public class GenerateMojo extends AbstractCDKMojo implements
 				resourcesConfigGenerator.setResourcesConfig(new File(
 						outputResourcesDirectory, "META-INF/resources-config.xml"));
 				resourcesConfigGenerator.createFiles(config);
-				
+
 				// Add generated sources and resources to project
 				project.addCompileSourceRoot(outputJavaDirectory.getPath());
 //				project.addCompileSourceRoot(outputTestsDirectory.getPath());
-				
+
 				Resource resource = new Resource();
 				resource.setDirectory(outputResourcesDirectory.getPath());
 //				resource.setTargetPath("META-INF");
@@ -255,8 +268,14 @@ public class GenerateMojo extends AbstractCDKMojo implements
 
 	protected BuilderConfig createConfig(ClassLoader generatiorLoader)
 			throws ParsingException {
-		BuilderConfig builderConfig = new BuilderConfig(generatiorLoader,
-				new MavenLogger(getLog()));
+
+		getLog().debug("Create config");
+
+        BuilderConfig builderConfig = new BuilderConfig(generatiorLoader,
+        		new MavenLogger(getLog()));
+
+        getLog().debug("Got builder config");
+
 		// Get all *.xml config files
 		FilenameFilter filter = new FilenameFilter() {
 
@@ -268,12 +287,13 @@ public class GenerateMojo extends AbstractCDKMojo implements
 		};
 		boolean filesParsed = false;
 		File [] directories = {
-				componentConfigDirectory, 
-				validatorConfigDirectory, 
+				componentConfigDirectory,
+				validatorConfigDirectory,
 				converterConfigDirectory
 				};
-		
+
 		for (File directory : directories) {
+			getLog().debug("Searching directory:"+directory+" for config files.");
 			if (directory.exists()) {
 				File[] files = directory.listFiles(filter);
 				for (File file : files) {
@@ -291,6 +311,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 		}
 		*/
 		builderConfig.checkComponentProperties();
+		getLog().debug("Create config done");
 		return builderConfig;
 	}
 
@@ -306,7 +327,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.ajax4jsf.builder.generator.JSFGeneratorConfiguration#getClassLoader()
 	 */
 	public ClassLoader getClassLoader() {
@@ -332,7 +353,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 	/* (non-Javadoc)
 	 * @see org.ajax4jsf.builder.generator.JSFGeneratorConfiguration#getTemplatesPath()
 	 */
-	public String getTemplatesPath() {		
+	public String getTemplatesPath() {
 		return Library.JSF12.equals(library.getJsfVersion())?BuilderContext.TEMPLATES12_PATH:BuilderContext.TEMPLATES_PATH;
 	}
 

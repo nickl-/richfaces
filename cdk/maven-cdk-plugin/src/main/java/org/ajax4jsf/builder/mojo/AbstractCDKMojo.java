@@ -272,6 +272,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 				checkTaglib(t);
 			}
 		}
+		getLog().debug("Done check Taglib");
 		return taglib;
 	}
 
@@ -300,12 +301,14 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	}
 
 	protected ClassLoader createProjectClassLoader(MavenProject project, boolean useCCL) {
+
 		ClassLoader classLoader = Thread.currentThread()
 		.getContextClassLoader();
 		try {
 			List<?> compileClasspathElements = project
-			.getCompileClasspathElements();
+					.getCompileClasspathElements();
 			String outputDirectory = project.getBuild().getOutputDirectory();
+			getLog().debug("Output directory: " + outputDirectory);
 			URL[] urls = new URL[compileClasspathElements.size() + 1];
 			int i = 0;
 			urls[i++] = new File(outputDirectory).toURI().toURL();
@@ -334,6 +337,7 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	}
 
 	protected void checkTaglib(Taglib taglib) {
+		getLog().debug("Checking taglib");
 		if (null == taglib.getDisplayName()) {
 			taglib.setDisplayName(library.getTaglib().getDisplayName());
 		}
@@ -353,9 +357,9 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 		if (null == taglib.getTlibVersion()) {
 			taglib.setTlibVersion(createTaglibVersionFromProjectVersion());
 		}
-		getLog().debug("Taglib uri is " + taglib.getUri());
-		getLog().debug("Taglib shortname is " + taglib.getShortName());
-		getLog().debug("Taglib version is " + taglib.getTlibVersion());
+		getLog().debug("Taglib uri:" + taglib.getUri()
+				+ ", shortname:" + taglib.getShortName()
+				+ ", version:" + taglib.getTlibVersion());
 	}
 
 }

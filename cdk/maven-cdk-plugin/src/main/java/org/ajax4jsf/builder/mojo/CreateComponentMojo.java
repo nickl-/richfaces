@@ -38,7 +38,7 @@ import org.apache.velocity.VelocityContext;
 public class CreateComponentMojo extends AbstractCDKMojo {
 
 	private static final String TEMPLATES_PREFIX = "/component/";
-	
+
 	private static final String CONFIG_TEMPLATE = TEMPLATES_PREFIX+"config.xml";
 
 	private static final String CLASS_TEMPLATE = TEMPLATES_PREFIX+"UIClass.java";
@@ -50,12 +50,12 @@ public class CreateComponentMojo extends AbstractCDKMojo {
 	 * @required
 	 */
 	private String name ;
-	
+
 	/**
 	 * @parameter default-value="${markup}"
 	 */
 	private String markup ;
-	
+
 	/**
 	 * @parameter default-value="${baseClass}" default-value="javax.faces.component.UIComponentBase"
 	 */
@@ -63,31 +63,35 @@ public class CreateComponentMojo extends AbstractCDKMojo {
 
 	/**
 	 * Directory where the output Java Files will be located.
-	 * 
+	 *
 	 * @parameter default-value="${project.build.plugins}"
 	 * @required
 	 * @readonly
 	 */
      private List plugins ;
-	
+
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		getLog().debug("Create components start.");
 		if(project.getFile()!= null){
 			boolean found= false;
 			Plugin plugin = null;
+
 			// Search for this plugin in project pom
 			for (Iterator iter = plugins.iterator(); iter.hasNext();) {
 				plugin = (Plugin) iter.next();
 				if("maven-cdk-plugin".equals(plugin.getArtifactId())) {
-					
+
 					String groupId;
 					if ("3.1.0".compareTo(plugin.getVersion()) > 0) {
 						groupId = "org.ajax4jsf.cdk";
 					} else {
 						groupId = "org.richfaces.cdk";
 					}
+					getLog().debug("Looking for component plugin:" +
+							groupId + " have:" + plugin.getGroupId());
 
 					if (groupId.equals(plugin.getGroupId())) {
 						found = true;
@@ -112,11 +116,14 @@ public class CreateComponentMojo extends AbstractCDKMojo {
 
 	/**
 	 * @param plugin
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	private void createComponent(Plugin plugin) throws Exception {
+		getLog().debug("Check library config for:"+name);
+
 		checkLibraryConfig();
 		String className = Character.toUpperCase(name.charAt(0))+name.substring(1);
+		getLog().debug("Starting context for class:"+className);
 		VelocityContext context = new VelocityContext();
 		context.put("name", name);
 		context.put("className", className);
@@ -136,6 +143,7 @@ public class CreateComponentMojo extends AbstractCDKMojo {
 		context.put("markup", markup);
 		String markupName = Character.toUpperCase(markup.charAt(0))+markup.substring(1);
 		context.put("markupName", markupName);
+		getLog().debug("Writing configuration for:"+markupName);
 		// Create component configuration file.
 		File configFile = new File(componentConfigDirectory,name+".xml");
 		writeParsedTemplate(CONFIG_TEMPLATE, context, configFile);

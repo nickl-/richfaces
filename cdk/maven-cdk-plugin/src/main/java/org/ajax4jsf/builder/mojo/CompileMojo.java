@@ -49,18 +49,18 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 /**
  * Compile all xml templates, matched given pattern to Java classes. Sources
  * will be created in {@link AbstractCDKMojo#outputJavaDirectory}
- * 
+ *
  * @goal compile
  * @requiresDependencyResolution compile
  * @phase generate-sources
  * @author shura
- * 
+ *
  */
 public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 
 	/**
 	 * Project executed by first compile lifecycle.
-	 * 
+	 *
 	 * @parameter default-value="${executedProject}"
 	 * @readonly
 	 */
@@ -68,7 +68,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 
 	/**
 	 * The reactor projects.
-	 * 
+	 *
 	 * @parameter default-value="${project.parent}"
 	 * @readonly
 	 */
@@ -81,35 +81,35 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 	/**
 	 * A list of inclusion filters for the compiler. By default, include all
 	 * files in templates directory.
-	 * 
+	 *
 	 * @parameter
 	 */
 	private String[] includes;
 
 	/**
 	 * A list of exclusion filters for the compiler. None by default.
-	 * 
+	 *
 	 * @parameter
 	 */
 	private String[] excludes;
 
 	/**
 	 * The local repository.
-	 * 
+	 *
 	 * @parameter default-value="${localRepository}"
 	 */
 	private ArtifactRepository localRepository;
 
 	/**
 	 * To look up Archiver/UnArchiver implementations
-	 * 
+	 *
 	 * @component
 	 */
 	private ArchiverManager archiverManager;
 
 	/**
 	 * Project builder
-	 * 
+	 *
 	 * @component
 	 */
 	private MavenProjectBuilder mavenProjectBuilder;
@@ -117,10 +117,11 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		getLog().debug("CDK Compile strart");
 
 		// VelocityTemplates.init();
 		try {
@@ -128,7 +129,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 					.lookupList("org.ajax4jsf.templatecompiler.elements.ElementsFactory");
 			for (Iterator iter = components.iterator(); iter.hasNext();) {
 				Object element = iter.next();
-				System.out.println(element.getClass().getName());
+				getLog().debug(element.getClass().getName());
 
 			}
 			System.out.println("Components Map");
@@ -137,7 +138,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 			for (Iterator iter = componentsMap.entrySet().iterator(); iter
 					.hasNext();) {
 				Map.Entry element = (Map.Entry) iter.next();
-				System.out.println(element.getKey() + ":"
+				getLog().debug(element.getKey() + ":"
 						+ element.getValue().getClass().getName());
 			}
 		} catch (ComponentLookupException e) {
@@ -159,7 +160,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 					throw new MojoExecutionException("Error get parent project for a components library",e);
 				}
 			} else {
-				throw new MojoFailureException("Parent project pom file "+parentPom.getAbsolutePath()+" is not found for a components library");					
+				throw new MojoFailureException("Parent project pom file "+parentPom.getAbsolutePath()+" is not found for a components library");
 			}
 		}else {
 			throw new MojoFailureException("Components library project must have parent pom with components modules");
@@ -168,14 +169,14 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 		getLog().info("Project object :\n" + toLog(project) + "\n");
 		getLog().info("Project object Model :\n" + toLog(project.getModel()) + "\n");
 		getLog().info("Project object Parent Model :\n" + toLog(project.getModel().getParent()) + "\n");
-		
+
 		getLog().info(
 				"Executed Project object :\n" + toLog(executedProject) + "\n");
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable#contextualize(org.codehaus.plexus.context.Context)
 	 */
 	public void contextualize(Context context) throws ContextException {
@@ -190,7 +191,7 @@ public class CompileMojo extends AbstractCDKMojo implements Contextualizable {
 
 	/**
 	 * Convert any Java Object to JavaScript representation ( as possible ).
-	 * 
+	 *
 	 * @param obj
 	 * @return
 	 * @throws MojoExecutionException
