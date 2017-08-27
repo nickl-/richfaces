@@ -164,22 +164,23 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 	protected VelocityComponent velocity;
 	/**
 	 * Check library configuration, and fill all empty values to default.
-	 * 
+	 *
 	 * @return
 	 */
 	protected Taglib checkLibraryConfig() {
 		if (null != library) {
-			getLog().debug("Library prefix is " + library.getPrefix());
+			getLog().debug("Library prefix is: " + library.getPrefix());
 		} else {
 			library = new Library();
+			getLog().debug("New empty library config.");
 		}
 		if (null == library.getPrefix()) {
 			library.setPrefix(project.getGroupId());
-
+			getLog().debug("Set library prefix: " + library.getPrefix());
 		}
-		getLog().debug("Default prefix for a generated packages: "+library.getPrefix());
+
 		if (null == library.getDescription()) {
-			library.setDescription(project.getDescription());	
+			library.setDescription(project.getDescription());
 		}
 		getLog().debug("Library description: "+library.getDescription());
 		if( null == library.getJsfVersion()){

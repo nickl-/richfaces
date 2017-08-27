@@ -139,10 +139,6 @@
 <plugin>
     <artifactId>maven-compiler-plugin</artifactId>
     <inherited>true</inherited>
-    <configuration>
-        <source>1.5</source>
-        <target>1.5</target>
-    </configuration>
 </plugin>
 ...]]>
     </programlisting>
@@ -185,10 +181,6 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <inherited>true</inherited>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
