@@ -19,7 +19,15 @@
           </property>
           <property>
             <name>velocimacro.messages.on</name>
-            <value>false</value>
+            <value>true</value>
+          </property>
+          <property>
+            <name>velocimacro.permissions.allow.inline.to.replace.global</name>
+            <value>true</value>
+          </property>
+          <property>
+            <name>velocimacro.library</name>
+            <value>VM_global_library.vm</value>
           </property>
           <property>
             <name>resource.manager.logwhenfound</name>

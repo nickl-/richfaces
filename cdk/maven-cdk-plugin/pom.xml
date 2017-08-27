@@ -39,12 +39,12 @@
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
-			<version>1.5.1</version>
+			<version>3.0.24</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-velocity</artifactId>
-			<version>1.1.2</version>
+			<version>1.1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,15 +63,12 @@
 			<plugin>
 				<groupId>org.codehaus.modello</groupId>
 				<artifactId>modello-maven-plugin</artifactId>
-				<version>1.0-alpha-18</version>
+				<version>1.9.1</version>
 				<executions>
 					<execution>
 						<goals>
-              <!-- Generate the xpp3 reader code -->
 							<goal>xpp3-reader</goal>
-              <!-- Generate the xpp3 writer code -->
 							<goal>xpp3-writer</goal>
-              <!-- Generate the Java sources for the model itself -->
 							<goal>java</goal>
 						</goals>
 					</execution>
