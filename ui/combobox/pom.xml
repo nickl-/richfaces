@@ -8,7 +8,6 @@
   <groupId>org.richfaces.ui</groupId>
   <artifactId>combobox</artifactId>
   <name>combobox</name>
-  <version>3.3.4.Final</version>
   <build>
     <plugins>
       <plugin>

@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>framework</artifactId>
 		<groupId>org.richfaces</groupId>
@@ -9,7 +8,6 @@
 	<groupId>org.richfaces.framework</groupId>
 	<artifactId>${classifiedArtifactId}</artifactId>
 	<name>Java Server Faces AJAX framework implementation</name>
-	<version>3.3.4.Final</version>
 	<build>
 		<resources>
 			<resource>
@@ -20,14 +18,19 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin:helpmojo</artifactId>
+                <version>3.5</version>
+			</plugin>
 			<plugin> 
 				<!-- Necessary due to http://jira.codehaus.org/browse/MINSTALL-41 -->
 		        <artifactId>maven-install-plugin</artifactId> 
-		        <version>2.3</version> 
+                <version>${version.install.plugin}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.2</version>
+                <version>${version.resources.plugin}</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>

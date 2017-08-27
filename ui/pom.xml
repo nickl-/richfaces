@@ -5,10 +5,65 @@
 		<version>3.3.4.Final</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces</groupId>
 	<artifactId>ui</artifactId>
 	<packaging>pom</packaging>
 	<name>RichFaces Components</name>
+
+	<modules>
+		<module>core</module>
+		<module>colorPicker</module>
+		<module>drag-drop</module>
+		<module>effect</module>
+		<module>panel</module>
+		<module>panelbar</module>
+		<module>dataFilterSlider</module>
+		<module>gmap</module>
+		<module>jQuery</module>
+		<module>virtualEarth</module>
+		<module>separator</module>
+		<module>spacer</module>
+		<module>paint2D</module>
+		<module>togglePanel</module>
+		<module>tabPanel</module>
+		<module>simpleTogglePanel</module>
+		<module>toolBar</module>
+		<module>inputnumber-slider</module>
+		<module>inputnumber-spinner</module>
+		<module>tree</module>
+		<module>suggestionbox</module>
+		<module>dataTable</module>
+		<module>modal-panel</module>
+		<module>datascroller</module>
+		<module>menu-components</module>
+		<module>dropdown-menu</module>
+		<module>tooltip</module>
+		<module>panelmenu</module>
+		<module>calendar</module>
+		<module>treeModel</module>
+		<module>message</module>
+		<module>scrollableDataTable</module>
+		<module>insert</module>
+		<module>componentControl</module>
+		<module>orderingList</module>
+		<module>listShuttle</module>
+		<module>contextMenu</module>
+		<module>columns</module>
+		<module>combobox</module>
+		<module>pickList</module>
+	    <module>progressBAR</module>
+		<module>fileUpload</module>
+		<module>inplaceInput</module>
+		<module>inplaceSelect</module>
+		<module>functions</module>
+		<module>hotKey</module>
+		<module>beanValidator</module>
+		<module>state</module>
+		<module>extendedDataTable</module>
+		<module>editor</module>
+		<module>layout</module>
+  </modules>
+
+
 	<properties>
 		<!-- -->
 	</properties>
@@ -31,10 +86,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -130,59 +181,6 @@
 			</activation>
 		</profile>
 	</profiles>
-	<modules>
-		<module>core</module>
-		<module>colorPicker</module>
-		<module>drag-drop</module>
-		<module>effect</module>
-		<module>panel</module>
-		<module>panelbar</module>
-		<module>dataFilterSlider</module>
-		<module>gmap</module>
-		<module>jQuery</module>
-		<module>virtualEarth</module>
-		<module>separator</module>
-		<module>spacer</module>
-		<module>paint2D</module>
-		<module>togglePanel</module>
-		<module>tabPanel</module>
-		<module>simpleTogglePanel</module>
-		<module>toolBar</module>
-		<module>inputnumber-slider</module>
-		<module>inputnumber-spinner</module>
-		<module>tree</module>
-		<module>suggestionbox</module>
-		<module>dataTable</module>
-		<module>modal-panel</module>
-		<module>datascroller</module>
-		<module>menu-components</module>
-		<module>dropdown-menu</module>
-		<module>tooltip</module>
-		<module>panelmenu</module>
-		<module>calendar</module>
-		<module>treeModel</module>
-		<module>message</module>
-		<module>scrollableDataTable</module>
-		<module>insert</module>
-		<module>componentControl</module>
-		<module>orderingList</module>
-		<module>listShuttle</module>
-		<module>contextMenu</module>
-		<module>columns</module>
-		<module>combobox</module>
-		<module>pickList</module>
-	    <module>progressBAR</module>
-		<module>fileUpload</module>
-		<module>inplaceInput</module>
-		<module>inplaceSelect</module>
-		<module>functions</module>
-		<module>hotKey</module>
-		<module>beanValidator</module>
-		<module>state</module>
-		<module>extendedDataTable</module>
-		<module>editor</module>
-		<module>layout</module>
-  </modules>
 	<dependencies>
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>

@@ -215,7 +215,7 @@
 								</include>
 
 								<include>
-									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce_src-min.js
+									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/tiny_mce/tiny_mce-min.js
 								</include>
 								<include>
 									${project.build.directory}/compressed/org/richfaces/renderkit/html/scripts/editor-min.js
@@ -262,6 +262,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -431,24 +432,28 @@
 					</plugin>
 				</plugins>
 			</build>
-			<dependencies>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-api</artifactId>
-					<version>3.3.4.Final</version>
-				</dependency>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl</artifactId>
-					<version>3.3.4.Final</version>
-				</dependency>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl-jsf2</artifactId>
-					<version>3.3.4.Final</version>
-				</dependency>
-			</dependencies>
 		</profile>
 	</profiles>
-	<dependencies />
+	<dependencies >
+		<dependency>
+			<groupId>org.codelibs</groupId>
+			<artifactId>jhighlight</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>3.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam</groupId>
+			<artifactId>jboss-seam-ui</artifactId>
+			<version>2.3.11-jee7</version>
+		</dependency>
+	</dependencies>
 </project>
