@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -301,6 +302,16 @@ abstract class StagingHttpResponse implements HttpServletResponse {
 				public void write(int b) throws IOException {
 					StagingHttpResponse.this.outputStream.write(b);				
 				}
+
+				@Override
+				public boolean isReady() {
+					return true;
+				}
+
+				@Override
+				public void setWriteListener(WriteListener writeListener) {
+					 throw new RuntimeException("writeListener not supported");
+				}
 				
 			};			
 		}
@@ -438,7 +449,7 @@ abstract class StagingHttpResponse implements HttpServletResponse {
 	/**
 	 * @return the status
 	 */
-	int getStatus() {
+	public int getStatus() {
 		return status;
 	}
 

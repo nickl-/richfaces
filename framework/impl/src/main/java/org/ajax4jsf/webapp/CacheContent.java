@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
 import javax.servlet.http.HttpServletResponse;
 
 import org.ajax4jsf.io.FastBufferOutputStream;
@@ -247,6 +248,16 @@ public class CacheContent implements Serializable {
 
 				public void write(int b) throws IOException {
 					outputStream.write(b);
+				}
+
+				@Override
+				public boolean isReady() {
+					return true;
+				}
+
+				@Override
+				public void setWriteListener(WriteListener writeListener) {
+					 throw new RuntimeException("writeListener not supported");
 				}
 
 			};

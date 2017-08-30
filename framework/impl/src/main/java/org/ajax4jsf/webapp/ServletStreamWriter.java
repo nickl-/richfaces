@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
 
 /**
  * HACK - for case if servlet response already use Writer, create wrapper to stream -
@@ -107,5 +108,15 @@ final class ServletStreamWriter extends ServletOutputStream {
 		this.flush();
 		String string = null==_charset?new String(b,off,len):new String(b,off,len,_charset);
 		_writer.write(string);
+	}
+
+	@Override
+	public boolean isReady() {
+		return true;
+	}
+
+	@Override
+	public void setWriteListener(WriteListener writeListener) {
+		 throw new RuntimeException("writeListener not supported");
 	}
 }

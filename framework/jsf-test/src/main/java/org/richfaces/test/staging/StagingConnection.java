@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -17,7 +18,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.servlet.AsyncContext;
+import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -25,6 +29,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpUpgradeHandler;
+import javax.servlet.http.Part;
 
 import org.richfaces.test.TestException;
 
@@ -599,6 +605,68 @@ public class StagingConnection {
 			server.requestAttributeReplaced(this, name, o);
 	
 		}
+
+		public String changeSessionId() {
+			return getSession().getId();
+		}
+
+		public boolean authenticate(HttpServletResponse response) throws IOException, ServletException {
+			return request.authenticate(response);
+		}
+
+		public void login(String username, String password) throws ServletException {
+			request.login(username, password);
+			
+		}
+
+		public void logout() throws ServletException {
+			request.logout();
+		}
+
+		public Collection<Part> getParts() throws IOException, ServletException {
+			return request.getParts();
+		}
+
+		public Part getPart(String name) throws IOException, ServletException {
+			return request.getPart(name);
+		}
+
+		public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
+			return null;
+		}
+
+		public long getContentLengthLong() {
+			return request.getContentLengthLong();
+		}
+
+		public ServletContext getServletContext() {
+			return server.getContext();
+		}
+
+		public AsyncContext startAsync() throws IllegalStateException {
+			return request.startAsync();
+		}
+
+		public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse)
+				throws IllegalStateException {
+			return request.startAsync(servletRequest, servletResponse);
+		}
+
+		public boolean isAsyncStarted() {
+			return request.isAsyncStarted();
+		}
+
+		public boolean isAsyncSupported() {
+			return request.isAsyncSupported();
+		}
+
+		public AsyncContext getAsyncContext() {
+			return request.getAsyncContext();
+		}
+
+		public DispatcherType getDispatcherType() {
+			return request.getDispatcherType();
+		}
 	
 	}
 
@@ -613,6 +681,22 @@ public class StagingConnection {
 		public void addCookie(Cookie cookie) {
 			cookies.add(cookie);
 	
+		}
+
+		public String getHeader(String name) {
+			return getRequest().getHeader(name);
+		}
+
+		public Collection<String> getHeaders(String name) {
+			return Collections.list(getRequest().getHeaders(name));
+		}
+
+		public Collection<String> getHeaderNames() {
+			return Collections.list(getRequest().getHeaderNames());
+		}
+
+		public void setContentLengthLong(long len) {
+			getResponse().setContentLengthLong(len);
 		}
 	
 	}

@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -23,6 +24,7 @@ import java.util.zip.ZipFile;
 import javax.naming.NamingException;
 import javax.naming.spi.NamingManager;
 import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextAttributeEvent;
@@ -30,11 +32,16 @@ import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
+import javax.servlet.SessionCookieConfig;
+import javax.servlet.SessionTrackingMode;
+import javax.servlet.descriptor.JspConfigDescriptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -192,6 +199,137 @@ public class StagingServer {
 		@Override
 		protected ServerResource getServerResource(String path) {
 			return serverRoot.getResource(new ServerResourcePath(path));
+		}
+
+		public int getEffectiveMajorVersion() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public int getEffectiveMinorVersion() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public Dynamic addServlet(String servletName, String className) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Dynamic addServlet(String servletName, Servlet servlet) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Dynamic addServlet(String servletName, Class<? extends Servlet> servletClass) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public <T extends Servlet> T createServlet(Class<T> clazz) throws ServletException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public ServletRegistration getServletRegistration(String servletName) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Map<String, ? extends ServletRegistration> getServletRegistrations() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName,
+				Class<? extends Filter> filterClass) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public <T extends Filter> T createFilter(Class<T> clazz) throws ServletException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public FilterRegistration getFilterRegistration(String filterName) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Map<String, ? extends FilterRegistration> getFilterRegistrations() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public SessionCookieConfig getSessionCookieConfig() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void setSessionTrackingModes(Set<SessionTrackingMode> sessionTrackingModes) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public Set<SessionTrackingMode> getDefaultSessionTrackingModes() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Set<SessionTrackingMode> getEffectiveSessionTrackingModes() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void addListener(String className) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public <T extends EventListener> void addListener(T t) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void addListener(Class<? extends EventListener> listenerClass) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public <T extends EventListener> T createListener(Class<T> clazz) throws ServletException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public JspConfigDescriptor getJspConfigDescriptor() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public ClassLoader getClassLoader() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void declareRoles(String... roleNames) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public String getVirtualServerName() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 	}

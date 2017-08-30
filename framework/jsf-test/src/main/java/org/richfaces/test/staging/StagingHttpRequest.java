@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.servlet.ReadListener;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -334,8 +335,22 @@ abstract class StagingHttpRequest implements HttpServletRequest {
 
 				@Override
 				public int read() throws IOException {
-					// TODO Auto-generated method stub
 					return input.read();
+				}
+
+				@Override
+				public boolean isFinished() {
+					return false;
+				}
+
+				@Override
+				public boolean isReady() {
+					return true;
+				}
+
+				@Override
+				public void setReadListener(ReadListener readListener) {
+					 throw new RuntimeException("writeListener not supported");
 				}
 				
 			};

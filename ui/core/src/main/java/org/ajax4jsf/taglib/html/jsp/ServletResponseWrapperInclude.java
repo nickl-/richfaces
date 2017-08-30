@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
+import javax.servlet.WriteListener;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.jsp.JspWriter;
@@ -87,7 +88,6 @@ public class ServletResponseWrapperInclude extends HttpServletResponseWrapper {
 				 * @see java.io.OutputStream#flush()
 				 */
 				public void flush() throws IOException {
-					// TODO Auto-generated method stub
 					super.flush();
 				}
 
@@ -95,7 +95,6 @@ public class ServletResponseWrapperInclude extends HttpServletResponseWrapper {
 				 * @see java.io.OutputStream#write(byte[], int, int)
 				 */
 				public void write(byte[] b, int off, int len) throws IOException {
-					// TODO Auto-generated method stub
 					_bytes.write(b, off, len);
 				}
 
@@ -103,7 +102,6 @@ public class ServletResponseWrapperInclude extends HttpServletResponseWrapper {
 				 * @see java.io.OutputStream#write(byte[])
 				 */
 				public void write(byte[] b) throws IOException {
-					// TODO Auto-generated method stub
 					_bytes.write(b);
 				}
 
@@ -112,6 +110,16 @@ public class ServletResponseWrapperInclude extends HttpServletResponseWrapper {
 				 */
 				public void write(int b) throws IOException {
 					_bytes.write(b);					
+				}
+
+				@Override
+				public boolean isReady() {
+					return true;
+				}
+
+				@Override
+				public void setWriteListener(WriteListener writeListener) {
+					 throw new RuntimeException("writeListener not supported");
 				}
 				
 			};
@@ -135,13 +143,11 @@ public class ServletResponseWrapperInclude extends HttpServletResponseWrapper {
 	}
 	
 	public void reset() {
-		// TODO Auto-generated method stub
 		resetBuffer();
 	}
 	
 	public void flushBuffer() throws IOException {
 		if (useStream) {
-			// TODO - detect encoding ?
 			_bytes.writeTo(_jspWriter, getCharacterEncoding());
 			_bytes = new FastBufferOutputStream(getBufferSize());
 		}

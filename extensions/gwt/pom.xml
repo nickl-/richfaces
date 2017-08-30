@@ -109,8 +109,7 @@ see http://groups.google.com/group/gwt-maven/browse_thread/thread/09885f643c7b4d
 		
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>

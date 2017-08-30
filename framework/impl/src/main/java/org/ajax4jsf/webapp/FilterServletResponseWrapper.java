@@ -48,6 +48,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.WriteListener;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
@@ -279,6 +280,18 @@ public class FilterServletResponseWrapper extends HttpServletResponseWrapper {
 				byteStream.write(b, off, len);
 			}
 		}
+
+
+		@Override
+		public boolean isReady() {
+			return true;
+		}
+
+
+		@Override
+		public void setWriteListener(WriteListener writeListener) {
+			 throw new RuntimeException("writeListener not supported");
+		}
     }
     
     public static  class NullServletOutputStream extends ServletOutputStream {
@@ -301,6 +314,16 @@ public class FilterServletResponseWrapper extends HttpServletResponseWrapper {
 		public void write(int b) throws IOException {
 			// this-is null stream, do nothing !
 			
+		}
+
+		@Override
+		public boolean isReady() {
+			return true;
+		}
+
+		@Override
+		public void setWriteListener(WriteListener writeListener) {
+			 throw new RuntimeException("writeListener not supported");
 		}
     	
     }

@@ -85,8 +85,9 @@ abstract class StagingServletContext implements ServletContext {
 	 * @param name
 	 * @param value
 	 */
-	public void setInitParameter(String name, String value) {
+	public boolean setInitParameter(String name, String value) {
 		initParameters.put(name, value);
+		return true;
 	}
 	
 	/* (non-Javadoc)
