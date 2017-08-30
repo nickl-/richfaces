@@ -11,8 +11,8 @@ import javax.faces.component.UIComponent;
 import ${component.classname};
 
 /**
- * @author shura (latest modification by $Author: alexsmirnov $)
- * @version $Revision: 1.1.2.2 $ $Date: 2007/01/03 21:05:14 $
+ * @author shura (latest modification by Maksim Kaszynski)
+ * @version 3.2.0
  *
  */
 public class $tag.simpleClassName extends $tag.superclass {
@@ -93,10 +93,12 @@ public class $tag.simpleClassName extends $tag.superclass {
 			setActionListenerProperty(component, this._${prop.name});
 		 #elseif($prop.name == "converter")
 			setConverterProperty(component, this._${prop.name});
+		 #elseif($prop.name == "rowKeyConverter")
+			setRowKeyConverterProperty(component, this._${prop.name});
 		 #elseif($prop.name == "validator")
 			setValidatorProperty(component, this._${prop.name});
 		 #elseif($prop.name == "valueChangeListener")
-			setValueChangedListenerProperty(component, this._${prop.name});
+			setValueChangeListenerProperty(component, this._${prop.name});
 		 #elseif($prop.name == "value")
 			setValueProperty(component, this._${prop.name});
 		 #elseif($prop.elonly || $prop.isInstanceof("javax.faces.el.ValueBinding") )

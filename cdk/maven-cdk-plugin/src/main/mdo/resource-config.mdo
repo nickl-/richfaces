@@ -12,9 +12,9 @@
 		<class rootElement="true" xml.tagName="resource-config">
 			<name>ResourceConfig</name>
 			<fields>
-				<field xml.listStyle="flat">
+				<field xml.itemStyle="flat">
 					<name>resources</name>
-					<association xml.listStyle="flat" xml.associationTagName="">
+					<association xml.itemStyle="flat" xml.associationTagName="">
 						<type>Resource</type>
 						<multiplicity>*</multiplicity>
 					</association>

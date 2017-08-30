@@ -10,13 +10,8 @@ import $import ;
 #end
 
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
-#if(${generator.key})
-
-import java.io.IOException;
-import javax.faces.FacesException;
-import org.ajax4jsf.framework.util.base64.Codec;
-#end
+import javax.el.ValueExpression;
+import javax.el.ELException;
 
 /**
  * Component-Type ${component.name}
@@ -87,9 +82,9 @@ import org.ajax4jsf.framework.util.base64.Codec;
 		 if(this._${prop.name}Set){
 			return this._${prop.name};
 		 }
-    	ValueBinding vb = getValueBinding("${prop.name}");
-    	if (vb != null) {
-    	    ${prop.boxingClass} value = (${prop.boxingClass}) vb.getValue(getFacesContext());
+    	ValueExpression ve = getValueExpression("${prop.name}");
+    	if (ve != null) {
+    	    ${prop.boxingClass} value = (${prop.boxingClass}) ve.getValue(getFacesContext().getELContext());
     	    if (null == value) {
     			return this._${prop.name};
     	    }
@@ -101,11 +96,11 @@ import org.ajax4jsf.framework.util.base64.Codec;
         if (null != this._${prop.name})
         {
             return this._${prop.name};
-        #if( !$prop.isInstanceof("javax.faces.el.MethodBinding") && !$prop.isInstanceof("javax.faces.el.ValueBinding"))
+        #if( !$prop.isInstanceof("javax.el.MethodExpression") && !$prop.isInstanceof("javax.el.ValueExpression")&& !$prop.isInstanceof("javax.faces.el.ValueBinding")&& !$prop.isInstanceof("javax.faces.el.MethodBinding"))
 	    }
-        ValueBinding vb = getValueBinding("${prop.name}");
-        if (null != vb){
-            return (${prop.simpleClassName})vb.getValue(getFacesContext());
+        ValueExpression ve = getValueExpression("${prop.name}");
+        if (null != ve){
+            return (${prop.simpleClassName})ve.getValue(getFacesContext().getELContext());
 		#end
         } else {
             return ${prop.defaultvalue};

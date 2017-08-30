@@ -8,56 +8,17 @@ package ${tag.packageName};
 import $import ;
 #end
 import javax.faces.component.UIComponent;
-import javax.faces.webapp.UIComponentTag;
 import javax.faces.validator.Validator;
 import org.apache.commons.beanutils.ConvertUtils;
 import javax.faces.context.FacesContext;
 import javax.servlet.jsp.JspException;
-import javax.faces.el.ValueBinding;
+import javax.el.ValueExpression;
 import ${validator.classname};
 
 public class $tag.simpleClassName extends $tag.superclass {
 
-	//private String validatorId = "${validator.id}";
-	
-	
-// Fields
-#foreach( $prop in $validator.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.name
-   * ${prop.xmlEncodedDescription}
-   */
-  private String  _$prop.name = null;
 
-#end	 
-#end
-// Setters
-#foreach( $prop in $validator.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.description
-   * Setter for $prop.name
-   * @param $prop.name - new value
-   */
-  public void ${prop.setterName}( String  __${prop.name} )
-  {
-	this._${prop.name} = __${prop.name};
-  }
-	 
-#end
-#if( $prop.alias)
-  /* 
-   * ${prop.xmlEncodedDescription}
-   * Setter for alias of $prop.name as $prop.alias
-   * @param $prop.name - new value
-   */
-  public void set${prop.upperFirstChar($prop.alias)}( String  __${prop.alias} )
-  {
-    this.${prop.setterName}(__${prop.alias});
-  }
-#end
-#end
+#tagPropertyMethods12($validator)
 
   protected Validator createValidator() throws JspException
   {
@@ -75,16 +36,15 @@ public class $tag.simpleClassName extends $tag.superclass {
     if (_${prop.name} != null) 
     {
 #if( ${prop.el} )
-      if (UIComponentTag.isValueReference(_${prop.name})) 
+      if (_${prop.name} instanceof ValueExpression) 
       {
-        ValueBinding vb = facesContext.getApplication().createValueBinding(_${prop.name});
-        validator.${prop.setterName}((${prop.simpleClassName}) vb.getValue(facesContext));
+        validator.${prop.setterName}((${prop.simpleClassName}) _${prop.name}.getValue(facesContext.getELContext()));
       }
-#if (!${prop.elonly})
-      else
+#if (${prop.elonly})
+      if(null != this._${prop.name} && this._${prop.name}.isLiteralText())
       {
-        validator.${prop.setterName}((${prop.simpleClassName}) ConvertUtils.convert(_${prop.name}, ${prop.simpleClassName}.class));
-      }
+	    throw new IllegalArgumentException("Validator ${validator.name} allows only EL expressions for property ${prop.name}");
+	  }
 #end
     }
 #else

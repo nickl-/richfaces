@@ -205,8 +205,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 					taglibGenerator.setDisplayname(taglib.getDisplayName());
 					taglibGenerator.setListenerclass(taglib.getListenerClass());
 					taglibGenerator.setValidatorclass(taglib.getValidatorClass());
-					taglibGenerator.setTlibversion(taglib.getTlibVersion());
-					taglibGenerator.setJspversion(taglib.getJspVersion());
+					taglibGenerator.setTlibversion(taglib.getTlibVersion());				
 					taglibGenerator.setInclude(taglibInclude);
 					taglibGenerator.setTaglib(new File(
 							outputResourcesDirectory, "META-INF/"+taglib.getShortName()
@@ -354,7 +353,7 @@ public class GenerateMojo extends AbstractCDKMojo implements
 	 * @see org.ajax4jsf.builder.generator.JSFGeneratorConfiguration#getTemplatesPath()
 	 */
 	public String getTemplatesPath() {
-		return Library.JSF12.equals(library.getJsfVersion())?BuilderContext.TEMPLATES12_PATH:BuilderContext.TEMPLATES_PATH;
+		return BuilderContext.TEMPLATES_PATH;
 	}
 
 }

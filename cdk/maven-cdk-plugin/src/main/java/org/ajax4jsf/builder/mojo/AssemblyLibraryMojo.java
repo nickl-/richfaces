@@ -85,8 +85,6 @@ public class AssemblyLibraryMojo extends AbstractCDKMojo {
 
 	private static final String TEMPLATES_PREFIX = "templates/";
 
-	private static final String TEMPLATES12_PREFIX = "templates12/";
-
 	private static final String FACES_CONFIG_TEMPLATE = "faces-config.vm";
 
 	private static final String RESOURCES_CONFIG_TEMPLATE = "resources-config.vm";
@@ -274,8 +272,7 @@ public class AssemblyLibraryMojo extends AbstractCDKMojo {
 		setupParentProject();
 		checkLibraryConfig();
 		if (null == templates) {
-			templates = Library.JSF12.equals(library.getJsfVersion()) ? TEMPLATES12_PREFIX
-					: TEMPLATES_PREFIX;
+			templates = TEMPLATES_PREFIX;
 		}
 		List<Model> models = extractModules();
 		mergeFacesConfig(models);

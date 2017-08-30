@@ -38,8 +38,6 @@ public class BuilderContext extends VelocityContext {
 
 	public static final String TEMPLATES_PATH = "META-INF/templates";
 
-	public static final String TEMPLATES12_PATH = "META-INF/templates12";
-
 	/**
 	 * 
 	 */
@@ -50,7 +48,7 @@ public class BuilderContext extends VelocityContext {
 			Properties velocityProperties = new Properties();
 			try {
 				velocityProperties.load(BuilderContext.class.getClassLoader()
-						.getResourceAsStream(TEMPLATES12_PATH+"/velocity.properties"));
+						.getResourceAsStream(TEMPLATES_PATH+"/velocity.properties"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

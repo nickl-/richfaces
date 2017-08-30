@@ -7,55 +7,23 @@ package ${tag.packageName};
 #foreach($import in $imports)
 import $import ;
 #end
+import javax.el.ELException;
+import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
+import javax.el.MethodExpression;
+import javax.faces.el.MethodBinding;
+import javax.faces.el.ValueBinding;
+import javax.el.ValueExpression;
 import javax.faces.convert.Converter;
 import javax.faces.webapp.UIComponentTag;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
-import org.apache.commons.beanutils.ConvertUtils;
 import javax.servlet.jsp.JspException;
 import ${converter.classname};
 
 public class $tag.simpleClassName extends $tag.superclass 
 {
 
-// Fields
-#foreach( $prop in $converter.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.name
-   * ${prop.xmlEncodedDescription}
-   */
-  private String  _$prop.name = null;
-
-#end	 
-#end
-// Setters
-#foreach( $prop in $converter.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.description
-   * Setter for $prop.name
-   * @param $prop.name - new value
-   */
-  public void ${prop.setterName}(String  __${prop.name}) 
-  {
-    this._${prop.name} = __${prop.name};
-  }
-	 
-#end
-#if( $prop.alias)
-  /*
-   * ${prop.xmlEncodedDescription}
-   * Setter for alias of $prop.name as $prop.alias
-   * @param $prop.name - new value
-   */
-  public void set${prop.upperFirstChar($prop.alias)}(String  __${prop.alias}) 
-  {
-    this.${prop.setterName}(__${prop.alias});
-  }
-#end
-#end
+#tagPropertyMethods12($converter)
 
   protected Converter createConverter() throws JspException 
   {
@@ -73,20 +41,19 @@ public class $tag.simpleClassName extends $tag.superclass
     if (_${prop.name} != null) 
     {
 #if( ${prop.el} )
-      if (UIComponentTag.isValueReference(_${prop.name})) 
+      if (_${prop.name} instanceof ValueExpression) 
       {
-        ValueBinding vb = facesContext.getApplication().createValueBinding(_${prop.name});
-        converter.${prop.setterName}((${prop.simpleClassName}) vb.getValue(facesContext));
+        converter.${prop.setterName}((${prop.simpleClassName}) _${prop.name}.getValue(facesContext.getELContext()));
       }
-#if (!${prop.elonly})
-      else
+#if (${prop.elonly})
+      if(null != this._${prop.name} && this._${prop.name}.isLiteralText())
       {
-        converter.${prop.setterName}((${prop.simpleClassName}) ConvertUtils.convert(_${prop.name}, ${prop.simpleClassName}.class));
-      }
+	    throw new IllegalArgumentException("Converter ${converter.name} allows only EL expressions for property ${prop.name}");
+	  }
 #end
     }
 #else
-    converter.${prop.setterName}((${prop.simpleClassName}) ConvertUtils.convert(_${prop.name}, ${prop.simpleClassName}.class));
+    converter.${prop.setterName}((${prop.simpleClassName}) _${prop.name});
 #end
 #end
 #end

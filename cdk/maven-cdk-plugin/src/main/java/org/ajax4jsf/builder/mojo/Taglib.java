@@ -39,9 +39,7 @@ public class Taglib {
 	private String _displayName;
 
 	private String _tlibVersion = null;
-	
-	private String _jspVersion ;
-		
+			
 	private String _validatorClass = null;
 	
 	private String _includeModules = null;
@@ -119,20 +117,6 @@ public class Taglib {
 	 */
 	public void setUri(String uri) {
 		this._uri = uri;
-	}
-
-	/**
-	 * @return the jspVersion
-	 */
-	public String getJspVersion() {
-		return this._jspVersion;
-	}
-
-	/**
-	 * @param jspVersion the jspVersion to set
-	 */
-	public void setJspVersion(String jspVersion) {
-		this._jspVersion = jspVersion;
 	}
 
 	/**

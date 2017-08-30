@@ -113,7 +113,7 @@
 
 	<profiles>
 		<profile>
-			<id>jsf1_2</id>
+			<id>jsf2_0</id>			
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -121,16 +121,6 @@
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
 					<artifactId>richfaces-impl</artifactId>
-					<version>${rfVersion}</version>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>jsf2_0</id>			
-			<dependencies>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl-jsf2</artifactId>
 					<version>${rfVersion}</version>
 				</dependency>
 			</dependencies>

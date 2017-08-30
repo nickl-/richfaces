@@ -57,22 +57,10 @@
 
 	<profiles>
 		<profile>
-			<id>jsf1_2</id>
+			<id>jsf2_0</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			<dependencies>
-        		<dependency>
-    				<groupId>javax.faces</groupId>
-    				<artifactId>jsf-api</artifactId>
-    				<version>1.2_12</version>
-        			<scope>provided</scope>
-        		</dependency>
-			</dependencies>
-		</profile>
-
-		<profile>
-			<id>jsf2_0</id>
 			<dependencies>
         		<dependency>
     				<groupId>com.sun.faces</groupId>

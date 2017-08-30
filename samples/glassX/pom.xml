@@ -43,16 +43,9 @@
 	<profiles>
 		<profile>
 			<id>jsf2_0</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl-jsf2</artifactId>
-					<scope>provided</scope>
-				</dependency>    
-			</dependencies>
-		</profile>
-		<profile>
-			<id>jsf1_2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
@@ -60,9 +53,6 @@
 					<scope>provided</scope>
 				</dependency>    
 			</dependencies>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 		</profile>
 	</profiles>
     <dependencies>

@@ -207,6 +207,9 @@
 		</profile>
 		<profile>
 			<id>jsf2_0</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -231,23 +234,6 @@
 			</dependencies>
 			<properties>
 				<frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>
-				<classifiedArtifactId>richfaces-impl-jsf2</classifiedArtifactId>
-			</properties>
-		</profile>
-		<profile>
-			<id>jsf1_2</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-			<properties>
-				<frameworkAdditionalSourceFolder>src/main/java-jsf12</frameworkAdditionalSourceFolder>
 				<classifiedArtifactId>richfaces-impl</classifiedArtifactId>
 			</properties>
 		</profile>

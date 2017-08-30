@@ -17,8 +17,8 @@ import com.sun.facelets.*;
 import com.sun.facelets.el.*;
 import com.sun.facelets.tag.*;
 /**
- * @author shura (latest modification by $Author: ishabalov $)
- * @version $Revision: 1.1.2.4 $ $Date: 2007/02/20 20:58:03 $
+ * @author shura (latest modification by $Author: alexsmirnov $)
+ * @version $Revision: 1.1.2.1 $ $Date: 2007/02/26 20:48:51 $
  *
  */
 public class $tag.simpleClassName extends $tag.superclass {
@@ -41,8 +41,8 @@ public class $tag.simpleClassName extends $tag.superclass {
   }
 
   	/**
-	 * @author shura (latest modification by $Author: ishabalov $)
-	 * @version $Revision: 1.1.2.4 $ $Date: 2007/02/20 20:58:03 $
+	 * @author shura (latest modification by $Author: alexsmirnov $)
+	 * @version $Revision: 1.1.2.1 $ $Date: 2007/02/26 20:48:51 $
 	 *
 	 */
 	static class ${tag.simpleClassName}MetaRule extends MetaRule{
@@ -54,11 +54,18 @@ public class $tag.simpleClassName extends $tag.superclass {
 	        if (meta.isTargetInstanceOf(${component.simpleClassName}.class)) {
 		#foreach($prop in $component.properties)
 		 #if( !$prop.existintag )
-		  #if( $prop.isInstanceof("javax.faces.el.MethodBinding") )
+		  #if( $prop.isInstanceof("javax.faces.el.MethodBinding") || $prop.isInstanceof("javax.el.MethodExpression") )
+	            #if ( $prop.name != "actionExpression" )
+	            
 	            if ("${prop.name}".equals(name)) {
 	                    return new ${prop.name}Mapper(attribute);
 	            }
-
+				
+				#else
+		
+				//skip $prop.name
+	
+				#end
 		  #end
 		 #end
 		#end
@@ -71,7 +78,8 @@ public class $tag.simpleClassName extends $tag.superclass {
 #foreach($prop in $component.properties)
 #if( !$prop.existintag )
 
-  #if( $prop.isInstanceof("javax.faces.el.MethodBinding") )
+  #if( $prop.isInstanceof("javax.faces.el.MethodBinding") || $prop.isInstanceof("javax.el.MethodExpression") )
+	#if ( $prop.name != "actionExpression" )
 	
 	static class ${prop.name}Mapper extends Metadata {
 
@@ -90,12 +98,20 @@ public class $tag.simpleClassName extends $tag.superclass {
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
             ((${component.simpleClassName}) instance)
-            .${prop.setterName}(new LegacyMethodBinding(this._action
-                    .getMethodExpression(ctx, null,
+            .${prop.setterName}
+            	#if( $prop.isInstanceof("javax.faces.el.MethodBinding"))
+            		(new LegacyMethodBinding(this._action.getMethodExpression(ctx, null,
                             SIGNATURE)));
+            	#else
+            		(this._action.getMethodExpression(ctx, null,
+                            SIGNATURE));
+            	#end
 		}
 
 	}
+	
+	#end
+	
 	#end
  #end
  #end

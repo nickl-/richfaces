@@ -27,12 +27,6 @@ package org.ajax4jsf.builder.mojo;
  */
 public class Library {
 
-	public static final String JSF10 = "1.0";
-
-	public static final String JSF11 = "1.1";
-
-	public static final String JSF12 = "1.2";
-
 	private String _prefix;
 
 	private String _description;
@@ -113,21 +107,6 @@ public class Library {
 	 */
 	public String getJsfVersion() {
 		return this._jsfVersion;
-	}
-
-	/**
-	 * @param jsfVersion
-	 *            the jsfVersion to set
-	 */
-	public void setJsfVersion(String jsfVersion) {
-		if (JSF10.equals(jsfVersion) || JSF11.equals(jsfVersion)
-				|| JSF12.equals(jsfVersion)) {
-			this._jsfVersion = jsfVersion;
-
-		} else {
-			throw new IllegalArgumentException(
-					"Supported JSF versions is  1.0,1.1 and 1.2 only. ");
-		}
 	}
 
 	/**

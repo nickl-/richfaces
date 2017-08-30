@@ -49,6 +49,8 @@ public class $tag.simpleClassName extends TagSupport {
 	private String type;
 	private String binding;
 
+	#tagPropertyMethods12($listener)
+
 	public int doStartTag() throws JspException {
 
 		UIComponentTag parentTag = UIComponentTag
@@ -175,47 +177,8 @@ public class $tag.simpleClassName extends TagSupport {
 	public void release() {
 		type = null;
 		binding = null;
+		#tagPropertyRelease($listener)
 	}
-
-// Fields
-#foreach( $prop in $listener.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.name
-   * ${prop.xmlEncodedDescription}
-   */
-  private String  _$prop.name = null;
-
-#end	 
-#end
-// Setters
-#foreach( $prop in $listener.properties )
-#if( !$prop.existintag )
-  /*
-   * $prop.description
-   * Setter for $prop.name
-   * @param $prop.name - new value
-   */
-  public void ${prop.setterName}(String  __${prop.name}) 
-  {
-    this._${prop.name} = __${prop.name};
-  }
-	 
-#end
-#if( $prop.alias)
-  /*
-   * ${prop.xmlEncodedDescription}
-   * Setter for alias of $prop.name as $prop.alias
-   * @param $prop.name - new value
-   */
-  public void set${prop.upperFirstChar($prop.alias)}(String  __${prop.alias}) 
-  {
-    this.${prop.setterName}(__${prop.alias});
-  }
-#end
-#end
-
-
 
 
 }

@@ -183,23 +183,6 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 			library.setDescription(project.getDescription());
 		}
 		getLog().debug("Library description: "+library.getDescription());
-		if( null == library.getJsfVersion()){
-			String version = Library.JSF11;
-			// Check version-specific methods in UIComponent class
-			try {
-				Class<?> componentClass = createProjectClassLoader(project, false).loadClass("javax.faces.component.UIComponent");
-				Method[] methods = componentClass.getDeclaredMethods();
-				for (int i = 0; i < methods.length; i++) {
-					if("encodeAll".equals(methods[i].getName())){
-						version = Library.JSF12;
-						break;
-					}
-				}
-			} catch (ClassNotFoundException e) {
-				// Ignore - by defaule, generate codes for JSF 1.1
-			}
-			library.setJsfVersion(version);
-		}
 		
 		//velocity = new DefaultVelocityComponent();
 		
@@ -233,10 +216,6 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 		if (null == taglib.getDisplayName()) {
 			taglib.setDisplayName(project.getDescription());
 
-		}
-		if( null == taglib.getJspVersion()){
-			// Jsf 1.2 can use JSP 2.1 only, other - 2.0
-			taglib.setJspVersion(library.getJsfVersion().equals(Library.JSF12)?"2.1":"1.2");
 		}
 		if (null == taglib.getUri()) {
 			String url = project.getUrl();
@@ -344,9 +323,6 @@ public abstract class AbstractCDKMojo extends AbstractMojo {
 		}
 		if (null == taglib.getShortName()) {
 			taglib.setShortName(library.getTaglib().getShortName());
-		}
-		if (null == taglib.getJspVersion()) {
-			taglib.setJspVersion(library.getTaglib().getJspVersion());
 		}
 		if (null == taglib.getUri()) {
 			taglib.setUri(library.getTaglib().getUri() + "/"

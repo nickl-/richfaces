@@ -115,7 +115,7 @@ public class StyleAssembler implements ResourceAssembler {
 				FileWriter fileWriter = new FileWriter(file);
 				log.info("write result to the: " + file.getPath());
 				try {
-					Template velocityTemplate = engine.getTemplate("templates12/xcss.vm");
+					Template velocityTemplate = engine.getTemplate("templates/xcss.vm");
 					velocityTemplate.merge(context, fileWriter);
 					fileWriter.flush();
 				} finally {

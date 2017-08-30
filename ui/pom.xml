@@ -133,6 +133,9 @@
 		</profile>
 		<profile>
 			<id>jsf2_0</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.sun.faces</groupId>
@@ -144,29 +147,6 @@
 					<groupId>com.sun.faces</groupId>
 					<artifactId>jsf-impl</artifactId>
 					<version>2.0.2</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.richfaces.framework</groupId>
-					<artifactId>richfaces-impl-jsf2</artifactId>
-					<version>${project.version}</version>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>jsf1_2</id>
-			<dependencies>
-				<dependency>
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-					<version>1.2_12</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>javax.faces</groupId>
-					<artifactId>jsf-impl</artifactId>
-					<version>1.2_12</version>
 					<scope>provided</scope>
 				</dependency>
 				<dependency>
@@ -176,9 +156,6 @@
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 		</profile>
 	</profiles>
 	<dependencies>
