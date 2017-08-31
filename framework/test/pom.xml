@@ -37,12 +37,7 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<scope>provided</scope>
+            <version>${version-javax-faces-api}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -53,24 +48,6 @@
 			<groupId>org.apache.shale</groupId>
 			<artifactId>shale-test</artifactId>
 			<version>1.0.4</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.myfaces</groupId>
-					<artifactId>myfaces-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.myfaces</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>myfaces</groupId>
-					<artifactId>myfaces-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>myfaces</groupId>
-					<artifactId>myfaces-impl</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>

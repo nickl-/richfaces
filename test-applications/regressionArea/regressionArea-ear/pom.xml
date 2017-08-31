@@ -39,11 +39,11 @@
 				</exclusion>
 				<exclusion>
 					<artifactId>jsf-api</artifactId>
-					<groupId>javax.faces</groupId>
+					<groupId>com.sun.faces</groupId>
 				</exclusion>
 				<exclusion>
-					<artifactId>jsf-impl</artifactId>
-					<groupId>javax.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+					<groupId>com.sun.faces</groupId>
 				</exclusion>
 				<exclusion>
 					<artifactId>el-api</artifactId>

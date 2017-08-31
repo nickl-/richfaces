@@ -11,9 +11,14 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>javax.faces</groupId>
+			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<scope>provided</scope>
+            <version>${version-javax-faces-api}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+            <version>${version-javax-servlet-api}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>

@@ -131,7 +131,7 @@
 
     <dependency>
 
-        <groupId>javax.faces</groupId>
+        <groupId>com.sun.faces</groupId>
 
         <artifactId>jsf-api</artifactId>
 
@@ -141,11 +141,9 @@
 
     <dependency>
 
-        <groupId>javax.faces</groupId>
+        <groupId>com.sun.faces</groupId>
 
-        <artifactId>jsf-impl</artifactId>
-
-        <version>1.2_12</version>
+        <artifactId>jsf-api</artifactId>
 
     </dependency>
 

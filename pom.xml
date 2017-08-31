@@ -48,6 +48,7 @@
 	    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
         <version-javax-servlet-api>3.1.0</version-javax-servlet-api>
+        <version-javax-faces-api>2.0.11-04</version-javax-faces-api>
 
 		<snapshotRepository>dav:https://snapshots.jboss.org/maven2</snapshotRepository>
 	</properties>
@@ -61,8 +62,13 @@
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
+		    <version>${version-javax-servlet-api}</version>
 		</dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+		    <version>${version-javax-faces-api}</version>
+        </dependency>
 	</dependencies>
 
 	<build>

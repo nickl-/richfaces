@@ -431,15 +431,10 @@ jsf-app
 		<scope>provided</scope>
 	</dependency>
 	<dependency>
-		<groupId>javax.faces</groupId>
+		<groupId>com.sun.faces</groupId>
 		<artifactId>jsf-api</artifactId>
-		<version>1.2_12</version>
-	</dependency>
-	<dependency>
-		<groupId>javax.faces</groupId>
-		<artifactId>jsf-impl</artifactId>
-		<version>1.2_12</version>
-	</dependency>
+        <version>${version-javax-faces-api}</version>
+    </dependency>
 	<dependency>
 		<groupId>javax.el</groupId>
 		<artifactId>el-api</artifactId>
@@ -458,11 +453,6 @@ jsf-app
 		<version>1.0</version>
 	</dependency>
 	<!-- RichFaces libraries -->
-	<dependency>
-		<groupId>org.richfaces.framework</groupId>
-		<artifactId>richfaces-api</artifactId>
-		<version>3.3.4.Final</version>
-	</dependency>
 	<dependency>
 		<groupId>org.richfaces.framework</groupId>
 		<artifactId>richfaces-impl</artifactId>

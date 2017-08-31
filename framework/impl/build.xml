@@ -31,7 +31,7 @@
         <pathelement location="${M2_REPO}/xml-apis/xml-apis/1.3.02/xml-apis-1.3.02.jar"/>
         <pathelement location="${M2_REPO}/javax/el/el-api/1.0/el-api-1.0.jar"/>
         <pathelement location="${M2_REPO}/commons-io/commons-io/1.2/commons-io-1.2.jar"/>
-        <pathelement location="${M2_REPO}/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
+        <pathelement location="${M2_REPO}/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.ja"/>
         <pathelement location="${M2_REPO}/el-impl/el-impl/1.0/el-impl-1.0.jar"/>
         <pathelement location="${M2_REPO}/xalan/xalan/2.6.0/xalan-2.6.0.jar"/>
         <pathelement location="${M2_REPO}/xerces/xercesImpl/2.6.2/xercesImpl-2.6.2.jar"/>
@@ -43,7 +43,6 @@
         <pathelement location="${M2_REPO}/commons-httpclient/commons-httpclient/3.0.1/commons-httpclient-3.0.1.jar"/>
         <pathelement location="${M2_REPO}/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar"/>
         <pathelement location="${M2_REPO}/org/richfaces/framework/richfaces-impl/3.1.0-SNAPSHOT/richfaces-impl-3.1.0-SNAPSHOT.jar"/>
-        <pathelement location="${M2_REPO}/javax/faces/jsf-api/1.1_02/jsf-api-1.1_02.jar"/>
         <pathelement location="${M2_REPO}/nekohtml/nekohtml/0.9.5/nekohtml-0.9.5.jar"/>
         <pathelement location="${M2_REPO}/htmlunit/htmlunit/1.10/htmlunit-1.10.jar"/>
         <pathelement location="${M2_REPO}/commons-beanutils/commons-beanutils/1.6/commons-beanutils-1.6.jar"/>
@@ -52,7 +51,7 @@
         <pathelement location="${M2_REPO}/commons-collections/commons-collections/3.0/commons-collections-3.0.jar"/>
         <pathelement location="${M2_REPO}/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
         <pathelement location="${M2_REPO}/rhino/js/1.6R2/js-1.6R2.jar"/>
-        <pathelement location="${M2_REPO}/javax/faces/jsf-impl/1.1_02/jsf-impl-1.1_02.jar"/>
+        <pathelement location="${M2_REPO}/javax/com/sun/faces/jsf-impl/2.0.11-04/jsf-api-2.0.11-04.jar"/>
         <pathelement location="${M2_REPO}/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
         
                 
