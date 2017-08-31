@@ -28,6 +28,7 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
+            <version>${version-javax-faces-api}</version>
 		</dependency> 
 	</dependencies>
 

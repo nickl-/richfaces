@@ -17,6 +17,6 @@
     <module>simpleTogglePanel2-sample</module>
     <!--module>contextMenuDemo</module-->
     <module>fileUploadPOC</module>
-    <module>maven-rd-plugin-sample</module>
+    <!--module>maven-rd-plugin-sample</module-->
   </modules>
 </project>
