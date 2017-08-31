@@ -49,7 +49,7 @@
 	    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
         <version-javax-servlet-api>3.1.0</version-javax-servlet-api>
-        <version-javax-faces-api>2.1.29-08</version-javax-faces-api>
+        <version-javax-faces-api>2.2.13</version-javax-faces-api>
         <version-jsf-facelets>1.1.15</version-jsf-facelets>
 
 		<snapshotRepository>dav:https://snapshots.jboss.org/maven2</snapshotRepository>

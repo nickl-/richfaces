@@ -51,7 +51,7 @@
         <pathelement location="${M2_REPO}/commons-collections/commons-collections/3.0/commons-collections-3.0.jar"/>
         <pathelement location="${M2_REPO}/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
         <pathelement location="${M2_REPO}/rhino/js/1.6R2/js-1.6R2.jar"/>
-        <pathelement location="${M2_REPO}/javax/com/sun/faces/jsf-impl/2.0.11-04/jsf-api-2.0.11-04.jar"/>
+        <pathelement location="${M2_REPO}/javax/com/sun/faces/jsf-impl/2.2.13/jsf-api-2.2.13.jar"/>
         <pathelement location="${M2_REPO}/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
         
                 

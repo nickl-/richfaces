@@ -46,7 +46,7 @@
         <pathelement location="${M2_REPO}/junit/junit/3.8.1/junit-3.8.1.jar"/>
         <pathelement location="${M2_REPO}/org/richfaces/ui/richfaces-ui/3.1.0-SNAPSHOT/richfaces-ui-3.1.0-SNAPSHOT.jar"/>
         <pathelement location="${M2_REPO}/commons-collections/commons-collections/3.0/commons-collections-3.0.jar"/>
-        <pathelement location="${M2_REPO}/com/sun/faces/jsf-impl/2.0.11-04/jsf-api-2.0.11-04.jar"/>
+        <pathelement location="${M2_REPO}/com/sun/faces/jsf-impl/2.2.13/jsf-api-2.2.13.jar"/>
     </path>
     <target name="init" depends="clean">
         <mkdir dir="target/clover/classes"/>
