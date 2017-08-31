@@ -85,8 +85,8 @@ public class Bean {
 <faces-config
     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_1_2.xsd"
-    version="1.2">
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
     <managed-bean>
         <managed-bean-name>bean</managed-bean-name>
         <managed-bean-class>myapp.Bean</managed-bean-class>

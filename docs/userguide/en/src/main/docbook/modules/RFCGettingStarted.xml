@@ -188,11 +188,11 @@ public class user {
                               <para>With the next step the <code>user</code> bean should be
                                         registered in <code>faces-config.xml</code> file: </para>
                               <programlisting role="XML"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<faces-config version="1.2" 
+<faces-config version="2.2" 
                     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_1_2.xsd">
+                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
    <managed-bean>
       <description>UsernName Bean</description>
       <managed-bean-name>user</managed-bean-name>

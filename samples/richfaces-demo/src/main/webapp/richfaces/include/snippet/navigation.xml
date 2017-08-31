@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
-                              "http://xmlns.jcp.org/dtd/web-facesconfig_1_0.dtd">
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 2.2//EN"
+                              "http://xmlns.jcp.org/dtd/web-facesconfig_2_2.dtd">
 <faces-config>
 <!--  The rest parts of the faces-config.xml are not shown here -->
 <navigation-rule> 
