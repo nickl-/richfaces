@@ -197,6 +197,8 @@
                         <localCheckout>true</localCheckout>
                         <!-- Will not push changes to the upstream repository -->
                         <pushChanges>false</pushChanges>
+                        <!-- Use project version as the tag name -->
+                        <tagNameFormat>@{project.version}</tagNameFormat>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -422,12 +424,12 @@
 			</comments>
 		</license>
 	</licenses>
-    
-	<scm>
-		<connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/branches/community/3.3.X</connection>
-		<developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</developerConnection>
-		<url>https://svn.jboss.org/repos/richfaces/branches/community/3.3.X</url>
-	</scm>
+
+    <scm>
+        <connection>scm:git:git://github.com/nickl-/richfaces.git</connection>
+        <developerConnection>scm:git:git@github.com:nickl-/richfaces.git</developerConnection>
+        <url>https://github.com/nickl-/richfaces</url>
+    </scm> 
     
 	<profiles>
 		<profile>
