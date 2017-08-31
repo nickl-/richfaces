@@ -54,7 +54,6 @@
         <dependency>
             <groupId>com.sun.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
-            <version>${faceletsVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.framework</groupId>

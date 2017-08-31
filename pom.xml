@@ -49,6 +49,7 @@
 
         <version-javax-servlet-api>3.1.0</version-javax-servlet-api>
         <version-javax-faces-api>2.0.11-04</version-javax-faces-api>
+        <version-jsf-facelets>1.1.15</version-jsf-facelets>
 
 		<snapshotRepository>dav:https://snapshots.jboss.org/maven2</snapshotRepository>
 	</properties>
