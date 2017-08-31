@@ -6,9 +6,9 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.framework</groupId>
-	<artifactId>${classifiedArtifactId}</artifactId>
+	<artifactId>richfaces-impl</artifactId>
 	<name>Java Server Faces AJAX framework implementation</name>
-	<build>
+    <build>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -34,14 +34,12 @@
 				<executions>
 					<execution>
 						<id>copy-resources</id>
-						<!-- here the phase you need -->
 						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
 							<delimiters>
-								<delimiter>$\{classifiedArtifactId}</delimiter>
 								<delimiter>@</delimiter>
 							</delimiters>
 							<outputDirectory>${project.build.directory}</outputDirectory>
@@ -124,7 +122,8 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+            </plugin>
+
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-javascript-plugin</artifactId>
@@ -239,7 +238,6 @@
             </dependencies>
             <properties>
                 <frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>
-                <classifiedArtifactId>richfaces-impl</classifiedArtifactId>
             </properties>
         </profile>
     </profiles>

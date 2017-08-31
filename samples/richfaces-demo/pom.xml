@@ -8,12 +8,9 @@
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces.samples</groupId>
-  <artifactId>${classifiedArtifactId}</artifactId>
+  <artifactId>richfaces-demo</artifactId>
   <packaging>war</packaging>
   <name>richfaces-demo Maven Webapp</name>
-  <properties>
-	  <classifiedArtifactId>richfaces-demo</classifiedArtifactId>
-  </properties>
 
   <repositories>
     <repository>
@@ -32,7 +29,7 @@
   </repositories>
   
   <build>
-    <finalName>${classifiedArtifactId}</finalName>
+    <finalName>richfaces-demo</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -210,9 +207,6 @@
 				<artifactId>jsf-api</artifactId>
 			</dependency>
 		</dependencies>
-		<properties>
-			<classifiedArtifactId>richfaces-demo-jsf2</classifiedArtifactId>
-		</properties>
 	</profile>
   </profiles>
   <dependencies>
