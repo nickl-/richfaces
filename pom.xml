@@ -16,6 +16,7 @@
 		<module>docs</module>
 		<module>ui/assembly</module>
 		<module>samples</module>
+		<module>tlddoc</module>
 		<!--module>sandbox</module -->
 	</modules>
 
