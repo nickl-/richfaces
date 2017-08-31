@@ -57,8 +57,8 @@
     	</para>
    
     <programlisting role="XML"><![CDATA[
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f"%>
 <%@ taglib uri="http://mycompany.org/inputDate" prefix="my"%>
 <html>
 	<head>

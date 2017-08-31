@@ -70,7 +70,7 @@ JFrame browser( startingUrl ) {
 	return frame;
 }
 
-browser = browser("http://java.sun.com/");
+browser = browser("http://xmlns.jcp.org/");
 browser.show();
 
 

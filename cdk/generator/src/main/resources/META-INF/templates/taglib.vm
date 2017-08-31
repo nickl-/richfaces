@@ -70,9 +70,9 @@
 	#end
 #end
 
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<taglib xmlns="http://xmlns.jcp.org/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_${taglib.jspversion.replace('.', '_')}.xsd"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-jsptaglibrary_${taglib.jspversion.replace('.', '_')}.xsd"
     version="${taglib.jspversion}">
  <tlib-version>${taglib.tlibversion}</tlib-version>
 ## <jsp-version>${taglib.jspversion}</jsp-version>

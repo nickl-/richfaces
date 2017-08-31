@@ -26,7 +26,7 @@
                     <simplelist>
                               <member>
                                         <ulink url="http://java.sun.com/javaee/javaserverfaces/">
-                                                  java.sun.com </ulink>
+                                                  xmlns.jcp.org </ulink>
                               </member>
                     </simplelist>
                     <para> Additional information how to get <code> ViewExpiredExceptions </code>
@@ -112,9 +112,9 @@
                               library with your application. </para>
                     <para> Your web.xml for <property>Seam 1.2</property> must be like this: </para>
                     <programlisting role="XML"><![CDATA[<?xml version="1.0" ?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/j2ee"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-app_2_5.xsd"
                    version="2.5">
 
      <!-- richfaces -->
@@ -191,9 +191,9 @@
 
                     <programlisting role="XML"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5"
-                   xmlns="http://java.sun.com/xml/ns/javaee"
+                   xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_2_5.xsd">
 
      <context-param>
           <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>

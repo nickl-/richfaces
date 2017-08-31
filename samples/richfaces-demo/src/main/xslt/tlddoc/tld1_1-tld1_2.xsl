@@ -39,7 +39,7 @@
   1. Change the document type definition for the TLD to:
      <!DOCTYPE taglib
          PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
-	 "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+	 "http://xmlns.jcp.org/dtd/web-jsptaglibrary_1_2.dtd">
   2. Change the <tlibversion> element to <tlib-version>
   3. Change the optional <jspversion> element to <jsp-version>.  If no
      element exists, supply one that's set to 1.2
@@ -62,7 +62,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="xml" indent="yes"
-      doctype-system="http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd"
+      doctype-system="http://xmlns.jcp.org/dtd/web-jsptaglibrary_1_2.dtd"
       doctype-public="-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"/>
 
   <xsl:template match="/taglib">

@@ -14,11 +14,11 @@ import javax.faces.context.FacesContext;
 public class ContentBean {
 	
 	private static final String PRELUDE="<html xmlns=\"http://www.w3.org/1999/xhtml\"\n" + 
-			"	xmlns:f=\"http://java.sun.com/jsf/core\"\n" + 
-			"	xmlns:h=\"http://java.sun.com/jsf/html\"\n" + 
+			"	xmlns:f=\"http://xmlns.jcp.org/jsf/core\"\n" + 
+			"	xmlns:h=\"http://xmlns.jcp.org/jsf/html\"\n" + 
 			"	xmlns:a4j=\"http://richfaces.org/a4j\"\n" + 
 			"	xmlns:rich=\"http://richfaces.org/rich\"\n" + 
-			"	xmlns:c=\"http://java.sun.com/jsp/jstl/core\">\n";
+			"	xmlns:c=\"http://xmlns.jcp.org/jsp/jstl/core\">\n";
 	
 	private static final String TAIL="\n</html>";
 

@@ -43,7 +43,7 @@
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:javaee="http://java.sun.com/xml/ns/javaee">
+    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee">
     
     <xsl:output method="html" indent="yes"/>
 

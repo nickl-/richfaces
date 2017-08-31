@@ -46,7 +46,7 @@ public class PageBean {
 		headerClass = "pageHeaderClass";
 		lang = "en";
 		markupType = "jsp";
-		namespace = "http://java.sun.com/JSP/Page";
+		namespace = "http://xmlns.jcp.org/JSP/Page";
 		pageTitle = "Layout components";
 		rendered = true;
 		sidebarClass = "sideBarClass";

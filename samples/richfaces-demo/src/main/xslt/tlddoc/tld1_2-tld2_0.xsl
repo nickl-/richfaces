@@ -37,10 +37,10 @@
   conversion rules:
 
   1. Change the <taglib> element to read as follows:
-     <taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+     <taglib xmlns="http://xmlns.jcp.org/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
-         http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee
+         http://xmlns.jcp.org/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
   2. Remove all id attributes from all elements.
   3. Remove <jsp-version> element and add an attribute to <taglib>
      called 'version' with the value "2.0".
@@ -81,13 +81,13 @@
   <xsl:output method="xml" indent="yes"/>
 
   <xsl:template match="/taglib">
-    <xsl:element name="taglib" namespace="http://java.sun.com/xml/ns/j2ee">
-      <xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance">http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd</xsl:attribute>
+    <xsl:element name="taglib" namespace="http://xmlns.jcp.org/xml/ns/j2ee">
+      <xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance">http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd</xsl:attribute>
       <xsl:attribute name="version">2.0</xsl:attribute>
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="display-name"/>
       <xsl:if test="small-icon|large-icon">
-        <icon xmlns="http://java.sun.com/xml/ns/j2ee">
+        <icon xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
 	  <xsl:apply-templates select="small-icon"/>
 	  <xsl:apply-templates select="large-icon"/>
         </icon>
@@ -103,41 +103,41 @@
 
   <!-- Strip the id attribute: -->
   <xsl:template match="description">
-    <description xmlns="http://java.sun.com/xml/ns/j2ee">
+    <description xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </description>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="display-name">
-    <display-name xmlns="http://java.sun.com/xml/ns/j2ee">
+    <display-name xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </display-name>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="tlib-version">
-    <tlib-version xmlns="http://java.sun.com/xml/ns/j2ee">
+    <tlib-version xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </tlib-version>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="short-name">
-    <short-name xmlns="http://java.sun.com/xml/ns/j2ee">
+    <short-name xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </short-name>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="uri">
-    <uri xmlns="http://java.sun.com/xml/ns/j2ee">
+    <uri xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </uri>
   </xsl:template>
 
   <xsl:template match="validator">
-    <validator xmlns="http://java.sun.com/xml/ns/j2ee">
+    <validator xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="validator-class"/>
       <xsl:apply-templates select="init-param"/>
@@ -145,7 +145,7 @@
   </xsl:template>
 
   <xsl:template match="init-param">
-    <init-param xmlns="http://java.sun.com/xml/ns/j2ee">
+    <init-param xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="param-name"/>
       <xsl:apply-templates select="param-value"/>
@@ -154,38 +154,38 @@
 
   <!-- Strip the id attribute: -->
   <xsl:template match="param-name">
-    <param-name xmlns="http://java.sun.com/xml/ns/j2ee">
+    <param-name xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </param-name>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="param-value">
-    <param-value xmlns="http://java.sun.com/xml/ns/j2ee">
+    <param-value xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </param-value>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="listener">
-    <listener xmlns="http://java.sun.com/xml/ns/j2ee">
+    <listener xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="listener-class"/>
     </listener>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="listener-class">
-    <listener-class xmlns="http://java.sun.com/xml/ns/j2ee">
+    <listener-class xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </listener-class>
   </xsl:template>
 
   <xsl:template match="tag">
-    <tag xmlns="http://java.sun.com/xml/ns/j2ee">
+    <tag xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="display-name"/>
       <xsl:if test="small-icon|large-icon">
-        <icon xmlns="http://java.sun.com/xml/ns/j2ee">
+        <icon xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
 	  <xsl:apply-templates select="small-icon"/>
 	  <xsl:apply-templates select="large-icon"/>
         </icon>
@@ -202,7 +202,7 @@
 	    - Explicitly Insert the default body-content since this is 
 	    - now a required element
 	    -->
-	  <body-content xmlns="http://java.sun.com/xml/ns/j2ee">JSP</body-content>
+	  <body-content xmlns="http://xmlns.jcp.org/xml/ns/j2ee">JSP</body-content>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates select="variable"/>
@@ -213,34 +213,34 @@
 
   <!-- Strip the id attribute: -->
   <xsl:template match="name">
-    <name xmlns="http://java.sun.com/xml/ns/j2ee">
+    <name xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </name>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="tag-class">
-    <tag-class xmlns="http://java.sun.com/xml/ns/j2ee">
+    <tag-class xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </tag-class>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="tei-class">
-    <tei-class xmlns="http://java.sun.com/xml/ns/j2ee">
+    <tei-class xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </tei-class>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="body-content">
-    <body-content xmlns="http://java.sun.com/xml/ns/j2ee">
+    <body-content xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </body-content>
   </xsl:template>
 
   <xsl:template match="variable">
-    <variable xmlns="http://java.sun.com/xml/ns/j2ee">
+    <variable xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="name-given"/>
       <xsl:apply-templates select="name-from-attribute"/>
@@ -251,7 +251,7 @@
   </xsl:template>
 
   <xsl:template match="attribute">
-    <attribute xmlns="http://java.sun.com/xml/ns/j2ee">
+    <attribute xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates select="description"/>
       <xsl:apply-templates select="name"/>
       <xsl:apply-templates select="required"/>
@@ -262,21 +262,21 @@
 
   <!-- Strip the id attribute: -->
   <xsl:template match="required">
-    <required xmlns="http://java.sun.com/xml/ns/j2ee">
+    <required xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </required>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="rtexprvalue">
-    <rtexprvalue xmlns="http://java.sun.com/xml/ns/j2ee">
+    <rtexprvalue xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </rtexprvalue>
   </xsl:template>
 
   <!-- Strip the id attribute: -->
   <xsl:template match="example">
-    <example xmlns="http://java.sun.com/xml/ns/j2ee">
+    <example xmlns="http://xmlns.jcp.org/xml/ns/j2ee">
       <xsl:apply-templates/>
     </example>
   </xsl:template>

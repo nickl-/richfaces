@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:javaee="http://java.sun.com/xml/ns/javaee"
+	xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:u="http:/jsf.exadel.com/template/util"
 	xmlns:f='http:/jsf.exadel.com/template'
 	version="2.0" exclude-result-prefixes="javaee u f">

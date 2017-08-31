@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <f:root xmlns:f="http://jsf.exadel.com/template"
-	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://jsf.exadel.com/ui"
 	xmlns:vcp="http://jsf.exadel.com/vcp"
 	xmlns:u="http://jsf.exadel.com/util"
@@ -9,7 +9,7 @@
 	baseclass="org.richfaces.renderkit.DragIndicatorRendererBase"
 	class="org.richfaces.renderkit.html.DragIndicatorRenderer"
 	component="org.richfaces.component.UIDragIndicator"
-	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	xmlns:jsp="http://xmlns.jcp.org/JSP/Page" version="2.0">
 
 	<h:scripts>
 		new org.ajax4jsf.javascript.PrototypeScript(),

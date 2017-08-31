@@ -37,7 +37,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class FacesConfigHandler extends DefaultHandler {
 
 
-	private static final String JEE_NS = "http://java.sun.com/xml/ns/javaee";
+	private static final String JEE_NS = "http://xmlns.jcp.org/xml/ns/javaee";
 	private static final String BRIDGE_NS = "http://www.apache.org/myfaces/xml/ns/bridge/bridge-extension";
 	private static final String APPLICATION_ELEMENT          = "application";
     private static final String APP_EXTENSION_ELEMENT     = "application-extension";

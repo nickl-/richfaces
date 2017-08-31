@@ -3,8 +3,8 @@
 <%@ taglib uri="http://labs.jboss.com/jbossrichfaces/ui/message" prefix="msg" %>
 <%@ taglib uri="http://labs.jboss.com/jbossrichfaces/ui/panel" prefix="panel" %>
 
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f" %>
 
 <html>
 <head>

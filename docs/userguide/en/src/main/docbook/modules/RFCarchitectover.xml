@@ -2512,7 +2512,7 @@ onsubmit="if (mynosendfunct()==false){return false}"
 				<member>
 					<ulink
 						url="http://java.sun.com/javaee/javaserverfaces/reference/docs/index.html">
-						http://java.sun.com/javaee/javaserverfaces/reference/docs/index.html
+						http://xmlns.jcp.org/javaee/javaserverfaces/reference/docs/index.html
 					</ulink>
 				</member>
 			</simplelist>

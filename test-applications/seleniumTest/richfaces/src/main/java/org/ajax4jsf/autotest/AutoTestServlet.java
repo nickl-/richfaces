@@ -50,9 +50,9 @@ public class AutoTestServlet extends HttpServlet {
 	String header = "<html xmlns=\"http://www.w3.org/1999/xhtml\" " + 
 		"xmlns:a4j=\"http://richfaces.org/a4j\" " +
 		"xmlns:rich=\"http://richfaces.org/rich\" " +
-		"xmlns:h=\"http://java.sun.com/jsf/html\" " +
-		"xmlns:f=\"http://java.sun.com/jsf/core\" " +
-		"xmlns:ui=\"http://java.sun.com/jsf/facelets\">";
+		"xmlns:h=\"http://xmlns.jcp.org/jsf/html\" " +
+		"xmlns:f=\"http://xmlns.jcp.org/jsf/core\" " +
+		"xmlns:ui=\"http://xmlns.jcp.org/jsf/facelets\">";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

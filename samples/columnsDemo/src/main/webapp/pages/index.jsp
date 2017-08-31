@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 
 <%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f"%>
 <%@ taglib uri="http://labs.jboss.com/jbossrichfaces/ui/dataTable" prefix="dt"%>
 <%@ taglib prefix="columns" uri="http://labs.jboss.com/jbossrichfaces/ui/columns" %>
 

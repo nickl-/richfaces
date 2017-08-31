@@ -45,8 +45,8 @@ public class FastParserTest extends TestCase {
 		"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" + 
 		"<!-- Test for page comment -->\n" + 
 //		"<f:view  contentType=\"application/xhtml+xml\" \n" + 
-//		"    xmlns:f=\"http://java.sun.com/jsf/core\"\n" + 
-//		"	xmlns:h=\"http://java.sun.com/jsf/html\" \n" + 
+//		"    xmlns:f=\"http://xmlns.jcp.org/jsf/core\"\n" + 
+//		"	xmlns:h=\"http://xmlns.jcp.org/jsf/html\" \n" + 
 //		"	xmlns:a4j=\"https://ajax4jsf.dev.java.net/ajax\" >\n" + 
 		"<html xmlns=\"http://www.w3.org/1999/xhtml\" >\n" + 
 		"<body>";

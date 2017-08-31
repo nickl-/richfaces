@@ -23,8 +23,8 @@
     	</para>
    
     <programlisting role="XML"><![CDATA[
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f"%>
 <%@ taglib uri="http://mycompany.org/inputDate" prefix="my"%>
 <html>
 	<head>
@@ -83,9 +83,9 @@ public class Bean {
     <programlisting role="XML"><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_1_2.xsd"
     version="1.2">
     <managed-bean>
         <managed-bean-name>bean</managed-bean-name>
@@ -114,8 +114,8 @@ public class Bean {
     			</para>
     			    <programlisting role="XML"><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-		 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee/web-app_2_5.xsd" 
+		 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 	<display-name>app</display-name>
 	<context-param>
 		<param-name>javax.faces.CONFIG_FILES</param-name>

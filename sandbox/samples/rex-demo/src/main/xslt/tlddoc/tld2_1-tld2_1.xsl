@@ -45,13 +45,13 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:javaee="http://java.sun.com/xml/ns/javaee">               
+                xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee">               
   <xsl:output method="xml" indent="yes"/>  
 
   <xsl:template match="/javaee:taglib">
-      <xsl:element name="taglib" namespace="http://java.sun.com/xml/ns/javaee">
+      <xsl:element name="taglib" namespace="http://xmlns.jcp.org/xml/ns/javaee">
           <xsl:attribute name="xsi:schemaLocation"
-                         namespace="http://www.w3.org/2001/XMLSchema-instance">http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd</xsl:attribute>
+                         namespace="http://www.w3.org/2001/XMLSchema-instance">http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-jsptaglibrary_2_1.xsd</xsl:attribute>
           <xsl:attribute name="version">2.1</xsl:attribute>
           <xsl:apply-templates select="*"/>
       </xsl:element>      

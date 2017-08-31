@@ -107,9 +107,9 @@
                               <para>Finally the <code>web.xml</code> should look like this: </para>
                               <programlisting role="XML"><![CDATA[<?xml version="1.0"?>
 <web-app version="2.5" 
-                xmlns="http://java.sun.com/xml/ns/javaee"
+                xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+                xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_2_5.xsd">
 <display-name>Greeter</display-name>
   
 <context-param>
@@ -189,10 +189,10 @@ public class user {
                                         registered in <code>faces-config.xml</code> file: </para>
                               <programlisting role="XML"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <faces-config version="1.2" 
-                    xmlns="http://java.sun.com/xml/ns/javaee"
+                    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                     xmlns:xi="http://www.w3.org/2001/XInclude"
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_1_2.xsd">
    <managed-bean>
       <description>UsernName Bean</description>
       <managed-bean-name>user</managed-bean-name>
@@ -215,8 +215,8 @@ public class user {
                                                   CONTENT</code> folder and add there following
                                         code: </para>
                               <programlisting role="XML"><![CDATA[<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h" %>
 <!-- RichFaces tag library declaration -->
 <%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
 <%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
@@ -258,7 +258,7 @@ public class user {
 For Facelets you should add the following lines for tag
                                         library declaration: </para>
                               <programlisting role="XML"><![CDATA[<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:rich="http://richfaces.org/rich">
    ...
@@ -483,8 +483,8 @@ jsf-app
            <para>Add some RichFaces component to the &quot;index.jsp&quot; page, for instance <emphasis role="bold"><property>&lt;rich:calendar&gt;</property></emphasis>. Your &quot;index.jsp&quot; page will look like this:</para>
            
            <programlisting role="XML"><![CDATA[...
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/html" prefix="h" %>
+<%@ taglib uri="http://xmlns.jcp.org/jsf/core" prefix="f"%>
 <%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
 <html>
 	<head>

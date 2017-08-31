@@ -63,8 +63,8 @@ public class XMLBodySerializerTest extends TestCase {
 	 */
 	public void testSerialize() throws ParsingException{
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-			+ "<!DOCTYPE faces-config PUBLIC \"-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN\"\n"
-			+ "                              \"http://java.sun.com/dtd/web-facesconfig_1_1.dtd\">\n"
+			+ "<!DOCTYPE faces-config PUBLIC \"-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 2.2//EN\"\n"
+			+ "                              \"http://xmlns.jcp.org/dtd/web-facesconfig_2_2.dtd\">\n"
 			+ "<faces-config>\n" + "	<component><test>blabla</test></component><component><test>blabla</test></component><component><test>blabla2</test></component>\n"
 			+ "</faces-config>";
 		InputStream in = new ByteArrayInputStream(xml.getBytes());
