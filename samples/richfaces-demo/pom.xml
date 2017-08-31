@@ -72,16 +72,16 @@
         </executions>
         <dependencies>
           <dependency>
-            <groupId>taglibrarydoc</groupId>
+            <groupId>org.richfaces</groupId>
             <artifactId>tlddoc</artifactId>
-            <version>1.3</version>
+            <version>${project.version}</version>
           </dependency>
         </dependencies>
         <configuration>
           <includeProjectDependencies>false</includeProjectDependencies>
           <includePluginDependencies>true</includePluginDependencies>
           <executableDependency>
-            <groupId>taglibrarydoc</groupId>
+            <groupId>org.richfaces</groupId>
             <artifactId>tlddoc</artifactId>
           </executableDependency>
           <mainClass>com.sun.tlddoc.TLDDoc</mainClass>
