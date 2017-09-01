@@ -4,7 +4,7 @@
 	<artifactId>root</artifactId>
 	<packaging>pom</packaging>
 	<name>RichFaces project</name>
-	<version>3.3.5.0-jsf22</version>
+	<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	<description>RichFaces project root</description>
 	<url>http://labs.jboss.com/jbossrichfaces</url>
 
@@ -455,7 +455,7 @@
         <connection>scm:git:git://github.com/nickl-/richfaces.git</connection>
         <developerConnection>scm:git:git@github.com:nickl-/richfaces.git</developerConnection>
         <url>https://github.com/nickl-/richfaces</url>
-      <tag>3.3.5.0-jsf22</tag>
+      <tag>HEAD</tag>
   </scm> 
     
 	<profiles>
