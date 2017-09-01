@@ -50,49 +50,49 @@ public class YuiCompressorMojo extends MojoSupport {
     /**
      * Read the input file using "encoding".
      *
-     * @parameter default-value="${file.encoding}" default-value="UTF-8"
+     * @parameter property="file.encoding" default-value="UTF-8"
      */
     private String encoding;
-
+    
     /**
      * The output filename suffix.
      *
-     * @parameter default-value="${maven.yuicompressor.suffix}" default-value="-min"
+     * @parameter property="maven.yuicompressor.suffix" default-value="-min"
      */
     private String suffix;
 
     /**
      * If no "suffix" must be add to output filename (maven's configuration manage empty suffix like default).
      *
-     * @parameter default-value="${maven.yuicompressor.nosuffix}" default-value="false"
+     * @parameter property="maven.yuicompressor.nosuffix" default-value="false"
      */
     private boolean nosuffix;
 
     /**
      * Insert line breaks in output after the specified column number.
      *
-     * @parameter default-value="${maven.yuicompressor.linebreakpos}" default-value="0"
+     * @parameter property="maven.yuicompressor.linebreakpos" default-value="0"
      */
     private int linebreakpos;
 
     /**
      * [js only] Minify only, do not obfuscate.
      *
-     * @parameter default-value="${maven.yuicompressor.nomunge}" default-value="false"
+     * @parameter property="maven.yuicompressor.nomunge" default-value="false"
      */
     private boolean nomunge;
 
     /**
      * [js only] Preserve unnecessary semicolons.
      *
-     * @parameter default-value="${maven.yuicompressor.preserveAllSemiColons}" default-value="false"
+     * @parameter property="maven.yuicompressor.preserveAllSemiColons" default-value="false"
      */
     private boolean preserveAllSemiColons;
 
     /**
      * [js only] Preserve string (no optimization).
      *
-     * @parameter default-value="${maven.yuicompressor.preserveStringLiterals}" default-value="false"
+     * @parameter property="maven.yuicompressor.preserveStringLiterals" default-value="false"
      */
     private boolean preserveStringLiterals;
 
@@ -100,7 +100,7 @@ public class YuiCompressorMojo extends MojoSupport {
      * force the compression of every files,
      * else if compressed file already exists and is younger than source file, nothing is done.
      *
-     * @parameter default-value="${maven.yuicompressor.force}" default-value="false"
+     * @parameter property="maven.yuicompressor.force" default-value="false"
      */
     private boolean force;
 
@@ -116,14 +116,14 @@ public class YuiCompressorMojo extends MojoSupport {
     /**
      * request to create a gzipped version of the yuicompressed/aggregation files.
      *
-     * @parameter default-value="${maven.yuicompressor.gzip}" default-value="false"
+     * @parameter property="maven.yuicompressor.gzip" default-value="false"
      */
     private boolean gzip;
 
     /**
      * show statistics (compression ratio).
      *
-     * @parameter default-value="${maven.yuicompressor.statistics}" default-value="true"
+     * @parameter property="maven.yuicompressor.statistics" default-value="true"
      */
     private boolean statistics;
 
@@ -137,6 +137,11 @@ public class YuiCompressorMojo extends MojoSupport {
 
     @Override
     public void beforeProcess() throws Exception {
+    		getLog().debug("output directory:" + this.outputDirectory.getPath());
+    		getLog().debug("project base directory:" + project.getBasedir());
+    		
+    		System.setProperty("user.dir", outputDirectory.getAbsoluteFile().getParentFile().getParent());
+    		
         if (nosuffix) {
             suffix = "";
         }
@@ -144,6 +149,7 @@ public class YuiCompressorMojo extends MojoSupport {
 
     @Override
     protected void afterProcess() throws Exception {
+		getLog().debug("output exists:" + this.outputDirectory.exists());
         if (statistics && (inSizeTotal_ > 0)) {
             getLog().info(String.format("total input (%db) -> output (%db)[%d%%]", inSizeTotal_, outSizeTotal_, ((outSizeTotal_ * 100)/inSizeTotal_)));
         }
@@ -168,9 +174,8 @@ public class YuiCompressorMojo extends MojoSupport {
 
     @Override
     protected void processFile(SourceFile src) throws Exception {
-        if (getLog().isDebugEnabled()) {
-            getLog().debug("compress file :" + src.toFile()+ " to " + src.toDestFile(suffix));
-        }
+        getLog().debug("compress file :" + src.toFile()+ " to " + src.toDestFile(suffix));
+
         File inFile = src.toFile();
         File outFile = src.toDestFile(suffix);
 
