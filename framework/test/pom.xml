@@ -79,7 +79,11 @@
 			<artifactId>js</artifactId>
 			<version>1.6R7</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+		</dependency>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
