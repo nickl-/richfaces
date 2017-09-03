@@ -1,13 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>docs</artifactId>
-		<groupId>org.richfaces</groupId>
-		<version>3.3.4.Final</version>
+		<groupId>org.richfaces.docs</groupId>
+		<version>3.3.5.1-jsf23-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces.docs</groupId>
 	<artifactId>common-resources</artifactId>
-	<version>3.3.4.Final</version>
 	<packaging>pom</packaging>
 	<name>Documentation common resources</name>
 	<description>Common resources</description>

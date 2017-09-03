@@ -4,10 +4,9 @@
 		<groupId>org.richfaces</groupId>
 		<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	</parent>
+	<groupId>org.richfaces.docs</groupId>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces</groupId>
 	<artifactId>docs</artifactId>
-	<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	<name>Project documentation</name>
 	<packaging>pom</packaging>
 	<!-- setup repositories, to build documentation separate from Java projects -->
@@ -49,12 +48,10 @@
 		<dependency>
 		    <groupId>org.codelibs</groupId>
 		    <artifactId>jhighlight</artifactId>
-		    <version>1.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
-			<version>0.95</version>
 		</dependency>
 	</dependencies>
 
@@ -65,9 +62,9 @@
 				<module>highlight</module>
 				<module>common-resources</module>
 				<module>userguide</module>
-				<module>cdkguide</module>
-				<module>faq</module>			
-				<module>migrationguide</module>
+				<!--module>cdkguide</module-->
+				<!--module>faq</module-->			
+				<!--module>migrationguide</module-->
 				<module>photo_album_app_guide</module>
 			</modules>
 		</profile>
@@ -103,4 +100,13 @@
 		<xsl_html>classpath:/common-resources/xslt/xhtml.xsl</xsl_html>
 		<translation>en</translation>
 	</properties>
+	<!-- modules>
+	    <module>cdkguide</module>
+	    <module>common-resources</module>
+	    <module>faq</module>
+	    <module>highlight</module>
+	    <module>migrationguide</module>
+	    <module>photo_album_app_guide</module>
+	    <module>userguide</module>
+	</modules-->
 </project>

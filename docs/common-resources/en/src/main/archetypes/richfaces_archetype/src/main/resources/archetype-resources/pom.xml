@@ -2,13 +2,13 @@
 	<parent>
 		<artifactId>docs</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.4.Final</version>
+		<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.docs</groupId>
 	<artifactId>richfacesguide</artifactId>
 	<packaging>pom</packaging>
-	<version>3.3.4.Final</version>
+	<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	<name>richfacesguide</name>
 	<description>Richfaces Guide Template</description>
 	<pluginRepositories>
@@ -73,7 +73,7 @@
 				<plugin>
 					<groupId>org.jboss.maven.plugins</groupId>
 					<artifactId>maven-jdocbook-plugin</artifactId>
-					<version>2.1.0-200803311251UTC-MPJDOCBOOK-8</version>
+					<version>2.3.10</version>
 						<executions>
 							<execution>
 								<id>jdocbook:generate</id>
@@ -111,7 +111,7 @@
 						</dependency>
 						<dependency>
 							<groupId>org.richfaces.docs.common-resources</groupId>
-							<artifactId>${translation}</artifactId>
+							<artifactId>en</artifactId>
 							<version>${project.version}</version>
 							<type>jar</type>
 						</dependency>

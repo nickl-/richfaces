@@ -5,12 +5,11 @@
 	<parent>
 		<groupId>org.richfaces.docs</groupId>
 		<artifactId>cdkguide</artifactId>
-		<version>3.3.4.Final</version>
-		<relativePath>../pom.xml</relativePath>
+		<version>3.3.5.1-jsf23-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<groupId>org.richfaces.docs.cdkguide</groupId>
-	<artifactId>${translation}</artifactId>
-	<version>3.3.4.Final</version>
+	<artifactId>en</artifactId>
 	<packaging>jar</packaging>
 	<name>Richfaces CDK Developer Guide (${translation})</name>
 
@@ -19,24 +18,42 @@
 	</properties>
 	<build>
 		<finalName>
-			${project.parent.artifactId}_${translation}-${version}
+			${project.parent.artifactId}_${translation}-${project.version}
 		</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xml-maven-plugin</artifactId>
-				<version>1.0-beta-2</version>
+				<version>1.0.1</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.jboss.maven.plugins</groupId>
 				<artifactId>maven-jdocbook-plugin</artifactId>
+                <version>2.3.10</version>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>
+    <repositories>
+        <repository>
+            <id>central-maven-org</id>
+            <name>Maven Central </name>
+            <url>http://central.maven.org/maven2/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>    
+    </repositories>
 </project>

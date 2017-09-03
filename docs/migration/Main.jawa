@@ -1,0 +1,101 @@
+package migration;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+public class Main {
+
+	private static String PROJECT_PATH = "..\\showcase1";
+	private static String WEB_CONTENT_PATH = PROJECT_PATH + "\\WebContent";
+	private static String WEB_CONTENT_LIB_PATH = WEB_CONTENT_PATH + "\\WEB-INF\\lib";
+	private static String WEB_CONTENT_CSS_PATH = WEB_CONTENT_PATH + "\\css";
+
+	public static void main(String[] args) throws TransformerException, IOException {
+		System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
+		System.out.println("Start");
+		System.out.println(WEB_CONTENT_PATH);
+		/* 1. upgrade jars */
+		System.out.println("Remove old jars");
+		deleteOldJars();
+		System.out.println("Copy new jars");
+		copyNewJars();
+		System.out.println("BEGIN TRANSFORMATIONS");
+		/* 2. Tranformation css */
+		System.out.println("     BEGIN CSS Files");
+		File[] cssFiles = new File(WEB_CONTENT_CSS_PATH).listFiles();
+		List<StringReplacement> replacements = MigrationUtil.loadReplacementProperties("css_replace.properties");
+		MigrationUtil.executeReplacementsOnFiles(cssFiles, "css", replacements);
+		System.out.println("     END CSS Files");
+		/* 3. Tranformation xhtml */
+		System.out.println("     BEGIN XHTML ");
+		File[] files = new File(WEB_CONTENT_PATH).listFiles();
+		TransformerFactory factory = TransformerFactory.newInstance();
+		Source xslt = new StreamSource(new File("RichFaces3_4.xslt"));
+		Transformer transformer = factory.newTransformer(xslt);
+		xsltTransform(files, transformer);
+		System.out.println("     END XHTML Files");
+		System.out.println("END TRANSFORMATIONS");
+	}
+
+	public static void deleteOldJars() {
+		String[] jars = new String[] {
+				"jsf-api.jar",
+				"jsf-facelets.jar",
+				"jsf-impl.jar",
+				"jsf_core.tld",
+				"jstl.jar",
+				"jta.jar",
+				"myfaces-converters11-1.0.0.jar",
+				"myfaces-orchestra-core-1.4.jar",
+				"richfaces-api-3.3.3.Final.jar",
+				"richfaces-impl-3.3.3.Final.jar",
+				"richfaces-ui-3.3.3.Final.jar",
+				"spring.jar",
+				"slf4j-api-1.5.8.jar",
+				"slf4j-log4j12-1.5.0.jar",
+				"javassist.jar",			
+		};
+		FileUtil.deleteFilesFromFolder(WEB_CONTENT_LIB_PATH, jars);
+	}
+
+	public static void copyNewJars() {
+		FileUtil.copyFiles("jars_jsf2", WEB_CONTENT_LIB_PATH);
+	}
+
+	public static void xsltTransform(File[] files, Transformer transformer) throws IOException, TransformerException {
+		for (File file : files) {
+			if (file.isDirectory()) {
+				xsltTransform(file.listFiles(), transformer); // Recursive.
+			}
+			else {
+
+				String filename = file.getName();
+				String ext_file = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
+				String ext = "xhtml";
+				String oldFileName = file.getParent() + "\\old_" + filename;
+				File oldName = new File(oldFileName);
+				if (ext.equals(ext_file) && !filename.startsWith("old")) {
+					System.out.println("File: " + file.getAbsolutePath());
+					if (!oldName.exists()) {
+						FileUtil.copyFileUsingFileStreams(file, oldName);
+						System.out.println("Copie réussie");
+//						FileUtil.deleteLines(oldFileName, 1, 1);
+					}
+					Source text = new StreamSource(oldName);
+					System.out.println("Debut transformation XSLT");
+					StreamResult result = new StreamResult(file);
+					transformer.transform(text, result);
+					System.out.println("Fin transformation");
+				}
+			}
+		}
+	}
+}

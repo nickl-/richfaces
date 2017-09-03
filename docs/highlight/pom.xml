@@ -1,13 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>docs</artifactId>
-		<groupId>org.richfaces</groupId>
-		<version>3.3.4.Final</version>
+		<groupId>org.richfaces.docs</groupId>
+		<version>3.3.5.1-jsf23-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces.docs</groupId>
 	<artifactId>highlight</artifactId>
-	<version>3.3.4.Final</version>
 	<name>RichFaces Code Highlighting</name>
 
 	<dependencyManagement>
@@ -15,7 +14,7 @@
 			<dependency>
 				<groupId>org.eclipse.wst.sse</groupId>
 				<artifactId>core</artifactId>
-				<version>1.1.202-v200709061102</version>
+				<version></version>
 				<exclusions>
 					<exclusion>
 						<artifactId>xerces</artifactId>
@@ -62,7 +61,7 @@
 			<dependency>
 				<groupId>org.eclipse.wst.css</groupId>
 				<artifactId>core</artifactId>
-				<version>1.1.101-v200705302225</version>
+				<version></version>
 				<exclusions>
 					<exclusion>
 						<artifactId>xerces</artifactId>
@@ -110,29 +109,30 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.wst.css</groupId>
-			<artifactId>core</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.eclipse.wst.css</groupId>
+            <artifactId>core</artifactId>
+            <version>1.1.101-v200705302225</version>
+        </dependency>
 		<dependency>
 			<groupId>org.eclipse.wst.sse</groupId>
-			<artifactId>core</artifactId>
+            <artifactId>core</artifactId>
+            <version>1.1.202-v200709061102</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codelibs</groupId>
 			<artifactId>jhighlight</artifactId>
-			<version>1.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
-			<version>0.95</version>
 		</dependency>
 	</dependencies>
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-source-plugin</artifactId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.0.1</version>
         <executions>
           <execution>
             <id>attach-source</id>
