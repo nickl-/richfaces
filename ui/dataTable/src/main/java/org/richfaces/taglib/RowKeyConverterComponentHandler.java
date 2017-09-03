@@ -23,9 +23,9 @@ package org.richfaces.taglib;
 
 import org.ajax4jsf.webapp.taglib.RowKeyConverterRule;
 
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author Nick Belaevski

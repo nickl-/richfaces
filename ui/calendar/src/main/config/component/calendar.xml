@@ -68,7 +68,7 @@
 		</tag>
 		<taghandler generate="true">
 			<classname>org.richfaces.taglib.CalendarTagHandler</classname>
-			<superclass>com.sun.facelets.tag.jsf.ComponentHandler</superclass>
+			<superclass>javax.faces.view.facelets.ComponentHandler</superclass>
 		</taghandler>
 		&ui_component_attributes;
 		&ajax_component_attributes;

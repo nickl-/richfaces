@@ -24,8 +24,8 @@ package org.richfaces.taglib;
 import org.richfaces.iterator.ForEachIterator;
 import org.richfaces.iterator.SimpleForEachIterator;
 import org.richfaces.el.ELBuilder;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.FaceletContext;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.FaceletContext;
 
 import javax.servlet.jsp.JspTagException;
 import javax.el.ValueExpression;

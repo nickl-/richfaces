@@ -18,10 +18,7 @@ import javax.faces.el.*;
 
 import javax.el.*;
 
-import com.sun.facelets.*;
-import com.sun.facelets.el.*;
-import com.sun.facelets.tag.*;
-import com.sun.facelets.tag.jsf.*;
+import javax.faces.view.facelets.*;
 
 public class $tag.simpleClassName extends TagHandler {
 

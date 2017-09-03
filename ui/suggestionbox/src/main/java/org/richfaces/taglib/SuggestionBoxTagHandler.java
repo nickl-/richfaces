@@ -23,13 +23,13 @@ package org.richfaces.taglib;
 
 import org.richfaces.component.UISuggestionBox;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
 
 /**
  * Component tag handler for Facelets.
@@ -38,7 +38,7 @@ import com.sun.facelets.tag.jsf.ComponentConfig;
  * @version $Revision: 1.1.2.4 $ $Date: 2007/02/20 20:58:03 $
  */
 public class SuggestionBoxTagHandler
-        extends com.sun.facelets.tag.jsf.ComponentHandler {
+        extends javax.faces.view.facelets.ComponentHandler {
 
     /**
      * Meta rule for tag handler.
@@ -49,7 +49,7 @@ public class SuggestionBoxTagHandler
     /**
      * Constructor.
      *
-     * @param config {@link com.sun.facelets.tag.jsf.ComponentConfig}
+     * @param config {@link javax.faces.view.facelets.ComponentConfig}
      */
     public SuggestionBoxTagHandler(final ComponentConfig config) {
         super(config);
@@ -59,7 +59,7 @@ public class SuggestionBoxTagHandler
      * Creates metarules.
      *
      * @param type Class
-     * @return {@link com.sun.facelets.tag.MetaRuleset}
+     * @return {@link javax.faces.view.facelets.MetaRuleset}
      */
     protected final MetaRuleset createMetaRuleset(final Class type) {
         MetaRuleset m = super.createMetaRuleset(type);
@@ -79,13 +79,13 @@ public class SuggestionBoxTagHandler
          * Apply rule.
          *
          * @param name rule name
-         * @param attribute {@link com.sun.facelets.tag.TagAttribute}
-         * @param meta {@link com.sun.facelets.tag.TagAttribute}
-         * @return metadata {@link com.sun.facelets.tag.Metadata}
+         * @param attribute {@link javax.faces.view.facelets.TagAttribute}
+         * @param meta {@link javax.faces.view.facelets.TagAttribute}
+         * @return metadata {@link javax.faces.view.facelets.Metadata}
          *
-         * @see {@link com.sun.facelets.tag.MetaRule#applyRule(String,
-         *      com.sun.facelets.tag.TagAttribute,
-         *      com.sun.facelets.tag.MetadataTarget)}
+         * @see {@link javax.faces.view.facelets.MetaRule#applyRule(String,
+         *      javax.faces.view.facelets.TagAttribute,
+         *      javax.faces.view.facelets.MetadataTarget)}
          */
         public Metadata applyRule(final String name,
                                   final TagAttribute attribute,
@@ -118,7 +118,7 @@ public class SuggestionBoxTagHandler
         /**
          * Sets attribute.
          *
-         * @param attribute {@link com.sun.facelets.tag.TagAttribute}
+         * @param attribute {@link javax.faces.view.facelets.TagAttribute}
          */
         public SuggestionActionMapper(final TagAttribute attribute) {
             action = attribute;
@@ -130,8 +130,8 @@ public class SuggestionBoxTagHandler
          * @param context {@link javax.faces.context.FacesContext}
          * @param instance {@link java.lang.Object}
          *
-         * @see {@link com.sun.facelets.tag.Metadata#applyMetadata(
-         *      com.sun.facelets.FaceletContext, Object)}
+         * @see {@link javax.faces.view.facelets.Metadata#applyMetadata(
+         *      javax.faces.view.facelets.FaceletContext, Object)}
          */
         public void applyMetadata(final FaceletContext context,
                                   final Object instance) {

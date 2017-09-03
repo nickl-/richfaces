@@ -27,15 +27,15 @@ import javax.faces.el.MethodBinding;
 
 import org.richfaces.event.DataFilterSliderEvent;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagAttributes;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributes;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 
 public class DataFilterSliderListenerTagHandler extends ComponentHandler {

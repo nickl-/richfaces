@@ -21,11 +21,11 @@
 
 package org.richfaces.taglib;
 
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.Tag;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagAttributes;
-import com.sun.facelets.FaceletHandler;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.Tag;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributes;
+import javax.faces.view.facelets.FaceletHandler;
 
 /**
  * @author akolonitsky
@@ -52,11 +52,11 @@ class ColumnHandlerComponentConfig implements ComponentConfig {
                 attributeValue += ITERATION_INDEX_EXPRESSION;
             }
 
-            attributes[i] = new TagAttribute(initialAttribute.getLocation(), initialAttribute.getNamespace(),
+            attributes[i] = new TagAttrib(initialAttribute.getLocation(), initialAttribute.getNamespace(),
                 localName, initialAttribute.getQName(), attributeValue);
         }
 
-        TagAttributes tagAttributes = new TagAttributes(attributes);
+        TagAttributes tagAttributes = new TagAttribs(attributes);
         this.tag = new Tag(initialTag, tagAttributes);
     }
 

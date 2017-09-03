@@ -20,29 +20,21 @@
  */
 package org.richfaces.validator;
 
-import java.beans.FeatureDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.EmptyStackException;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.Stack;
-import java.util.concurrent.ConcurrentHashMap;
 
-import javax.el.ELResolver;
 import javax.faces.FacesException;
 import javax.faces.context.FacesContext;
-
-import org.hibernate.validator.ClassValidator;
-import org.hibernate.validator.InvalidValue;
-import org.hibernate.validator.MessageInterpolator;
-import org.hibernate.validator.Validator;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.groups.Default;
 
 /**
  * Perform validation by Hibernate Validator annotations
@@ -55,20 +47,14 @@ public class HibernateValidator extends ObjectValidator {
 	static final String DEFAULT_VALIDATOR_MESSAGES = "org.hibernate.validator.resources.DefaultValidatorMessages";
 	static final String VALIDATOR_MESSAGES = "ValidatorMessages";
 
-	private Map<ValidatorKey, ClassValidator<? extends Object>> classValidators = new ConcurrentHashMap<ValidatorKey, ClassValidator<? extends Object>>();
-
+	private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+	
 	HibernateValidator() {
 		super();
-		// This is a "singleton"-like class. Only factory methods allowed.
-		// Enforce class to load
-		ClassValidator.class.getName();
 	}
 
 	HibernateValidator(ObjectValidator parent){
 		super(parent);
-		// This is a "singleton"-like class. Only factory methods allowed.
-		// Enforce class to load
-		ClassValidator.class.getName();
 	}
 	
 	@Override
@@ -78,32 +64,17 @@ public class HibernateValidator extends ObjectValidator {
 		if (null == context) {
 			throw new FacesException(INPUT_PARAMETERS_IS_NOT_CORRECT);
 		}
-		Collection<String> validationMessages = null;
+		
+		final Collection<String> validationMessages = new ArrayList<String>();
+		
 		if (null != value) {
-			ClassValidator<Object> validator = (ClassValidator<Object>) getValidator(
-					context, value.getClass());
-			if (validator.hasValidationRules()) {
-				InvalidValue[] invalidValues = validator
-						.getInvalidValues(value);
-				if (null != invalidValues && invalidValues.length > 0) {
-					validationMessages = new ArrayList<String>(invalidValues.length);
-					for (int i = 0; i < invalidValues.length; i++) {
-						InvalidValue invalidValue = invalidValues[i];
-						validationMessages.add(invalidValue.getMessage());
-					}
-				}
-			}
+		    Set<ConstraintViolation<Object>> errors = validator.validate(value);
+		    errors.forEach(error -> validationMessages.add(error.getMessage()));
 			if(null != parent){
-				Collection<String> parentMessages = parent.validateGraph(context, value, profiles);
-				if(null != validationMessages){
-					if (null != parentMessages) {
-						validationMessages.addAll(parentMessages);
-					}
-				} else {
-					validationMessages = parentMessages;
-				}
+				validationMessages.addAll(parent.validateGraph(context, value, profiles));
 			}
 		}
+		
 		return validationMessages;
 	}
 
@@ -115,14 +86,10 @@ public class HibernateValidator extends ObjectValidator {
 	 * 
 	 * @return
 	 */
-	protected InvalidValue[] validateClass(FacesContext facesContext,
-			Class<? extends Object> beanClass, String property, Object value) {
-		ClassValidator<? extends Object> classValidator = 
-		    getValidator(facesContext, beanClass);
+	protected <T> Set<ConstraintViolation<T>> validateClass(FacesContext facesContext,
+			Class<T> beanClass, String property, Object value) {
 		
-		InvalidValue[] invalidValues = classValidator
-				.getPotentialInvalidValues(property, value);
-		return invalidValues;
+		return validator.validateValue(beanClass, property, value, Default.class);
 	}
 
 	/**
@@ -131,31 +98,10 @@ public class HibernateValidator extends ObjectValidator {
 	 * 
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	protected ClassValidator<? extends Object> getValidator(
+	protected Validator getValidator(
 			FacesContext facesContext, Class<? extends Object> beanClass) {
-		// TODO - localization support.
-		ValidatorKey key = new ValidatorKey(beanClass, calculateLocale(facesContext));
-		ClassValidator result = classValidators.get(key);
-		if (null == result) {
-			result = createValidator(facesContext, beanClass);
-			classValidators.put(key, result);
-		}
-		return result;
-	}
-
-	/*
-	 * Method for create new instance of ClassValidator, if same not in cache.
-	 * 
-	 * @param beanClass - Class to validate @param locale - user Locale, used
-	 * during validation process @return ClassValidator instance
-	 */
-	@SuppressWarnings("unchecked")
-	protected ClassValidator<? extends Object> createValidator(
-			FacesContext facesContext, Class<? extends Object> beanClass) {
-		ResourceBundle bundle = createHibernateMessages(facesContext);
-		return bundle == null ? new ClassValidator(beanClass)
-				: new ClassValidator(beanClass, bundle);
+		
+		return this.validator;
 	}
 
 	/**
@@ -176,17 +122,13 @@ public class HibernateValidator extends ObjectValidator {
 	@Override
 	protected Collection<String> validate(FacesContext facesContext, Object base, String property,
 			Object value, Set<String> profiles) {
-				InvalidValue[] invalidValues = validateBean(facesContext, base, property,
-						value);
-				if (null == invalidValues) {
+		final Collection<String> validationMessages = new ArrayList<String>();
+		Set<ConstraintViolation<Object>> errors = validateBean(facesContext, base, property, value);
+				if (errors.isEmpty()) {
 					return null;
 				} else {
-					Collection<String> result = new ArrayList<String>(invalidValues.length);
-					for (int i = 0; i < invalidValues.length; i++) {
-						InvalidValue invalidValue = invalidValues[i];
-						result.add(invalidValue.getMessage());
-					}
-					return result;
+					errors.forEach(error -> validationMessages.add(error.getMessage()));
+					return validationMessages;
 				}
 			}
 
@@ -198,33 +140,11 @@ public class HibernateValidator extends ObjectValidator {
 	 * 
 	 * @return
 	 */
-	protected InvalidValue[] validateBean(FacesContext facesContext, Object base, String property,
+	protected <T> Set<ConstraintViolation<T>> validateBean(FacesContext facesContext, T base, String property,
 			Object value) {
-		Class<? extends Object> beanClass = base.getClass();
-		
-		InvalidValue[] invalidValues = validateClass(facesContext, beanClass, property, value);
-		return invalidValues;
+		return validator.validateProperty(base, property, Default.class);
 	}
 
-	private static class JsfMessageInterpolator implements MessageInterpolator {
-
-		private Locale locale;
-		private MessageInterpolator delegate;
-
-		public JsfMessageInterpolator(Locale locale,
-				MessageInterpolator delegate) {
-			this.locale = locale;
-			this.delegate = delegate;
-		}
-
-
-		public String interpolate(String message, Validator validator,
-				MessageInterpolator defaultInterpolator) {
-			return delegate.interpolate(message, validator, defaultInterpolator);
-		}
-
-	}
-	
 	static class ResourceBundleChain extends ResourceBundle {
 		
 		private final ResourceBundle delegate;
@@ -236,7 +156,6 @@ public class HibernateValidator extends ObjectValidator {
 
 		@Override
 		public Enumeration<String> getKeys() {
-			// TODO Auto-generated method stub
 			return null!=delegate?delegate.getKeys():Collections.<String>enumeration(Collections.<String>emptyList());
 		}
 

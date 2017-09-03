@@ -134,7 +134,7 @@ public class BuilderConfig implements LoaderHolder {
         // URL("resource:/com/exadel/vcp/builder/config/component-config.dtd");
 	getLog()
 		.debug("Register config DTD as URI " + COMPONENT_CONFIG_DTD_URI);
-	digester.register(GENERATOR_CONFIG_PUBLIC_ID, COMPONENT_CONFIG_DTD_URI);
+	digester.register(GENERATOR_CONFIG_PUBLIC_ID, "file:"+COMPONENT_CONFIG_DTD_URI);
 	// } catch (MalformedURLException e) {
 	// throw new ParsingException("Malformed URL for internal DTD
         // reference",e);
@@ -397,7 +397,7 @@ public class BuilderConfig implements LoaderHolder {
 	// Set this config as root.
 	digester.push(this);
 	try {
-	    digester.parse(configFile.toString());
+	    digester.parse("file:"+configFile.toString());
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
 	    throw new ParsingException("I/O error on parsing config file ", e);

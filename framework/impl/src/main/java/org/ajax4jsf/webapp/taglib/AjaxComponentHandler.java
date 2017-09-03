@@ -25,9 +25,9 @@ import javax.faces.component.ActionSource;
 
 import org.ajax4jsf.component.AjaxContainerBase;
 
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
@@ -45,7 +45,7 @@ public class AjaxComponentHandler extends ComponentHandler {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.sun.facelets.tag.jsf.ComponentHandler#createMetaRuleset(java.lang.Class)
+	 * @see javax.faces.view.facelets.ComponentHandler#createMetaRuleset(java.lang.Class)
 	 */
 	protected MetaRuleset createMetaRuleset(Class type) {
 		// TODO Auto-generated method stub

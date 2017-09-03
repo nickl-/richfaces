@@ -31,7 +31,7 @@ import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.resource.ResourceContext;
 
-import com.sun.facelets.FaceletException;
+import javax.faces.view.facelets.FaceletException;
 
 /**
  * @author asmirnov@exadel.com (latest modification by $Author: nick_belaevski $)

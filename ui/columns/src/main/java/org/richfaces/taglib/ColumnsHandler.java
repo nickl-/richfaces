@@ -27,14 +27,14 @@
 
 package org.richfaces.taglib;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.MetaTagHandler;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.MetaTagHandler;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.richfaces.el.ELBuilder;
@@ -59,7 +59,7 @@ public class ColumnsHandler extends MetaTagHandler {
 
 	private static final Log log = LogFactory.getLog(ColumnsHandler.class);
 	
-	private com.sun.facelets.tag.jsf.ComponentHandler handler;
+	private javax.faces.view.facelets.ComponentHandler handler;
 
 	static final String ITERATION_INDEX_VARIABLE = "__richfaces_iteration_index_variable";
 	
@@ -134,7 +134,7 @@ public class ColumnsHandler extends MetaTagHandler {
 			}
 
 			@Override
-			protected void applyNextHandler(FaceletContext ctx, UIComponent c)
+			public void applyNextHandler(FaceletContext ctx, UIComponent c)
 			throws IOException, FacesException, ELException {
 				c.getAttributes().put(F_GENERATION_SERIES_ATTRIBUTE, RequestUniqueIdGenerator.generateId(ctx.getFacesContext()));
 				super.applyNextHandler(ctx, c);
@@ -173,7 +173,7 @@ public class ColumnsHandler extends MetaTagHandler {
     /*
       * (non-Javadoc)
       *
-      * @see org.richfaces.taglib.ComponentHandler#apply(com.sun.facelets.FaceletContext,
+      * @see org.richfaces.taglib.ComponentHandler#apply(javax.faces.view.facelets.FaceletContext,
       *      javax.faces.component.UIComponent)
       */
 	public void apply(FaceletContext ctx, UIComponent parent)
@@ -277,4 +277,9 @@ public class ColumnsHandler extends MetaTagHandler {
 
         vm.setVariable(ITERATION_INDEX_VARIABLE, null);
     }
+
+	@Override
+	protected MetaRuleset createMetaRuleset(Class type) {		
+		return null;
+	}
 }

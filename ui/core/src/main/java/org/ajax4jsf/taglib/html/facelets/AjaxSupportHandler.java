@@ -31,11 +31,11 @@ import javax.faces.component.UIComponentBase;
 import org.ajax4jsf.taglib.html.jsp.AjaxSupportTag;
 import org.ajax4jsf.webapp.taglib.AjaxComponentHandler;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.FaceletException;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagHandler;
-import com.sun.facelets.tag.jsf.ComponentConfig;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagHandler;
+import javax.faces.view.facelets.ComponentConfig;
 
 /**
  * "proxy" class for creating UIAjaxSupport component as facet for it's parent.
@@ -73,7 +73,7 @@ public class AjaxSupportHandler extends TagHandler {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.sun.facelets.FaceletHandler#apply(com.sun.facelets.FaceletContext, javax.faces.component.UIComponent)
+	 * @see javax.faces.view.facelets.FaceletHandler#apply(javax.faces.view.facelets.FaceletContext, javax.faces.component.UIComponent)
 	 */
 	public void apply(FaceletContext ctx, UIComponent parent)
 			throws IOException, FacesException, FaceletException, ELException {

@@ -24,11 +24,11 @@ import javax.faces.convert.Converter;
 
 import org.ajax4jsf.component.UIDataAdaptor;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
 
 /**
  * Apply rowKeyConverter to component
@@ -78,9 +78,9 @@ public class RowKeyConverterRule extends MetaRule {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.sun.facelets.tag.MetaRule#applyRule(java.lang.String,
-	 *      com.sun.facelets.tag.TagAttribute,
-	 *      com.sun.facelets.tag.MetadataTarget)
+	 * @see javax.faces.view.facelets.MetaRule#applyRule(java.lang.String,
+	 *      javax.faces.view.facelets.TagAttribute,
+	 *      javax.faces.view.facelets.MetadataTarget)
 	 */
 	@Override
 	public Metadata applyRule(String name, TagAttribute attribute,

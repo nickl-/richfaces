@@ -23,12 +23,9 @@ package org.ajax4jsf.tests;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.el.ELContext;
 import javax.el.ELException;
 import javax.el.ELResolver;
 import javax.el.ExpressionFactory;
@@ -38,10 +35,8 @@ import javax.el.VariableMapper;
 import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.FaceletException;
-import com.sun.facelets.TemplateClient;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
 
 /**
  * @author Nick Belaevski
@@ -55,26 +50,26 @@ public class MockFaceletContext extends FaceletContext {
 	private VariableMapper variableMapper;
 	private ELResolver elResolver;
 	
-	private List<TemplateClient> templateClients;
+//	private List<TemplateClient> templateClients;
 	private Map<String, Integer> ids = new HashMap<String, Integer>();
 	
-	public List<TemplateClient> getTemplateClients() {
-		return templateClients;
-	}
-
-	public void setTemplateClients(List<TemplateClient> templateClients) {
-		this.templateClients = templateClients;
-	}
+//	public List<TemplateClient> getTemplateClients() {
+//		return templateClients;
+//	}
+//
+//	public void setTemplateClients(List<TemplateClient> templateClients) {
+//		this.templateClients = templateClients;
+//	}
 
 	public MockFaceletContext(FacesContext context) {
 		super();
 		this.context = context;
-		this.templateClients = new ArrayList<TemplateClient>();
-
-		ELContext elContext = context.getELContext();
-		this.elResolver = elContext.getELResolver();
-		this.functionMapper = elContext.getFunctionMapper();
-		this.variableMapper = elContext.getVariableMapper();
+//		this.templateClients = new ArrayList<TemplateClient>();
+//
+//		ELContext elContext = context.getELContext();
+//		this.elResolver = elContext.getELResolver();
+//		this.functionMapper = elContext.getFunctionMapper();
+//		this.variableMapper = elContext.getVariableMapper();
 	}
 
 	@Override
@@ -100,7 +95,7 @@ public class MockFaceletContext extends FaceletContext {
 		return context;
 	}
 
-	@Override
+	
 	public boolean includeDefinition(UIComponent parent, String name)
 			throws IOException, FaceletException, FacesException, ELException {
 		// TODO Auto-generated method stub
@@ -121,24 +116,24 @@ public class MockFaceletContext extends FaceletContext {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public void popClient(TemplateClient client) {
-		if (this.templateClients.isEmpty()) {
-			throw new IllegalArgumentException();
-		}
-
-		this.templateClients.remove(client);
-	}
-
-	@Override
-	public void pushClient(TemplateClient client) {
-		this.templateClients.add(0, client);
-	}
-
-	@Override
-	public void extendClient(TemplateClient client) {
-		this.templateClients.add(client);
-	}
+//	@Override
+//	public void popClient(TemplateClient client) {
+//		if (this.templateClients.isEmpty()) {
+//			throw new IllegalArgumentException();
+//		}
+//
+//		this.templateClients.remove(client);
+//	}
+//
+//	@Override
+//	public void pushClient(TemplateClient client) {
+//		this.templateClients.add(0, client);
+//	}
+//
+//	@Override
+//	public void extendClient(TemplateClient client) {
+//		this.templateClients.add(client);
+//	}
 
 	@Override
 	public Object getAttribute(String name) {

@@ -66,7 +66,7 @@ Here's an example:
 		<taghandler generate="true">
 			<classname>org.richfaces.taglib.FileUploadTagHandler</classname>
 			<superclass>
-				com.sun.facelets.tag.jsf.ComponentHandler
+				javax.faces.view.facelets.ComponentHandler
 			</superclass>
 		</taghandler>
 		&ui_component_attributes;

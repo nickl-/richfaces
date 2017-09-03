@@ -31,15 +31,15 @@ import javax.faces.event.ActionEvent;
 import org.ajax4jsf.Messages;
 import org.ajax4jsf.component.UIActionParameter;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagAttributeException;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributeException;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
@@ -56,7 +56,7 @@ public class ActionParamHandler extends ComponentHandler {
 	public static class ActionParamMetaRule extends MetaRule {
 
 		/* (non-Javadoc)
-		 * @see org.ajax4jsf.tag.SuggestionHandler.SuggestionMetaRule#applyRule(java.lang.String, com.sun.facelets.tag.TagAttribute, com.sun.facelets.tag.MetadataTarget)
+		 * @see org.ajax4jsf.tag.SuggestionHandler.SuggestionMetaRule#applyRule(java.lang.String, javax.faces.view.facelets.TagAttribute, javax.faces.view.facelets.MetadataTarget)
 		 */
 		public Metadata applyRule(String name, TagAttribute attribute, MetadataTarget meta) {
 	        if (meta.isTargetInstanceOf(UIActionParameter.class)) {
@@ -168,7 +168,7 @@ public class ActionParamHandler extends ComponentHandler {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sun.facelets.FaceletHandler#apply(com.sun.facelets.FaceletContext,
+     * @see javax.faces.view.facelets.FaceletHandler#apply(javax.faces.view.facelets.FaceletContext,
      *      javax.faces.component.UIComponent)
      */
     public void onComponentCreated(FaceletContext ctx, UIComponent c, UIComponent parent) {

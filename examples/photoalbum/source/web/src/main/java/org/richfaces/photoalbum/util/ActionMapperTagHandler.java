@@ -35,11 +35,11 @@ import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.event.ActionEvent;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.FaceletException;
-import com.sun.facelets.el.VariableMapperWrapper;
-import com.sun.facelets.tag.TagConfig;
-import com.sun.facelets.tag.TagHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
+import javax.faces.view.facelets.VariableMapperWrapper;
+import javax.faces.view.facelets.TagConfig;
+import javax.faces.view.facelets.TagHandler;
 
 public class ActionMapperTagHandler extends TagHandler {
 

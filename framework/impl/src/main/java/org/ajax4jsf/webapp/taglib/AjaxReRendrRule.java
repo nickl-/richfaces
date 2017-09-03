@@ -26,11 +26,11 @@ import java.util.Set;
 import org.ajax4jsf.component.AjaxComponent;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
 
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
@@ -49,7 +49,7 @@ public class AjaxReRendrRule extends MetaRule {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.sun.facelets.tag.MetaRule#applyRule(java.lang.String, com.sun.facelets.tag.TagAttribute, com.sun.facelets.tag.MetadataTarget)
+	 * @see javax.faces.view.facelets.MetaRule#applyRule(java.lang.String, javax.faces.view.facelets.TagAttribute, javax.faces.view.facelets.MetadataTarget)
 	 */
 	public Metadata applyRule(String name, TagAttribute attribute,
 			MetadataTarget meta) {
@@ -77,7 +77,7 @@ public class AjaxReRendrRule extends MetaRule {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.sun.facelets.tag.Metadata#applyMetadata(com.sun.facelets.FaceletContext, java.lang.Object)
+		 * @see javax.faces.view.facelets.Metadata#applyMetadata(javax.faces.view.facelets.FaceletContext, java.lang.Object)
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
 			((AjaxComponent) instance).setReRender(_reRender);

@@ -36,9 +36,8 @@ import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.FaceletException;
-import com.sun.facelets.TemplateClient;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
 
 /**
  * @author shura
@@ -58,18 +57,18 @@ public class IncludeFaceletContext extends FaceletContext {
 		this.ids = new HashMap();
 	}
 
-	/**
-	 * @param client
-	 * @see com.sun.facelets.FaceletContext#extendClient(com.sun.facelets.TemplateClient)
-	 */
-	public void extendClient(TemplateClient client) {
-		this.defaultContext.extendClient(client);
-	}
-
+//	/**
+//	 * @param client
+//	 * @see javax.faces.view.facelets.FaceletContext#extendClient(javax.faces.view.facelets.TemplateClient)
+//	 */
+//	public void extendClient(TemplateClient client) {
+//		this.defaultContext.extendClient(client);
+//	}
+//
 	/**
 	 * @param base
 	 * @return
-	 * @see com.sun.facelets.FaceletContext#generateUniqueId(java.lang.String)
+	 * @see javax.faces.view.facelets.FaceletContext#generateUniqueId(java.lang.String)
 	 */
     public String generateUniqueId(String base) {
         Integer cnt = (Integer) this.ids.get(base);
@@ -86,7 +85,7 @@ public class IncludeFaceletContext extends FaceletContext {
 	/**
 	 * @param name
 	 * @return
-	 * @see com.sun.facelets.FaceletContext#getAttribute(java.lang.String)
+	 * @see javax.faces.view.facelets.FaceletContext#getAttribute(java.lang.String)
 	 */
 	public Object getAttribute(String name) {
 		return this.defaultContext.getAttribute(name);
@@ -111,7 +110,7 @@ public class IncludeFaceletContext extends FaceletContext {
 
 	/**
 	 * @return
-	 * @see com.sun.facelets.FaceletContext#getExpressionFactory()
+	 * @see javax.faces.view.facelets.FaceletContext#getExpressionFactory()
 	 */
 	public ExpressionFactory getExpressionFactory() {
 		return this.defaultContext.getExpressionFactory();
@@ -119,7 +118,7 @@ public class IncludeFaceletContext extends FaceletContext {
 
 	/**
 	 * @return
-	 * @see com.sun.facelets.FaceletContext#getFacesContext()
+	 * @see javax.faces.view.facelets.FaceletContext#getFacesContext()
 	 */
 	public FacesContext getFacesContext() {
 		return this.defaultContext.getFacesContext();
@@ -165,11 +164,11 @@ public class IncludeFaceletContext extends FaceletContext {
 	 * @throws FaceletException
 	 * @throws FacesException
 	 * @throws ELException
-	 * @see com.sun.facelets.FaceletContext#includeDefinition(javax.faces.component.UIComponent, java.lang.String)
+	 * @see javax.faces.view.facelets.FaceletContext#includeDefinition(javax.faces.component.UIComponent, java.lang.String)
 	 */
-	public boolean includeDefinition(UIComponent parent, String name) throws IOException, FaceletException, FacesException, ELException {
-		return this.defaultContext.includeDefinition(parent, name);
-	}
+//	public boolean includeDefinition(UIComponent parent, String name) throws IOException, FaceletException, FacesException, ELException {
+//		return this.defaultContext.includeDefinition(parent, name);
+//	}
 
 	/**
 	 * @param parent
@@ -178,7 +177,7 @@ public class IncludeFaceletContext extends FaceletContext {
 	 * @throws FaceletException
 	 * @throws FacesException
 	 * @throws ELException
-	 * @see com.sun.facelets.FaceletContext#includeFacelet(javax.faces.component.UIComponent, java.lang.String)
+	 * @see javax.faces.view.facelets.FaceletContext#includeFacelet(javax.faces.component.UIComponent, java.lang.String)
 	 */
 	public void includeFacelet(UIComponent parent, String relativePath) throws IOException, FaceletException, FacesException, ELException {
 		this.defaultContext.includeFacelet(parent, relativePath);
@@ -191,7 +190,7 @@ public class IncludeFaceletContext extends FaceletContext {
 	 * @throws FaceletException
 	 * @throws FacesException
 	 * @throws ELException
-	 * @see com.sun.facelets.FaceletContext#includeFacelet(javax.faces.component.UIComponent, java.net.URL)
+	 * @see javax.faces.view.facelets.FaceletContext#includeFacelet(javax.faces.component.UIComponent, java.net.URL)
 	 */
 	public void includeFacelet(UIComponent parent, URL absolutePath) throws IOException, FaceletException, FacesException, ELException {
 		this.defaultContext.includeFacelet(parent, absolutePath);
@@ -207,19 +206,19 @@ public class IncludeFaceletContext extends FaceletContext {
 
 	/**
 	 * @param client
-	 * @see com.sun.facelets.FaceletContext#popClient(com.sun.facelets.TemplateClient)
+	 * @see javax.faces.view.facelets.FaceletContext#popClient(javax.faces.view.facelets.TemplateClient)
 	 */
-	public void popClient(TemplateClient client) {
-		this.defaultContext.popClient(client);
-	}
+//	public void popClient(TemplateClient client) {
+//		this.defaultContext.popClient(client);
+//	}
 
 	/**
 	 * @param client
-	 * @see com.sun.facelets.FaceletContext#pushClient(com.sun.facelets.TemplateClient)
+	 * @see javax.faces.view.facelets.FaceletContext#pushClient(javax.faces.view.facelets.TemplateClient)
 	 */
-	public void pushClient(TemplateClient client) {
-		this.defaultContext.pushClient(client);
-	}
+//	public void pushClient(TemplateClient client) {
+//		this.defaultContext.pushClient(client);
+//	}
 
 	/**
 	 * @param key
@@ -233,7 +232,7 @@ public class IncludeFaceletContext extends FaceletContext {
 	/**
 	 * @param name
 	 * @param value
-	 * @see com.sun.facelets.FaceletContext#setAttribute(java.lang.String, java.lang.Object)
+	 * @see javax.faces.view.facelets.FaceletContext#setAttribute(java.lang.String, java.lang.Object)
 	 */
 	public void setAttribute(String name, Object value) {
 		this.defaultContext.setAttribute(name, value);
@@ -241,7 +240,7 @@ public class IncludeFaceletContext extends FaceletContext {
 
 	/**
 	 * @param fnMapper
-	 * @see com.sun.facelets.FaceletContext#setFunctionMapper(javax.el.FunctionMapper)
+	 * @see javax.faces.view.facelets.FaceletContext#setFunctionMapper(javax.el.FunctionMapper)
 	 */
 	public void setFunctionMapper(FunctionMapper fnMapper) {
 		this.defaultContext.setFunctionMapper(fnMapper);
@@ -265,7 +264,7 @@ public class IncludeFaceletContext extends FaceletContext {
 
 	/**
 	 * @param varMapper
-	 * @see com.sun.facelets.FaceletContext#setVariableMapper(javax.el.VariableMapper)
+	 * @see javax.faces.view.facelets.FaceletContext#setVariableMapper(javax.el.VariableMapper)
 	 */
 	public void setVariableMapper(VariableMapper varMapper) {
 		this.defaultContext.setVariableMapper(varMapper);

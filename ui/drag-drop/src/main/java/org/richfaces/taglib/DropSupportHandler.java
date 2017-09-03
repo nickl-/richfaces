@@ -24,14 +24,15 @@ package org.richfaces.taglib;
 import org.ajax4jsf.webapp.taglib.AjaxComponentHandler;
 import org.richfaces.component.UIDropSupport;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.el.LegacyMethodBinding;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
+import com.sun.faces.application.MethodBindingMethodExpressionAdapter;
+
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
 
 /**
  * @author Nick - mailto:nbelaevski@exadel.com created 01.03.2007
@@ -62,9 +63,9 @@ public class DropSupportHandler extends AjaxComponentHandler {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.sun.facelets.tag.MetaRule#applyRule(java.lang.String,
-		 *      com.sun.facelets.tag.TagAttribute,
-		 *      com.sun.facelets.tag.MetadataTarget)
+		 * @see javax.faces.view.facelets.MetaRule#applyRule(java.lang.String,
+		 *      javax.faces.view.facelets.TagAttribute,
+		 *      javax.faces.view.facelets.MetadataTarget)
 		 */
 		public Metadata applyRule(String name, TagAttribute attribute,
 				MetadataTarget meta) {
@@ -95,12 +96,12 @@ public class DropSupportHandler extends AjaxComponentHandler {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.sun.facelets.tag.Metadata#applyMetadata(com.sun.facelets.FaceletContext,
+		 * @see javax.faces.view.facelets.Metadata#applyMetadata(javax.faces.view.facelets.FaceletContext,
 		 *      java.lang.Object)
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
 			((UIDropSupport) instance)
-			.setDropListener(new LegacyMethodBinding(this._action
+			.setDropListener(new MethodBindingMethodExpressionAdapter(this._action
 					.getMethodExpression(ctx, null, SIGNATURE)));
 		}
 

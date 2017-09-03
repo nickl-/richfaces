@@ -32,15 +32,15 @@ import org.ajax4jsf.Messages;
 import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.event.AjaxListenerHelper;
 import org.ajax4jsf.event.AjaxSource;
+import org.richfaces.webapp.taglib.ValueBindingValueExpressionAdaptor;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.FaceletException;
-import com.sun.facelets.el.LegacyValueBinding;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagAttributeException;
-import com.sun.facelets.tag.TagConfig;
-import com.sun.facelets.tag.TagException;
-import com.sun.facelets.tag.TagHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributeException;
+import javax.faces.view.facelets.TagConfig;
+import javax.faces.view.facelets.TagException;
+import javax.faces.view.facelets.TagHandler;
 
 /**
  * Register an ActionListener instance on the UIComponent associated with the
@@ -86,7 +86,7 @@ public final class AjaxListenerHandler extends TagHandler {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sun.facelets.FaceletHandler#apply(com.sun.facelets.FaceletContext,
+     * @see javax.faces.view.facelets.FaceletHandler#apply(javax.faces.view.facelets.FaceletContext,
      *      javax.faces.component.UIComponent)
      */
     public void apply(FaceletContext ctx, UIComponent parent)
@@ -101,7 +101,7 @@ public final class AjaxListenerHandler extends TagHandler {
                     ve = this.binding.getValueExpression(ctx,
                             AjaxListener.class);
                     // TODO - handle both JSF 1.2/1.1 cases.
-                    listener = new AjaxListenerHelper(new LegacyValueBinding(ve));
+                    listener = new AjaxListenerHelper(new ValueBindingValueExpressionAdaptor(ve));
                 }
                 if (listener == null) {
                     try {

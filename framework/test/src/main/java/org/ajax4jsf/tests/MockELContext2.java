@@ -26,7 +26,7 @@ import javax.el.FunctionMapper;
 import javax.el.VariableMapper;
 import javax.faces.context.FacesContext;
 
-import com.sun.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletContext;
 
 /**
  * @author Administrator

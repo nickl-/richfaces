@@ -23,22 +23,19 @@ package org.richfaces.taglib;
 import java.util.Set;
 
 import javax.faces.validator.Validator;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ValidatorConfig;
+import javax.faces.view.facelets.ValidatorHandler;
 
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.richfaces.validator.FacesBeanValidator;
-
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagConfig;
-import com.sun.facelets.tag.jsf.ValidateHandler;
-import com.sun.facelets.tag.jsf.ValidatorConfig;
 
 /**
  * @author asmirnov
  * 
  */
-public class BeanValidatorHandler extends ValidateHandler {
+public class BeanValidatorHandler extends ValidatorHandler {
 
 
 	private TagAttribute _profiles;
@@ -53,7 +50,7 @@ public class BeanValidatorHandler extends ValidateHandler {
 		_profiles = getAttribute("profiles");
 	}
 
-	@Override
+	
 	protected Validator createValidator(FaceletContext ctx) {
 		FacesBeanValidator validator = (FacesBeanValidator) ctx.getFacesContext()
 				.getApplication().createValidator(

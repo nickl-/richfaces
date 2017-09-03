@@ -30,11 +30,10 @@ import javax.faces.component.UIComponent;
 
 import org.ajax4jsf.component.UIInclude;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.el.VariableMapperWrapper;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author shura
@@ -52,17 +51,17 @@ public class IncludeHandler extends ComponentHandler {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.sun.facelets.tag.jsf.ComponentHandler#onComponentCreated(com.sun.facelets.FaceletContext,
+	 * @see javax.faces.view.facelets.ComponentHandler#onComponentCreated(javax.faces.view.facelets.FaceletContext,
 	 *      javax.faces.component.UIComponent,
 	 *      javax.faces.component.UIComponent)
 	 */
-	protected void onComponentCreated(FaceletContext ctx, UIComponent c,
+	public void onComponentCreated(FaceletContext ctx, UIComponent c,
 			UIComponent parent) {
 		// TODO Auto-generated method stub
 		super.onComponentCreated(ctx, c, parent);
 	}
 
-	protected void applyNextHandler(FaceletContext ctx, UIComponent component)
+	public void applyNextHandler(FaceletContext ctx, UIComponent component)
 			throws IOException, FacesException, ELException {
 		String path;
 			if (component instanceof UIInclude) {

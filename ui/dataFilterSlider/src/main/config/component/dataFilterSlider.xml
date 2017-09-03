@@ -30,7 +30,7 @@
         </tag>
         <taghandler generate="true">
             <classname>org.richfaces.taglib.DataFilterSliderTagHandler</classname>
-            <superclass>com.sun.facelets.tag.jsf.ComponentHandler</superclass>
+            <superclass>javax.faces.view.facelets.ComponentHandler</superclass>
             <!--test/-->
         </taghandler>
 

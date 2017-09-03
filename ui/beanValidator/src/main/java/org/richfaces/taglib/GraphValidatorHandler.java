@@ -10,11 +10,11 @@ import javax.faces.component.UIComponent;
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
 import org.richfaces.component.UIGraphValidator;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author asmirnov
@@ -39,7 +39,7 @@ public class GraphValidatorHandler extends ComponentHandler {
 	
 	
 	@Override
-	protected void onComponentCreated(FaceletContext ctx, UIComponent c,
+	public void onComponentCreated(FaceletContext ctx, UIComponent c,
 			UIComponent parent) {
 		super.onComponentCreated(ctx, c, parent);
 		if (c instanceof UIGraphValidator) {

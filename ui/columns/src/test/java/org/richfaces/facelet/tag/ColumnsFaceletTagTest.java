@@ -41,12 +41,12 @@ import org.ajax4jsf.tests.AbstractAjax4JsfTestCase;
 import org.richfaces.component.UIColumn;
 import org.richfaces.component.html.HtmlColumn;
 
-import com.sun.facelets.Facelet;
-import com.sun.facelets.FaceletFactory;
-import com.sun.facelets.compiler.Compiler;
-import com.sun.facelets.compiler.SAXCompiler;
-import com.sun.facelets.impl.DefaultFaceletFactory;
-import com.sun.facelets.impl.ResourceResolver;
+import javax.faces.view.facelets.Facelet;
+import javax.faces.view.facelets.FaceletFactory;
+import javax.faces.view.facelets.Compiler;
+import javax.faces.view.facelets.SAXCompiler;
+import javax.faces.view.facelets.DefaultFaceletFactory;
+import javax.faces.view.facelets.ResourceResolver;
 
 /**
  * Unit test for simple Component.

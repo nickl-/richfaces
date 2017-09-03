@@ -24,15 +24,16 @@ package org.richfaces.taglib;
 import java.awt.Graphics2D;
 
 import org.richfaces.component.UIPaint2D;
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.el.LegacyMethodBinding;
-import com.sun.facelets.tag.MetaRule;
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.Metadata;
-import com.sun.facelets.tag.MetadataTarget;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import org.richfaces.webapp.taglib.MethodBindingMethodExpressionAdaptor;
+
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.MetaRule;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.Metadata;
+import javax.faces.view.facelets.MetadataTarget;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author shura (latest modification by $Author: ishabalov $)
@@ -75,7 +76,7 @@ public class Image2DTagHandler extends ComponentHandler {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.sun.facelets.tag.MetaRule#applyRule(java.lang.String, com.sun.facelets.tag.TagAttribute, com.sun.facelets.tag.MetadataTarget)
+		 * @see javax.faces.view.facelets.MetaRule#applyRule(java.lang.String, javax.faces.view.facelets.TagAttribute, javax.faces.view.facelets.MetadataTarget)
 		 */
 		public Metadata applyRule(String name, TagAttribute attribute, MetadataTarget meta) {
 	        if (meta.isTargetInstanceOf(UIPaint2D.class)) {
@@ -107,11 +108,11 @@ public class Image2DTagHandler extends ComponentHandler {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.sun.facelets.tag.Metadata#applyMetadata(com.sun.facelets.FaceletContext, java.lang.Object)
+		 * @see javax.faces.view.facelets.Metadata#applyMetadata(javax.faces.view.facelets.FaceletContext, java.lang.Object)
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
             ((UIPaint2D) instance)
-            .setPaint(new LegacyMethodBinding(this._paint
+            .setPaint(new MethodBindingMethodExpressionAdaptor(this._paint
                     .getMethodExpression(ctx, null,
                             Image2D_ACTION_SIG)));
 		}

@@ -21,9 +21,9 @@
 
 package org.ajax4jsf.gwt.jsf;
 
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
@@ -41,7 +41,7 @@ public class GwtComponentHandler extends ComponentHandler {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.sun.facelets.tag.jsf.ComponentHandler#createMetaRuleset(java.lang.Class)
+	 * @see javax.faces.view.facelets.ComponentHandler#createMetaRuleset(java.lang.Class)
 	 */
 	protected MetaRuleset createMetaRuleset(Class type) {
 		MetaRuleset metaRules = super.createMetaRuleset(type);

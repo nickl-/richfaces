@@ -17,8 +17,8 @@ import org.richfaces.event.UploadEvent;
 import org.richfaces.model.UploadItem;
 
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.util.Path;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.Path;
 
 
 

@@ -22,10 +22,10 @@ package org.richfaces.taglib;
 
 import javax.faces.context.FacesContext;
 
-import com.sun.facelets.tag.MetaRuleset;
-import com.sun.facelets.tag.TagAttribute;
-import com.sun.facelets.tag.TagAttributes;
-import com.sun.facelets.tag.jsf.ComponentConfig;
+import javax.faces.view.facelets.MetaRuleset;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributes;
+import javax.faces.view.facelets.ComponentConfig;
 
 public abstract class SimpleTogglePanelTagHandlerBase extends
 	SimpleTogglePanelListenerTagHandler {

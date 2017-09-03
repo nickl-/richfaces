@@ -39,7 +39,7 @@
 
         <taghandler generate="true">
             <classname>org.richfaces.taglib.DropDownMenuTagHandler</classname>
-            <superclass>com.sun.facelets.tag.jsf.ComponentHandler</superclass>
+            <superclass>javax.faces.view.facelets.ComponentHandler</superclass>
         </taghandler>
 
         &ui_component_attributes;
