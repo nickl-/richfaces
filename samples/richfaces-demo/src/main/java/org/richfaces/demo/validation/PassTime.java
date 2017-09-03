@@ -1,10 +1,9 @@
 package org.richfaces.demo.validation;
 
-import org.hibernate.validator.Length;
-import org.hibernate.validator.Max;
-import org.hibernate.validator.Min;
-import org.hibernate.validator.NotEmpty;
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class PassTime {
 
@@ -13,8 +12,8 @@ public class PassTime {
 		setTime(time);
 	}
 	
-	@NotEmpty
-	@Length(max=15, min=3)
+	@NotNull
+	@Size(max=15, min=3)
 	private String title;
 	@NotNull
 	@Min(0)
