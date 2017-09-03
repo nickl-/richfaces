@@ -30,7 +30,8 @@
 		<version.assembly.plugin>2.6</version.assembly.plugin>
 		<version.clean.plugin>3.0.0</version.clean.plugin>
 		<version.compiler.plugin>3.5.1</version.compiler.plugin>
-		<version.install.plugin>2.5.2</version.install.plugin>
+		<version.dependency.plugin>3.0.1</version.dependency.plugin>
+        <version.install.plugin>2.5.2</version.install.plugin>
 		<version.jar.plugin>3.0.2</version.jar.plugin>
 		<version.antrun.plugin>1.8</version.antrun.plugin>
 		<version.javadoc.plugin>3.0.0-M1</version.javadoc.plugin>
@@ -60,28 +61,68 @@
         <version.org.hibernate.search>5.5.7.Final</version.org.hibernate.search>
         <version.org.hibernate.javax.persistence>1.0.1.Final</version.org.hibernate.javax.persistence>
         <version.org.hibernate-jpamodelgen>1.2.0.Final</version.org.hibernate-jpamodelgen>        
-        <version-commons-digester>1.8.1</version-commons-digester>
-        <version-xml-apis>1.0.b2</version-xml-apis>
+        <version-commons-digester>2.1</version-commons-digester>
+        <version-commons-xerces>2.11.0</version-commons-xerces>
+        <version-commons-beanutils>1.9.3</version-commons-beanutils>
+        <version-commons-logging>1.2.0.redhat-2</version-commons-logging>
+        <version-xml-apis>2.0.2</version-xml-apis>
 
 		<snapshotRepository>dav:https://snapshots.jboss.org/maven2</snapshotRepository>
 	</properties>
 	<dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>${version-javax-servlet-api}</version>
-		</dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-		    <version>${version-javax-faces-api}</version>
-        </dependency>
+        	<dependencies>
+            
+            <dependency>
+                <groupId>org.richfaces.ui</groupId>
+                <artifactId>richfaces-ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.framework</groupId>
+                <artifactId>richfaces-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.framework</groupId>
+                <artifactId>richfaces-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.framework</groupId>
+                <artifactId>richfaces-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+             <dependency>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.xmlgraphics</groupId>
+                <artifactId>batik-ext</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${version-javax-servlet-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.faces</groupId>
+                <artifactId>jsf-api</artifactId>
+                <version>${version-javax-faces-api}</version>
+            </dependency>
             <dependency>
                 <groupId>com.sun.faces</groupId>
                 <artifactId>jsf-impl</artifactId>
@@ -97,7 +138,236 @@
                 <artifactId>jboss-seam-ui</artifactId>
                 <version>${version-jboss-seam}</version>
             </dependency>
-	</dependencies>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>javax.servlet.jsp-api</artifactId>
+                <version>${version-javax-jsp-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.el</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>el-impl</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${version-commons-beanutils}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${version-commons-logging}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-digester</groupId>
+                <artifactId>commons-digester</artifactId>
+                <version>${version-commons-digester}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion> 
+                </exclusions> 
+            </dependency>
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>${version-commons-xerces}</version>
+                 <exclusions>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                </exclusions> 
+            </dependency>
+             <dependency>
+                 <groupId>ant</groupId>
+                 <artifactId>ant</artifactId>
+                 <version>1.6.5</version>
+             </dependency>
+             <dependency>
+                 <groupId>velocity</groupId>
+                 <artifactId>velocity-dep</artifactId>
+                 <version>1.4</version>
+             </dependency>
+             <dependency>
+                 <groupId>qdox</groupId>
+                 <artifactId>qdox</artifactId>
+                 <version>1.6</version>
+             </dependency>
+             <dependency>
+                 <groupId>cglib</groupId>
+                 <artifactId>cglib</artifactId>
+                 <version>2.1_3</version>
+             </dependency>
+             <dependency>
+                 <groupId>com.wutka</groupId>
+                 <artifactId>dtdparser</artifactId>
+                 <version>1.21</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.maven</groupId>
+                 <artifactId>maven-artifact</artifactId>
+                 <version>2.0.4</version>
+                 <scope>provided</scope>
+             </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.5</version>
+                 <scope>provided</scope>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.maven</groupId>
+                 <artifactId>maven-plugin-api</artifactId>
+                 <version>2.0.4</version>
+                 <scope>provided</scope>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.maven</groupId>
+                 <artifactId>maven-project</artifactId>
+                 <version>2.0.4</version>
+                 <scope>provided</scope>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.maven</groupId>
+                 <artifactId>maven-archiver</artifactId>
+                 <version>2.2</version>
+                 <scope>provided</scope>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.maven.shared</groupId>
+                 <artifactId>file-management</artifactId>
+                 <version>1.1</version>
+                 <scope>provided</scope>
+             </dependency>
+             <dependency>
+                 <groupId>org.codehaus.plexus</groupId>
+                 <artifactId>plexus-utils</artifactId>
+                 <version>3.0.24</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.codehaus.plexus</groupId>
+                 <artifactId>plexus-archiver</artifactId>
+                 <version>3.5</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.codehaus.plexus</groupId>
+                 <artifactId>plexus-velocity</artifactId>
+                 <version>1.1.4</version>
+             </dependency>
+             <dependency>
+                 <groupId>commons-vfs</groupId>
+                 <artifactId>commons-vfs</artifactId>
+                 <version>1.0</version>
+             </dependency>
+             <dependency>
+                 <groupId>commons-collections</groupId>
+                 <artifactId>commons-collections</artifactId>
+                 <version>3.2</version>
+             </dependency>
+             <dependency>
+                 <groupId>opensymphony</groupId>
+                 <artifactId>oscache</artifactId>
+                 <version>2.3</version>
+             </dependency>
+             <dependency>
+                 <groupId>nekohtml</groupId>
+                 <artifactId>nekohtml</artifactId>
+                 <version>1.9.6</version>
+             </dependency>
+             <dependency>
+                 <groupId>javax.servlet</groupId>
+                 <artifactId>jstl</artifactId>
+                 <version>1.2</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.codelibs</groupId>
+                 <artifactId>jhighlight</artifactId>
+                 <version>1.0.3</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.xmlgraphics</groupId>
+                 <artifactId>fop</artifactId>
+                 <version>0.95</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.slf4j</groupId>
+                 <artifactId>slf4j-simple</artifactId>
+                 <version>1.4.2</version>
+             </dependency>
+             <dependency>
+                 <groupId>javassist</groupId>
+                 <artifactId>javassist</artifactId>
+                 <version>3.8.0.GA</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.apache.geronimo.specs</groupId>
+                 <artifactId>geronimo-jta_1.0.1B_spec</artifactId>
+                 <version>1.1</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.hsqldb</groupId>
+                 <artifactId>hsqldb</artifactId>
+                 <version>2.4.0</version>
+             </dependency>
+             <dependency>
+                 <groupId>javax.validation</groupId>
+                 <artifactId>validation-api</artifactId>
+                 <version>2.0.0.Final</version>
+             </dependency>
+             <dependency>
+                 <groupId>javax.annotation</groupId>
+                 <artifactId>jsr250-api</artifactId>
+                 <version>1.0</version>
+             </dependency>
+             <dependency>
+                 <groupId>javax.persistence</groupId>
+                 <artifactId>persistence-api</artifactId>
+                 <version>1.0.2</version>
+             </dependency>
+             <dependency>
+                 <groupId>org.hibernate</groupId>
+                 <artifactId>hibernate-core</artifactId>
+                 <version>${version.org.hibernate}</version>
+             </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator-annotation-processor</artifactId>
+                <version>${version.org.hibernate.validator}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${version.org.hibernate.validator}</version>
+            </dependency>
+            <dependency>
+                <groupId>antlr</groupId>
+                <artifactId>antlr</artifactId>
+                <version>2.7.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mozilla</groupId>
+                <artifactId>rhino</artifactId>
+                <version>1.7.7.1</version>
+            </dependency>
+            <dependency>
+                <groupId>rhino</groupId>
+                <artifactId>js</artifactId>
+                <version>1.6R7</version>
+            </dependency>
+
+        	</dependencies>
 </dependencyManagement>
 	<build>
 		<extensions>
@@ -252,7 +522,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.richfaces.cdk</groupId>
                                         <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.4.Final,)</versionRange>
+                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
                                         <goals>
                                             <goal>generate</goal>
                                         </goals>
@@ -267,7 +537,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.richfaces.cdk</groupId>
                                         <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.4.Final,)</versionRange>
+                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
                                         <goals>
                                             <goal>generate-tests</goal>
                                         </goals>
@@ -282,7 +552,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.richfaces.cdk</groupId>
                                         <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.4.Final,)</versionRange>
+                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
                                         <goals>
                                             <goal>assembly</goal>
                                         </goals>
@@ -295,7 +565,7 @@
                                     <pluginExecutionFilter>
                                         <groupId>org.richfaces.cdk</groupId>
                                         <artifactId>maven-javasgript-plugin</artifactId>
-                                        <versionRange>[3.3.4.Final,)</versionRange>
+                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
                                         <goals>
                                             <goal>compress</goal>
                                         </goals>
@@ -393,6 +663,16 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
+         <repository>
+              <id>redhat-public-repository</id>
+              <name>Redhat Public Repository GA</name>
+              <url>https://maven.repository.redhat.com/ga/</url>
+              <layout>default</layout>
+              <releases>
+                      <enabled>true</enabled>
+                      <updatePolicy>never</updatePolicy>
+              </releases>
+        </repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -410,7 +690,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	<distributionManagement>
+<!-- <distributionManagement>
 		<downloadUrl>
 			http://www.jboss.org/richfaces/download
 		</downloadUrl>
@@ -424,10 +704,10 @@
 			<uniqueVersion>true</uniqueVersion>
 			<url>${snapshotRepository}</url>
 		</snapshotRepository>
-		<!--site>
+		<site>
 			<url>file:target/site2</url>
-		</site-->
-	</distributionManagement>
+		</site>
+ </distributionManagement> -->
     
 	<issueManagement>
 		<system>JIRA</system>
@@ -455,8 +735,7 @@
         <connection>scm:git:git://github.com/nickl-/richfaces.git</connection>
         <developerConnection>scm:git:git@github.com:nickl-/richfaces.git</developerConnection>
         <url>https://github.com/nickl-/richfaces</url>
-      <tag>HEAD</tag>
-  </scm> 
+    </scm> 
     
 	<profiles>
 		<profile>
