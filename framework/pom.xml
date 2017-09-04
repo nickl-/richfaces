@@ -16,8 +16,8 @@
 		-->
 		<module>api</module>
 		<module>impl</module>
-		<module>test</module>
-		<module>jsf-test</module>
+		<!--module>test</module>
+		<module>jsf-test</module-->
 	</modules>
 	
 	<build>
@@ -74,9 +74,10 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
         <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
         </dependency>
+        
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>

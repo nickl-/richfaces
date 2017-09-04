@@ -76,12 +76,10 @@
 		<dependency>
 			<artifactId>richfaces-ui</artifactId>
 			<groupId>org.richfaces.ui</groupId>
-			<version>${rfVersion}</version>
 		</dependency>
 		<dependency>
 			<artifactId>richfaces-api</artifactId>
 			<groupId>org.richfaces.framework</groupId>
-			<version>${rfVersion}</version>
 		</dependency>
 		<dependency>
 			  <artifactId>javax.servlet-api</artifactId>
@@ -90,24 +88,18 @@
 		<dependency>
 			<groupId>javax.el</groupId> 
 			<artifactId>el-api</artifactId> 
-			<version>1.0</version> 
-			<scope>provided</scope> 
 		</dependency>
 	    <dependency>
 	      <groupId>org.codelibs</groupId>
 	      <artifactId>jhighlight</artifactId>
-	      <version>1.0.3</version>
-	      <optional>true</optional>
 	    </dependency>
 	    <dependency>
 	      <groupId>org.hibernate</groupId>
 	      <artifactId>hibernate-validator</artifactId>
-	      <version>3.1.0.CR1</version>
 	    </dependency>
 		<dependency>
 			  <groupId>org.slf4j</groupId> 
 			  <artifactId>slf4j-simple</artifactId> 
-			  <version>1.4.2</version> 
 		</dependency>
 	</dependencies>
 
@@ -121,7 +113,6 @@
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
 					<artifactId>richfaces-impl</artifactId>
-					<version>${rfVersion}</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -129,37 +120,20 @@
 			<id>myfaces</id>
 			<dependencies>
 				<dependency>
-					<artifactId>richfaces-ui</artifactId>
-					<groupId>org.richfaces.ui</groupId>
-					<version>${rfVersion}</version>
-					<exclusions>
-						<exclusion>
-							<groupId>com.sun.faces</groupId>
-							<artifactId>jsf-api</artifactId>
-						</exclusion>
-					</exclusions>
+                    <artifactId>richfaces-ui</artifactId>
+                    <groupId>org.richfaces.ui</groupId>
+				</dependency>
+				<dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>javax.faces</artifactId>
 				</dependency>
 				<dependency>
 					<artifactId>richfaces-impl</artifactId>
 					<groupId>org.richfaces.framework</groupId>
-					<version>${rfVersion}</version>
-					<exclusions>
-						<exclusion>
-							<groupId>com.sun.faces</groupId>
-							<artifactId>jsf-api</artifactId>
-						</exclusion>
-					</exclusions>
 				</dependency>
 				<dependency>
 					<artifactId>richfaces-api</artifactId>
 					<groupId>org.richfaces.framework</groupId>
-					<version>${rfVersion}</version>
-					<exclusions>
-						<exclusion>
-							<groupId>com.sun.faces</groupId>
-							<artifactId>jsf-api</artifactId>
-						</exclusion>
-					</exclusions>
 				</dependency>
 			</dependencies>
 		</profile>

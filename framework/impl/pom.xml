@@ -26,11 +26,9 @@
 			<plugin> 
 				<!-- Necessary due to http://jira.codehaus.org/browse/MINSTALL-41 -->
 		        <artifactId>maven-install-plugin</artifactId> 
-                <version>${version.install.plugin}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-                <version>${version.resources.plugin}</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
@@ -225,16 +223,14 @@
 				</resources>
 			</build>
 			<dependencies>
-				<dependency>
-					<groupId>com.sun.faces</groupId>
-					<artifactId>jsf-api</artifactId>
-                    <version>${version-javax-faces-api}</version>
-                </dependency>
         		<dependency>
 		        	<groupId>javax.servlet</groupId>
         			<artifactId>javax.servlet-api</artifactId>
-                    <version>${version-javax-servlet-api}</version>
         		</dependency>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.faces</artifactId>
+            </dependency>
             </dependencies>
             <properties>
                 <frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>

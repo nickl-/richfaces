@@ -112,11 +112,38 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${version-javax-servlet-api}</version>
+            </dependency>
+
+<dependency>
+    <groupId>javax.faces</groupId>
+    <artifactId>javax.faces-api</artifactId>
+    <version>2.2</version>
+    <scope>provided</scope>
+</dependency>
+
+
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.faces</artifactId>
+    <version>2.2.14</version>
+</dependency>
+<dependency>
+    <groupId>javax.persistence</groupId>
+    <artifactId>persistence-api</artifactId>
+    <version>1.0.2</version>
+</dependency>
+
+                
+            <!--dependency>
+                <groupId>javax.facest</groupId>
+                <artifactId>javax.faces-api</artifactId>
+                <version>2.2</version>
             </dependency>
             <dependency>
                 <groupId>com.sun.faces</groupId>
@@ -127,7 +154,7 @@
                 <groupId>com.sun.faces</groupId>
                 <artifactId>jsf-impl</artifactId>
                 <version>${version-javax-faces-api}</version>
-            </dependency>
+            </dependency-->
             <dependency>
                 <groupId>org.jboss.seam</groupId>
                 <artifactId>jboss-seam</artifactId>
@@ -137,6 +164,12 @@
                 <groupId>org.jboss.seam</groupId>
                 <artifactId>jboss-seam-ui</artifactId>
                 <version>${version-jboss-seam}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.seam</groupId>
+                <artifactId>jboss-seam-debug</artifactId>
+                <version>${version-jboss-seam}</version>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>
@@ -367,6 +400,11 @@
                 <version>1.6R7</version>
             </dependency>
 
+            <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>ejb-api</artifactId>
+                <version>3.0</version>
+            </dependency>
         	</dependencies>
 </dependencyManagement>
 	<build>

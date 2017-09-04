@@ -63,16 +63,14 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
 		</dependency>
 	</dependencies>
 </project>

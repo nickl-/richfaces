@@ -25,8 +25,8 @@
 	</profiles>
 	<dependencies>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
 		</dependency>
 	</dependencies>
 </project>

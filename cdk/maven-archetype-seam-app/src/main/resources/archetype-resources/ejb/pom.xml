@@ -46,14 +46,10 @@
                   <artifactId>jboss-seam-pdf</artifactId>
             </exclusion>
             <exclusion>
-                  <groupId>com.sun.facelets</groupId>
-                  <artifactId>jsf-facelets</artifactId>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.faces</artifactId>
             </exclusion>
 			</exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.facelets</groupId>
-            <artifactId>jsf-facelets</artifactId>
         </dependency>
         <dependency>
             <groupId>org.richfaces.framework</groupId>
