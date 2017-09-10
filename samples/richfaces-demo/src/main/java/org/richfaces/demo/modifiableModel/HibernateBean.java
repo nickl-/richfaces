@@ -6,6 +6,7 @@ package org.richfaces.demo.modifiableModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -28,9 +29,10 @@ import org.jboss.seam.log.Log;
 @Scope(ScopeType.APPLICATION)
 @Startup
 @Name("hibernateBean")
-public class HibernateBean {
+public class HibernateBean  implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	@Logger
+    @Logger
 	private Log log;
 	
 	@In

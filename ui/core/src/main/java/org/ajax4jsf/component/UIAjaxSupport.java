@@ -55,19 +55,19 @@ public abstract class UIAjaxSupport extends AjaxActionComponent implements
 	@Override
 	public void setValueExpression(String name, ValueExpression binding) {
 		// var - not allowed name. must be literal.
-		if ("var".equals(name)) {
+		if ("var".equals(name)&&!binding.isLiteralText()) {
 			throw new FacesException(Messages.getMessage(
 					Messages.VAR_MUST_BE_LITERAL,
 					getClientId(getFacesContext())));
 		}
-		if ("event".equals(name)) {
+		if ("event".equals(name)&&!binding.isLiteralText()) {
 			throw new FacesException(Messages.getMessage(
 					Messages.EVENT_MUST_BE_LITERAL,
 					getClientId(getFacesContext())));
 		}
 		super.setValueExpression(name, binding);
 	}
-	
+
 	/**
 	 * Create Special <code>ValueBinding</code> for build JavaScrept event
 	 * code in parent component from this.
@@ -124,37 +124,26 @@ public abstract class UIAjaxSupport extends AjaxActionComponent implements
 				log.debug(Messages.getMessage(Messages.CALLED_SET_PARENT,
 						parent.getClass().getName()));
 			}
-			// TODO If this comopnent configured, set properties for parent
-			// component.
-			// NEW created component have parent, restored view - null in My
-			// faces.
-			// and SUN RI not call at restore saved view.
-			// In other case - set in restoreState method.
-			// if (parent.getParent() != null)
-			{
-				if (log.isDebugEnabled()) {
-					log.debug(Messages
-							.getMessage(Messages.DETECT_NEW_COMPONENT));
-				}
-				setParentProperties(parent);
 
-			}
+			setParentProperties(parent);
 		}
 	}
 
 	public void setParentProperties(UIComponent parent) {
-		ValueExpression valueBinding;
-		if (null != getEvent()) {
-			if (log.isDebugEnabled()) {
-				log.debug(Messages.getMessage(
-						Messages.SET_VALUE_BINDING_FOR_EVENT, getEvent()));
-			}
-			// for non action/data components, or for non-default events - build
-			// listener for this instance.
-			valueBinding = getEventValueBinding();
-			parent.setValueExpression(getEvent(), valueBinding);
-
-		}
+		ValueExpression valueBinding = this.getValueExpression("event");
+	    Object event;
+	    if (null != valueBinding)
+            event = valueBinding.getValue(getFacesContext().getELContext());
+        else
+            event = getAttributes().get(this.getClass().getName()+".event");
+log.info("OOO Event:"+event);
+        if (null != event) {
+            StringBuffer eventCmd = AjaxRendererUtils.buildOnEvent(this,
+                    getFacesContext(), event.toString());
+            eventCmd.append("; return false;");
+log.info("OOO attribute:"+event+"=\""+eventCmd+"+\"");
+            parent.getAttributes().put(""+event, eventCmd.toString());
+        }
 	}
 
 	protected UIComponent getSingleComponent() {

@@ -3,12 +3,12 @@
  */
 package org.richfaces.demo.extendedDataTable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.richfaces.demo.capitals.Capital;
-import org.richfaces.demo.datafilterslider.DemoInventoryItem;
 import org.richfaces.model.DataProvider;
 import org.richfaces.model.ExtendedTableDataModel;
 import org.richfaces.model.selection.Selection;
@@ -18,7 +18,8 @@ import org.richfaces.model.selection.SimpleSelection;
  * @author Ilya Shaikovsky
  *
  */
-public class ExtendedTableBean {
+public class ExtendedTableBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String sortMode="single";
 	private String selectionMode="multi";
 	private Object tableState;

@@ -23,6 +23,7 @@ package org.richfaces.demo.tree;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,7 +45,8 @@ import org.richfaces.event.NodeSelectedEvent;
 import org.richfaces.model.TreeNode;
 import org.richfaces.model.TreeRowKey;
 
-public class SimpleTreeDndBean {
+public class SimpleTreeDndBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private TreeNode rootNode = null;
 

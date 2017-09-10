@@ -4,6 +4,8 @@
 package org.richfaces.demo.validation;
 
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -14,8 +16,8 @@ import javax.validation.constraints.Pattern;
  * @author Ilya Shaikovsky
  *
  */
-public class ValidationBean {
-
+public class ValidationBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String progressString="Fill the form please";
 	
 	@NotNull

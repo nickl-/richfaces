@@ -1,5 +1,6 @@
 package org.richfaces.demo.filteringFeature;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.model.SelectItem;
@@ -10,8 +11,8 @@ import org.richfaces.demo.capitals.Capital;
  * @author Ilya Shaikovsky
  * 
  */
-public class FilteringBean {
-
+public class FilteringBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String filterZone = "5";
 	private String filterValue="";
 	private ArrayList<SelectItem> filterZones = new ArrayList<SelectItem>();

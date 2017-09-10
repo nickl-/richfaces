@@ -5,6 +5,7 @@ package org.richfaces.demo.fileUpload;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.richfaces.event.UploadEvent;
@@ -14,8 +15,8 @@ import org.richfaces.model.UploadItem;
  * @author Ilya Shaikovsky
  *
  */
-public class FileUploadBean{
-	
+public class FileUploadBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private ArrayList<File> files = new ArrayList<File>();
 	private int uploadsAvailable = 5;
 	private boolean autoUpload = false;

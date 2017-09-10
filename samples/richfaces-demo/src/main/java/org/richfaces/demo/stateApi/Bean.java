@@ -1,9 +1,11 @@
 package org.richfaces.demo.stateApi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bean {
+public class Bean implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	private String name;
 	

@@ -3,6 +3,7 @@
  */
 package org.richfaces.datatablescroller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.event.ValueChangeEvent;
@@ -14,8 +15,8 @@ import org.richfaces.model.Ordering;
  * @author Ilya Shaikovsky
  *
  */
-public class SortingBean {
-	
+public class SortingBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	//Settings panel data bindings
 	ArrayList<SelectItem> firstSortItems = new ArrayList<SelectItem>();
 	ArrayList<SelectItem> secondSortItems = new ArrayList<SelectItem>();

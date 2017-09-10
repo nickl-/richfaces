@@ -3,13 +3,15 @@
  */
 package org.richfaces.demo.progressBar;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author Ilya Shaikovsky
  *
  */
-public class ProgressBarBean {
+public class ProgressBarBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	
 	private boolean buttonRendered = true;
 	private boolean enabled=false;

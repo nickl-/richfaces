@@ -1,5 +1,7 @@
 package org.richfaces.demo.datafilterslider;
 
+import java.io.Serializable;
+
 import org.richfaces.event.DataFilterSliderEvent;
 
 
@@ -7,8 +9,8 @@ import org.richfaces.event.DataFilterSliderEvent;
  * @author $Autor$
  *
  */
-public class DemoSliderBean {
-
+public class DemoSliderBean implements Serializable {
+    private static final long serialVersionUID = 1L;
     DemoInventoryList demoInventoryList;
 
 

@@ -3,20 +3,14 @@
  */
 package org.richfaces.demo.layout;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.richfaces.component.LayoutPosition;
+import java.io.Serializable;
 
 /**
  * @author asmirnov
  *
  */
-public class Bean {
-	
+public class Bean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String position="left";
 	
 	private String theme = "simple";

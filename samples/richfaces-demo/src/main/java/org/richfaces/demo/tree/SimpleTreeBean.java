@@ -23,6 +23,7 @@ package org.richfaces.demo.tree;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,18 +31,16 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.faces.FacesException;
-import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.richfaces.component.UITree;
 import org.richfaces.component.html.HtmlTree;
 import org.richfaces.event.NodeSelectedEvent;
 import org.richfaces.model.TreeNode;
 import org.richfaces.model.TreeNodeImpl;
 
-public class SimpleTreeBean {
-	
+public class SimpleTreeBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private TreeNode rootNode = null;
 	private List<String> selectedNodeChildren = new ArrayList<String>();	
 	

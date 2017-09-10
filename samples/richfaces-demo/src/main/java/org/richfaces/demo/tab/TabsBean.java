@@ -1,10 +1,12 @@
 package org.richfaces.demo.tab;
 
+import java.io.Serializable;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-public class TabsBean {
-
+public class TabsBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private boolean[] tabRendered = { true, true, true };
 	private boolean tabsRendered = true;
 

@@ -5,11 +5,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
-public class MediaBean {
-
+public class MediaBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	public void paint(OutputStream out, Object data) throws IOException{
 		if (data instanceof MediaData) {
 

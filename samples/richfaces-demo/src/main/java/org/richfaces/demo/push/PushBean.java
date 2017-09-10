@@ -3,6 +3,7 @@
  */
 package org.richfaces.demo.push;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.EventObject;
@@ -15,7 +16,8 @@ import org.ajax4jsf.event.PushEventListener;
  * 
  */
 
-public class PushBean implements Runnable {
+public class PushBean implements Runnable, Serializable {
+    private static final long serialVersionUID = 1L;
 
 	private String uuid = "";
 	

@@ -1,11 +1,13 @@
 package org.richfaces.demo.queue;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
 
-public class QueueBean {
+public class QueueBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	public Long requestDelay = new Long(500);
 	public boolean ignoreDupResponces = false;
 	public boolean disabled = false;

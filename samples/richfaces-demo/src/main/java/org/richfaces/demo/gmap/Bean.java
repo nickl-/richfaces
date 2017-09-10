@@ -1,5 +1,6 @@
 package org.richfaces.demo.gmap;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,8 +10,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 
-public class Bean {
-
+public class Bean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private List<Place> point;
 	private String currentId;
 	private int zoom;

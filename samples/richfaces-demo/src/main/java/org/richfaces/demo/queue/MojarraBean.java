@@ -1,6 +1,7 @@
 package org.richfaces.demo.queue;
 
 
+import java.io.Serializable;
 import java.util.Random;
 
 import javax.faces.event.ActionEvent;
@@ -12,7 +13,8 @@ import javax.faces.event.ActionEvent;
  * <p/>
  *
  */
-public class MojarraBean {
+public class MojarraBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public void process(ActionEvent ae) {
         Random generator2 = new Random(System.currentTimeMillis());

@@ -1,5 +1,6 @@
 package org.richfaces.demo.datatable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EventListener;
@@ -17,7 +18,8 @@ import org.richfaces.datatablescroller.DataTableScrollerBean;
 
 @Name("choicesBean")
 @Scope(ScopeType.SESSION)
-public class ChoicesBean implements Runnable {
+public class ChoicesBean implements Serializable, Runnable {
+	private static final long serialVersionUID = 1L;
 	private List<Choice> choices;
 	private List<Choice> lastVotes;
 	private Set<Integer> keysSet;

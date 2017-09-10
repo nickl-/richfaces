@@ -1,8 +1,10 @@
 package org.richfaces.demo.dnd;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DndBean {
+public class DndBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private ArrayList containerPHP;
 	private ArrayList containerCF;
 	private ArrayList containerDNET;

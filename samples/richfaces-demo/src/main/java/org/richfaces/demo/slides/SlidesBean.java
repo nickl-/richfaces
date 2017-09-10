@@ -3,6 +3,7 @@
  */
 package org.richfaces.demo.slides;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,8 @@ import java.util.List;
  * @author Ilya Shaikovsky
  *
  */
-public class SlidesBean {
-	
+public class SlidesBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private final static String FILE_EXT = ".jpg";
 	private final static int FILES_COUNT = 9;
 	private final static String PATH_PREFIX = "/richfaces/jQuery/images/";

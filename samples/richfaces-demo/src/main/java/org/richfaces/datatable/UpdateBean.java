@@ -1,5 +1,6 @@
 package org.richfaces.datatable;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,8 +9,8 @@ import javax.faces.context.FacesContext;
 
 import org.ajax4jsf.component.UIRepeat;
 
-public class UpdateBean {
-
+public class UpdateBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	HtmlInputText priceRef;
 	private UIRepeat repeater;
 	private Set<Integer> keys = null;

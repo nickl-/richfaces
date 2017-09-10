@@ -21,6 +21,8 @@
 
 package org.richfaces.demo.editor;
 
+import java.io.Serializable;
+
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -37,7 +39,8 @@ import org.jboss.seam.annotations.Scope;
  */
 @Name("inputResetBean")
 @Scope(ScopeType.EVENT)
-public class InputResetBean {
+public class InputResetBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	@In
 	private FacesContext facesContext;

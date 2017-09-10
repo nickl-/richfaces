@@ -1,6 +1,7 @@
 package org.richfaces.demo.capitals;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +14,8 @@ import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.xmlrules.DigesterLoader;
 import org.xml.sax.SAXException;
 
-public class CapitalsBean {
+public class CapitalsBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Capital> capitals = new ArrayList<Capital>();
 	private ArrayList<String> capitalsNames = new ArrayList<String>();
 	private List<SelectItem> capitalsOptions = new ArrayList<SelectItem>();

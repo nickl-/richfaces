@@ -3,13 +3,14 @@
  */
 package org.richfaces.demo.togglePanel;
 
-
+import java.io.Serializable;
 
 /**
  * @author ishabalov
  *
  */
-public class ToggleBean {
+public class ToggleBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private Object skinChooserState1;
 	private Object skinChooserState2;
 	private Object skinChooserState3;

@@ -3,7 +3,8 @@ package org.richfaces.demo.ajaxSamples;
 import java.io.Serializable;
 
 public class rsBean implements Serializable{
-	private Integer addent1;
+    private static final long serialVersionUID = 1L;
+    private Integer addent1;
 	private Integer addent2;
 	private Integer sum;
 	private String text1;

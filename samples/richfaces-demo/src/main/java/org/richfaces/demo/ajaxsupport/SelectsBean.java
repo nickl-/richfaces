@@ -1,5 +1,6 @@
 package org.richfaces.demo.ajaxsupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,8 @@ import javax.faces.model.SelectItem;
  * @author Ilya Shaikovsky
  *
  */
-public class SelectsBean {
+public class SelectsBean implements Serializable {
+        private static final long serialVersionUID = 1L;
 		private String currentType="";
 		private String currentItem="";
 		public List<SelectItem> firstList = new ArrayList<SelectItem>(); 

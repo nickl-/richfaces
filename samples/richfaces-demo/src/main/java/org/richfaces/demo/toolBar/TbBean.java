@@ -1,6 +1,9 @@
 package org.richfaces.demo.toolBar;
 
-public class TbBean {
+import java.io.Serializable;
+
+public class TbBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String groupSeparator;
 	private String groupItemSeparator;
 	public String getGroupItemSeparator() {

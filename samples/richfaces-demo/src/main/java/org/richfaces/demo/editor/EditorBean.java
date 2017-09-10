@@ -1,5 +1,6 @@
 package org.richfaces.demo.editor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,8 @@ import javax.faces.validator.ValidatorException;
 
 import org.jboss.seam.ui.validator.FormattedTextValidator;
 
-public class EditorBean {
-
+public class EditorBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String currentConfiguration = CONFIGS_PACKAGE + "simple";
 	private String viewMode = "visual";
 	private String value;

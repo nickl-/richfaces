@@ -3,12 +3,14 @@
  */
 package org.richfaces.demo.inplaces;
 
+import java.io.Serializable;
+
 /**
  * @author Ilya Shaikovsky
  *
  */
-public class InplaceComponentsBean {
-	
+public class InplaceComponentsBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String inputValue;
 	
 	public String getInputValue() {

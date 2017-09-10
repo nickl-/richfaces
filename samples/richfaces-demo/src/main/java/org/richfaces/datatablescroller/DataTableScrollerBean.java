@@ -3,6 +3,7 @@
  */
 package org.richfaces.datatablescroller;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +16,6 @@ import java.util.Set;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.richfaces.component.UIScrollableDataTable;
 import org.richfaces.demo.datafilterslider.DemoInventoryItem;
 import org.richfaces.model.SortField;
 import org.richfaces.model.SortOrder;
@@ -25,8 +25,8 @@ import org.richfaces.model.selection.SimpleSelection;
  * @author Nick Belaevski - nbelaevski@exadel.com created 02.03.2007
  * 
  */
-public class DataTableScrollerBean {
-
+public class DataTableScrollerBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private DemoInventoryItem currentItem = new DemoInventoryItem();
 
 	public void fetchCurrentRow(ActionEvent event) {

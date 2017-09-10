@@ -1,8 +1,10 @@
 package org.richfaces.demo.ajaxsupport;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserBean {
+public class UserBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private String name=""; 
 	private java.lang.Integer screenWidth;
 	private java.lang.Integer screenHeight;
