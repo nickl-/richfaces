@@ -54,7 +54,7 @@ public abstract class UIAjaxSupport extends AjaxActionComponent implements
 
 	@Override
 	public void setValueExpression(String name, ValueExpression binding) {
-		// var - not allowed name. must be literal.
+	    // var - not allowed name. must be literal.
 		if ("var".equals(name)&&!binding.isLiteralText()) {
 			throw new FacesException(Messages.getMessage(
 					Messages.VAR_MUST_BE_LITERAL,
@@ -130,21 +130,32 @@ public abstract class UIAjaxSupport extends AjaxActionComponent implements
 	}
 
 	public void setParentProperties(UIComponent parent) {
-		ValueExpression valueBinding = this.getValueExpression("event");
-	    Object event;
-	    if (null != valueBinding)
-            event = valueBinding.getValue(getFacesContext().getELContext());
-        else
-            event = getAttributes().get(this.getClass().getName()+".event");
-log.info("OOO Event:"+event);
-        if (null != event) {
-            StringBuffer eventCmd = AjaxRendererUtils.buildOnEvent(this,
-                    getFacesContext(), event.toString());
-            eventCmd.append("; return false;");
-log.info("OOO attribute:"+event+"=\""+eventCmd+"+\"");
-            parent.getAttributes().put(""+event, eventCmd.toString());
+		ValueExpression valueBinding;
+        if (null != getEvent()) {
+            if (log.isDebugEnabled()) {
+                log.debug(Messages.getMessage(
+                        Messages.SET_VALUE_BINDING_FOR_EVENT, getEvent()));
+            }
+            // for non action/data components, or for non-default events - build
+            // listener for this instance.
+            valueBinding = getEventValueBinding();
+            parent.setValueExpression(getEvent(), valueBinding);
+
+        } else {
+            valueBinding = this.getValueExpression("event");
+        	    Object event;
+        	    if (null != valueBinding)
+                event = valueBinding.getValue(getFacesContext().getELContext());
+            else
+                event = getAttributes().get(this.getClass().getName()+".event");
+            if (null != event) {
+                StringBuffer eventCmd = AjaxRendererUtils.buildOnEvent(this,
+                        getFacesContext(), event.toString(), true);
+                eventCmd.append("; return false;");
+                parent.getAttributes().put(""+event, eventCmd.toString());
+            }
         }
-	}
+    	}
 
 	protected UIComponent getSingleComponent() {
 		return getParent();
