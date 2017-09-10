@@ -53,7 +53,7 @@ public class EditorComponentTest extends AbstractAjax4JsfTestCase {
 	static {
 		javaScripts.add("org.ajax4jsf.javascript.PrototypeScript");
 		javaScripts.add("org.ajax4jsf.javascript.AjaxScript");
-		javaScripts.add("scripts/tiny_mce/tiny_mce_src.js");
+		javaScripts.add("scripts/tiny_mce/tiny_mce.js");
 		javaScripts.add("scripts/editor.js");
 	}
 

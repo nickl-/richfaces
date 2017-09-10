@@ -1,5 +1,5 @@
 /**
- * editor_template_src.js
+ * editor_template.js
  *
  * Copyright 2009, Moxiecode Systems AB
  * Released under LGPL License.

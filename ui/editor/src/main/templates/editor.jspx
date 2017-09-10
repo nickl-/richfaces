@@ -12,7 +12,7 @@
 
 	<f:clientid var="clientId"/>
     <h:styles>css/editor.xcss</h:styles>
-    <h:scripts>new org.ajax4jsf.javascript.AjaxScript(), new org.ajax4jsf.javascript.PrototypeScript(), scripts/tiny_mce/tiny_mce_src.js, scripts/editor.js</h:scripts>
+    <h:scripts>new org.ajax4jsf.javascript.AjaxScript(), new org.ajax4jsf.javascript.PrototypeScript(), scripts/tiny_mce/tiny_mce.js, scripts/editor.js</h:scripts>
 
     <div id="#{clientId}" x:passThruWithExclusions="id,value,styleClass,class" 
     		class="rich-editor #{component.attributes['styleClass']}">		
