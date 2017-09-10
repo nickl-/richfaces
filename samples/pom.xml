@@ -68,10 +68,6 @@
 
 	<dependencies>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.richfaces.framework</groupId>
             <artifactId>richfaces-impl</artifactId>
         </dependency>
@@ -91,6 +87,10 @@
 			<groupId>nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+        </dependency>
 	</dependencies>
 	<profiles>
 		<profile>

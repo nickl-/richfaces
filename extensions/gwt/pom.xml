@@ -102,7 +102,7 @@ see http://groups.google.com/group/gwt-maven/browse_thread/thread/09885f643c7b4d
 			<version>3.3.4.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.facelets</groupId>
+			<groupId>com.sun.faces.facelets</groupId>
 			<artifactId>jsf-facelets</artifactId>
 		</dependency>
 		

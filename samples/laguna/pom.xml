@@ -39,11 +39,4 @@
 		</profile>
 	</profiles>
 
-	<dependencies>
-		<dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-		</dependency>
-	</dependencies>
-	
 </project>

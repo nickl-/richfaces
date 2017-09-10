@@ -227,10 +227,6 @@
 		        	<groupId>javax.servlet</groupId>
         			<artifactId>javax.servlet-api</artifactId>
         		</dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.faces</artifactId>
-            </dependency>
             </dependencies>
             <properties>
                 <frameworkAdditionalSourceFolder>src/main/java-jsf20</frameworkAdditionalSourceFolder>
@@ -238,6 +234,14 @@
         </profile>
     </profiles>
     <dependencies>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+        </dependency>    
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+        </dependency>
         <dependency>
             <groupId>opensymphony</groupId>
             <artifactId>oscache</artifactId>

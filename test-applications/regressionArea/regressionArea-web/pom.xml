@@ -60,7 +60,7 @@
 			<scope>provided</scope>
 		</dependency>
 	    <dependency>
-            <groupId>com.sun.facelets</groupId>
+            <groupId>com.sun.faces.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
         </dependency>
         <dependency>

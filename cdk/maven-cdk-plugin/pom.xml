@@ -11,6 +11,11 @@
 	<name>Maven plugin for JSF components code generation</name>
 	<dependencies>
         <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <scope>compile</scope>
+        </dependency>    
+        <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-archiver</artifactId>
         </dependency>
@@ -46,7 +51,6 @@
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-velocity</artifactId>
 		</dependency>
-        
 		<dependency>
 			<groupId>org.richfaces.cdk</groupId>
 			<artifactId>generator</artifactId>

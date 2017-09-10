@@ -58,7 +58,7 @@
 			<version>${rfVersion}</version>
 		</dependency>
 		<dependency>
-            <groupId>com.sun.facelets</groupId>
+            <groupId>com.sun.faces.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
         </dependency>
 		<dependency>
@@ -84,7 +84,7 @@
                   <artifactId>jboss-seam-pdf</artifactId>
             </exclusion>
             <exclusion>
-                  <groupId>com.sun.facelets</groupId>
+                  <groupId>com.sun.faces.facelets</groupId>
                   <artifactId>jsf-facelets</artifactId>
             </exclusion>
 			<exclusion>
