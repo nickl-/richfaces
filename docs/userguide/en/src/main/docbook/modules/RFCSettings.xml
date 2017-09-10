@@ -90,7 +90,7 @@
                     <programlisting role="XML"><![CDATA[...
 <context-param>
      <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
-     <param-value>com.sun.facelets.FaceletViewHandler</param-value>
+     <param-value>org.ajax4jsf.application.AjaxViewHandler</param-value>
 </context-param>
 ...]]></programlisting>
                     <para> says that <property>Facelets</property> will officially be the first,
@@ -197,7 +197,7 @@
 
      <context-param>
           <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
-          <param-value>com.sun.facelets.FaceletViewHandler</param-value>
+          <param-value>org.ajax4jsf.application.AjaxViewHandler</param-value>
      </context-param>
 
      <!-- Seam -->

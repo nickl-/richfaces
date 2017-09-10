@@ -114,7 +114,7 @@
                                                   order. For example, in
                                                   facelets application this
                                                   parameter must contain
-                                                  com.sun.facelets.FaceletViewHandler,
+                                                  org.ajax4jsf.application.AjaxViewHandler,
                                                   instead of declaration in
                                                   faces-config.xml</entry>
                                                   </row>

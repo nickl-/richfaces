@@ -2385,7 +2385,7 @@ public class TableBackingRendered implements Serializable {
   <!-- Trinidad - as suggested by a4j-trinidad example-->
   <context-param>
     <param-name>org.apache.myfaces.trinidad.ALTERNATE_VIEW_HANDLER</param-name>
-    <param-value>com.sun.facelets.FaceletViewHandler</param-value>
+    <param-value>org.ajax4jsf.application.AjaxViewHandler</param-value>
   </context-param>
   <filter>
     <filter-name>Trinidad</filter-name>
