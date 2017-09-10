@@ -1,25 +1,26 @@
-<?xml version="1.0"?>
-<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-  version="2.2">	
-	<factory>
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+     version="2.2"
+     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     xmlns:xi="http://www.w3.org/2001/XInclude"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+     <factory>
 		<render-kit-factory>org.ajax4jsf.renderkit.ChameleonRenderKitFactory</render-kit-factory>
 	<!-- 
 		<lifecycle-factory>org.ajax4jsf.application.DebugLifecycleFactory</lifecycle-factory>
 	-->
 	</factory>
 	<application>
-	<!-- 
+        <resource-handler>org.ajax4jsf.resource.ResourceBuilderImpl</resource-handler>
 		<variable-resolver>org.richfaces.skin.SkinVariableResolver</variable-resolver>
 		<property-resolver>org.richfaces.skin.SkinPropertyResolver</property-resolver>
 		<view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>
-	-->
-		<state-manager>org.ajax4jsf.application.AjaxStateManager</state-manager>
+<!-- 		<state-manager>org.ajax4jsf.application.AjaxStateManager</state-manager> -->
 	</application>
   <lifecycle>
   	<phase-listener>org.ajax4jsf.event.AjaxPhaseListener</phase-listener>
-  	<phase-listener>org.ajax4jsf.event.InitPhaseListener</phase-listener>
+<!--   	<phase-listener>org.ajax4jsf.event.InitPhaseListener</phase-listener> -->
   </lifecycle>
     <managed-bean>
        <managed-bean-name>a4j</managed-bean-name>
@@ -53,7 +54,7 @@
     </component>
 
   <render-kit>
-
+    <!--
     <renderer>
       <description>
         override the viewroot
@@ -62,8 +63,7 @@
       <renderer-type>javax.faces.ViewRoot</renderer-type>
       <renderer-class>org.ajax4jsf.renderkit.AjaxViewRootRenderer</renderer-class>
     </renderer>
-      <!-- 
-          <renderer>
+      <renderer>
           <component-family>javax.faces.Form</component-family>
           <renderer-type>javax.faces.Form</renderer-type>
           <renderer-class>org.ajax4jsf.renderkit.html.AjaxFormRenderer</renderer-class>
@@ -73,6 +73,6 @@
           <renderer-type>javax.faces.Link</renderer-type>
           <renderer-class>org.ajax4jsf.renderkit.html.HtmlCommandLinkRenderer</renderer-class>
       </renderer>
-     -->
+    -->
    </render-kit>
 </faces-config>

@@ -1,13 +1,16 @@
-<?xml version="1.0"?>
-<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 2.2//EN"
-                              "http://xmlns.jcp.org/dtd/web-facesconfig_2_2.dtd">
-<faces-config>
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2"
+     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     xmlns:xi="http://www.w3.org/2001/XInclude"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
         <managed-bean-name>editorBean</managed-bean-name>
         <managed-bean-class>org.richfaces.EditorBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>   
-<application>
+  <application>
+      <view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>
       <locale-config>
          <default-locale>en</default-locale>
          <supported-locale>bg</supported-locale>
@@ -16,7 +19,6 @@
          <supported-locale>fr</supported-locale>
          <supported-locale>tr</supported-locale>
       </locale-config>
-      <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
    </application>
 </faces-config>
 
