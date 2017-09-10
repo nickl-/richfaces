@@ -34,6 +34,8 @@ import org.ajax4jsf.Messages;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.sun.faces.application.view.MultiViewHandler;
+
 /**
  * Base wrapper for {@link javax.faces.application.ViewHandler} . By default, delegate all
  * method calls to wrapped handler.
@@ -41,7 +43,7 @@ import org.apache.commons.logging.LogFactory;
  * @version $Revision: 1.1.2.1 $ $Date: 2007/01/09 18:57:12 $
  *
  */
-public class ViewHandlerWrapper extends ViewHandler {
+public class ViewHandlerWrapper extends MultiViewHandler {
 	private static final String HANDLERS = "org.ajax4jsf.VIEW_HANDLERS";
 	
 	private static final Log _log = LogFactory.getLog(ViewHandlerWrapper.class);
@@ -55,6 +57,7 @@ public class ViewHandlerWrapper extends ViewHandler {
 	 * @param handler - to wrap.
 	 */
 	public ViewHandlerWrapper(ViewHandler handler) {
+		super();
 		_handler = handler;
 	}
 

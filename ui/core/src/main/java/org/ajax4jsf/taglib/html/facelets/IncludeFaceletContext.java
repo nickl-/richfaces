@@ -35,36 +35,37 @@ import javax.el.VariableMapper;
 import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-
-import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.FaceletException;
+
+import com.sun.faces.facelets.FaceletContextImplBase;
+import com.sun.faces.facelets.TemplateClient;
 
 /**
  * @author shura
  *
  */
-public class IncludeFaceletContext extends FaceletContext {
+public class IncludeFaceletContext extends FaceletContextImplBase {
 	
-	private FaceletContext defaultContext;
+	private FaceletContextImplBase defaultContext;
 	
 	private Map ids;
 
 	/**
 	 * @param defaultContext
 	 */
-	public IncludeFaceletContext(FaceletContext defaultContext) {
+	public IncludeFaceletContext(FaceletContextImplBase defaultContext) {
 		this.defaultContext = defaultContext;
 		this.ids = new HashMap();
 	}
 
-//	/**
-//	 * @param client
-//	 * @see javax.faces.view.facelets.FaceletContext#extendClient(javax.faces.view.facelets.TemplateClient)
-//	 */
-//	public void extendClient(TemplateClient client) {
-//		this.defaultContext.extendClient(client);
-//	}
-//
+	/**
+	 * @param client
+	 * @see javax.faces.view.facelets.FaceletContext#extendClient(javax.faces.view.facelets.TemplateClient)
+	 */
+	public void extendClient(TemplateClient client) {
+		this.defaultContext.extendClient(client);
+	}
+
 	/**
 	 * @param base
 	 * @return
@@ -166,9 +167,9 @@ public class IncludeFaceletContext extends FaceletContext {
 	 * @throws ELException
 	 * @see javax.faces.view.facelets.FaceletContext#includeDefinition(javax.faces.component.UIComponent, java.lang.String)
 	 */
-//	public boolean includeDefinition(UIComponent parent, String name) throws IOException, FaceletException, FacesException, ELException {
-//		return this.defaultContext.includeDefinition(parent, name);
-//	}
+	public boolean includeDefinition(UIComponent parent, String name) throws IOException, FaceletException, FacesException, ELException {
+		return this.defaultContext.includeDefinition(parent, name);
+	}
 
 	/**
 	 * @param parent
@@ -208,17 +209,17 @@ public class IncludeFaceletContext extends FaceletContext {
 	 * @param client
 	 * @see javax.faces.view.facelets.FaceletContext#popClient(javax.faces.view.facelets.TemplateClient)
 	 */
-//	public void popClient(TemplateClient client) {
-//		this.defaultContext.popClient(client);
-//	}
+	public void popClient(TemplateClient client) {
+		this.defaultContext.popClient(client);
+	}
 
 	/**
 	 * @param client
 	 * @see javax.faces.view.facelets.FaceletContext#pushClient(javax.faces.view.facelets.TemplateClient)
 	 */
-//	public void pushClient(TemplateClient client) {
-//		this.defaultContext.pushClient(client);
-//	}
+	public void pushClient(TemplateClient client) {
+		this.defaultContext.pushClient(client);
+	}
 
 	/**
 	 * @param key

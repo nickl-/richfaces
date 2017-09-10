@@ -32,7 +32,7 @@ import org.ajax4jsf.Messages;
 import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.event.AjaxListenerHelper;
 import org.ajax4jsf.event.AjaxSource;
-import org.richfaces.webapp.taglib.ValueBindingValueExpressionAdaptor;
+import com.sun.faces.facelets.el.LegacyValueBinding;
 
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.FaceletException;
@@ -101,7 +101,7 @@ public final class AjaxListenerHandler extends TagHandler {
                     ve = this.binding.getValueExpression(ctx,
                             AjaxListener.class);
                     // TODO - handle both JSF 1.2/1.1 cases.
-                    listener = new AjaxListenerHelper(new ValueBindingValueExpressionAdaptor(ve));
+                    listener = new AjaxListenerHelper(new LegacyValueBinding(ve));
                 }
                 if (listener == null) {
                     try {

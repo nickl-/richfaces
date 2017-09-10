@@ -11,11 +11,11 @@ import $import ;
 import javax.faces.component.ActionSource2;
 import javax.faces.component.UIComponent;
 import ${component.classname};
-import javax.faces.view.facelets.ComponentHandler;
-import javax.faces.view.facelets.ComponentConfig;
 import org.richfaces.webapp.taglib.MethodBindingMethodExpressionAdaptor;
+import com.sun.faces.facelets.el.LegacyMethodBinding;
 
 import javax.faces.view.facelets.*;
+
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
  * @version $Revision: 1.1.2.1 $ $Date: 2007/02/26 20:48:51 $

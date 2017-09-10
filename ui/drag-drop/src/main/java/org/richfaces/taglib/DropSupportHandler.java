@@ -23,8 +23,7 @@ package org.richfaces.taglib;
 
 import org.ajax4jsf.webapp.taglib.AjaxComponentHandler;
 import org.richfaces.component.UIDropSupport;
-
-import com.sun.faces.application.MethodBindingMethodExpressionAdapter;
+import com.sun.faces.facelets.el.LegacyMethodBinding;
 
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.MetaRule;
@@ -101,7 +100,7 @@ public class DropSupportHandler extends AjaxComponentHandler {
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
 			((UIDropSupport) instance)
-			.setDropListener(new MethodBindingMethodExpressionAdapter(this._action
+			.setDropListener(new LegacyMethodBinding(this._action
 					.getMethodExpression(ctx, null, SIGNATURE)));
 		}
 

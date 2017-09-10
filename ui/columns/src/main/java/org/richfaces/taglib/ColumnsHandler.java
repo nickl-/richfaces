@@ -30,7 +30,6 @@ package org.richfaces.taglib;
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.MetaRule;
 import javax.faces.view.facelets.MetaRuleset;
-import javax.faces.view.facelets.MetaTagHandler;
 import javax.faces.view.facelets.Metadata;
 import javax.faces.view.facelets.MetadataTarget;
 import javax.faces.view.facelets.TagAttribute;
@@ -38,6 +37,8 @@ import javax.faces.view.facelets.ComponentConfig;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.richfaces.el.ELBuilder;
+
+import com.sun.faces.facelets.tag.MetaTagHandlerImpl;
 
 import javax.el.ELException;
 import javax.el.ValueExpression;
@@ -55,7 +56,7 @@ import java.util.Iterator;
  * @author "Andrey Markavtsov"
  * 
  */
-public class ColumnsHandler extends MetaTagHandler {
+public class ColumnsHandler extends MetaTagHandlerImpl {
 
 	private static final Log log = LogFactory.getLog(ColumnsHandler.class);
 	
@@ -135,9 +136,9 @@ public class ColumnsHandler extends MetaTagHandler {
 
 			@Override
 			public void applyNextHandler(FaceletContext ctx, UIComponent c)
-			throws IOException, FacesException, ELException {
-				c.getAttributes().put(F_GENERATION_SERIES_ATTRIBUTE, RequestUniqueIdGenerator.generateId(ctx.getFacesContext()));
-				super.applyNextHandler(ctx, c);
+				throws IOException, FacesException, ELException {
+					c.getAttributes().put(F_GENERATION_SERIES_ATTRIBUTE, RequestUniqueIdGenerator.generateId(ctx.getFacesContext()));
+					super.applyNextHandler(ctx, c);
 			}
 		};
 	}

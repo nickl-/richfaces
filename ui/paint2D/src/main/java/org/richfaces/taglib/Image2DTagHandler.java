@@ -24,7 +24,7 @@ package org.richfaces.taglib;
 import java.awt.Graphics2D;
 
 import org.richfaces.component.UIPaint2D;
-import org.richfaces.webapp.taglib.MethodBindingMethodExpressionAdaptor;
+import com.sun.faces.facelets.el.LegacyMethodBinding;
 
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.MetaRule;
@@ -112,7 +112,7 @@ public class Image2DTagHandler extends ComponentHandler {
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
             ((UIPaint2D) instance)
-            .setPaint(new MethodBindingMethodExpressionAdaptor(this._paint
+            .setPaint(new LegacyMethodBinding(this._paint
                     .getMethodExpression(ctx, null,
                             Image2D_ACTION_SIG)));
 		}

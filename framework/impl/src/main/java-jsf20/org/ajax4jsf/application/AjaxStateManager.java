@@ -24,16 +24,17 @@ package org.ajax4jsf.application;
 import java.io.IOException;
 
 import javax.faces.application.StateManager;
-import javax.faces.application.StateManagerWrapper;
 import javax.faces.context.FacesContext;
 
 import org.richfaces.context.PartialViewContextImpl;
+
+import com.sun.faces.application.StateManagerImpl;
 
 /**
  * @author Nick Belaevski
  *
  */
-public class AjaxStateManager extends StateManagerWrapper {
+public class AjaxStateManager extends StateManagerImpl {
 
 	private StateManager parent;
 	
@@ -45,13 +46,7 @@ public class AjaxStateManager extends StateManagerWrapper {
 	}
 
 	@Override
-	public StateManager getWrapped() {
-		return parent;
-	}
-
-	@Override
-	public void writeState(FacesContext context, Object state)
-			throws IOException {
+	public void writeState(FacesContext context, Object state) throws IOException {		
 		try {
 			PartialViewContextImpl.setupPartialViewContextIndicator(context);
 			super.writeState(context, state);
@@ -60,14 +55,4 @@ public class AjaxStateManager extends StateManagerWrapper {
 		}
 	}
 	
-	@Override
-	public void writeState(FacesContext context, SerializedView state)
-			throws IOException {
-		try {
-			PartialViewContextImpl.setupPartialViewContextIndicator(context);
-			super.writeState(context, state);
-		} finally {
-			PartialViewContextImpl.resetPartialViewContextIndicator(context);
-		}
-	}
 }

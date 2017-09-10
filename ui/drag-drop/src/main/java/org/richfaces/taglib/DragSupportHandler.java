@@ -23,7 +23,7 @@ package org.richfaces.taglib;
 
 import org.ajax4jsf.webapp.taglib.AjaxComponentHandler;
 import org.richfaces.component.UIDragSupport;
-import org.richfaces.webapp.taglib.MethodBindingMethodExpressionAdaptor;
+import com.sun.faces.facelets.el.LegacyMethodBinding;
 
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.MetaRule;
@@ -101,7 +101,7 @@ public class DragSupportHandler extends AjaxComponentHandler {
 		 */
 		public void applyMetadata(FaceletContext ctx, Object instance) {
 			((UIDragSupport) instance)
-			.setDragListener(new MethodBindingMethodExpressionAdaptor(this._action
+			.setDragListener(new LegacyMethodBinding(this._action
 					.getMethodExpression(ctx, null, SIGNATURE)));
 		}
 

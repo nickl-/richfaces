@@ -22,10 +22,13 @@
 package org.richfaces.taglib;
 
 import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.FaceletHandler;
 import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
-import javax.faces.view.facelets.FaceletHandler;
+
+import com.sun.faces.facelets.tag.TagAttributeImpl;
+import com.sun.faces.facelets.tag.TagAttributesImpl;
 
 /**
  * @author akolonitsky
@@ -42,7 +45,7 @@ class ColumnHandlerComponentConfig implements ComponentConfig {
         this.config = config;
         Tag initialTag = config.getTag();
         TagAttribute[] allInitialAttributes = initialTag.getAttributes().getAll();
-        TagAttribute[] attributes = new TagAttribute[allInitialAttributes.length];
+        TagAttribute[] attributes = new TagAttributeImpl[allInitialAttributes.length];
         for (int i = 0; i < allInitialAttributes.length; i++) {
             TagAttribute initialAttribute = allInitialAttributes[i];
             String localName = initialAttribute.getLocalName();
@@ -52,11 +55,11 @@ class ColumnHandlerComponentConfig implements ComponentConfig {
                 attributeValue += ITERATION_INDEX_EXPRESSION;
             }
 
-            attributes[i] = new TagAttrib(initialAttribute.getLocation(), initialAttribute.getNamespace(),
+            attributes[i] = new TagAttributeImpl(initialAttribute.getLocation(), initialAttribute.getNamespace(),
                 localName, initialAttribute.getQName(), attributeValue);
         }
 
-        TagAttributes tagAttributes = new TagAttribs(attributes);
+        TagAttributes tagAttributes = new TagAttributesImpl(attributes);
         this.tag = new Tag(initialTag, tagAttributes);
     }
 
