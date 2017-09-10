@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://xmlns.jcp.org/xml/ns/j2ee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-app_3_0.xsd">
+<web-app
+    version="3.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
  <description>Richfaces virtualEarth Sample</description>
  <display-name>virtualEarth-sample</display-name>
  <context-param>
@@ -30,10 +34,6 @@
  <context-param>
   <param-name>org.ajax4jsf.SKIN</param-name>
   <param-value>japanCherry</param-value>
- </context-param>
- <context-param>
-  <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
-  <param-value>com.sun.facelets.FaceletViewHandler</param-value>
  </context-param>
  <context-param>
      <param-name>org.ajax4jsf.COMPRESS_SCRIPT</param-name>

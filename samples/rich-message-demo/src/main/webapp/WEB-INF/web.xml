@@ -1,6 +1,10 @@
-<web-app version="3.0" xmlns="http://xmlns.jcp.org/xml/ns/j2ee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-app_3_0.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    version="3.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
   <display-name>Richfaces message component application</display-name>
   <!-- 
  	<context-param>
@@ -9,10 +13,6 @@
  	</context-param>
   -->	
   	
-  	<context-param>
-  		<param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
-  		<param-value>com.sun.facelets.FaceletViewHandler</param-value>
- 	</context-param>
   	<context-param>
   		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
   		<param-value>.xhtml</param-value>
