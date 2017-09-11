@@ -6,6 +6,7 @@
       xmlns:rich="http://richfaces.org/rich">
 <ui:composition>            
 <rich:panel styleClass="panel_menu" bodyClass="rich-laguna-panel-no-header">
+<h:form>
 <rich:panelBar style="width: auto;" selectedPanel="#{componentNavigator.currentComponent.group}" height="680px" contentStyle="background:none;">
 	<rich:panelBarItem   id="ajaxSupport">
 		<f:facet name="label">
@@ -177,6 +178,7 @@
  		</ui:include>
 	</rich:panelBarItem>
 </rich:panelBar>
+</h:form>
 </rich:panel>
 </ui:composition>
 </html>
