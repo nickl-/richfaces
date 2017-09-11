@@ -32,6 +32,7 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -362,12 +363,12 @@ new StringBuilder("Resources framework is not initialised, check web.xml for Fil
 					uri.append(DATA_SEPARATOR);
 				}
 				byte[] dataArray = encrypt(objectData);
-				uri.append(new String(dataArray, "ISO-8859-1"));
+				uri.append(new String(dataArray, "UTF-8"));
 
 				// / byte[] objectData = dataSteram.toByteArray();
 				// / uri.append("?").append(new
 				// String(Base64.encodeBase64(objectData),
-				// / "ISO-8859-1"));
+				// / "UTF-8"));
 			} catch (Exception e) {
 				// Ignore errors, log it
 				log.error(Messages
@@ -422,8 +423,9 @@ new StringBuilder("Resources framework is not initialised, check web.xml for Fil
 			byte[] objectArray = null;
 			byte[] dataArray;
 			try {
-				dataArray = dataString.getBytes("ISO-8859-1");
-				objectArray = decrypt(dataArray);
+                 dataString = URLDecoder.decode(dataString, "UTF-8");
+                 dataArray = dataString.getBytes("UTF-8");
+                 objectArray = decrypt(dataArray);
 			} catch (UnsupportedEncodingException e1) {
 				// default encoding always presented.
 			}
@@ -434,18 +436,11 @@ new StringBuilder("Resources framework is not initialised, check web.xml for Fil
 					ObjectInputStream in = new LookAheadObjectInputStream(new ByteArrayInputStream(objectArray));
 					data = in.readObject();
 				} catch (StreamCorruptedException e) {
-					log.error(Messages
-							.getMessage(Messages.STREAM_CORRUPTED_ERROR), e);
+					log.error(Messages.getMessage(Messages.STREAM_CORRUPTED_ERROR), e);
 				} catch (IOException e) {
-					log.error(Messages
-							.getMessage(Messages.DESERIALIZE_DATA_INPUT_ERROR),
-							e);
+					log.error(Messages.getMessage(Messages.DESERIALIZE_DATA_INPUT_ERROR),e);
 				} catch (ClassNotFoundException e) {
-					log
-							.error(
-									Messages
-											.getMessage(Messages.DATA_CLASS_NOT_FOUND_ERROR),
-									e);
+					log.error(Messages.getMessage(Messages.DATA_CLASS_NOT_FOUND_ERROR),e);
 				}
 			}
 		}
@@ -543,8 +538,7 @@ new StringBuilder("Resources framework is not initialised, check web.xml for Fil
 	 * @return
 	 */
 	protected ResourceRenderer getRendererByExtension(String ext) {
-		return renderers
-				.get(ext);
+		return renderers.get(ext);
 	}
 
 	/**

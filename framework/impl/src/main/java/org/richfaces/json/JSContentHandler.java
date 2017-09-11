@@ -119,7 +119,7 @@ public class JSContentHandler implements ContentHandler,LexicalHandler {
 
     private Locator locator;
 
-    public static final String DEFAULT_ENCODING = "ISO-8859-1";
+    public static final String DEFAULT_ENCODING = "UTF-8";
     
     public JSContentHandler() {
 	}
