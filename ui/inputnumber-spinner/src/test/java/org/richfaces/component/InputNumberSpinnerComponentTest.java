@@ -165,22 +165,22 @@ public class InputNumberSpinnerComponentTest extends AbstractAjax4JsfTestCase {
 
     public void testImages() throws Exception {
         InternetResource image = InternetResourceBuilder.getInstance()
-                .createResource(null, SpinnerFieldGradient.class.getName());
+                .createInternetResource(null, SpinnerFieldGradient.class.getName());
         Dimension imageDim = ((Java2Dresource) image).getDimensions(
                 facesContext, null);
         assertTrue(imageDim.getWidth() == 30 && imageDim.getHeight() == 50);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SpinnerButtonGradient.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 30 && imageDim.getHeight() == 50);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SpinnerButtonDown.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 14 && imageDim.getHeight() == 7);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SpinnerButtonUp.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 14 && imageDim.getHeight() == 7);
