@@ -120,7 +120,7 @@ public class CSSTemplateTestCase extends AbstractAjax4JsfTestCase {
 		String templatePath = "org/ajax4jsf/resource/styles.xml";
 		TemplateCSSResource resource = new TemplateCSSResource(templatePath);
 		assertEquals(templatePath,resource.getKey());
-		InternetResource resource2 = InternetResourceBuilder.getInstance().createResource(this,resource.getKey());
+		InternetResource resource2 = InternetResourceBuilder.getInstance().createInternetResource(this,resource.getKey());
 		ResourceContext ctx = new FacesResourceContext(this.facesContext);
 		InputStream stream = resource.getResourceAsStream(ctx);
 		byte[] resourceContent = new byte[8196];

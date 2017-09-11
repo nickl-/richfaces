@@ -139,7 +139,7 @@ public abstract class AbstractQueueComponentTest extends AbstractAjax4JsfTestCas
 		try {
 			resourceBuilder.getResource(SIMULATION_SCRIPT_NAME);
 		} catch (ResourceNotFoundException e) {
-			resourceBuilder.createResource(null, SIMULATION_SCRIPT_NAME);
+			resourceBuilder.createInternetResource(null, SIMULATION_SCRIPT_NAME);
 		}
 		
 		UIViewRoot viewRoot = facesContext.getViewRoot();

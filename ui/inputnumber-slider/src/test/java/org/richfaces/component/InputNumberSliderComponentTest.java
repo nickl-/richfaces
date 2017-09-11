@@ -208,22 +208,22 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 
     public void testImages() throws Exception {
         InternetResource image = InternetResourceBuilder.getInstance()
-                .createResource(null, SliderFieldGradient.class.getName());
+                .createInternetResource(null, SliderFieldGradient.class.getName());
         Dimension imageDim = ((Java2Dresource) image).getDimensions(
                 facesContext, null);
         assertTrue(imageDim.getWidth() == 31 && imageDim.getHeight() == 55);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SliderTrackGradient.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 10);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SliderArrowImage.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-        image = InternetResourceBuilder.getInstance().createResource(null,
+        image = InternetResourceBuilder.getInstance().createInternetResource(null,
                 SliderArrowSelectedImage.class.getName());
         imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
         assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
@@ -460,37 +460,37 @@ public class InputNumberSliderComponentTest extends AbstractAjax4JsfTestCase {
 	public void testArrowsImages() throws Exception {
 		InternetResource image;
 		Dimension imageDim;
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderTrackGradientVertical.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 10);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowImageLeft.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowImageRight.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowImageTop.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowSelectedImageLeft.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowSelectedImageRight.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);
 
-		image = InternetResourceBuilder.getInstance().createResource(null,
+		image = InternetResourceBuilder.getInstance().createInternetResource(null,
 				SliderArrowSelectedImageTop.class.getName());
 		imageDim = ((Java2Dresource) image).getDimensions(facesContext, null);
 		assertTrue(imageDim.getWidth() == 7 && imageDim.getHeight() == 8);

@@ -71,7 +71,7 @@ public class LoadResourceComponentTest extends AbstractAjax4JsfTestCase {
 		try {
 			resourceBuilder.getResource(path);
 		} catch (ResourceNotFoundException e) {
-			resourceBuilder.createResource(null, path);
+			resourceBuilder.createInternetResource(null, path);
 		}
 	}
 

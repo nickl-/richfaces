@@ -32,21 +32,24 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 import javax.faces.FacesException;
+import javax.faces.application.Resource;
+import javax.faces.application.ResourceHandler;
+import javax.faces.application.ViewResource;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
 
 import org.ajax4jsf.Messages;
 import org.ajax4jsf.resource.util.URLToStreamHelper;
@@ -80,22 +83,49 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 
 
 	private static final ResourceRenderer defaultRenderer = new MimeRenderer(null);
+	private static final ResourceRenderer xhtmlRenderer = new MimeRenderer("application/xhtml+xml");
+	private static final ResourceRenderer XMLRenderer = new MimeRenderer("text/xml");
+	private static final ResourceRenderer swfRenderer = new MimeRenderer("application/x-shockwave-flash");
+	private static final ResourceRenderer logfileRenderer = new LogfileRenderer();
+	private static final ResourceRenderer scriptRenderer = new ScriptRenderer();
+	private static final ResourceRenderer styleRenderer = new StyleRenderer();
+	private static final ResourceRenderer jpegRenderer = new JpegRenderer();
+	private static final ResourceRenderer pngRenderer = new PngRenderer();
+	private static final ResourceRenderer gifRenderer = new GifRenderer();
+	private static final ResourceRenderer hnmlRenderer = new HTMLRenderer();
+	private static final ResourceRenderer templateCSSRenderer = new TemplateCSSRenderer();
 
-	private Map<String, ResourceRenderer> renderers;
+	private static final ConcurrentHashMap<String, ResourceRenderer> renderers = new ConcurrentHashMap<String, ResourceRenderer>(10249);
+
+	private static final ConcurrentHashMap<String, InternetResource> resources = new ConcurrentHashMap<String, InternetResource>(10240);
+	
+	static {
+		renderers.put(".gif", gifRenderer);
+		renderers.put(".jpeg", jpegRenderer);
+		renderers.put(".jpg", jpegRenderer);
+		renderers.put(".png", pngRenderer);
+		renderers.put(".js", scriptRenderer);
+		renderers.put(".css", templateCSSRenderer);
+		renderers.put(".xcss", templateCSSRenderer);
+		renderers.put(".log", logfileRenderer);
+		renderers.put(".html", hnmlRenderer);
+		renderers.put(".xhtml", xhtmlRenderer);
+		renderers.put(".xml", XMLRenderer);
+		renderers.put(".swf", swfRenderer);
+	}
+	
 	/**
 	 * keep resources instances . TODO - put this map to application-scope
 	 * attribute, for support clastering environment.
 	 */
-	private Map<String, InternetResource> resources = Collections.synchronizedMap(new HashMap<String, InternetResource>());
-
+	
 	private long _startTime;
 
 	private Codec codec;
 
-	private static final ResourceRenderer scriptRenderer = new ScriptRenderer();
 	
-	private static final ResourceRenderer styleRenderer = new StyleRenderer();
-
+	private static boolean beentheredonethat = false;
+	
 	static {
 		// renderers.put(".htc",new BehaviorRenderer());
 		// set in-memory caching ImageIO
@@ -116,50 +146,75 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 		WebXml webXml = WebXml.getInstance(context);
 		if (null == webXml) {
 			throw new FacesException(
-					"Resources framework is not initialised, check web.xml for Filter configuration");
+new StringBuilder("Resources framework is not initialised, check web.xml for Filter configuration.\n\n")
+.append("    <filter>\n") 
+.append("        <filter-name>Ajax Filter</filter-name>\n") 
+.append("        <filter-class>org.ajax4jsf.Filter</filter-class>\n") 
+.append("    </filter>\n") 
+.append("    <filter-mapping>\n") 
+.append("        <filter-name>Ajax Filter</filter-name>\n") 
+.append("        <servlet-name>Faces Servlet</servlet-name>\n") 
+.append("        <dispatcher>FORWARD</dispatcher>\n") 
+.append("        <dispatcher>REQUEST</dispatcher>\n") 
+.append("        <dispatcher>INCLUDE</dispatcher>\n") 
+.append("        <dispatcher>ERROR</dispatcher>\n")
+.append("    </filter-mapping>\n\n")
+.append("Filter configuration is missing.\n")
+.toString());
 		}
 		return webXml;
 	}
+	
+	public ResourceBuilderImpl(ResourceHandler res) {
+		super(res);
+		super.addInstance(this);
+		log.info(">>>>>> RichfacesResourceHandler <<<<<<");
+		_startTime = System.currentTimeMillis();
+		codec = new Codec();
+		init();
+	}
+
 
 	public ResourceBuilderImpl() {
 		super();
+		super.addInstance(this);
+		log.info(">>>>>> new ResourceBuilder2.0...");
 		_startTime = System.currentTimeMillis();
 		codec = new Codec();
-		renderers = new HashMap<String, ResourceRenderer>();
+		super.addInstance(this);
+		
+		//renderers = new HashMap<String, ResourceRenderer>();
 		// append known renderers for extentions.
-		renderers.put(".gif", new GifRenderer());
-		ResourceRenderer renderer = new JpegRenderer();
-		renderers.put(".jpeg", renderer);
-		renderers.put(".jpg", renderer);
-		renderers.put(".png", new PngRenderer());
-		renderers.put(".js", getScriptRenderer());
-		renderers.put(".css", getStyleRenderer());
-		renderers.put(".log", new LogfileRenderer());
-		renderers.put(".html", new HTMLRenderer());
-		renderers.put(".xhtml", new MimeRenderer("application/xhtml+xml"));
-		renderers.put(".xml", new MimeRenderer("text/xml"));
-		renderers.put(".xcss", new TemplateCSSRenderer());
-		renderers.put(".swf", new MimeRenderer("application/x-shockwave-flash"));
 	}
 
 	/**
 	 * @throws FacesException
 	 */
-	protected void registerResources() throws FacesException {
+	protected synchronized void registerResources() throws FacesException {
+		if (beentheredonethat)
+			return;
+		beentheredonethat = true;
 		try {
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
 			Enumeration<URL> e = loader
 					.getResources("META-INF/resources-config.xml");
+
 			while (e.hasMoreElements()) {
 				URL resource = e.nextElement();
 				registerConfig(resource);
+			}
+			if (log.isDebugEnabled()) {
+				log.debug("Found some resources:"+ resources.size());
+				resources.keySet().forEach(k -> log.debug(k));
 			}
 		} catch (IOException e) {
 			throw new FacesException(e);
 		}
 	}
 
-	private void registerConfig(URL resourceConfig) {
+	private synchronized void registerConfig(URL resourceConfig) {
+		log.debug("Process cfg file: "+resourceConfig.getPath());
+				
 		try {
 			if (log.isDebugEnabled()) {
 				log.debug("Process resources configuration file "
@@ -221,9 +276,9 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 
 	/**
 	 */
-	public void init() throws FacesException {
+	public synchronized void init() throws FacesException {
 		// TODO - mace codec configurable.
-		registerResources();
+			 registerResources();	
 	}
 
 	/**
@@ -239,7 +294,7 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 	 * @return
 	 * @throws FacesException
 	 */
-	public InternetResource createResource(Object base, String path)
+	public InternetResource createInternetResource(Object base, String path)
 			throws FacesException {
 		// TODO - detect type of resource ( for example, resources location path
 		// in Skin
@@ -397,24 +452,23 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 
 		return data;
 	}
-
 	public InternetResource getResource(String path)
 			throws ResourceNotFoundException {
 
-		InternetResource internetResource = (InternetResource) resources
-				.get(path);
+		InternetResource internetResource = (InternetResource) resources.get(path);
+		
 		if (null == internetResource) {
-			throw new ResourceNotFoundException("Resource not registered : "
-					+ path);
+			throw new ResourceNotFoundException("Resource not registered : "+ path);
 		} else {
 			return internetResource;
 		}
 	}
 
 	public void addResource(InternetResource resource) {
-		resources.put(resource.getKey(), resource);
+	    resources.put(resource.getKey(), resource);
 		ResourceRenderer renderer = resource.getRenderer(null);
-		if (renderer == null) {
+
+        if (renderer == null) {
 			setRenderer(resource, resource.getKey());
 		}
 	}
@@ -636,4 +690,549 @@ public class ResourceBuilderImpl extends InternetResourceBuilder {
 	public ResourceRenderer getStyleRenderer() {
 		return styleRenderer;
 	}
+	
+    // -------------------------------------------- Methods far ResourceHandler Implementation
+    // Elaborate hack to reuse InternetResource sendHeaders function
+	public class HeadersCantext extends FacesResourceContext {
+		public Map<String, String> headers = new HashMap<String, String>();
+		public Map<String, List<String>> header_lists = new HashMap<String, List<String>>();
+		private List<String> headers_put(String key) {
+		    if (!header_lists.containsKey(key))
+		        header_lists.put(key, new ArrayList<String>());
+		    return header_lists.get(key);
+		}
+		public void setContentType(String type) {
+			headers.put("Content-Type", type);
+			headers_put("Content-Type").add(type);
+		}
+		public void setContentLength(int contentLength) {
+			headers.put("Content-Length", String.valueOf(contentLength));
+			headers_put("Content-Length").add(String.valueOf(contentLength));
+		}
+		public void setDateHeader(String name, long value) {
+            headers.put(name, String.valueOf(value));
+            headers_put(name).add(String.valueOf(value));
+		}
+		public void setHeader(String name, String value) {
+            headers.put(name, value);
+            headers_put(name).add(value);
+		}
+		public void setIntHeader(String name, int value) {
+            headers_put(name).add(String.valueOf(value));
+		}
+		public HeadersCantext(FacesContext facesContext) {
+			super(facesContext);
+		}
+	}
+	
+	public class RichfacesResource extends Resource {
+		
+		private InternetResource resource;
+		private FacesResourceContext context;
+		private URL path;
+		
+		public RichfacesResource(InternetResource res) {
+			this(FacesContext.getCurrentInstance(), res);
+		}
+		
+		public RichfacesResource(FacesContext ctx, InternetResource res) {
+			this.resource = res;
+			this.context = new FacesResourceContext(ctx);
+			try {
+    			    this.path = new URL(InternetResource.RESOURCE_PROTOCOL, null,0, res.getKey()); 
+            } catch (MalformedURLException e) {
+                log.info("Swallow MalformedURLException:"+e.getMessage());
+            }
+			this.setContentType(res.getContentType(context));
+			this.setLibraryName("richfaces");
+			this.setResourceName(res.getKey());
+			
+		}
+		
+		@Override
+		public InputStream getInputStream() throws IOException {
+			return resource.getResourceAsStream(context);
+		}
+
+
+		@Override
+		public String getRequestPath() {
+			log.info("Providing path:"+this.path);
+			return this.path.toString();
+		}
+
+		@Override
+		public URL getURL() {
+			return this.path;
+		}
+
+		@Override
+		public Map<String, String> getResponseHeaders() {
+			HeadersCantext ctx = new HeadersCantext(context.facesContext);
+			resource.sendHeaders(ctx);
+			return ctx.headers;
+		}
+
+		@Override
+		public boolean userAgentNeedsUpdate(FacesContext ctx) {
+			return System.currentTimeMillis() - resource.getLastModified(context).getTime() 
+					< resource.getExpired(context);
+		}
+		
+	}
+	
+
+    /**
+     * <p class="changed_added_2_0"><span
+     * class="changed_modified_2_2">Create</span> an instance of
+     * <code>ViewResource</code> given the argument
+     * <code>resourceName</code>.  The content-type of the resource is
+     * derived by passing the <em>resourceName</em> to {@link
+     * javax.faces.context.ExternalContext#getMimeType}</p>
+
+     * <div class="changed_added_2_0">
+
+     * <p>The algorithm specified in section JSF.2.6.1.4 of the spec
+     * prose document <a
+     * href="../../../overview-summary.html#prose_document">linked in
+     * the overview summary</a> must be executed to create the
+     * <code>Resource</code>.  <span class="changed_added_2_2">New
+     * requirements were introduced in version 2.2 of the specification.
+     * For historical reasons, this method operate correctly when the
+     * argument {@code resourceName} is of the form
+     * {@code libraryName/resourceName}, even when {@code resourceName}
+     * contains '/' characters.  </span></p>
+
+     * </div>
+
+     * @param resourceName the name of the resource.
+     *
+     * @throws NullPointerException if <code>resourceName</code> is
+     *  <code>null</code>.
+     *
+     * @return a newly created <code>Resource</code> instance, suitable
+     * for use in encoding or decoding the named resource.
+     */
+    @Override
+    public Resource createResource(String resourceName) {
+	    	Resource res = null;
+	    	try {
+    			res = getWrapped().createResource(resourceName);
+		} catch (Exception e) {
+		    log.info("Normal create resource failed with swallawed exception: "
+		                    +e.getMessage() + " Resource name: "+ resourceName);
+			res = null;
+		}
+	    	try {
+    		if (null == res)
+    			return new RichfacesResource(createInternetResource(
+    					FacesContext.getCurrentInstance().getExternalContext(), 
+    					resourceName));
+        } catch (Exception e) {
+            log.info("Resource builder create resource failed with swallawed exception: "
+                            +e.getMessage() + " Resource name: "+ resourceName);
+            res = null;
+        }
+    			
+    		return res;
+    }
+    /**
+     * <p class="changed_added_2_0"><span
+     * class="changed_modified_2_2">Create</span> an instance of
+     * <code>Resource</code> with a resourceName given by the value of
+     * the argument <code>resourceName</code> that is a member of the
+     * library named by the argument <code>libraryName</code>.  The
+     * content-type of the resource is derived by passing the
+     * <em>resourceName</em> to {@link
+     * javax.faces.context.ExternalContext#getMimeType}.</p>
+     *
+     * <div class="changed_added_2_0">
+
+     * <p>The algorithm specified in section JSF.2.6.1.4 of the spec
+     * prose document <a
+     * href="../../../overview-summary.html#prose_document">linked in
+     * the overview summary</a> must be executed to create the
+     * <code>Resource</code>. <span class="changed_added_2_2">New
+     * requirements were introduced in version 2.2 of the
+     * specification.</span></p>
+
+     * </div>
+
+     * @param resourceName the name of the resource.
+     *
+     * @param libraryOrContractName <span class="changed_modified_2_2">the
+     * name of the library (or contract) in which this resource
+     * resides, may be <code>null</code>. If there is a conflict between
+     * the name of a resource library and a resource library contract,
+     * the resource library takes precedence.  <span
+     * class="changed_modified_2_0_rev_a">May not include relative
+     * paths, such as "../".</span></span>
+     *
+     * @throws <code>NullPointerException</code> if
+     * <code>resourceName</code> is <code>null</code>
+     *
+     * @return a newly created <code>Resource</code> instance, suitable
+     * for use in encoding or decoding the named resource.
+     */
+    @Override
+    public Resource createResource(String resourceName, String libraryName) {
+	    	Resource res = getWrapped().createResource(resourceName, libraryName);
+//		log.info(resourceToString("createResource:"+libraryName+":"+resourceName+":", res));
+	    	
+	    	return res;
+    }
+    /**
+     * <p class="changed_added_2_0"><span
+     * class="changed_modified_2_2">Create</span> an instance of
+     * <code>Resource</code> with a <em>resourceName</em> given by the
+     * value of the argument <code>resourceName</code> that is a member
+     * of the library named by the argument <code>libraryName</code>
+     * that claims to have the content-type given by the argument
+     * <code>content-type</code>.</p>
+     *
+     * <div class="changed_added_2_0">
+
+     * <p>The algorithm specified in section JSF.2.6.1.4 of the spec
+     * prose document <a
+     * href="../../../overview-summary.html#prose_document">linked in
+     * the overview summary</a> must be executed to create the
+     * <code>Resource</code>. <span class="changed_added_2_2">New
+     * requirements were introduced in version 2.2 of the
+     * specification.</span></p>
+
+     * </div>
+
+     * @param resourceName the name of the resource.
+     *
+     * @param libraryName the name of the library in which this resource
+     * resides, may be <code>null</code>.  <span
+     * class="changed_modified_2_0_rev_a">May not include relative
+     * paths, such as "../".</span>
+     *
+     * @param contentType the mime content that this
+     * <code>Resource</code> instance will return from {@link
+     * Resource#getContentType}.  If the value is <code>null</code>, The
+     * content-type of the resource is derived by passing the
+     * <em>resourceName</em> to {@link
+     * javax.faces.context.ExternalContext#getMimeType}</p>
+     *
+     * @throws <code>NullPointerException</code> if
+     * <code>resourceName</code> is <code>null</code>.
+     *
+     * @return a newly created <code>Resource</code> instance, suitable
+     * for use in encoding or decoding the named resource.
+     */
+    @Override
+    public Resource createResource(String resourceName, String libraryName, String contentType) {
+    	    	Resource res = getWrapped().createResource(resourceName, libraryName, contentType);
+	    	
+	    	return res;
+    }
+
+    /**
+     * <p class="changed_added_2_2">Create an instance of
+     * <code>Resource</code> given the argument
+     * <code>resourceId</code>.  The content-type of the resource is
+     * derived by passing the <em>resourceName</em> to {@link
+     * javax.faces.context.ExternalContext#getMimeType}</p>
+
+     * <div class="changed_added_2_2">
+
+     * <p>The resource must be identified according to the specification
+     * in JSF.2.6.1.3 of the spec prose document <a
+     * href="../../../overview-summary.html#prose_document">linked in
+     * the overview summary</a>.  New requirements were introduced in
+     * version 2.2 of the specification.</p>
+
+     * </div>
+
+     * @param resourceId the resource identifier of the resource.
+     *
+     * @throws NullPointerException if <code>resourceId</code> is
+     *  <code>null</code>.
+     *
+     * @return a newly created <code>Resource</code> instance, suitable
+     * for use in encoding or decoding the named resource.
+     * 
+     * @since 2.2
+     */
+    @Override
+    public Resource createResourceFromId(String resourceId) {
+		Resource res = getWrapped().createResourceFromId(resourceId);
+
+		return res;
+
+    }
+
+    /**
+     * <p class="changed_added_2_2">Create an instance of <code>Resource</code>
+     * given the argument <code>resourceName</code>, which may contain "/" 
+     * characters.  The {@link javax.faces.view.ViewDeclarationLanguage} calls
+     * this method when it needs to load a view from a persistent store, such as
+     * a filesystem.  This method is functionality equivalent to 
+     * {@link #createResource(java.lang.String)}, but all callsites that need
+     * to load VDL views must use this method so that classes that want to 
+     * decorate the <code>ResourceHandler</code> in order to only affect the
+     * loading of views may do so without affecting the processing of other
+     * kinds of resources, such as scripts and stylesheets.
+     * A {@link javax.faces.context.FacesContext} must be present
+     * before calling this method.  To preserve compatibility with prior revisions of the
+     * specification, a default implementation must be provided that calls
+     * {@link #createResource(java.lang.String)}. </p>
+
+     * <div class="changed_added_2_2">
+
+     * <p>The default implementation must look for the resource in the
+     * following places, in this order.</p>
+
+     * <ul>
+
+     * <li><p>Considering resource library contracts (at the locations
+     * specified in the spec prose document section <em>Resource Library
+     * Contracts</em> in the <em>Request Processing Lifecycle</em>
+     * chapter).</p></li>
+
+     * <li><p>Considering the web app root.</p></li>
+
+     *  <li><p>Considering faces flows (at the locations specified in
+     * the spec prose document section <em>Faces Flows</em> in the
+     * <em>Using JSF in Web Applications</em> chapter).</p></li>
+
+     * </ul>
+     
+     * <p>Call {@link FacesContext#getResourceLibraryContracts}.  If the
+     * result is non-{@code null} and not empty, for each value in the
+     * list, treat the value as the name of a resource library contract.
+     * If the argument {@code resoureName} exists as a resource in the
+     * resource library contract, return it.  Otherwise, return the
+     * resource (not in the resource library contract), if found.
+     * Otherwise, return {@code null}.</p>
+
+     * </div>
+
+     * @param context the {@link FacesContext} for this request.
+
+     * @param resourceName the name of the resource to be interpreted as a view
+     * by the {@link javax.faces.view.ViewDeclarationLanguage}.
+
+     * @throws NullPointerException if <code>resourceName</code> is
+     *  {@code null}.
+
+     * @return a newly created {@link ViewResource} instance, suitable
+     * for use by the {@link javax.faces.view.ViewDeclarationLanguage}.
+     * 
+     * @since 2.2
+
+     */
+    @Override
+    public ViewResource createViewResource(FacesContext context, String resourceName) {
+	    	return getWrapped().createViewResource(context, resourceName);
+    }
+
+    
+
+    /**
+     * <p class="changed_added_2_0">This method specifies the contract
+     * for satisfying resource requests.  This method is called from
+     * {@link javax.faces.webapp.FacesServlet#service} after that method
+     * determines the current request is a resource request by calling
+     * {@link #isResourceRequest}.  Thus, <code>handleResourceRequest</code>
+     * may assume that the current request is a resource request.</p>
+     *
+     * <div class="changed_added_2_0">
+     *
+     * <p>The default implementation must implement an algorithm
+     * semantically identical to the following algorithm.</p>
+     *
+     * For discussion, in all cases when a status code is to be set,
+     * this spec talks only using the Servlet API, but it is understood
+     * that in a portlet environment the appropriate equivalent API must
+     * be used.
+     *
+     * <ul>
+     *
+     * <li><p>If the <em>resourceIdentifier</em> ends with any of the
+     * extensions listed in the value of the {@link
+     * #RESOURCE_EXCLUDES_PARAM_NAME} init parameter,
+     * <code>HttpServletRequest.SC_NOT_FOUND</code> must be passed to
+     * <code>HttpServletResponse.setStatus()</code>, then
+     * <code>handleResourceRequest</code> must immediately return.</p></li>
+     *
+     * <li><p>Extract the <em>resourceName</em> from the
+     * <em>resourceIdentifier</em> by taking the substring of
+     * <em>resourceIdentifier</em> that starts at <code>{@link
+     * #RESOURCE_IDENTIFIER}.length() + 1</code> and goes to the end of
+     * <em>resourceIdentifier</em>.  If no <em>resourceName</em> can be
+     * extracted, <code>HttpServletRequest.SC_NOT_FOUND</code> must be
+     * passed to <code>HttpServletResponse.setStatus()</code>, then
+     * <code>handleResourceRequest</code> must immediately return.</p></li>
+     *
+     * <li><p>Extract the <em>libraryName</em> from the request by
+     * looking in the request parameter map for an entry under the key
+     * "ln", without the quotes.  If found, use its value as the
+     * <em>libraryName</em>.</p></li>
+     *
+     * <li><p>If <em>resourceName</em> and <em>libraryName</em> are
+     * present, call {@link #createResource(String, String)} to create
+     * the <code>Resource</code>.  If only <em>resourceName</em> is
+     * present, call {@link #createResource(String)} to create the
+     * <code>Resource</code>.  If the <code>Resource</code> cannot be
+     * successfully created,
+     * <code>HttpServletRequest.SC_NOT_FOUND</code> must be passed to
+     * <code>HttpServletResponse.setStatus()</code>, then
+     * <code>handleResourceRequest</code> must immediately return.</p></li>
+     *
+     * <li><p>Call {@link Resource#userAgentNeedsUpdate}.  If this
+     * method returns false,
+     * <code>HttpServletRequest.SC_NOT_MODIFIED</code> must be passed to
+     * <code>HttpServletResponse.setStatus()</code>, then
+     * <code>handleResourceRequest</code> must immediately return.</p></li>
+     *
+     * <li><p>Pass the result of {@link Resource#getContentType} to
+     * <code>HttpServletResponse.setContentType.</code> </p></li>
+     *
+     * <li><p>Call {@link Resource#getResponseHeaders}.  For each entry
+     * in this <code>Map</code>, call
+     * <code>HttpServletResponse.setHeader()</code>, passing the key as
+     * the first argument and the value as the second argument.</p></li>
+     *
+     * <li><p>Call {@link Resource#getInputStream} and serve up the
+     * bytes of the resource to the response.</p></li>
+     *
+     * <li><p>Call <code>HttpServletResponse.setContentLength()</code>
+     * passing the byte count of the resource.</p></li>
+     *
+     * <li><p>If an <code>IOException</code> is thrown during any of the
+     * previous steps, log a descriptive, localized message, including
+     * the <em>resourceName</em> and <em>libraryName</em> (if present).
+     * Then, <code>HttpServletRequest.SC_NOT_FOUND</code> must be passed
+     * to <code>HttpServletResponse.setStatus()</code>, then
+     * <code>handleResourceRequest</code> must immediately return.</p></li>
+     *
+     * <li><p>In all cases in this method, any streams, channels,
+     * sockets, or any other IO resources must be closed before this
+     * method returns.</p></li>
+     *
+     * </ul>
+     *
+     * </div>
+     *
+     * @param context the {@link javax.faces.context.FacesContext} for this
+     * request
+     */
+    @Override
+    public void handleResourceRequest(FacesContext context) throws IOException {
+        getWrapped().handleResourceRequest(context);
+
+    }
+
+
+    /**
+     * <p class="changed_added_2_0">Return <code>true</code> if the
+     * current request is a resource request.  This method is called by
+     * {@link javax.faces.webapp.FacesServlet#service} to determine if
+     * this request is a <em>view request</em> or a <em>resource
+     * request</em>.</p>
+     *
+     * @param context the {@link javax.faces.context.FacesContext} for this
+     * request
+     * @return <code>true</code> if the current request is a resource
+     * request, <code>false</code> otherwise.
+     */
+    @Override
+    public boolean isResourceRequest(FacesContext context) {
+		return getWrapped().isResourceRequest(context);
+    }
+
+    /**
+     * <p class="changed_added_2_2">Return {@code true} if the argument {@code url}
+     * contains the string given by the value of the constant
+     * {@link ResourceHandler#RESOURCE_IDENTIFIER}, false otherwise.</p>
+     * 
+     * @param url the url to inspect for the presence of {@link ResourceHandler#RESOURCE_IDENTIFIER}.
+
+     * @throws NullPointerException if the argument url is {@code null}.
+     */
+    @Override
+    public boolean isResourceURL(String url) {
+	    	return getWrapped().isResourceURL(url);
+    }
+    
+    /**
+     * <p class="changed_added_2_0"><span
+     * class="changed_modified_2_2">Return</span> <code>true</code> if
+     * the resource library named by the argument
+     * <code>libraryName</code> can be found.  <span
+     * class="changed_added_2_2">If there is a <code>localePrefix</code>
+     * for this application, as defined in {@link #LOCALE_PREFIX}, first
+     * look for the library with the prefix.  If no such library is
+     * found, look for the library without the prefix.  This allows
+     * developers to avoid duplication of files.  For example, consider
+     * the case where the developer wants to have a resource library
+     * containing a localized image resource and a non-localized script
+     * resource.  By checking both locations for the existence of the
+     * library, along with other spec changes in section 2.6.1.4, this
+     * scenario is enabled.</span></p>
+     *
+     * @since 2.0
+     * 
+     */
+    @Override
+    public boolean libraryExists(String libraryName) {
+    		return getWrapped().libraryExists(libraryName);
+
+    }
+    
+    /**
+     * <p class="changed_added_2_0">Return the <code>renderer-type</code> for a 
+     * {@link javax.faces.render.Renderer} that is capable of rendering this 
+     * resource. The default implementation must return values according to the
+     * following table.  If no <code>renderer-type</code> can be determined,
+     * <code>null</code> must be returned.</p> 
+     * 
+     * <table border="1">
+     * 
+     * <tr>
+     * 
+     * <th>example resource name</th>
+     * 
+     * <th>renderer-type</th>
+     * 
+     * </tr>
+     * 
+     * <tr>
+     * 
+     * <td>mycomponent.js</td>
+     * 
+     * <td><code>javax.faces.resource.Script</code></td>
+     * 
+     * </tr>
+     * 
+     * <tr>
+     * 
+     * <td>mystyle.css</td>
+     * 
+     * <td><code>javax.faces.resource.Stylesheet</code></td>
+     * 
+     * </tr>
+     * 
+     * </table>
+     */
+
+    @Override
+    public String getRendererTypeForResourceName(String resourceName) {
+	    	return getWrapped().getRendererTypeForResourceName(resourceName);
+    }
+
+    public String resourceToString(String m, Resource res) {    		
+		StringBuilder sb = new StringBuilder(m+" is:");
+		if (null == res)
+			sb.append("null");
+		else {
+    		sb.append(res.getLibraryName()+":"+res.getResourceName()+":"+res.getContentType());
+    		sb.append("@"+res.getRequestPath()+" "+res.getURL().getPath());
+		}
+		return sb.toString();
+    }
+	
 }

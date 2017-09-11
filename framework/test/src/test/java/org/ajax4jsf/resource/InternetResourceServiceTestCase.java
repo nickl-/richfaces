@@ -91,7 +91,7 @@ public class InternetResourceServiceTestCase extends AbstractAjax4JsfTestCase {
 		mockFilterConfig.setInitParameter(InternetResourceService.ENABLE_CACHING_PARAMETER, "true");
 		service.init(mockFilterConfig);
 		InternetResourceBuilder builder = InternetResourceBuilder.getInstance();
-		InternetResource resource = builder.createResource(this, "test.js");
+		InternetResource resource = builder.createInternetResource(this, "test.js");
 		MockResourceRequest resourceRequest = new MockResourceRequest(request);
 		String key = resource.getKey();
 		service.serviceResource(key,resourceRequest,response);
@@ -113,7 +113,7 @@ public class InternetResourceServiceTestCase extends AbstractAjax4JsfTestCase {
 		mockFilterConfig.setInitParameter(InternetResourceService.ENABLE_CACHING_PARAMETER, "true");
 		service.init(mockFilterConfig);
 		InternetResourceBuilder builder = InternetResourceBuilder.getInstance();
-		InternetResource resource = builder.createResource(this, MockCacheableResource.class.getName());
+		InternetResource resource = builder.createInternetResource(this, MockCacheableResource.class.getName());
 		MockResourceRequest resourceRequest = new MockResourceRequest(request);
 		String key = resource.getKey();
 		for(int i=1;i<=10;i++){
@@ -138,7 +138,7 @@ public class InternetResourceServiceTestCase extends AbstractAjax4JsfTestCase {
 		mockFilterConfig.setInitParameter(InternetResourceService.ENABLE_CACHING_PARAMETER, "true");
 		service.init(mockFilterConfig);
 		InternetResourceBuilder builder = InternetResourceBuilder.getInstance();
-		InternetResource resource = builder.createResource(this, MockCacheableResource.class.getName());
+		InternetResource resource = builder.createInternetResource(this, MockCacheableResource.class.getName());
 		MockResourceRequest resourceRequest = new MockResourceRequest(request);
 		String key = resource.getKey();
 		for(int j=1;j<=10;j++){

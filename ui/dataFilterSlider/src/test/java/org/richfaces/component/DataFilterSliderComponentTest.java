@@ -170,11 +170,11 @@ public class DataFilterSliderComponentTest extends AbstractAjax4JsfTestCase {
     }
 
     public void testImages() throws Exception {
-	InternetResource image = InternetResourceBuilder.getInstance().createResource(null, SliderFieldGradient.class.getName());
+	InternetResource image = InternetResourceBuilder.getInstance().createInternetResource(null, SliderFieldGradient.class.getName());
 	Dimension imageDim = ((Java2Dresource)image).getDimensions(facesContext, null);
 	assertTrue( imageDim.getWidth() == 31 && imageDim.getHeight() == 55);
 
-	image = InternetResourceBuilder.getInstance().createResource(null, SliderTrackGradient.class.getName());
+	image = InternetResourceBuilder.getInstance().createInternetResource(null, SliderTrackGradient.class.getName());
 	imageDim = ((Java2Dresource)image).getDimensions(facesContext, null);
 	assertTrue( imageDim.getWidth() == 7 && imageDim.getHeight() == 10);
 

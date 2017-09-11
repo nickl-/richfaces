@@ -291,11 +291,11 @@ public class ViewResources {
 		}
 
 		if (resourceSuffix != null) {
-			resourceBuilder.createResource(
+			resourceBuilder.createInternetResource(
 					this, SKINNING_STYLES_PATH.concat("basic").concat(resourceSuffix)).encode(context, null);
 
 			if (extendedSkinningAllowed) {
-				resourceBuilder.createResource(
+				resourceBuilder.createInternetResource(
 						this, SKINNING_STYLES_PATH.concat("extended").concat(resourceSuffix)).encode(context, null, EXTENDED_SKINNING);
 			}
 
@@ -305,7 +305,7 @@ public class ViewResources {
 		return false;
 	}
 
-	protected void processComponent(FacesContext context, UIComponent component) throws IOException, FacesException {
+	public void processComponent(FacesContext context, UIComponent component) throws IOException, FacesException {
 		Renderer renderer = getRenderer(context, component);
 		if (null != renderer) {
 			ResponseWriter oldResponseWriter = context.getResponseWriter();
@@ -463,11 +463,11 @@ public class ViewResources {
 					if (!ajaxRequest) {
 						try {
 							resourceBuilder
-							.createResource(
+							.createInternetResource(
 									this,
 									InternetResourceBuilder.COMMON_FRAMEWORK_SCRIPT).encode(context, null);
 							resourceBuilder
-							.createResource(
+							.createInternetResource(
 									this,
 									InternetResourceBuilder.COMMON_UI_SCRIPT).encode(context, null);
 
@@ -496,7 +496,7 @@ public class ViewResources {
 						useSkinning = encodeSkinningResources(context, resourceBuilder);
 
 						resourceBuilder
-						.createResource(this, InternetResourceBuilder.COMMON_STYLE).encode(context, null);
+						.createInternetResource(this, InternetResourceBuilder.COMMON_STYLE).encode(context, null);
 
 					} catch (ResourceNotFoundException e) {
 						if (log.isWarnEnabled()) {
@@ -598,7 +598,7 @@ public class ViewResources {
 				}
 
 				if (processScripts) {
-					InternetResource resource = resourceBuilder.createResource(null, 
+					InternetResource resource = resourceBuilder.createInternetResource(null, 
 						InternetResourceBuilder.SKINNING_SCRIPT);
 
 					resource.encode(context, null);

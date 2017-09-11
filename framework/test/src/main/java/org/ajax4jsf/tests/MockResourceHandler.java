@@ -40,17 +40,17 @@ import org.ajax4jsf.resource.ResourceNotFoundException;
 public class MockResourceHandler extends ResourceHandler {
 
 	@Override
-	public Resource createResource(String resourceName) {
-		return createResource(resourceName, null);
+	public Resource createInternetResource(String resourceName) {
+		return createInternetResource(resourceName, null);
 	}
 
 	@Override
-	public Resource createResource(String resourceName, String libraryName) {
-		return createResource(resourceName, libraryName, null);
+	public Resource createInternetResource(String resourceName, String libraryName) {
+		return createInternetResource(resourceName, libraryName, null);
 	}
 
 	@Override
-	public Resource createResource(String resourceName, String libraryName,
+	public Resource createInternetResource(String resourceName, String libraryName,
 			String contentType) {
 
 		StringBuilder path = new StringBuilder();

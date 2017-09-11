@@ -165,7 +165,7 @@ public abstract class ClientScript extends JarResource {
 	
 	private void encodePrototype(FacesContext context) throws  IOException{
 		if (isUsePrototype()) {
-			InternetResourceBuilder.getInstance().createResource(null,PrototypeScript.class.getName()).encode(context,null);
+			InternetResourceBuilder.getInstance().createInternetResource(null,PrototypeScript.class.getName()).encode(context,null);
 		}
 
 	}

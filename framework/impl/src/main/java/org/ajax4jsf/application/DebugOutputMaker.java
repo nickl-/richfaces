@@ -229,7 +229,7 @@ public class DebugOutputMaker {
 	public void writeLog(FacesContext context, PrintWriter out) throws FacesException {
 		String logname = context.getExternalContext().getInitParameter(LOGFILE_PARAM);
 		if (null != logname) {
-			InternetResource logResource = InternetResourceBuilder.getInstance().createResource(this,logname);
+			InternetResource logResource = InternetResourceBuilder.getInstance().createInternetResource(this,logname);
 			out.print("<h2 onclick=\"toggle('log')\" class=\"a4j_debug\">");
 			writeToggleMark(out, "log");
 			out

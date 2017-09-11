@@ -123,7 +123,7 @@ public class ResourceElement extends ElementBase {
 		if (renderer != null)  {
 			resource = renderer.getResource(path);
 		} else {
-			resource = InternetResourceBuilder.getInstance().createResource(null, path);
+			resource = InternetResourceBuilder.getInstance().createInternetResource(null, path);
 		}
 		
 		return resource;

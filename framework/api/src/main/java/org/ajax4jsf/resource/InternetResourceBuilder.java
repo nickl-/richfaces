@@ -21,14 +21,19 @@
 
 package org.ajax4jsf.resource;
 
+import static org.ajax4jsf.resource.InternetResourceBuilder.instances;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.faces.FacesException;
+import javax.faces.application.ResourceHandler;
+import javax.faces.application.ResourceHandlerWrapper;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 
@@ -36,7 +41,9 @@ import org.ajax4jsf.resource.util.URLToStreamHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public abstract class InternetResourceBuilder {
+import com.sun.faces.application.resource.ResourceHandlerImpl;
+
+public abstract class InternetResourceBuilder extends ResourceHandlerWrapper {
 
     private static final Log log = LogFactory.getLog(InternetResourceBuilder.class);
 	public static final String LOAD_NONE = "NONE";
@@ -60,27 +67,38 @@ public abstract class InternetResourceBuilder {
 	public static final String BASIC = "basic";
 	public static final String EXTENDED = "extended";
 
+	private ResourceHandler resourceHandler;
+
+	public ResourceHandler getWrapped() {
+		return this.resourceHandler;
+	}
+
+	public InternetResourceBuilder(ResourceHandler res) {
+        this();
+		this.resourceHandler = res;
+	}
+
 	/**
-         * Get application start time for check resources modification time.
-         * 
-         * @return application start time in msec's
-         */
+     * Get application start time for check resources modification time.
+     * 
+     * @return application start time in msec's
+     */
     public abstract long getStartTime();
 
     /**
-         * @param cacheable
-         * @param session
-         * @param mime
-         * @return
-         * @throws FacesException
-         */
+     * @param cacheable
+     * @param session
+     * @param mime
+     * @return
+     * @throws FacesException
+     */
     public abstract InternetResource createUserResource(boolean cacheable,
 	    boolean session, String mime) throws FacesException;
 
     /**
-         * @param key
-         * @param resource
-         */
+     * @param key
+     * @param resource
+     */
     public abstract void addResource(String key, InternetResource resource);
 
     /**
@@ -120,7 +138,7 @@ public abstract class InternetResourceBuilder {
          * @return
          * @throws FacesException
          */
-    public abstract InternetResource createResource(Object base, String path)
+    public abstract InternetResource createInternetResource(Object base, String path)
 	    throws FacesException;
 
     /**
@@ -132,8 +150,18 @@ public abstract class InternetResourceBuilder {
     /**
          * static instance variable.
          */
-    private static Map<ClassLoader, InternetResourceBuilder> instances = 
-    	Collections.synchronizedMap(new HashMap<ClassLoader, InternetResourceBuilder> ());
+    protected final static ConcurrentHashMap<ClassLoader, InternetResourceBuilder> instances = 
+    		new ConcurrentHashMap<ClassLoader, InternetResourceBuilder>();
+    
+    /**
+     * Allow subclasses to add their instance.
+     * @param instance
+     */
+    protected void addInstance(InternetResourceBuilder instance) {
+    		instances.put(
+				Thread.currentThread().getContextClassLoader(), 
+				instance);
+    }
 
     /**
          * Get ( or create if nessesary ) instance of builder for current
@@ -144,7 +172,7 @@ public abstract class InternetResourceBuilder {
          * 
          * @return current builder instance.
          */
-    public static InternetResourceBuilder getInstance() {
+    public synchronized static InternetResourceBuilder getInstance() {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		InternetResourceBuilder instance = (InternetResourceBuilder) instances
 				.get(loader);
@@ -180,7 +208,7 @@ public abstract class InternetResourceBuilder {
 				}
 				// TODO - detect default instance.
 				// instance = new ResourceBuilderImpl();
-			}
+			}			
 			instances.put(loader, instance);
 		}
 		if (log.isDebugEnabled()) {

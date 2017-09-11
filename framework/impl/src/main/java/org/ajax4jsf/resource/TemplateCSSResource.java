@@ -62,7 +62,7 @@ public class TemplateCSSResource implements InternetResource {
 		this.templateName = templateName.startsWith("/")?templateName.substring(1):templateName;
 		// Self-register resource in system.
 		InternetResourceBuilder resourceBuilder = InternetResourceBuilder.getInstance();
-		_resource = resourceBuilder.createResource(null,this.templateName);
+		_resource = resourceBuilder.createInternetResource(null,this.templateName);
 		_resource.setRenderer(templateCSSRenderer);
 		try {
 			// Attempt to compile template at init time. Due to client-side caching,

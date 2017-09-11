@@ -59,7 +59,7 @@ public class ResourceServiceThreadsTestCase extends
 				InternetResourceService.ENABLE_CACHING_PARAMETER, "true");
 		service.init(mockFilterConfig);
 		InternetResourceBuilder builder = InternetResourceBuilder.getInstance();
-		resource = builder.createResource(this, MockCacheableResource.class
+		resource = builder.createInternetResource(this, MockCacheableResource.class
 				.getName());
 		key = resource.getKey();
 	}

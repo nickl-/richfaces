@@ -148,7 +148,7 @@ public abstract class RendererBase extends Renderer implements
 	 * @throws ResourceNotFoundException - if reqested resource not instantiated.
 	 */
 	public InternetResource getResource(String resourceURI ) throws FacesException {
-		return getResourceBuilder().createResource(this,resourceURI);
+		return getResourceBuilder().createInternetResource(this,resourceURI);
 	}
 
 	private InternetResourceBuilder getResourceBuilder(){
