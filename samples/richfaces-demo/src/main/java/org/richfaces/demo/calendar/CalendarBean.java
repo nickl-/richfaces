@@ -1,13 +1,13 @@
 package org.richfaces.demo.calendar;
 
-import java.text.DateFormat;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.faces.event.ValueChangeEvent;
 
-public class CalendarBean {
-
+public class CalendarBean implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private Locale locale;
 	private boolean popup;
 	private String pattern;

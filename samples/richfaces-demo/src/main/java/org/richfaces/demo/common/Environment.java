@@ -1,12 +1,15 @@
 package org.richfaces.demo.common;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
 
-public class Environment {
+public class Environment implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private Map params = new HashMap();
 	private String version; 
 	public Map getParams() {

@@ -1,9 +1,6 @@
 package org.richfaces.demo.pmenu;
 
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-
-import org.richfaces.component.UIPanelMenuItem;
 
 public class PanelMenu {
 	private String current;

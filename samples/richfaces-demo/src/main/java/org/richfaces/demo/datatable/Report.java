@@ -1,8 +1,11 @@
 package org.richfaces.demo.datatable;
 
+import java.io.Serializable;
+
 import org.richfaces.datatable.ExpenseReport;
 
-public class Report {
+public class Report implements Serializable {
+    private static final long serialVersionUID = 1L;
 	ExpenseReport expReport;
 
 	public ExpenseReport getExpReport() {
