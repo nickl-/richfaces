@@ -54,18 +54,18 @@ public abstract class UIAjaxSupport extends AjaxActionComponent implements
 
 	@Override
 	public void setValueExpression(String name, ValueExpression binding) {
-	    // var - not allowed name. must be literal.
-		if ("var".equals(name)&&!binding.isLiteralText()) {
-			throw new FacesException(Messages.getMessage(
-					Messages.VAR_MUST_BE_LITERAL,
-					getClientId(getFacesContext())));
+		try {
+		    super.setValueExpression(name, binding);
+		} catch (Exception e) {
+		    log.error("Unable to set ValueExpression for name:"+name
+		            +" with EL:\""+binding.getExpressionString()+"\""
+		            +" which is "+(binding.isLiteralText()?"":"not ")+"literal,"
+                    +" expected type:"+binding.getExpectedType()
+		            +" acceptable type:"+binding.getType(getFacesContext().getELContext())
+		            +" for instance of:"+this.getClass().getName()
+		            +" Swallowed "+e.getClass().getSimpleName()
+		            +" with message:"+e.getMessage());
 		}
-		if ("event".equals(name)&&!binding.isLiteralText()) {
-			throw new FacesException(Messages.getMessage(
-					Messages.EVENT_MUST_BE_LITERAL,
-					getClientId(getFacesContext())));
-		}
-		super.setValueExpression(name, binding);
 	}
 
 	/**

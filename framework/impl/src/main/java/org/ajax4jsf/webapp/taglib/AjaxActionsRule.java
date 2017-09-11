@@ -22,6 +22,7 @@
 package org.ajax4jsf.webapp.taglib;
 
 import javax.faces.component.ActionSource2;
+import javax.faces.component.UIComponent;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.MethodExpressionActionListener;
 import javax.faces.view.facelets.FaceletContext;
@@ -30,6 +31,9 @@ import javax.faces.view.facelets.Metadata;
 import javax.faces.view.facelets.MetadataTarget;
 import javax.faces.view.facelets.TagAttribute;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * @author shura (latest modification by $Author: alexsmirnov $)
  * @version $Revision: 1.1.2.1 $ $Date: 2007/02/01 15:31:21 $
@@ -37,9 +41,11 @@ import javax.faces.view.facelets.TagAttribute;
  */
 public class AjaxActionsRule extends MetaRule {
 
-    public final static Class[] ACTION_SIG = new Class[0];
+    private static final Log log = LogFactory.getLog(AjaxActionsRule.class);
 
-    public final static Class[] ACTION_LISTENER_SIG = new Class[] { ActionEvent.class };
+    public final static Class<?>[] ACTION_SIG = new Class[0];
+
+    public final static Class<?>[] ACTION_LISTENER_SIG = new Class[] { ActionEvent.class };
 
     public final static AjaxActionsRule instance = new AjaxActionsRule();
 
@@ -47,26 +53,30 @@ public class AjaxActionsRule extends MetaRule {
         super();
     }
 
-    public Metadata applyRule(String name, TagAttribute attribute,
-            MetadataTarget meta) {
-    	
-//		((ActionSource) instance).setActionListener(
-//				new MethodBindingMethodExpressionAdaptor(
-//            attribute.getMethodExpression(ctx, String.class,
-//            		AjaxActionsRule.ACTION_SIG)));
-    		return new Metadata() {
-    			public void applyMetadata(FaceletContext ctx, Object instance) {
-    				if ("action".equals(name)) 
-    					((ActionSource2) instance).setActionExpression(
-		                    attribute.getMethodExpression(ctx, String.class,
-		                    		AjaxActionsRule.ACTION_SIG));
-    				else
-    					((ActionSource2) instance)
+    public Metadata applyRule(String name, TagAttribute attribute, MetadataTarget meta) {
+        return new Metadata() { 
+            public void applyMetadata(FaceletContext context, Object instance) {
+                try {
+                    if ("action".equals(name))
+                        ((ActionSource2) instance).setActionExpression(
+                            attribute.getMethodExpression(context, String.class,
+                                    AjaxActionsRule.ACTION_SIG));
+                    else
+                        ((ActionSource2) instance)
                         .addActionListener(new MethodExpressionActionListener(
-                        		attribute.getMethodExpression(ctx, Object.class,
-                            		AjaxActionsRule.ACTION_LISTENER_SIG)));
-    			}
-    		};
+                                attribute.getMethodExpression(context, Object.class,
+                                    AjaxActionsRule.ACTION_LISTENER_SIG)));
+                } catch (Exception e) {
+                    log.error("Unable to get MethodExpression for name:"+name
+                            +" with EL:\""+attribute.getValue()+"\""
+                            +" which is "+(attribute.isLiteral()?"":"not ")+"literal,"
+                            +" acceptable type:"+attribute.getObject(context).getClass().getName()
+                            +" for instance of:"+instance.getClass().getName()
+                            +" Swallowed "+e.getClass().getSimpleName()
+                            +" with message:"+e.getMessage());
+                }
+            }
+        };
     }
 
 }

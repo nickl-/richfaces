@@ -77,6 +77,8 @@ public abstract class AjaxActionComponent extends UICommand implements
 				ajaxContext.getResponseDataMap().put(FOCUS_DATA_ID, focus);
 			}
 			ajaxContext.setOncomplete(getOncomplete());
+
+			super.broadcast(event);
 		}
 	}
 
