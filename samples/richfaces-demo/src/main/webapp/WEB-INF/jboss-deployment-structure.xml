@@ -5,6 +5,8 @@
           <module name="javax.faces.api" export="true"/>
           <module name="com.sun.jsf-impl" export="true"/>
           <module name="javax.el.api" export="true"/>
+          <module name="org.apache.xerces" export="true"/>
+          
 	   </dependencies>
   </deployment>  
 </jboss-deployment-structure> 

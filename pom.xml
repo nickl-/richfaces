@@ -62,7 +62,7 @@
         <version.org.hibernate.javax.persistence>1.0.1.Final</version.org.hibernate.javax.persistence>
         <version.org.hibernate-jpamodelgen>1.2.0.Final</version.org.hibernate-jpamodelgen>        
         <version-commons-digester>2.1</version-commons-digester>
-        <version-commons-xerces>2.11.0</version-commons-xerces>
+        <version-commons-xerces>2.11.0.SP5</version-commons-xerces>
         <version-commons-beanutils>1.9.3</version-commons-beanutils>
         <version-commons-logging>1.2.0.redhat-2</version-commons-logging>
         <version-xml-apis>2.0.2</version-xml-apis>
@@ -207,17 +207,14 @@
                         <artifactId>xml-apis</artifactId>
                     </exclusion>
                 </exclusions> 
+                <scope>provided</scope>
             </dependency>
              <dependency>
                  <groupId>ant</groupId>
                  <artifactId>ant</artifactId>
                  <version>1.6.5</version>
              </dependency>
-             <dependency>
-                 <groupId>velocity</groupId>
-                 <artifactId>velocity-dep</artifactId>
-                 <version>1.4</version>
-             </dependency>
+             
              <dependency>
                  <groupId>qdox</groupId>
                  <artifactId>qdox</artifactId>
