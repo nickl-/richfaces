@@ -483,7 +483,7 @@ public class MultipartRequest extends HttpServletRequestWrapper {
 		}
 
 		try {
-			return boundaryStr.getBytes("ISO-8859-1");
+			return boundaryStr.getBytes("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			return boundaryStr.getBytes();
 		}
