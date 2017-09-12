@@ -30,10 +30,10 @@ import javax.el.ELException;
 import javax.el.ValueExpression;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
 import javax.faces.component.EditableValueHolder;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.Validator;
+import javax.faces.validator.FacesValidator;
 import javax.faces.validator.ValidatorException;
 
 import org.ajax4jsf.renderkit.AjaxRendererUtils;
@@ -45,6 +45,7 @@ import org.ajax4jsf.renderkit.AjaxRendererUtils;
  * @author asmirnov
  * 
  */
+@FacesValidator
 public class FacesBeanValidator implements NullValueValidator,Serializable, GraphValidator {
 
 	/**

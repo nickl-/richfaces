@@ -40,8 +40,6 @@ public class BeanValidatorHandler extends ValidatorHandler {
 
 	private TagAttribute _profiles;
 
-	
-
 	/**
 	 * @param config
 	 */
@@ -50,19 +48,48 @@ public class BeanValidatorHandler extends ValidatorHandler {
 		_profiles = getAttribute("profiles");
 	}
 
-	
-	protected Validator createValidator(FaceletContext ctx) {
-		FacesBeanValidator validator = (FacesBeanValidator) ctx.getFacesContext()
-				.getApplication().createValidator(
-						FacesBeanValidator.BEAN_VALIDATOR_TYPE);
-		if(null != _profiles){
+    /**
+     * <p>Retrieve the id of the validator that is to be created and
+     * added to the parent <code>EditableValueHolder</code>.  All
+     * subclasses should override this method because it is important
+     * for Facelets to have a unique way of identifying the validators
+     * that are added to this <code>EditableValueHolder</code> and
+     * allows exclusions to work properly. An exclusion is a validator
+     * declaration that has the attribute "disabled" which resolves to
+     * false, instructing Facelets not to register a default validator
+     * with the same id.</p>
+     */
+    public String getValidatorId(FaceletContext ctx) {
+        String validatorId = super.getValidatorId(ctx);
+        if(null != _profiles){
+	        FacesBeanValidator validator = (FacesBeanValidator) getAttribute(validatorId)
+	        		.getValueExpression(ctx, FacesBeanValidator.class)
+	        		.getValue(ctx.getFacesContext().getELContext());
 			if(_profiles.isLiteral()){
 				validator.setProfiles(AjaxRendererUtils.asSet(_profiles.getValue()));
 			} else {
 				validator.setProfiles(_profiles.getValueExpression(ctx, Set.class));
 			}
+			setAttributes(ctx, validator);
 		}
-		return validator;
-	}
+        
+        return validatorId;
+    }
+
+
+//	@Override
+//	protected Validator createValidator(FaceletContext ctx) {
+//		FacesBeanValidator validator = (FacesBeanValidator) ctx.getFacesContext()
+//				.getApplication().createValidator(
+//						FacesBeanValidator.BEAN_VALIDATOR_TYPE);
+//		if(null != _profiles){
+//			if(_profiles.isLiteral()){
+//				validator.setProfiles(AjaxRendererUtils.asSet(_profiles.getValue()));
+//			} else {
+//				validator.setProfiles(_profiles.getValueExpression(ctx, Set.class));
+//			}
+//		}
+//		return validator;
+//	}
 
 }
