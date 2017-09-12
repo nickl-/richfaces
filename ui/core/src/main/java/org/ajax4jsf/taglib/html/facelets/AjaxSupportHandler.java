@@ -58,7 +58,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class AjaxSupportHandler extends TagHandler {
 
-    private static final Log log = LogFactory.getLog(AjaxSupportTag.class);
+    private static final Log log = LogFactory.getLog(AjaxSupportHandler.class);
 
     /**
      * A UIComponent for capturing a child UIComponent, representative of the
