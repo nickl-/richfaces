@@ -147,7 +147,7 @@ public class AjaxContainerRenderer extends AjaxChildrenRenderer {
 	 * @see javax.faces.component.UIComponent#getRendersChildren()
 	 */
 	public boolean getRendersChildren() {
-		return false;
+		return true;
 	}
 
 	/*
