@@ -33,10 +33,7 @@ import org.richfaces.util.RenderPhaseComponentVisitorUtils;
 
 public class RenderPhaseComponentListener implements PhaseListener {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2437433246178955788L;
+	private static final long serialVersionUID = 1L;
 
 	public void afterPhase(PhaseEvent event) {
 	}
@@ -60,6 +57,7 @@ public class RenderPhaseComponentListener implements PhaseListener {
 	}
 
 	public void beforePhase(PhaseEvent event) {
+		
 		FacesContext facesContext = event.getFacesContext();
 		RenderPhaseComponentVisitor[] handlers = RenderPhaseComponentVisitorUtils.getVisitors(facesContext);
 		UIViewRoot viewRoot = facesContext.getViewRoot();
