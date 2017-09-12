@@ -2,11 +2,12 @@
 	<parent>
 		<artifactId>root</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.docs</groupId>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>docs</artifactId>
+  <version>3.3.5.2-jsf22</version>
 	<name>Project documentation</name>
 	<packaging>pom</packaging>
 	<!-- setup repositories, to build documentation separate from Java projects -->

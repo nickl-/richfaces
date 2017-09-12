@@ -3,13 +3,13 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces.samples</groupId>
   <artifactId>richfaces-demo</artifactId>
-  <version>3.3.5.2-jsf22</version>
+  <version>3.3.5.3-jsf22-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>richfaces-demo Maven Webapp</name>
 
@@ -207,27 +207,27 @@
     <dependency>
       <groupId>org.richfaces.samples</groupId>
       <artifactId>laguna</artifactId>
-      <version>3.3.5.2-jsf22</version>
+      <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.richfaces.samples</groupId>
       <artifactId>glassX</artifactId>
-      <version>3.3.5.2-jsf22</version>
+      <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.richfaces.samples</groupId>
       <artifactId>darkX</artifactId>
-      <version>3.3.5.2-jsf22</version>
+      <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </dependency>
     <dependency>
         <groupId>org.richfaces.samples</groupId>
         <artifactId>themes</artifactId>
-        <version>3.3.5.2-jsf22</version>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </dependency>    
     <dependency>
         <groupId>org.richfaces.samples</groupId>
         <artifactId>violetRays</artifactId>
-        <version>3.3.5.2-jsf22</version>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </dependency>    
     <dependency>
       <groupId>org.richfaces.ui</groupId>

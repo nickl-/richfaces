@@ -4,12 +4,12 @@
 	<parent>
         <artifactId>samples</artifactId>
         <groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
     </parent>
 
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>laguna</artifactId>
-  <version>3.3.5.2-jsf22</version>
+  <version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<name>Laguna Add-On Skin</name>
 
 	<build>
@@ -17,7 +17,7 @@
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.5.2-jsf22</version>
+				<version>3.3.5.3-jsf22-SNAPSHOT</version>
 				<configuration>
 					<name>org.richfaces.laguna</name>
 				</configuration>

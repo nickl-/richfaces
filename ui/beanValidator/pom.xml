@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>ui</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.ui</groupId>
@@ -13,7 +13,7 @@
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.5.2-jsf22</version>
+				<version>3.3.5.3-jsf22-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>message</artifactId>
-			<version>3.3.5.2-jsf22</version>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 		</dependency>
         <dependency>
             <groupId>javax.validation</groupId>
