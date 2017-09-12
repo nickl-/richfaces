@@ -31,3 +31,10 @@ arquillian.xml
 /components/a4j/lib/
 /components/rich/lib/
 /core/lib/
+/wildfly
+/.templates
+*.cpgz
+/catalina
+/dist
+/other-repos
+/clean-wildfly-cache
