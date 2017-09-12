@@ -1,9 +1,11 @@
 package org.richfaces.demo.listShuttle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToolBar {
+public class ToolBar implements Serializable {
+    private static final long serialVersionUID = 1L;
 	private List<ToolBarItem> items = new ArrayList<ToolBarItem>();
 	private List<ToolBarItem> freeItems = new ArrayList<ToolBarItem>();
 	public ToolBar() {
