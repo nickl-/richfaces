@@ -37,7 +37,7 @@ public class VersionBean {
 	/**
 	 * Revision version, must be auto modified by  CVS 
 	 */
-	public static final String REVISION = "3.Final" ;
+	public static final String REVISION = "x" ;
 	public static final String SCM_REVISION = "	SVN $Revision: 16741 $ $Date: 2010-04-06 19:26:01 +0200 (Tue, 06 Apr 2010) $";//$Revision: 16741 $ $Date: 2010-04-06 19:26:01 +0200 (Tue, 06 Apr 2010) $";
 	public static final Version _version = new Version();
 	
