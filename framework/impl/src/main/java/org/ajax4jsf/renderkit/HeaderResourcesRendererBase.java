@@ -38,7 +38,7 @@ import org.ajax4jsf.resource.InternetResource;
  * 
  */
 public abstract class HeaderResourcesRendererBase extends RendererBase
-		implements HeaderResourceProducer2, HeaderResourceProducer {
+		implements HeaderResourceProducer2 { // , HeaderResourceProducer {
 
 	/*
 	 * (non-Javadoc)
@@ -65,10 +65,10 @@ public abstract class HeaderResourcesRendererBase extends RendererBase
 	 * 
 	 * @see org.ajax4jsf.renderkit.HeaderResourceProducer#getHeaderStyles(javax.faces.context.FacesContext)
 	 */
-	public LinkedHashSet<String> getHeaderStyles(FacesContext context,
-			UIComponent component) {
-		return getUrisSet(context, getStyles(), component);
-	}
+//	public LinkedHashSet<String> getHeaderStyles(FacesContext context,
+//			UIComponent component) {
+//		return getUrisSet(context, getStyles(), component);
+//	}
 
 	/**
 	 * Hoock method to return array of styles resources to store in head
@@ -144,7 +144,6 @@ public abstract class HeaderResourcesRendererBase extends RendererBase
 	}
 
 	public void encodeToHead(FacesContext context, UIComponent component, ProducerContext pc) throws IOException {
-
 		if (pc.isProcessScripts()) {
 			encodeResourcesArray(context, component, getScripts());
 		}
