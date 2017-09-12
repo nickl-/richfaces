@@ -15,9 +15,9 @@
 		<module>extensions</module>
 		<module>docs</module>
 		<module>ui/assembly</module>
-		<module>samples</module>
 		<module>tlddoc</module>
-		<!--module>sandbox</module -->
+		<module>samples</module>
+		<!--module>sandbox</module-->
 	</modules>
 
 	<properties>
@@ -40,9 +40,13 @@
 		<version.release.plugin>2.5.3</version.release.plugin>
 		<version.replacer.plugin>1.5.3</version.replacer.plugin>
 		<version.resources.plugin>3.0.2</version.resources.plugin>
+		<version.deploy.plugin>2.8.2</version.deploy.plugin>
 		<version.scm.plugin>1.9.5</version.scm.plugin>
-		<version.source.plugin>3.0.0</version.source.plugin>
+		<version.war.plugin>3.1.0</version.war.plugin>
+		<version.source.plugin>3.0.1</version.source.plugin>
 		<version.surefire.plugin>2.20</version.surefire.plugin>
+		<version.build.helper.plugin>3.0.0</version.build.helper.plugin>
+		<version.exec.plugin>1.5.0</version.exec.plugin>
 		<version.vdldoc>1.2</version.vdldoc>
 		
 		<version.jdk>1.8</version.jdk>
@@ -70,7 +74,9 @@
         <version.jsf.api>2.2.13</version.jsf.api>
         
         
-		<snapshotRepository>dav:https://snapshots.jboss.org/maven2</snapshotRepository>
+        <snapshotRepository>file:target/snapshot</snapshotRepository>
+        <releaseRepository>file:target/release</releaseRepository>
+        <stagingRepository>scm:git:~/git/richfaces-stage.git</stagingRepository>
 	</properties>
 	<dependencyManagement>
         	<dependencies>
@@ -110,7 +116,6 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -341,11 +346,11 @@
                  <artifactId>jsr250-api</artifactId>
                  <version>1.0</version>
              </dependency>
-             <dependency>
+             <!--dependency>
                  <groupId>javax.persistence</groupId>
                  <artifactId>persistence-api</artifactId>
                  <version>1.0.2</version>
-             </dependency>
+             </dependency-->
              <dependency>
                  <groupId>org.hibernate</groupId>
                  <artifactId>hibernate-core</artifactId>
@@ -416,7 +421,22 @@
 		</extensions>
 		<pluginManagement>
 			<plugins>
-                <plugin>
+                <plugin>      
+					<groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+					<version>${version.source.plugin}</version>
+                </plugin>
+                <plugin>      
+					<groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+					<version>${version.deploy.plugin}</version>
+                </plugin>
+                <plugin>      
+					<groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+					<version>${version.war.plugin}</version>
+                </plugin>
+                <plugin>      
 					<groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
 					<version>${version.clean.plugin}</version>
@@ -500,6 +520,8 @@
                     <configuration>
                         <!-- All sub-modules will have same version -->
                         <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <!-- update dependencies version to the next development version -->
+                        <updateDependencies>true</updateDependencies>
                         <!-- During release:perform, enable the "release" profile -->
                         <releaseProfiles>release</releaseProfiles>
                         <!-- Some modules (dist) need release items installed during prepare -->
@@ -510,6 +532,7 @@
                         <pushChanges>false</pushChanges>
                         <!-- Use project version as the tag name -->
                         <tagNameFormat>@{project.version}</tagNameFormat>
+
                     </configuration>
                 </plugin>
                 <plugin>
@@ -523,6 +546,26 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-scm-plugin</artifactId>
                     <version>${version.scm.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${version.build.helper.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${version.exec.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>net.sourceforge.maven-taglib</groupId>
+                    <artifactId>maven-taglib-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+                <plugin>
+                     <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-jdocbook-plugin</artifactId>
+                     <version>2.3.10</version>
                 </plugin>
 
                 <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
@@ -705,7 +748,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-<!-- <distributionManagement>
+<distributionManagement>
 		<downloadUrl>
 			http://www.jboss.org/richfaces/download
 		</downloadUrl>
@@ -722,7 +765,7 @@
 		<site>
 			<url>file:target/site2</url>
 		</site>
- </distributionManagement> -->
+ </distributionManagement>
     
 	<issueManagement>
 		<system>JIRA</system>
@@ -750,20 +793,19 @@
         <connection>scm:git:git://github.com/nickl-/richfaces.git</connection>
         <developerConnection>scm:git:git@github.com:nickl-/richfaces.git</developerConnection>
         <url>https://github.com/nickl-/richfaces</url>
-      <tag>HEAD</tag>
-  </scm> 
+    </scm> 
     
 	<profiles>
 		<profile>
 			<id>jsf2_0</id>
 			<build>
 				<plugins>
-					<plugin>
+					<!--plugin>
 						<artifactId>maven-deploy-plugin</artifactId>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
-					</plugin>
+					</plugin-->
 				</plugins>
 			</build>
 		</profile>

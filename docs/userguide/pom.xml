@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>docs</artifactId>
 		<groupId>org.richfaces.docs</groupId>
-		<version>3.3.5.1-jsf23-SNAPSHOT</version>
+		<version>3.3.5.2-jsf22</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -31,9 +31,21 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-			<id>snapshots.jboss.org</id>
-			<name>Jboss Snapshots Repository for Maven</name>
-			<url>http://snapshots.jboss.org/maven2/</url>
+			<id>releases.jboss.org</id>
+			<name>Jboss Releases Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>central.maven.org</id>
+			<name>Maven Maven</name>
+			<url>http://central.maven.org/maven2/</url>
 			<layout>default</layout>
 		</pluginRepository>
 	</pluginRepositories>
@@ -45,8 +57,8 @@
 					<plugins>
 						<plugin>
 							<groupId>org.jboss.maven.plugins</groupId>
-							<artifactId>maven-jdocbook-plugin</artifactId>
-							<version>2.3.10</version>
+                            <artifactId>maven-jdocbook-plugin</artifactId>
+                            <version>2.3.10</version>
 							<configuration>
 								<formats>
 									<format>
@@ -71,7 +83,7 @@
 						<plugin>
                             <groupId>org.jboss.maven.plugins</groupId>
                             <artifactId>maven-jdocbook-plugin</artifactId>
-							<version>2.3.10</version>
+                            <version>2.3.10</version>
 							<configuration>
 								<formats>
 									<format>
@@ -95,7 +107,6 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.1.0</version>
 					<executions>
 						<execution>
 							<id>unpack</id>
@@ -110,10 +121,10 @@
 											org.richfaces.docs.common-resources
 										</groupId>
 										<artifactId>
-											${translation}
+											en
 										</artifactId>
 										<version>
-											${project.version}
+											3.3.4.Final
 										</version>
 										<type>jar</type>
 										<overWrite>true</overWrite>
@@ -138,7 +149,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jdocbook-plugin</artifactId>
-					<version>2.3.10</version>
+                    <version>2.3.10</version>
 						<executions>
 							<execution>
 								<id>jdocbook:generate</id>
@@ -176,8 +187,8 @@
 						</dependency>
 						<dependency>
 							<groupId>org.richfaces.docs.common-resources</groupId>
-							<artifactId>${translation}</artifactId>
-							<version>${project.version}</version>
+							<artifactId>en</artifactId>
+							<version>3.3.4.Final</version>
 							<type>jar</type>
 						</dependency>
 						<dependency>

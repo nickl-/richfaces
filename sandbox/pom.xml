@@ -2,11 +2,12 @@
 	<parent>
 		<artifactId>root</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.4.Final</version>
+		<version>3.3.5.2-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces</groupId>
 	<artifactId>sandbox</artifactId>
+  <version>3.3.5.2-jsf22-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>RichFaces Sandbox Components</name>
 	<url>http://richfaces.ajax4jsf.org/sandbox</url>

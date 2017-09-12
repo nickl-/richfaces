@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>framework</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.1-jsf22-SNAPSHOT</version>
+		<version>3.3.5.2-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.framework</groupId>
@@ -65,12 +65,12 @@
             <artifactId>xercesImpl</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
+            <artifactId>jsf-impl</artifactId>
         </dependency>
     </dependencies>
 	<build>

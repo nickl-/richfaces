@@ -18,11 +18,11 @@
 			</resource>
 		</resources>
 		<plugins>
-			<plugin>
+			<!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin:helpmojo</artifactId>
                 <version>3.5</version>
-			</plugin>
+			</plugin-->
 			<plugin> 
 				<!-- Necessary due to http://jira.codehaus.org/browse/MINSTALL-41 -->
 		        <artifactId>maven-install-plugin</artifactId> 

@@ -16,8 +16,8 @@
 		-->
 		<module>api</module>
 		<module>impl</module>
-		<!--module>test</module>
-		<module>jsf-test</module-->
+		<module>test</module>
+		<module>jsf-test</module>
 	</modules>
 	
 	<build>

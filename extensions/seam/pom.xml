@@ -1,8 +1,8 @@
 <?xml version="1.0"?><project>
   <parent>
-    <artifactId>master</artifactId>
+    <artifactId>extensions</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>3.3.5.2-jsf22-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces</groupId>
@@ -33,14 +33,13 @@
       <scope>test</scope>
     </dependency>
 	<dependency>
-		<groupId>org.richfaces</groupId>
-		<artifactId>ajax4jsf</artifactId>
-		<version>3.3.4.Final</version>
+		<groupId>org.richfaces.framework</groupId>
+		<artifactId>richfaces-impl</artifactId>
+		<version>3.3.5.2-jsf22-SNAPSHOT</version>
 	</dependency>
 	<dependency>
-		<groupId>jboss</groupId>
-		<artifactId>seam</artifactId>
-		<version>1.1</version>
+        <groupId>org.jboss.seam</groupId>
+		<artifactId>jboss-seam</artifactId>
 	</dependency>
    </dependencies>
 </project>

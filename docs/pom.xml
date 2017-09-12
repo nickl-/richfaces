@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>root</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.2-jsf22</version>
 	</parent>
 	<groupId>org.richfaces.docs</groupId>
 	<modelVersion>4.0.0</modelVersion>
@@ -100,13 +100,13 @@
 		<xsl_html>classpath:/common-resources/xslt/xhtml.xsl</xsl_html>
 		<translation>en</translation>
 	</properties>
-	<!-- modules>
-	    <module>cdkguide</module>
+	<modules>
+	    <!--module>cdkguide</module>
 	    <module>common-resources</module>
 	    <module>faq</module>
 	    <module>highlight</module>
 	    <module>migrationguide</module>
-	    <module>photo_album_app_guide</module>
+        <module>photo_album_app_guide</module>-->
 	    <module>userguide</module>
-	</modules-->
+	</modules>
 </project>

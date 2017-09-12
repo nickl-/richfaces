@@ -8,6 +8,7 @@
 	</parent>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>violetRays</artifactId>
+  <version>3.3.5.2-jsf22-SNAPSHOT</version>
 	<name>violetRays</name>
 	<build>
 		<plugins>

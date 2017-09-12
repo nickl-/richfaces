@@ -10,5 +10,5 @@
   <packaging>pom</packaging>
   <modules>
     <!-- module>portletbridge</module-->
-  </modules>
+</modules>
 </project>

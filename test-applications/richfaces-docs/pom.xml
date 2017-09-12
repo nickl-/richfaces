@@ -195,7 +195,7 @@
 
         <artifactId>richfaces-api</artifactId>
 
-        <version>3.3.4.Final</version>
+        <version>3.3.5.2-jsf22-SNAPSHOT</version>
 
     </dependency>
 
@@ -205,7 +205,7 @@
 
         <artifactId>richfaces-impl</artifactId>
 
-        <version>3.3.4.Final</version>
+        <version>3.3.5.2-jsf22-SNAPSHOT</version>
 
     </dependency>
 
@@ -215,7 +215,7 @@
 
         <artifactId>richfaces-ui</artifactId>
 
-        <version>3.3.4.Final</version>
+        <version>3.3.5.2-jsf22-SNAPSHOT</version>
 
     </dependency>
 

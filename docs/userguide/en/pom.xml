@@ -5,12 +5,11 @@
 	<parent>
 		<groupId>org.richfaces.docs</groupId>
 		<artifactId>userguide</artifactId>
-		<version>3.3.5.1-jsf23-SNAPSHOT</version>
+		<version>3.3.5.2-jsf22</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>org.richfaces.docs.userguide</groupId>
-	<artifactId>${translation}</artifactId>
-	<version>3.3.5.1-jsf23-SNAPSHOT</version>
+	<artifactId>en</artifactId>
 	<packaging>jar</packaging>
 	<name>Richfaces Manual (${translation})</name>
 

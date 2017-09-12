@@ -333,7 +333,7 @@
 												${project.build.directory}/docs/userguide/en
 											</outputDirectory>
 										</artifactItem>
-										<artifactItem>
+										<!--artifactItem>
 											<groupId>
 												org.richfaces.docs.faq
 											</groupId>
@@ -341,9 +341,9 @@
 											<version>
 												${project.version}
 											</version>
-											<type>jar</type>
+                                            <type>jar</type>-->
 											<!--classifier>pdf</classifier-->
-											<outputDirectory>
+                                        <!--	outputDirectory>
 												${project.build.directory}/docs/faq/en
 											</outputDirectory>
 										</artifactItem>
@@ -355,9 +355,9 @@
 											<version>
 												${project.version}
 											</version>
-											<type>jar</type>
+                                            <type>jar</type>-->
 											<!--classifier>pdf</classifier-->
-											<outputDirectory>
+											<!--outputDirectory>
 												${project.build.directory}/docs/cdkguide/en
 											</outputDirectory>
 										</artifactItem>
@@ -369,9 +369,9 @@
 											<version>
 												${project.version}
 											</version>
-											<type>jar</type>
+                                            <type>jar</type>-->
 											<!--classifier>pdf</classifier-->
-											<outputDirectory>
+											<!--outputDirectory>
 												${project.build.directory}/docs/migration/en
 											</outputDirectory>
 										</artifactItem>
@@ -385,11 +385,10 @@
 												${project.version}
 											</version>
 											<type>jar</type>
-											<!--classifier>pdf</classifier-->
 											<outputDirectory>
 												${project.build.directory}/docs/photo_album_app_guide/en
 											</outputDirectory>
-										</artifactItem>
+										</artifactItem-->
 										
 									</artifactItems>
 									<outputDirectory>
