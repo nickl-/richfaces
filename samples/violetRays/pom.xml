@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.1-jsf22-SNAPSHOT</version>
+		<version>3.3.5.1-jsf22</version>
 	</parent>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>violetRays</artifactId>
@@ -14,7 +14,7 @@
 			<plugin>
 				<groupId>org.richfaces.cdk</groupId>
 				<artifactId>maven-cdk-plugin</artifactId>
-				<version>3.3.5.1-jsf22-SNAPSHOT</version>
+				<version>3.3.5.1-jsf22</version>
 				<executions>
 					<execution>
 						<id>generate-sources</id>
