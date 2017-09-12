@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.richfaces</groupId>
     <artifactId>root</artifactId>
-    <version>3.3.5.1-jsf22</version>
+    <version>3.3.5.2-jsf22-SNAPSHOT</version>
   </parent>
   <groupId>org.richfaces</groupId>
   <artifactId>tlddoc</artifactId>
-  <version>3.3.5.1-jsf22</version>
+  <version>3.3.5.2-jsf22-SNAPSHOT</version>
   <name>tlddoc</name>
   <url>http://maven.apache.org</url>
   <properties>
