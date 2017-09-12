@@ -141,10 +141,7 @@ public class AjaxViewHandler extends ViewHandlerWrapper {
 		if (url.startsWith(InternetResource.RESOURCE_URI_PREFIX)) {
 			InternetResource resource = InternetResourceBuilder
 					.getInstance()
-					.createResource(
-							null,
-							url
-									.substring(InternetResource.RESOURCE_URI_PREFIX_LENGTH));
+					.createInternetResource(null, url.substring(InternetResource.RESOURCE_URI_PREFIX_LENGTH));
 			resourceURL = resource.getUri(context, null);
 		} else {
 			resourceURL = super.getResourceURL(context, url);
