@@ -22,7 +22,6 @@
 package org.ajax4jsf.webapp.taglib;
 
 import javax.faces.component.ActionSource2;
-import javax.faces.component.UIComponent;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.MethodExpressionActionListener;
 import javax.faces.view.facelets.FaceletContext;
@@ -54,6 +53,9 @@ public class AjaxActionsRule extends MetaRule {
     }
 
     public Metadata applyRule(String name, TagAttribute attribute, MetadataTarget meta) {
+        String type = meta.getPropertyType(name).getSimpleName();
+        if (!"MethodBinding".equals(type) && !"MethodExpression".equals(type))
+            return null;
         return new Metadata() { 
             public void applyMetadata(FaceletContext context, Object instance) {
                 try {
@@ -70,6 +72,7 @@ public class AjaxActionsRule extends MetaRule {
                     log.error("Unable to get MethodExpression for name:"+name
                             +" with EL:\""+attribute.getValue()+"\""
                             +" which is "+(attribute.isLiteral()?"":"not ")+"literal,"
+                            +" property type"+meta.getPropertyType(name)
                             +" acceptable type:"+attribute.getObject(context).getClass().getName()
                             +" for instance of:"+instance.getClass().getName()
                             +" Swallowed "+e.getClass().getSimpleName()
