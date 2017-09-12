@@ -57,6 +57,7 @@ import org.ajax4jsf.event.AjaxListener;
 import org.ajax4jsf.event.EventsQueue;
 import org.ajax4jsf.model.KeepAlive;
 import org.ajax4jsf.renderkit.AjaxContainerRenderer;
+import org.ajax4jsf.renderkit.AjaxViewRootRenderer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -682,8 +683,8 @@ public class AjaxViewRoot extends UIViewRoot implements AjaxContainer {
 	public void encodeAjax(FacesContext context) throws IOException {
 		String rendererType = getRendererType();
 		if (rendererType != null) {
-			((AjaxContainerRenderer) getRenderer(context)).encodeAjax(context,
-					this);
+//            ((AjaxContainerRenderer) getRenderer(context)).encodeAjax(context, this);
+            new AjaxViewRootRenderer().encodeAjax(context, this);
 		}
 
 	}
