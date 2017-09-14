@@ -2,13 +2,12 @@
   <parent>
     <artifactId>extensions</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.5.2-jsf22-SNAPSHOT</version>
+    <version>3.3.5.3-jsf22-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces</groupId>
   <artifactId>a4j-seam</artifactId>
   <name>ajax4jsf and JBOSS Seam compability library</name>
-  <url>https://ajax4jsf.dev.java.net</url>
 	<build>
 		<plugins>
 			<plugin>
@@ -35,7 +34,7 @@
 	<dependency>
 		<groupId>org.richfaces.framework</groupId>
 		<artifactId>richfaces-impl</artifactId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</dependency>
 	<dependency>
         <groupId>org.jboss.seam</groupId>

@@ -5,8 +5,7 @@
 	<parent>
 		<groupId>org.richfaces.docs</groupId>
 		<artifactId>userguide</artifactId>
-		<version>3.3.5.2-jsf22</version>
-		<relativePath>../pom.xml</relativePath>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.docs.userguide</groupId>
 	<artifactId>en</artifactId>

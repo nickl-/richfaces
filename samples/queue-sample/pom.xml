@@ -2,14 +2,14 @@
   <parent>
     <artifactId>samples</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.5.2-jsf22-SNAPSHOT</version>
+    <version>3.3.5.3-jsf22-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.richfaces</groupId>
   <artifactId>queue-sample</artifactId>
   <packaging>war</packaging>
   <name>queue-sample Maven Webapp</name>
-  <version>3.3.5.2-jsf22-SNAPSHOT</version>
+  <version>3.3.5.3-jsf22-SNAPSHOT</version>
   <build>
     <finalName>queue-sample</finalName>
     <plugins>
@@ -22,11 +22,6 @@
 	<dependency>
 		<groupId>org.richfaces.ui</groupId>
 		<artifactId>core</artifactId>
-		<version>${project.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.sun.faces.facelets</groupId>
-		<artifactId>jsf-facelets</artifactId>
 	</dependency>
   </dependencies>
 </project>

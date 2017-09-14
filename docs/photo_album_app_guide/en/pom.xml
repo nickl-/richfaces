@@ -5,8 +5,7 @@
 	<parent>
 		<groupId>org.richfaces.docs</groupId>
 		<artifactId>photo_album_app_guide</artifactId>
-		<version>3.3.5.1-jsf23-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<groupId>org.richfaces.docs.photo_album_app_guide</groupId>
 	<artifactId>en</artifactId>

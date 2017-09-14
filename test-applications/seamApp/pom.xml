@@ -1,10 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.richfaces</groupId>
+    <parent>
+        <groupId>org.richfaces</groupId>
+        <artifactId>test-applications</artifactId>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
+    </parent>
     <artifactId>seamApp</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>sample application</name>
     <properties>
 		<projectName>seamApp</projectName>
@@ -13,21 +16,8 @@
 		<jbossDownloadURL>http://downloads.sourceforge.net/jboss/jboss-4.2.2.GA.zip</jbossDownloadURL>
 		<jbossDeployDir>jboss-4.2.2.GA/jboss-4.2.2.GA/server/default/</jbossDeployDir>
 		<droolsVersion>4.0.0</droolsVersion>
-		<faceletsVersion>1.1.15.B1</faceletsVersion>
 		<installDir>E:/apps/jboss</installDir>
 	</properties>
-    <repositories>
-        <repository>
-            <id>repository.jboss.com</id>
-            <name>Jboss Repository for Maven</name>
-            <url>http://repository.jboss.com/maven2/</url>
-        </repository>
-        <repository>
-            <id>repository.exadel.com</id>
-            <name>Exadel Maven 2 Repository</name>
-            <url>http://repository.exadel.com/</url>
-        </repository>
-    </repositories>
 
     <modules>
         <module>ear</module>
@@ -37,9 +27,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>el-api</artifactId>
-			<version>1.0</version>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<!--dependency>
@@ -84,8 +73,8 @@
 					</configuration>
 				</plugin>
 				<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
                </plugin>
 			</plugins>
 		</pluginManagement>

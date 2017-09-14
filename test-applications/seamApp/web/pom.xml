@@ -4,41 +4,36 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.richfaces</groupId>
-		<artifactId>seamApp</artifactId>
-		<version>1.0-SNAPSHOT</version>
+        <groupId>org.richfaces</groupId>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
+        <artifactId>seamApp</artifactId>
 	</parent>
 	<artifactId>${projectName}-web</artifactId>
 	<name>WAR module</name>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>1.2_12</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
+			<artifactId>jsf-impl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.seam</groupId>
 			<artifactId>jboss-seam</artifactId>
-			<version>${seamVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>3.0.0.ga</version>
             <scope>provided</scope>
         </dependency>
 		 <dependency>
@@ -50,17 +45,11 @@
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-api</artifactId>
-			<version>${rfVersion}</version>
 		</dependency>		
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>${rfVersion}</version>
 		</dependency>
-		<dependency>
-            <groupId>com.sun.faces.facelets</groupId>
-            <artifactId>jsf-facelets</artifactId>
-        </dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -69,40 +58,28 @@
 		<dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-debug</artifactId>
-            <version>${seamVersion}</version>
             <exclusions>
-            <exclusion>
-                  <groupId>javax.el</groupId>
-                  <artifactId>el-api</artifactId>
-            </exclusion>
-            <exclusion>
-                  <groupId>commons-collections</groupId>
-                  <artifactId>commons-collections</artifactId>
-            </exclusion>
-            <exclusion>
-                  <groupId>org.jboss.seam</groupId>
-                  <artifactId>jboss-seam-pdf</artifactId>
-            </exclusion>
-            <exclusion>
-                  <groupId>com.sun.faces.facelets</groupId>
-                  <artifactId>jsf-facelets</artifactId>
-            </exclusion>
-			<exclusion>
-                  <groupId>org.jboss.seam</groupId>
-                  <artifactId>jboss-seam</artifactId>
-            </exclusion>
-			</exclusions>
+                <exclusion>
+                      <groupId>javax.el</groupId>
+                      <artifactId>el-api</artifactId>
+                </exclusion>
+                <exclusion>
+                      <groupId>commons-collections</groupId>
+                      <artifactId>commons-collections</artifactId>
+                </exclusion>
+                <exclusion>
+                      <groupId>org.jboss.seam</groupId>
+                      <artifactId>jboss-seam-pdf</artifactId>
+                </exclusion>
+                <exclusion>
+                      <groupId>org.jboss.seam</groupId>
+                      <artifactId>jboss-seam</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>	
 		<dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-ui</artifactId>
-            <version>${seamVersion}</version>
-			<exclusions>
-			<exclusion>
-                  <groupId>org.jboss.seam</groupId>
-                  <artifactId>jboss-seam</artifactId>
-            </exclusion>
-			</exclusions>
         </dependency>  
 	</dependencies>
 	<build>
@@ -122,7 +99,6 @@
 				<dependency>
 					<groupId>org.richfaces.framework</groupId>
 					<artifactId>richfaces-impl</artifactId>
-					<version>${rfVersion}</version>
 				</dependency>
 			</dependencies>
 		</profile>

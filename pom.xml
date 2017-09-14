@@ -1,23 +1,28 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.richfaces</groupId>
+    <groupId>org.richfaces</groupId>
 	<artifactId>root</artifactId>
+    <version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>RichFaces project</name>
-	<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<description>RichFaces project root</description>
 	<url>http://labs.jboss.com/jbossrichfaces</url>
 
 	<modules>
+        <module>bom</module>
 		<module>cdk</module>
 		<module>framework</module>
 		<module>ui</module>
 		<module>extensions</module>
-		<module>docs</module>
 		<module>ui/assembly</module>
 		<module>tlddoc</module>
 		<module>samples</module>
-		<!--module>sandbox</module-->
+		<!--<module>docs</module>
+		<module>test-applications</module>
+        <module>sandbox</module-->
 	</modules>
 
 	<properties>
@@ -26,507 +31,170 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- Plugin Management: versions -->
-		<version.assembly.plugin>2.6</version.assembly.plugin>
-		<version.clean.plugin>3.0.0</version.clean.plugin>
-		<version.compiler.plugin>3.5.1</version.compiler.plugin>
-		<version.dependency.plugin>3.0.1</version.dependency.plugin>
-        <version.install.plugin>2.5.2</version.install.plugin>
-		<version.jar.plugin>3.0.2</version.jar.plugin>
-		<version.antrun.plugin>1.8</version.antrun.plugin>
-		<version.javadoc.plugin>3.0.0-M1</version.javadoc.plugin>
-		<version.jacoco.plugin>0.5.5.201112152213</version.jacoco.plugin>
-		<version.jrebel.plugin>1.1.3</version.jrebel.plugin>
-		<version.release.plugin>2.5.3</version.release.plugin>
-		<version.replacer.plugin>1.5.3</version.replacer.plugin>
-		<version.resources.plugin>3.0.2</version.resources.plugin>
-		<version.deploy.plugin>2.8.2</version.deploy.plugin>
-		<version.scm.plugin>1.9.5</version.scm.plugin>
-		<version.war.plugin>3.1.0</version.war.plugin>
-		<version.source.plugin>3.0.1</version.source.plugin>
-		<version.surefire.plugin>2.20</version.surefire.plugin>
-		<version.build.helper.plugin>3.0.0</version.build.helper.plugin>
-		<version.exec.plugin>1.5.0</version.exec.plugin>
-		<version.vdldoc>1.2</version.vdldoc>
-		
-		<version.jdk>1.8</version.jdk>
-		<maven.compiler.source>${version.jdk}</maven.compiler.source>
-	    <maven.compiler.target>${version.jdk}</maven.compiler.target>
+        <version.jdk>1.8</version.jdk>
+        <maven.compiler.source>${version.jdk}</maven.compiler.source>
+        <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
-        <version-javax-servlet-api>3.1.0</version-javax-servlet-api>
-        <version-javax-faces-api>2.2.13</version-javax-faces-api>
-        <version-javax-jsp-api>2.3.1</version-javax-jsp-api>
-        <version-jsf-facelets>1.1.15</version-jsf-facelets>
-        <version-jboss-seam>2.3.11-jee7</version-jboss-seam>
-        <version.org.jboss-el>1.0_02.CR6</version.org.jboss-el>
-        <version.com.sun.faces>2.2.13</version.com.sun.faces>
-        <version.org.hibernate>5.0.14.Final-redhat-1</version.org.hibernate>
-        <version.org.hibernate.validator>5.2.5.Final</version.org.hibernate.validator>
-        <version.org.hibernate.search>5.5.7.Final</version.org.hibernate.search>
-        <version.org.hibernate.javax.persistence>1.0.1.Final</version.org.hibernate.javax.persistence>
-        <version.org.hibernate-jpamodelgen>1.2.0.Final</version.org.hibernate-jpamodelgen>        
-        <version-commons-digester>2.1</version-commons-digester>
-        <version-commons-xerces>2.11.0.SP5</version-commons-xerces>
-        <version-commons-beanutils>1.9.3</version-commons-beanutils>
-        <version-commons-logging>1.2.0.redhat-2</version-commons-logging>
-        <version-xml-apis>2.0.2</version-xml-apis>
-        <version.jsf.impl>2.2.13.SP4</version.jsf.impl>
-        <version.jsf.api>2.2.13</version.jsf.api>
-        
-        
+        <version.assembly.plugin>2.6</version.assembly.plugin>
+        <version.clean.plugin>3.0.0</version.clean.plugin>
+        <version.compiler.plugin>3.5.1</version.compiler.plugin>
+        <version.dependency.plugin>3.0.1</version.dependency.plugin>
+        <version.install.plugin>2.5.2</version.install.plugin>
+        <version.jar.plugin>3.0.2</version.jar.plugin>
+        <version.antrun.plugin>1.8</version.antrun.plugin>
+        <version.javadoc.plugin>3.0.0-M1</version.javadoc.plugin>
+        <version.jacoco.plugin>0.5.5.201112152213</version.jacoco.plugin>
+        <version.jrebel.plugin>1.1.3</version.jrebel.plugin>
+        <version.release.plugin>2.5.3</version.release.plugin>
+        <version.replacer.plugin>1.5.3</version.replacer.plugin>
+        <version.resources.plugin>3.0.2</version.resources.plugin>
+        <version.deploy.plugin>2.8.2</version.deploy.plugin>
+        <version.scm.plugin>1.9.5</version.scm.plugin>
+        <version.war.plugin>3.1.0</version.war.plugin>
+        <version.ear.plugin>2.10.1</version.ear.plugin>
+        <version.source.plugin>3.0.1</version.source.plugin>
+        <version.surefire.plugin>2.20</version.surefire.plugin>
+        <version.build.helper.plugin>3.0.0</version.build.helper.plugin>
+        <version.exec.plugin>1.5.0</version.exec.plugin>
+
         <snapshotRepository>file:target/snapshot</snapshotRepository>
         <releaseRepository>file:target/release</releaseRepository>
         <stagingRepository>scm:git:~/git/richfaces-stage.git</stagingRepository>
 	</properties>
-	<dependencyManagement>
-        	<dependencies>
 
+  <dependencyManagement>
+      <dependencies>
             <dependency>
-                <groupId>org.richfaces.ui</groupId>
-                <artifactId>richfaces-ui</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.richfaces.framework</groupId>
-                <artifactId>richfaces-impl</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.richfaces.framework</groupId>
-                <artifactId>richfaces-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-             <dependency>
-                <groupId>xml-apis</groupId>
-                <artifactId>xml-apis</artifactId>
-                <version>2.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.xmlgraphics</groupId>
-                <artifactId>batik-ext</artifactId>
-                <version>1.9.1</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${version-javax-servlet-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.faces</groupId>
-                <artifactId>jsf-impl</artifactId>
-                <scope>provided</scope>
-                <version>${version.jsf.impl}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.faces</groupId>
-                <artifactId>jsf-api</artifactId>
-                <scope>provided</scope>
-                <version>${version.jsf.api}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.persistence</groupId>
-                <artifactId>persistence-api</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.seam</groupId>
-                <artifactId>jboss-seam</artifactId>
-                <version>${version-jboss-seam}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.seam</groupId>
-                <artifactId>jboss-seam-ui</artifactId>
-                <version>${version-jboss-seam}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.seam</groupId>
-                <artifactId>jboss-seam-debug</artifactId>
-                <version>${version-jboss-seam}</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet.jsp</groupId>
-                <artifactId>javax.servlet.jsp-api</artifactId>
-                <version>${version-javax-jsp-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>3.0.0</version>
-                <scope>provided</scope>
-            <!--/dependency>
-            <dependency>
-                <groupId>org.glassfish.web</groupId>
-                <artifactId>el-impl</artifactId>
-                <version>2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
-                <version>3.0.0</version-->
-            </dependency>
-            <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils</artifactId>
-                <version>${version-commons-beanutils}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${version-commons-logging}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-digester</groupId>
-                <artifactId>commons-digester</artifactId>
-                <version>${version-commons-digester}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>commons-logging</groupId>
-                        <artifactId>commons-logging</artifactId>
-                    </exclusion> 
-                </exclusions> 
-            </dependency>
-            <dependency>
-                <groupId>xerces</groupId>
-                <artifactId>xercesImpl</artifactId>
-                <version>${version-commons-xerces}</version>
-                 <exclusions>
-                    <exclusion>
-                        <groupId>xml-apis</groupId>
-                        <artifactId>xml-apis</artifactId>
-                    </exclusion>
-                </exclusions> 
-                <scope>provided</scope>
-            </dependency>
-             <dependency>
-                 <groupId>ant</groupId>
-                 <artifactId>ant</artifactId>
-                 <version>1.6.5</version>
-             </dependency>
-             
-             <dependency>
-                 <groupId>qdox</groupId>
-                 <artifactId>qdox</artifactId>
-                 <version>1.6</version>
-             </dependency>
-             <dependency>
-                 <groupId>cglib</groupId>
-                 <artifactId>cglib</artifactId>
-                 <version>2.1_3</version>
-             </dependency>
-             <dependency>
-                 <groupId>com.wutka</groupId>
-                 <artifactId>dtdparser</artifactId>
-                 <version>1.21</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.maven</groupId>
-                 <artifactId>maven-artifact</artifactId>
-                 <version>2.0.4</version>
-                 <scope>provided</scope>
-             </dependency>
-            <dependency>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.5</version>
-                 <scope>provided</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.maven</groupId>
-                 <artifactId>maven-plugin-api</artifactId>
-                 <version>2.0.4</version>
-                 <scope>provided</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.maven</groupId>
-                 <artifactId>maven-project</artifactId>
-                 <version>2.0.4</version>
-                 <scope>provided</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.maven</groupId>
-                 <artifactId>maven-archiver</artifactId>
-                 <version>2.2</version>
-                 <scope>provided</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.maven.shared</groupId>
-                 <artifactId>file-management</artifactId>
-                 <version>1.1</version>
-                 <scope>provided</scope>
-             </dependency>
-             <dependency>
-                 <groupId>org.codehaus.plexus</groupId>
-                 <artifactId>plexus-utils</artifactId>
-                 <version>3.0.24</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.codehaus.plexus</groupId>
-                 <artifactId>plexus-archiver</artifactId>
-                 <version>3.5</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.codehaus.plexus</groupId>
-                 <artifactId>plexus-velocity</artifactId>
-                 <version>1.1.4</version>
-             </dependency>
-             <dependency>
-                 <groupId>commons-vfs</groupId>
-                 <artifactId>commons-vfs</artifactId>
-                 <version>1.0</version>
-             </dependency>
-             <dependency>
-                 <groupId>commons-collections</groupId>
-                 <artifactId>commons-collections</artifactId>
-                 <version>3.2</version>
-             </dependency>
-             <dependency>
-                 <groupId>opensymphony</groupId>
-                 <artifactId>oscache</artifactId>
-                 <version>2.3</version>
-             </dependency>
-             <dependency>
-                 <groupId>nekohtml</groupId>
-                 <artifactId>nekohtml</artifactId>
-                 <version>1.9.6</version>
-             </dependency>
-             <dependency>
-                 <groupId>javax.servlet</groupId>
-                 <artifactId>jstl</artifactId>
-                 <version>1.2</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.codelibs</groupId>
-                 <artifactId>jhighlight</artifactId>
-                 <version>1.0.3</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.xmlgraphics</groupId>
-                 <artifactId>fop</artifactId>
-                 <version>0.95</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.slf4j</groupId>
-                 <artifactId>slf4j-simple</artifactId>
-                 <version>1.4.2</version>
-             </dependency>
-             <dependency>
-                 <groupId>javassist</groupId>
-                 <artifactId>javassist</artifactId>
-                 <version>3.8.0.GA</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.apache.geronimo.specs</groupId>
-                 <artifactId>geronimo-jta_1.0.1B_spec</artifactId>
-                 <version>1.1</version>
-             </dependency>
-             <dependency>
-                 <groupId>org.hsqldb</groupId>
-                 <artifactId>hsqldb</artifactId>
-                 <version>2.4.0</version>
-             </dependency>
-             <dependency>
-                 <groupId>javax.validation</groupId>
-                 <artifactId>validation-api</artifactId>
-                 <version>2.0.0.Final</version>
-             </dependency>
-             <dependency>
-                 <groupId>javax.annotation</groupId>
-                 <artifactId>jsr250-api</artifactId>
-                 <version>1.0</version>
-             </dependency>
-             <!--dependency>
-                 <groupId>javax.persistence</groupId>
-                 <artifactId>persistence-api</artifactId>
-                 <version>1.0.2</version>
-             </dependency-->
-             <dependency>
-                 <groupId>org.hibernate</groupId>
-                 <artifactId>hibernate-core</artifactId>
-                 <version>${version.org.hibernate}</version>
-             </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator-annotation-processor</artifactId>
-                <version>${version.org.hibernate.validator}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${version.org.hibernate.validator}</version>
-            </dependency>
-            <dependency>
-                <groupId>antlr</groupId>
-                <artifactId>antlr</artifactId>
-                <version>2.7.7</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mozilla</groupId>
-                <artifactId>rhino</artifactId>
-                <version>1.7.7.1</version>
-            </dependency>
-            <dependency>
-                <groupId>rhino</groupId>
-                <artifactId>js</artifactId>
-                <version>1.6R7</version>
-            </dependency>
-
-            <dependency>
-                <groupId>javax.ejb</groupId>
-                <artifactId>ejb-api</artifactId>
-                <version>3.0</version>
-            </dependency>
-        	</dependencies>
-</dependencyManagement>
-	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-			<extension>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
-				<version>8.2-504.jdbc3</version>
-			</extension>
-			<!-- scm deployment wagon 
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-scm</artifactId>
-				<version>1.0-alpha-5</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.scm</groupId>
-				<artifactId>maven-scm-manager-plexus</artifactId>
-				<version>1.0</version>
-			</extension>
-			<extension>
-				<groupId>org.apache.maven.scm</groupId>
-				<artifactId>maven-scm-provider-svnexe</artifactId>
-				<version>1.0</version>
-			</extension>
-			-->
-		</extensions>
-		<pluginManagement>
-			<plugins>
-                <plugin>      
-					<groupId>org.apache.maven.plugins</groupId>
+                <groupId>org.richfaces</groupId>
+                   <artifactId>bom</artifactId>
+                    <version>3.3.5.3-jsf22-SNAPSHOT</version>
+                     <type>pom</type>
+                      <scope>import</scope>
+                  </dependency>
+            </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-					<version>${version.source.plugin}</version>
+                    <version>${version.source.plugin}</version>
                 </plugin>
-                <plugin>      
-					<groupId>org.apache.maven.plugins</groupId>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-					<version>${version.deploy.plugin}</version>
+                    <version>${version.deploy.plugin}</version>
                 </plugin>
-                <plugin>      
-					<groupId>org.apache.maven.plugins</groupId>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${version.dependency.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-					<version>${version.war.plugin}</version>
+                    <version>${version.war.plugin}</version>
                 </plugin>
-                <plugin>      
-					<groupId>org.apache.maven.plugins</groupId>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>${version.ear.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-					<version>${version.clean.plugin}</version>
+                    <version>${version.clean.plugin}</version>
                 </plugin>
                 <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-					<version>${version.resources.plugin}</version>
+                    <version>${version.resources.plugin}</version>
                 </plugin>
                 <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-					<version>${version.install.plugin}</version>
+                    <version>${version.install.plugin}</version>
                 </plugin>
                 <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
-					<version>${version.antrun.plugin}</version>
+                    <version>${version.antrun.plugin}</version>
                 </plugin>
                 <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-					<version>${version.compiler.plugin}</version>
+                    <version>${version.compiler.plugin}</version>
                     <configuration>
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
                     </configuration>
                 </plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${version.jar.plugin}</version>
-					<configuration>
-						<archive>
-							<index>true</index>
-							<manifest>
-								<addDefaultSpecificationEntries>
-									true
-								</addDefaultSpecificationEntries>
-								<addDefaultImplementationEntries>
-									true
-								</addDefaultImplementationEntries>
-							</manifest>
-							<manifestEntries>
-								<mode>development</mode>
-								<Build-Number>
-									${buildNumber}
-								</Build-Number>
-							</manifestEntries>
-						</archive>
-					</configuration>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${version.jar.plugin}</version>
+                    <configuration>
+                        <archive>
+                            <index>true</index>
+                            <manifest>
+                                <addDefaultSpecificationEntries>
+                                    true
+                                </addDefaultSpecificationEntries>
+                                <addDefaultImplementationEntries>
+                                    true
+                                </addDefaultImplementationEntries>
+                            </manifest>
+                            <manifestEntries>
+                                <mode>development</mode>
+                                <Build-Number>
+                                    ${buildNumber}
+                                </Build-Number>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-					<version>${version.javadoc.plugin}</version>
+                    <version>${version.javadoc.plugin}</version>
                     <configuration>
                         <keywords>true</keywords>
                         <quiet>true</quiet>
                         <detectOfflineLinks>false</detectOfflineLinks>
                     </configuration>
                 </plugin>
-				<plugin>
-				    <groupId>org.apache.maven.plugins</groupId>
-				    <artifactId>maven-surefire-plugin</artifactId>
-					<version>${version.surefire.plugin}</version>
-				    <configuration>
-				        <systemProperties>
-					    <property>
-				                <name>org.ajax4jsf.test.checkXHTML</name>
-				                <value>true</value>
-				            </property>
-				        </systemProperties>
-				    </configuration>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.surefire.plugin}</version>
+                    <configuration>
+                        <systemProperties>
+                            <property>
+                                <name>org.ajax4jsf.test.checkXHTML</name>
+                                <value>true</value>
+                            </property>
+                        </systemProperties>
+                    </configuration>
+                </plugin>
                 <!-- Release -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-					<version>${version.release.plugin}</version>
+                    <version>${version.release.plugin}</version>
                     <configuration>
                         <!-- All sub-modules will have same version -->
                         <autoVersionSubmodules>true</autoVersionSubmodules>
-                        <!-- update dependencies version to the next development version -->
+                        <!-- update dependencies version to the next development
+                            version -->
                         <updateDependencies>true</updateDependencies>
                         <!-- During release:perform, enable the "release" profile -->
                         <releaseProfiles>release</releaseProfiles>
-                        <!-- Some modules (dist) need release items installed during prepare -->
+                        <!-- Some modules (dist) need release items installed during
+                            prepare -->
                         <preparationGoals>clean install</preparationGoals>
-                        <!-- Use a local checkout instead of doing a checkout from the upstream repository -->
+                        <!-- Use a local checkout instead of doing a checkout from
+                            the upstream repository -->
                         <localCheckout>true</localCheckout>
                         <!-- Will not push changes to the upstream repository -->
                         <pushChanges>false</pushChanges>
@@ -563,192 +231,89 @@
                     <version>2.4</version>
                 </plugin>
                 <plugin>
-                     <groupId>org.apache.maven.plugins</groupId>
-                     <artifactId>maven-jdocbook-plugin</artifactId>
-                     <version>2.3.10</version>
+                    <groupId>org.jboss.maven.plugins</groupId>
+                    <artifactId>maven-jdocbook-plugin</artifactId>
+                    <version>2.3.10</version>
                 </plugin>
+            </plugins>
+        </pluginManagement>
 
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.richfaces.cdk</groupId>
-                                        <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
-                                        <goals>
-                                            <goal>generate</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>false</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.richfaces.cdk</groupId>
-                                        <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
-                                        <goals>
-                                            <goal>generate-tests</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>false</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.richfaces.cdk</groupId>
-                                        <artifactId>maven-cdk-plugin</artifactId>
-                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
-                                        <goals>
-                                            <goal>assembly</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.richfaces.cdk</groupId>
-                                        <artifactId>maven-javasgript-plugin</artifactId>
-                                        <versionRange>[3.3.5.1-jsf23-SNAPSHOT,)</versionRange>
-                                        <goals>
-                                            <goal>compress</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-antrun-plugin</artifactId>
-                                        <versionRange>[1.8,)</versionRange>
-                                        <goals>
-                                            <goal>run</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-dependency-plugin</artifactId>
-                                        <versionRange>[2.9,)</versionRange>
-                                        <goals>
-                                            <goal>unpack</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>exec-maven-plugin</artifactId>
-                                        <versionRange>[1.3.2,)</versionRange>
-                                        <goals>
-                                            <goal>java</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>javacc-maven-plugin</artifactId>
-                                        <versionRange>[2.4,)</versionRange>
-                                        <goals>
-                                            <goal>javacc</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-			</plugins>
-		</pluginManagement>
+        <extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+			<extension>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>8.2-504.jdbc3</version>
+			</extension>
+			<!-- scm deployment wagon
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-scm</artifactId>
+				<version>1.0-alpha-5</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-manager-plexus</artifactId>
+				<version>1.0</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-provider-svnexe</artifactId>
+				<version>1.0</version>
+			</extension>
+			-->
+		</extensions>
 	</build>
 
 	<repositories>
 		<repository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Maven Repository Group</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>central-maven-org</id>
-			<name>Maven Central </name>
+			<id>repository.central.maven</id>
 			<url>http://central.maven.org/maven2/</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
 		</repository>
          <repository>
-              <id>redhat-public-repository</id>
-              <name>Redhat Public Repository GA</name>
+              <id>repasitory.redhat.public</id>
               <url>https://maven.repository.redhat.com/ga/</url>
-              <layout>default</layout>
-              <releases>
-                      <enabled>true</enabled>
-                      <updatePolicy>never</updatePolicy>
-              </releases>
         </repository>
-	</repositories>
+        <repository>
+              <id>repository.jboss.com</id>
+              <url>http://repository.jboss.com/maven2/</url>
+        </repository>
+        <repository>
+              <id>repository.eclipse</id>
+              <url>http://repo1.maven.org/eclipse/</url>
+        </repository>
+        <repository>
+            <id>repository.jboss.releases</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>repository.jboss.thirdparty</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
+        </repository>
+    </repositories>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>jboss-public-repository-group</id>
-			<name>JBoss Public Maven Repository Group</name>
+			<id>repository.jbossp.public</id>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+            <id>repository.maven.central</id>
+            <url>http://central.maven.org/maven2/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>repository.maven.jboss</id>
+            <url>http://repository.jboss.com/maven2/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>repository.jboss.releases</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </pluginRepository>
 	</pluginRepositories>
-<distributionManagement>
+    <distributionManagement>
 		<downloadUrl>
 			http://www.jboss.org/richfaces/download
 		</downloadUrl>
@@ -765,19 +330,19 @@
 		<site>
 			<url>file:target/site2</url>
 		</site>
- </distributionManagement>
-    
+    </distributionManagement>
+
 	<issueManagement>
 		<system>JIRA</system>
 		<url>http://jira.jboss.org/jira/browse/RF</url>
 	</issueManagement>
-    
+
 	<developers>
 		<developer>
 			<name>RichFaces committers</name>
 		</developer>
 	</developers>
-    
+
 	<licenses>
 		<license>
 			<name>LGPL 2.1</name>
@@ -794,8 +359,8 @@
         <developerConnection>scm:git:git@github.com:nickl-/richfaces.git</developerConnection>
         <url>https://github.com/nickl-/richfaces</url>
       <tag>HEAD</tag>
-  </scm> 
-    
+  </scm>
+
 	<profiles>
 		<profile>
 			<id>jsf2_0</id>
@@ -816,7 +381,7 @@
 				<module>sandbox</module>
 			</modules>
 		</profile>
-        
+
 		<profile>
 			<id>clover</id>
 			<build>
@@ -853,7 +418,7 @@
 					</plugin>
 				</plugins>
 			</build>
-            
+
 			<reporting>
 				<plugins>
 					<plugin>
@@ -870,7 +435,7 @@
 					</plugin>
 				</plugins>
 			</reporting>
-            
+
 		</profile>
 	</profiles>
 </project>

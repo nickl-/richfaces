@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>seleniumTest</groupId>
 		<artifactId>seleniumTest</artifactId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>seleniumTest</groupId>
 	<artifactId>richfaces</artifactId>
 	<packaging>war</packaging>
 	<name>seleniumTest Maven Webapp</name>
-	<version>3.3.5.2-jsf22-SNAPSHOT</version>
+	<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<build>
 		<finalName>richfaces</finalName>
 	</build>
@@ -143,27 +143,22 @@
 		<dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
        		</dependency>
 		<dependency>
         	<groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam</artifactId>
-            <version>${seamVersion}</version>
 		</dependency>
 		<dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-ui</artifactId>
-            <version>${seamVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.6.0.GA</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
   			<artifactId>persistence-api</artifactId>
-  			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<repositories>

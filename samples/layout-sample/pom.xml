@@ -4,14 +4,14 @@
 	<parent>
 		<artifactId>samples</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.samples</groupId>
 	<artifactId>layout-sample</artifactId>
 	<packaging>war</packaging>
 	<name>layout Maven Webapp</name>
-	<version>3.3.5.2-jsf22-SNAPSHOT</version>
+	<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<build>
 		<finalName>layout-sample</finalName>
 		<plugins>
@@ -30,17 +30,17 @@
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>3.3.5.2-jsf22-SNAPSHOT</version>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces.samples</groupId>
 			<artifactId>skins</artifactId>
-			<version>3.3.5.2-jsf22-SNAPSHOT</version>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces.samples</groupId>
 			<artifactId>themes</artifactId>
-			<version>3.3.5.2-jsf22-SNAPSHOT</version>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.richfaces.ui</groupId>

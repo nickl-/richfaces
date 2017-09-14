@@ -111,9 +111,9 @@
 								<configuration>
 									<groupId>${groupId}</groupId>
 									<artifactId>${artifactId}</artifactId>
-									<version>${version}</version>
+									<version>${project.version}</version>
 									<packaging>jar</packaging>
-									<file>${project.build.directory}/${artifactId}-${version}-sources.jar</file>
+									<file>${project.build.directory}/${artifactId}-${project.version}-sources.jar</file>
 									<classifier>sources</classifier>
 								</configuration>
 							</execution>
@@ -126,9 +126,9 @@
 								<configuration>
 									<groupId>${groupId}</groupId>
 									<artifactId>${artifactId}</artifactId>
-									<version>${version}</version>
+									<version>${project.version}</version>
 									<packaging>jar</packaging>
-									<file>${project.build.directory}/${artifactId}-${version}-javadoc.jar</file>
+									<file>${project.build.directory}/${artifactId}-${project.version}-javadoc.jar</file>
 									<classifier>javadoc</classifier>
 								</configuration>
 							</execution>

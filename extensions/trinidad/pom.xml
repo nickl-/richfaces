@@ -8,7 +8,6 @@
   <groupId>org.richfaces</groupId>
   <artifactId>a4j-trinidad</artifactId>
   <name>ajax4jsf and MyFaces Trinidad compability library</name>
-  <url>https://ajax4jsf.dev.java.net</url>
 	<build>
 		<plugins>
 			<plugin>
@@ -35,7 +34,7 @@
 	<dependency>
 		<groupId>org.richfaces</groupId>
 		<artifactId>ajax4jsf</artifactId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</dependency>
   	<dependency>
   	    <groupId>org.apache.myfaces.trinidad</groupId>

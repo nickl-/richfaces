@@ -2,13 +2,11 @@
 	<parent>
 		<artifactId>docs</artifactId>
 		<groupId>org.richfaces.docs</groupId>
-		<version>3.3.5.1-jsf23-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cdkguide</artifactId>
 	<packaging>pom</packaging>
-	<version>3.3.5.1-jsf23-SNAPSHOT</version>
 	<name>cdkguide</name>
 	<description>Richfaces CDK Developer Guide</description>
 	<pluginRepositories>

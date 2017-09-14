@@ -16,6 +16,13 @@
 			<resource>
 				<directory>target/javascript</directory>
 			</resource>
+             <resource>
+                 <filtering>true</filtering>
+                <directory>src/main/java/org/richfaces/</directory>
+                <includes>
+                    <include>VersionBean.java</include>
+            </includes>
+            </resource>
 		</resources>
 		<plugins>
 			<!--plugin>
@@ -186,7 +193,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+		    </build>
 	<profiles>
 		<profile>
 			<id>clover</id>

@@ -2,7 +2,7 @@
   <parent>
     <artifactId>test-applications</artifactId>
     <groupId>org.richfaces</groupId>
-    <version>3.3.5.2-jsf22-SNAPSHOT</version>
+    <version>3.3.5.3-jsf22-SNAPSHOT</version>
   </parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -21,10 +21,6 @@
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.sun.faces.facelets</groupId>
-		<artifactId>jsf-facelets</artifactId>
 	</dependency>
 </dependencies>
 </project>

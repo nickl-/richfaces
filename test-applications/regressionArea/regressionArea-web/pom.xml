@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.richfaces.test-applications</groupId>
         <artifactId>regressionArea</artifactId>
-        <version>3.3.5.2-jsf22-SNAPSHOT</version>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
     </parent>
 	<groupId>org.richfaces.test-applications.regressionArea</groupId>
     <artifactId>regressionArea-web</artifactId>
@@ -59,10 +59,6 @@
 			<version>${jsfversion}</version>
 			<scope>provided</scope>
 		</dependency>
-	    <dependency>
-            <groupId>com.sun.faces.facelets</groupId>
-            <artifactId>jsf-facelets</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-remoting</artifactId>
@@ -89,7 +85,6 @@
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-ui</artifactId>
-            <version>${seamversion}</version>
             <exclusions>
                 <exclusion>
 		            <artifactId>jboss-seam</artifactId>
@@ -100,7 +95,6 @@
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-debug</artifactId>
-            <version>${seamversion}</version>
             <exclusions>
                 <exclusion>
 		            <artifactId>jboss-seam</artifactId>

@@ -3,15 +3,14 @@
 	<parent>
 		<artifactId>extensions</artifactId>
 		<groupId>org.richfaces</groupId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces</groupId>
 	<artifactId>gwtjsf</artifactId>
 	<name>Google web toolkit and JSF integration library</name>
-	<url>https://ajax4jsf.dev.java.net</url>
 	<properties>
-		<jsfVersion>1.2</jsfVersion>
+		<jsfVersion>2.2</jsfVersion>
 	</properties>
 
 
@@ -99,13 +98,9 @@ see http://groups.google.com/group/gwt-maven/browse_thread/thread/09885f643c7b4d
 		<dependency>
 			<groupId>org.richfaces.framework</groupId>
 			<artifactId>richfaces-impl</artifactId>
-			<version>3.3.5.2-jsf22-SNAPSHOT</version>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.sun.faces.facelets</groupId>
-			<artifactId>jsf-facelets</artifactId>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>

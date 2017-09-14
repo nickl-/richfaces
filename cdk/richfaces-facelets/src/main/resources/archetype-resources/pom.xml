@@ -4,7 +4,7 @@
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<name>${artifactId}</name>
-	<version>${version}</version>
+	<version>${project.version}</version>
 	<packaging>war</packaging>
 	<build>
 		<finalName>${artifactId}</finalName>
@@ -24,11 +24,7 @@
 		<dependency>
 			<groupId>org.richfaces.ui</groupId>
 			<artifactId>richfaces-ui</artifactId>
-			<version>3.3.5.2-jsf22-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces.facelets</groupId>
-			<artifactId>jsf-facelets</artifactId>
+			<version>3.3.5.3-jsf22-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

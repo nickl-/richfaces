@@ -319,7 +319,7 @@
 								</goals>
 								<configuration>
 									<artifactItems>
-										<artifactItem>
+										<!--artifactItem>
 											<groupId>
 												org.richfaces.docs.userguide
 											</groupId>
@@ -328,12 +328,11 @@
 												${project.version}
 											</version>
 											<type>jar</type>
-											<!--classifier>pdf</classifier-->
 											<outputDirectory>
 												${project.build.directory}/docs/userguide/en
 											</outputDirectory>
 										</artifactItem>
-										<!--artifactItem>
+										<artifactItem>
 											<groupId>
 												org.richfaces.docs.faq
 											</groupId>

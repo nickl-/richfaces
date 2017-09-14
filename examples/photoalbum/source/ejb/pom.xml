@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.richfaces.examples</groupId>
 		<artifactId>photoalbum</artifactId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.richfaces.examples</groupId>
@@ -50,10 +50,6 @@
 				<exclusion>
 					<groupId>org.jboss.seam</groupId>
 					<artifactId>jboss-seam-pdf</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.faces.facelets</groupId>
-					<artifactId>jsf-facelets</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>

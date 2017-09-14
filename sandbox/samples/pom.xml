@@ -3,13 +3,13 @@
 	<parent>
 		<groupId>org.richfaces</groupId>
 		<artifactId>samples</artifactId>
-		<version>3.3.5.2-jsf22-SNAPSHOT</version>
+		<version>3.3.5.3-jsf22-SNAPSHOT</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.richfaces.sandbox</groupId>
 	<artifactId>samples</artifactId>
-  <version>3.3.5.2-jsf22-SNAPSHOT</version>
+  <version>3.3.5.3-jsf22-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>RichFaces Sandbox Components Examples</name>
   <modules>

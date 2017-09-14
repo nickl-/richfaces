@@ -2,13 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-       <groupId>org.richfaces</groupId>
-		<artifactId>seamApp</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>org.richfaces</groupId>
+        <version>3.3.5.3-jsf22-SNAPSHOT</version>
+        <artifactId>seamApp</artifactId>
     </parent>
     <artifactId>${projectName}-ejb</artifactId>
     <name>EJB module</name>
-    <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <dependencies>
@@ -70,13 +69,11 @@
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>3.0.0.ga</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -96,7 +93,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.4</version>
             </plugin>
         </plugins>
     </build>

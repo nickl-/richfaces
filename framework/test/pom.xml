@@ -8,7 +8,6 @@
 	<groupId>org.richfaces.framework</groupId>
 	<artifactId>richfaces-test</artifactId>
 	<name>Ajax4Jsf test framework</name>
-	<url>https://ajax4jsf.dev.java.net</url>
 	
 	<profiles>
 		<profile>

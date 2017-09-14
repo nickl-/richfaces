@@ -16,9 +16,11 @@
 		-->
 		<module>api</module>
 		<module>impl</module>
+		<!--
 		<module>test</module>
 		<module>jsf-test</module>
-	</modules>
+        -->
+    </modules>
 	
 	<build>
 		<plugins>
