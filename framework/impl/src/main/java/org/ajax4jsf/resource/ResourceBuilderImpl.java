@@ -183,9 +183,6 @@ new StringBuilder("Resources framework is not initialised, check web.xml for Fil
 		_startTime = System.currentTimeMillis();
 		codec = new Codec();
 		super.addInstance(this);
-		
-		//renderers = new HashMap<String, ResourceRenderer>();
-		// append known renderers for extentions.
 	}
 
 	/**
